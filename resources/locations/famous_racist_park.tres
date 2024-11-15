@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UrbanLocationData" load_steps=2 format=3 uid="uid://sbu7b3036yrn"]
+
+[ext_resource type="Script" path="res://resources/location_data.gd" id="1_ajxtk"]
+
+[resource]
+script = ExtResource("1_ajxtk")
+location_type = 11
+name = "Famous Racist Park"
+description = "Named after some dead racist. Money gets you a lot of things."
+actions_available = Array[int]([0, 1, 5, 10, 8])
+metadata/_custom_type_script = ExtResource("1_ajxtk")

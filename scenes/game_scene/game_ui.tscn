@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=11 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
-[ext_resource type="PackedScene" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/level_list_loader.gd" id="3_24q15"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="4_q3ilf"]
-[ext_resource type="PackedScene" path="res://scenes/loading_screen/level_loading_screen.tscn" id="5_511ay"]
+[ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="4_q3ilf"]
+[ext_resource type="PackedScene" uid="uid://cho0vbenclk7c" path="res://scenes/game_scene/ui_elements/city_container.tscn" id="5_ul61k"]
+[ext_resource type="PackedScene" uid="uid://dx5ss2xptakj3" path="res://scenes/game_scene/ui_elements/location_action_container.tscn" id="5_v20na"]
 [ext_resource type="Script" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="6_4lue2"]
-[ext_resource type="Script" path="res://scenes/game_scene/input_display_label.gd" id="7_1indv"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/level_list_manager.gd" id="8_qudii"]
-[ext_resource type="PackedScene" path="res://scenes/overlaid_menus/game_won_menu.tscn" id="9_lswqr"]
-[ext_resource type="PackedScene" path="res://scenes/overlaid_menus/level_lost_menu.tscn" id="10_ldtrp"]
-[ext_resource type="PackedScene" path="res://scenes/overlaid_menus/level_won_menu.tscn" id="11_nyhci"]
+[ext_resource type="Script" path="res://scenes/game_scene/action_manager.gd" id="6_y85d6"]
+[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="8_onvsj"]
+[ext_resource type="Script" path="res://scenes/game_scene/inventory_manager.gd" id="8_vbgr5"]
+[ext_resource type="Resource" uid="uid://buopoh3nhj3oq" path="res://resources/game_resources/starting_reputation.tres" id="9_onvsj"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -25,16 +24,7 @@ script = ExtResource("1_5l4j3")
 pause_menu_packed = ExtResource("2_ltc4h")
 focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 
-[node name="LevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
-script = ExtResource("3_24q15")
-level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
-files = Array[String](["res://scenes/game_scene/levels/level_1.tscn", "res://scenes/game_scene/levels/level_2.tscn", "res://scenes/game_scene/levels/level_3.tscn"])
-directory = "res://scenes/game_scene/levels"
-
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_q3ilf")]
-
-[node name="LevelLoadingScreen" parent="." instance=ExtResource("5_511ay")]
-visible = false
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -49,35 +39,66 @@ stretch = true
 handle_input_locally = false
 audio_listener_enable_2d = true
 audio_listener_enable_3d = true
-size = Vector2i(1280, 720)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 script = ExtResource("6_4lue2")
 
-[node name="InputDisplayLabel" type="Label" parent="."]
+[node name="MainUI" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -44.0
-offset_bottom = 44.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-horizontal_alignment = 1
-autowrap_mode = 2
-script = ExtResource("7_1indv")
 
-[node name="LevelListManager" type="Node" parent="." node_paths=PackedStringArray("level_list_loader", "level_loading_screen")]
-script = ExtResource("8_qudii")
-level_list_loader = NodePath("../LevelLoader")
-main_menu_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
-ending_scene = "res://scenes/end_credits/end_credits.tscn"
-level_loading_screen = NodePath("../LevelLoadingScreen")
-game_won_scene = ExtResource("9_lswqr")
-level_lost_scene = ExtResource("10_ldtrp")
-level_won_scene = ExtResource("11_nyhci")
+[node name="TabContainer" type="TabContainer" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
 
-[connection signal="level_load_started" from="LevelLoader" to="." method="_on_level_loader_level_load_started"]
-[connection signal="level_loaded" from="LevelLoader" to="." method="_on_level_loader_level_loaded"]
-[connection signal="levels_finished" from="LevelLoader" to="." method="_on_level_loader_levels_finished"]
+[node name="Actions" type="Control" parent="MainUI/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TabContainer/Actions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ActionsContainer" type="GridContainer" parent="MainUI/TabContainer/Actions/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 32
+columns = 4
+
+[node name="CityContainer" parent="MainUI/TabContainer/Actions/MarginContainer/ActionsContainer" instance=ExtResource("5_ul61k")]
+unique_name_in_owner = true
+layout_mode = 2
+city_name = "San Francisco"
+city_actions = Array[int]([0, 1])
+
+[node name="LocationActionContainer" parent="MainUI/TabContainer/Actions/MarginContainer/ActionsContainer" instance=ExtResource("5_v20na")]
+layout_mode = 2
+action_type = 6
+
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("8_vbgr5")
+starting_inventory = Array[ExtResource("8_onvsj")]([ExtResource("9_onvsj")])
+
+[node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager")]
+script = ExtResource("6_y85d6")
+city_name = "San Francisco"
+city_actions = Array[int]([0, 1])
+inventory_manager = NodePath("../InventoryManager")

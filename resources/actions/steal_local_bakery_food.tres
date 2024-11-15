@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ActionData" load_steps=5 format=3 uid="uid://tukdh8hq8ea8"]
+
+[ext_resource type="Script" path="res://resources/action_data.gd" id="1_ehynw"]
+[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="2_vl4ya"]
+
+[sub_resource type="Resource" id="Resource_n53nb"]
+script = ExtResource("2_vl4ya")
+numerical_unit = 0
+quantity = 1.0
+name = &"food"
+taxonomy = Array[StringName]([])
+metadata/_custom_type_script = ExtResource("2_vl4ya")
+
+[sub_resource type="Resource" id="Resource_31seb"]
+script = ExtResource("2_vl4ya")
+numerical_unit = 0
+quantity = -2.0
+name = &"reputation"
+taxonomy = Array[StringName]([])
+metadata/_custom_type_script = ExtResource("2_vl4ya")
+
+[resource]
+script = ExtResource("1_ehynw")
+action = 6
+time_cost = 2
+resource_cost = Array[ExtResource("2_vl4ya")]([])
+resource_result = Array[ExtResource("2_vl4ya")]([SubResource("Resource_n53nb"), SubResource("Resource_31seb")])
+metadata/_custom_type_script = ExtResource("1_ehynw")

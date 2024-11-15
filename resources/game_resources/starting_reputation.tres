@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourceQuantity" load_steps=2 format=3 uid="uid://buopoh3nhj3oq"]
+
+[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="1_tbnn2"]
+
+[resource]
+script = ExtResource("1_tbnn2")
+numerical_unit = 0
+quantity = 0.0
+name = &"reputation"
+taxonomy = Array[StringName]([])
+metadata/_custom_type_script = ExtResource("1_tbnn2")
