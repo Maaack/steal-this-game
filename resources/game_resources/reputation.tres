@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="ResourceQuantity" load_steps=2 format=3 uid="uid://dtmksqyrjf3ea"]
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://cfhbn6rm63v01"]
 
-[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="1_tbnn2"]
+[ext_resource type="Texture2D" uid="uid://c4kgtgvxu705j" path="res://assets/icons/black-flag.png" id="1_hob7n"]
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="1_tbnn2"]
 
 [resource]
 script = ExtResource("1_tbnn2")
-numerical_unit = 0
-quantity = 1.0
 name = &"reputation"
+icon = ExtResource("1_hob7n")
 taxonomy = Array[StringName]([])
 metadata/_custom_type_script = ExtResource("1_tbnn2")

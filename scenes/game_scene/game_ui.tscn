@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=14 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
@@ -10,8 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://d3j13mcmqpemo" path="res://scenes/game_scene/ui_elements/inventory_stock_container.tscn" id="7_8qp3c"]
 [ext_resource type="Script" path="res://resources/resource_quantity.gd" id="8_onvsj"]
 [ext_resource type="Script" path="res://scenes/game_scene/inventory_manager.gd" id="8_vbgr5"]
-[ext_resource type="Resource" uid="uid://buopoh3nhj3oq" path="res://resources/game_resources/starting_reputation.tres" id="9_onvsj"]
+[ext_resource type="Resource" uid="uid://cfhbn6rm63v01" path="res://resources/game_resources/reputation.tres" id="9_bmy5n"]
 [ext_resource type="Script" path="res://scenes/game_scene/ui_elements/inventory_ui_manager.gd" id="11_bmy5n"]
+
+[sub_resource type="Resource" id="Resource_7aihr"]
+script = ExtResource("8_onvsj")
+numerical_unit = 0
+quantity = 100.0
+resource_unit = ExtResource("9_bmy5n")
+metadata/_custom_type_script = ExtResource("8_onvsj")
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -61,10 +68,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
 
 [node name="TabContainer" type="TabContainer" parent="MainUI/VBoxContainer"]
 layout_mode = 2
@@ -126,7 +129,7 @@ columns = 6
 
 [node name="InventoryManager" type="Node" parent="."]
 script = ExtResource("8_vbgr5")
-starting_inventory = Array[ExtResource("8_onvsj")]([ExtResource("9_onvsj")])
+starting_inventory = Array[ExtResource("8_onvsj")]([SubResource("Resource_7aihr")])
 
 [node name="InventoryUIManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "inventory_grid")]
 script = ExtResource("11_bmy5n")

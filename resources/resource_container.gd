@@ -1,9 +1,10 @@
-extends ResourceUnit
 class_name ResourceContainer
+extends Resource
 
 const TOTAL_QUANTITY = 'TOTAL_QUANTITY'
 
-@export var contents : Array[ResourceUnit] :
+@export var name : String
+@export var contents : Array[ResourceQuantity] :
 	set = set_contents
 
 var quantities : Array = []
@@ -40,16 +41,16 @@ func _reset_quantities():
 func update_quantities():
 	_reset_quantities()
 	for content in contents:
-		if content is ResourceUnit:
+		if content is ResourceQuantity:
 			add_to_quantity(content)
 			add_to_total(content)
 
-func _get_quantity_to_add(content:ResourceUnit):
+func _get_quantity_to_add(content:ResourceQuantity):
 	if content is ResourceQuantity:
 		return content.quantity
 	return 1
 
-func add_to_quantity(content:ResourceUnit):
+func add_to_quantity(content:ResourceQuantity):
 	var quantity_to_add = _get_quantity_to_add(content)
 	var quantity : ResourceQuantity
 	quantity = find_quantity(content.name)
@@ -62,7 +63,7 @@ func add_to_quantity(content:ResourceUnit):
 		quantities.append(quantity)
 	return quantity
 
-func add_to_total(content:ResourceUnit):
+func add_to_total(content:ResourceQuantity):
 	var quantity_to_add = _get_quantity_to_add(content)
 	total_quantity.quantity += quantity_to_add
 
@@ -75,7 +76,7 @@ func add_contents(values):
 		add_content(value)
 	return contents
 
-func add_content(value:ResourceUnit):
+func add_content(value:ResourceQuantity):
 	if value == null:
 		return
 	if value is ResourceQuantity:
@@ -97,7 +98,7 @@ func remove_contents(values):
 	for value in values:
 		remove_content(value)
 
-func has_content(value:ResourceUnit) -> bool:
+func has_content(value:ResourceQuantity) -> bool:
 	if value == null:
 		return false
 	if value is ResourceQuantity:
@@ -109,7 +110,7 @@ func has_content(value:ResourceUnit) -> bool:
 	else:
 		return find_content(value.name) != null
 
-func remove_content(value:ResourceUnit):
+func remove_content(value:ResourceQuantity):
 	if value == null or not has_content(value):
 		return
 	if value is ResourceQuantity:
@@ -129,5 +130,5 @@ func find_quantity(name_query:String) -> ResourceQuantity:
 
 func find_content(name_query:String):
 	for content in contents:
-		if content is ResourceUnit and content.name == name_query:
+		if content is ResourceQuantity and content.name == name_query:
 			return content

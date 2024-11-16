@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="ResourceQuantity" load_steps=2 format=3 uid="uid://c457cas666ooj"]
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://csyuhodmpm7ht"]
 
-[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="1_ph0a3"]
+[ext_resource type="Texture2D" uid="uid://qgy4qc75suif" path="res://assets/icons/sliced-bread.png" id="1_i3f6y"]
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="1_ph0a3"]
 
 [resource]
 script = ExtResource("1_ph0a3")
-numerical_unit = 0
-quantity = 1.0
-name = &"bread"
+name = &"food"
+icon = ExtResource("1_i3f6y")
 taxonomy = Array[StringName]([])
 metadata/_custom_type_script = ExtResource("1_ph0a3")

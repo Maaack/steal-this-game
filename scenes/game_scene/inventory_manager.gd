@@ -12,7 +12,7 @@ func _ready():
 	inventory = ResourceContainer.new()
 	inventory.add_contents(starting_inventory)
 
-func add(item : ResourceUnit):
+func add(item : ResourceQuantity):
 	if item == null:
 		return
 	inventory.add_content(item)
@@ -20,7 +20,7 @@ func add(item : ResourceUnit):
 	inventory_updated.emit()
 	quantity_updated.emit(quantity)
 
-func remove_quantity(content:ResourceUnit):
+func remove_quantity(content:ResourceQuantity):
 	if content == null:
 		return
 	inventory.remove_content(content)
@@ -32,7 +32,7 @@ func remove(quantity_name : String, quantity_amount : float):
 	quantity.quantity = quantity_amount
 	remove_quantity(quantity)
 
-func find(content:ResourceUnit):
+func find(content:ResourceQuantity):
 	if content == null:
 		return
 	return inventory.find_content(content.name)

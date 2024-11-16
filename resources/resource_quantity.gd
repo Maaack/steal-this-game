@@ -1,13 +1,26 @@
-extends ResourceUnit
+extends Resource
 class_name ResourceQuantity
 
 enum NumericalUnitSetting{ DISCRETE, CONTINUOUS }
 @export var numerical_unit : NumericalUnitSetting = NumericalUnitSetting.DISCRETE
 @export var quantity = 1.0 :
 	set = set_quantity
+@export var resource_unit : ResourceUnit
+
+var name : String :
+	get:
+		return resource_unit.name
+	set(value):
+		resource_unit.name = value
+
+var icon : Texture :
+	get:
+		return resource_unit.icon
+	set(value):
+		resource_unit.icon = value
 
 func _to_string():
-	return "%s, %f" % [super._to_string(), quantity]
+	return "%s, %f" % [resource_unit.name, quantity]
 
 func set_quantity(value:float):
 	quantity = _discrete_unit_check(value)
@@ -27,7 +40,7 @@ func add_quantity(value:float):
 
 func split(value:float) -> ResourceQuantity:
 	if quantity <= 0 or value <= 0:
-		push_warning("Warning: Splitting only supports positive quantities.")
+		push_warning("splitting only supports positive quantities.")
 	var split_quantity = duplicate()
 	if value == null or value == 0.0:
 		split_quantity.quantity = 0
@@ -37,22 +50,25 @@ func split(value:float) -> ResourceQuantity:
 	split_quantity.quantity = value
 	return split_quantity
 
-func copy_from(value: ResourceUnit):
+func copy_from(value: ResourceQuantity):
 	if value == null:
 		return
-	if value.has_method('set_quantity'):
-		quantity = value.quantity
-	super.copy_from(value)
+	quantity = value.quantity
+	resource_unit.copy_from(value.resource_unit)
 
 func add(value, conserve_quantities:bool=true):
 	if not is_instance_valid(value):
 		return
 	if not value.has_method('set_quantity'):
-		print("Error: Adding incompatible types ", str(value), " and ", str(self))
+		push_error("adding incompatible types ", str(value), " and ", str(self))
 		return
-	if value.name != name:
-		print("Error: Adding incompatible quantities ", str(value), " and ", str(self))
+	if value.name != resource_unit.name:
+		push_error("adding incompatible quantities ", str(value), " and ", str(self))
 		return
 	add_quantity(value.quantity)
 	if conserve_quantities:
 		value.quantity = 0
+
+func _init():
+	if not resource_unit:
+		resource_unit = ResourceUnit.new()
