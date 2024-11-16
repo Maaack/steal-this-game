@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3j13mcmqpemo"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/inventory_stock_container.gd" id="1_moc3p"]
+[ext_resource type="Texture2D" uid="uid://l2a0vfq5kffc" path="res://icon.svg" id="2_5hl4c"]
+
+[node name="InventoryStockContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+alignment = 1
+script = ExtResource("1_moc3p")
+icon = ExtResource("2_5hl4c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "100"

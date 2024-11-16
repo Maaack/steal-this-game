@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=13 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dx5ss2xptakj3" path="res://scenes/game_scene/ui_elements/location_action_container.tscn" id="5_v20na"]
 [ext_resource type="Script" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="6_4lue2"]
 [ext_resource type="Script" path="res://scenes/game_scene/action_manager.gd" id="6_y85d6"]
+[ext_resource type="PackedScene" uid="uid://d3j13mcmqpemo" path="res://scenes/game_scene/ui_elements/inventory_stock_container.tscn" id="7_8qp3c"]
 [ext_resource type="Script" path="res://resources/resource_quantity.gd" id="8_onvsj"]
 [ext_resource type="Script" path="res://scenes/game_scene/inventory_manager.gd" id="8_vbgr5"]
 [ext_resource type="Resource" uid="uid://buopoh3nhj3oq" path="res://resources/game_resources/starting_reputation.tres" id="9_onvsj"]
+[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/inventory_ui_manager.gd" id="11_bmy5n"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -51,21 +53,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabContainer" type="TabContainer" parent="MainUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="MainUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 tab_alignment = 1
 current_tab = 0
 
-[node name="Actions" type="Control" parent="MainUI/TabContainer"]
+[node name="Actions" type="Control" parent="MainUI/VBoxContainer/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="MainUI/TabContainer/Actions"]
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/VBoxContainer/TabContainer/Actions"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,25 +88,51 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ActionsContainer" type="GridContainer" parent="MainUI/TabContainer/Actions/MarginContainer"]
+[node name="ActionsContainer" type="GridContainer" parent="MainUI/VBoxContainer/TabContainer/Actions/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 32
 columns = 4
 
-[node name="CityContainer" parent="MainUI/TabContainer/Actions/MarginContainer/ActionsContainer" instance=ExtResource("5_ul61k")]
+[node name="CityContainer" parent="MainUI/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer" instance=ExtResource("5_ul61k")]
 unique_name_in_owner = true
 layout_mode = 2
 city_name = "San Francisco"
 city_actions = Array[int]([0, 1])
 
-[node name="LocationActionContainer" parent="MainUI/TabContainer/Actions/MarginContainer/ActionsContainer" instance=ExtResource("5_v20na")]
+[node name="LocationActionContainer" parent="MainUI/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer" instance=ExtResource("5_v20na")]
 layout_mode = 2
 action_type = 6
+
+[node name="Panel" type="Panel" parent="MainUI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MainUI/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+columns = 6
 
 [node name="InventoryManager" type="Node" parent="."]
 script = ExtResource("8_vbgr5")
 starting_inventory = Array[ExtResource("8_onvsj")]([ExtResource("9_onvsj")])
+
+[node name="InventoryUIManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "inventory_grid")]
+script = ExtResource("11_bmy5n")
+inventory_container_scene = ExtResource("7_8qp3c")
+inventory_manager = NodePath("../InventoryManager")
+inventory_grid = NodePath("../MainUI/VBoxContainer/Panel/MarginContainer/GridContainer")
 
 [node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager")]
 script = ExtResource("6_y85d6")
