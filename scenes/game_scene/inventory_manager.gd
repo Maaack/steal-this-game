@@ -8,9 +8,15 @@ signal quantity_updated(quantity:ResourceQuantity)
 
 var inventory : ResourceContainer
 
+func _fill_starting_inventory():
+	inventory.add_contents(starting_inventory)
+	inventory_updated.emit()
+	for quantity in starting_inventory:
+		quantity_updated.emit(quantity)
+
 func _ready():
 	inventory = ResourceContainer.new()
-	inventory.add_contents(starting_inventory)
+	_fill_starting_inventory.call_deferred()
 
 func add(item : ResourceQuantity):
 	if item == null:
