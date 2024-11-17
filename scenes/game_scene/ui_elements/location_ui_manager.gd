@@ -13,6 +13,9 @@ func _add_location_action_container() -> Node:
 	return instance
 
 func _on_location_discovered(location : LocationData):
+	if location == null: 
+		push_warning("no location provided to discover")
+		return
 	for action in location.actions_available:
 		if not action.action in action_map:
 			var location_action_container = _add_location_action_container()

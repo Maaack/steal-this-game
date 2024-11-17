@@ -151,9 +151,10 @@ location_action_scene = ExtResource("5_v20na")
 location_manager = NodePath("../LocationManager")
 location_action_container = NodePath("../MainUI/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")
 
-[node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager")]
+[node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "action_container")]
 script = ExtResource("6_y85d6")
 city_name = "San Francisco"
 city_actions = Array[int]([0, 1])
 inventory_manager = NodePath("../InventoryManager")
 location_manager = NodePath("../LocationManager")
+action_container = NodePath("../MainUI/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")

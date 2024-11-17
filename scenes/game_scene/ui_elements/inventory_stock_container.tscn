@@ -5,6 +5,7 @@
 
 [node name="InventoryStockContainer" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
+size_flags_horizontal = 3
 alignment = 1
 script = ExtResource("1_moc3p")
 icon = ExtResource("2_5hl4c")
