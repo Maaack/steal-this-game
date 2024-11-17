@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UrbanLocationData" load_steps=3 format=3 uid="uid://q838geb01o1l"]
+
+[ext_resource type="Script" path="res://resources/action_data.gd" id="1_t0ud1"]
+[ext_resource type="Script" path="res://resources/location_data.gd" id="2_cg4hf"]
+
+[resource]
+script = ExtResource("2_cg4hf")
+location_type = 11
+name = "Rundown Park"
+description = "A place to get mugged at night. Or to mug others."
+actions_available = Array[ExtResource("1_t0ud1")]([])
+metadata/_custom_type_script = ExtResource("2_cg4hf")

@@ -49,7 +49,7 @@ enum ActionTypes{
 	GIVE,
 }
 
-enum UrbanLocationTypes{
+enum LocationTypes{
 	ALLEY,
 	APARTMENTS,
 	OFFICES,

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LocationData" load_steps=3 format=3 uid="uid://sbu7b3036yrn"]
+
+[ext_resource type="Script" path="res://resources/action_data.gd" id="1_sc4dj"]
+[ext_resource type="Script" path="res://resources/location_data.gd" id="2_3nulu"]
+
+[resource]
+script = ExtResource("2_3nulu")
+location_type = 11
+name = "Goldberg Park"
+description = "Named after some dead guy. Money gets you a lot of things."
+actions_available = Array[ExtResource("1_sc4dj")]([])
+metadata/_custom_type_script = ExtResource("2_3nulu")

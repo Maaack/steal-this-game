@@ -13,6 +13,7 @@ extends Node
 			%CityContainer.city_actions = city_actions
 
 @export var inventory_manager : InventoryManager
+@export var location_manager : LocationManager
 
 func _ready():
 	city_name = city_name
@@ -25,6 +26,9 @@ func _ready():
 
 
 func _on_action_done(action_type : Globals.ActionTypes):
+	match action_type:
+		Globals.ActionTypes.SCOUT:
+			location_manager.scout()
 	print("action done %s" % action_type)
 
 func _on_location_action_done(action_data : ActionData):

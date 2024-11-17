@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://dok73m2fvb38b"]
+
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="1_bq0ph"]
+[ext_resource type="Texture2D" uid="uid://c7vif51klswo7" path="res://assets/icons/clothes.png" id="1_dughk"]
+
+[resource]
+script = ExtResource("1_bq0ph")
+name = &"clothes"
+icon = ExtResource("1_dughk")
+taxonomy = Array[StringName]([])
+metadata/_custom_type_script = ExtResource("1_bq0ph")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UrbanLocationData" load_steps=4 format=3 uid="uid://b7xixvlt8h8vr"]
+[gd_resource type="Resource" script_class="LocationData" load_steps=4 format=3 uid="uid://b7xixvlt8h8vr"]
 
 [ext_resource type="Script" path="res://resources/action_data.gd" id="1_uxsev"]
 [ext_resource type="Script" path="res://resources/location_data.gd" id="1_xen22"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_scene/ui_elements/location_action_container.gd" id="1_h6lkj"]
 [ext_resource type="Script" path="res://resources/location_data.gd" id="2_0l6xd"]
-[ext_resource type="Resource" uid="uid://b7xixvlt8h8vr" path="res://resources/locations/soul_mart.tres" id="3_e5cu4"]
+[ext_resource type="Resource" uid="uid://b7xixvlt8h8vr" path="res://resources/locations/soulless_mart.tres" id="3_e5cu4"]
 [ext_resource type="Resource" uid="uid://ykomuh15k8nq" path="res://resources/locations/bakery.tres" id="4_e5cu4"]
 
 [node name="LocationActionContainer" type="VBoxContainer"]

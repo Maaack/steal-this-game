@@ -10,21 +10,21 @@ signal action_done(action_data : ActionData)
 		if is_inside_tree() and _value_changed:
 			_set_button()
 	
-@export var locations : Array[UrbanLocationData] :
+@export var locations : Array[LocationData] :
 	set(value):
 		var _value_changed = locations != value
 		locations = value
 		if is_inside_tree() and _value_changed:
 			_update_locations()
 
-var _selected_location : UrbanLocationData
+var _selected_location : LocationData
 
 func _clear_tree():
 	%Tree.clear()
 	%Tree.create_item()
 	%ActionButton.disabled = true
 
-func _add_location_as_tree_item(location_data : UrbanLocationData):
+func _add_location_as_tree_item(location_data : LocationData):
 	var action_tree_item : TreeItem = %Tree.create_item()
 	action_tree_item.set_text(0, location_data.name)
 	if location_data == _selected_location:
