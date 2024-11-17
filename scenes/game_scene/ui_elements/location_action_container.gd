@@ -30,13 +30,18 @@ func _add_location_as_tree_item(location_data : LocationData):
 	if location_data == _selected_location:
 		action_tree_item.select(0)
 
-func _add_locations():
+func _add_locations_items():
 	for location in locations:
+		_add_location_as_tree_item(location)
+
+func add_location(location: LocationData):
+	if location not in locations:
+		locations.append(location)
 		_add_location_as_tree_item(location)
 
 func _update_locations():
 	_clear_tree()
-	_add_locations()
+	_add_locations_items()
 
 func _set_button():
 	%ActionButton.text = Globals.get_action_string(action_type)

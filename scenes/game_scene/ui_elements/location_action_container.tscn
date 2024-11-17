@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx5ss2xptakj3"]
+[gd_scene load_steps=2 format=3 uid="uid://dx5ss2xptakj3"]
 
 [ext_resource type="Script" path="res://scenes/game_scene/ui_elements/location_action_container.gd" id="1_h6lkj"]
-[ext_resource type="Script" path="res://resources/location_data.gd" id="2_0l6xd"]
-[ext_resource type="Resource" uid="uid://b7xixvlt8h8vr" path="res://resources/locations/soulless_mart.tres" id="3_e5cu4"]
-[ext_resource type="Resource" uid="uid://ykomuh15k8nq" path="res://resources/locations/bakery.tres" id="4_e5cu4"]
 
 [node name="LocationActionContainer" type="VBoxContainer"]
 custom_minimum_size = Vector2(240, 260)
@@ -11,7 +8,6 @@ offset_right = 240.0
 offset_bottom = 260.0
 script = ExtResource("1_h6lkj")
 action_type = 4
-locations = Array[ExtResource("2_0l6xd")]([ExtResource("3_e5cu4"), ExtResource("4_e5cu4")])
 
 [node name="ActionButton" type="Button" parent="."]
 unique_name_in_owner = true

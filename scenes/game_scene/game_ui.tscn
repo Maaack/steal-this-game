@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=22 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://sbu7b3036yrn" path="res://resources/locations/goldberg_park.tres" id="17_ulq3g"]
 [ext_resource type="Resource" uid="uid://q838geb01o1l" path="res://resources/locations/rundown_park.tres" id="18_gpor5"]
 [ext_resource type="Resource" uid="uid://b7xixvlt8h8vr" path="res://resources/locations/soulless_mart.tres" id="19_dqr2x"]
+[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/location_ui_manager.gd" id="19_g2ndc"]
 
 [sub_resource type="Resource" id="Resource_7aihr"]
 script = ExtResource("8_onvsj")
@@ -110,10 +111,6 @@ layout_mode = 2
 city_name = "San Francisco"
 city_actions = Array[int]([0, 1])
 
-[node name="LocationActionContainer" parent="MainUI/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer" instance=ExtResource("5_v20na")]
-layout_mode = 2
-action_type = 6
-
 [node name="Panel" type="Panel" parent="MainUI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
@@ -147,6 +144,12 @@ inventory_grid = NodePath("../MainUI/VBoxContainer/Panel/MarginContainer/GridCon
 [node name="LocationManager" type="Node" parent="."]
 script = ExtResource("13_7aihr")
 city_locations = Array[ExtResource("14_rkfhe")]([ExtResource("15_g2ndc"), ExtResource("16_0v86b"), ExtResource("17_ulq3g"), ExtResource("18_gpor5"), ExtResource("19_dqr2x")])
+
+[node name="LocationUIManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "location_action_container")]
+script = ExtResource("19_g2ndc")
+location_action_scene = ExtResource("5_v20na")
+location_manager = NodePath("../LocationManager")
+location_action_container = NodePath("../MainUI/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")
 
 [node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager")]
 script = ExtResource("6_y85d6")
