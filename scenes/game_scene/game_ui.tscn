@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=24 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://q838geb01o1l" path="res://resources/locations/rundown_park.tres" id="18_gpor5"]
 [ext_resource type="Resource" uid="uid://b7xixvlt8h8vr" path="res://resources/locations/soulless_mart.tres" id="19_dqr2x"]
 [ext_resource type="Script" path="res://scenes/game_scene/ui_elements/location_ui_manager.gd" id="19_g2ndc"]
+[ext_resource type="Script" path="res://scenes/game_scene/knowledge_manager.gd" id="21_ulq3g"]
 
 [sub_resource type="Resource" id="Resource_7aihr"]
 script = ExtResource("8_onvsj")
@@ -57,7 +58,7 @@ stretch = true
 handle_input_locally = false
 audio_listener_enable_2d = true
 audio_listener_enable_3d = true
-size = Vector2i(1152, 648)
+size = Vector2i(1280, 720)
 render_target_update_mode = 4
 script = ExtResource("6_4lue2")
 
@@ -176,11 +177,18 @@ location_action_scene = ExtResource("5_v20na")
 location_manager = NodePath("../LocationManager")
 location_action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")
 
-[node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "action_container", "event_view")]
+[node name="KnowledgeManager" type="Node" parent="."]
+script = ExtResource("21_ulq3g")
+files = Array[String](["res://resources/knowledge/chapter1.json"])
+directory = "res://resources/knowledge"
+end_reached_message = "You've finished reading the source material. You must rely on personal experience."
+
+[node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "knowledge_manager", "action_container", "event_view")]
 script = ExtResource("6_y85d6")
 city_name = "San Francisco"
 city_actions = Array[int]([0, 1])
 inventory_manager = NodePath("../InventoryManager")
 location_manager = NodePath("../LocationManager")
+knowledge_manager = NodePath("../KnowledgeManager")
 action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")
 event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")

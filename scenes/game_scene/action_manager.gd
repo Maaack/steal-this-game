@@ -14,6 +14,7 @@ extends Node
 
 @export var inventory_manager : InventoryManager
 @export var location_manager : LocationManager
+@export var knowledge_manager : KnowledgeManager
 @export var action_container : Container
 @export var event_view : EventView
 
@@ -39,9 +40,9 @@ func _on_action_done(action_type : Globals.ActionTypes):
 				event_string = "You scouted and found %s" % location_scouted.name
 				event_view.add_event_text(event_string)
 		Globals.ActionTypes.READ_SECRETS:
-			event_string = "You learned a dirty secret about society or something! Ooooo..."
+			event_string = knowledge_manager.get_next_knowledge()
 			event_view.add_read_text(event_string)
-
+			
 func _on_location_action_done(action_data : ActionData, location_data : LocationData):
 	var event_string : String
 	match action_data.action:
