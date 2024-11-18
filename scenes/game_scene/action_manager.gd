@@ -15,6 +15,7 @@ extends Node
 @export var inventory_manager : InventoryManager
 @export var location_manager : LocationManager
 @export var action_container : Container
+@export var event_view : EventView
 
 func _ready():
 	city_name = city_name
@@ -27,12 +28,26 @@ func _ready():
 	action_container.child_entered_tree.connect(_on_child_entered_container)
 
 func _on_action_done(action_type : Globals.ActionTypes):
+	var event_string : String
 	match action_type:
 		Globals.ActionTypes.SCOUT:
-			location_manager.scout()
-	print("action done %s" % action_type)
+			var location_scouted = location_manager.scout()
+			if location_scouted == null:
+				event_string = "No new locations were discovered."
+				event_view.add_event_text(event_string)
+			else:
+				event_string = "You scouted and found %s" % location_scouted.name
+				event_view.add_event_text(event_string)
+		Globals.ActionTypes.READ_SECRETS:
+			event_string = "You learned a dirty secret about society or something! Ooooo..."
+			event_view.add_read_text(event_string)
 
-func _on_location_action_done(action_data : ActionData):
+func _on_location_action_done(action_data : ActionData, location_data : LocationData):
+	var event_string : String
+	match action_data.action:
+		Globals.ActionTypes.STEAL:
+			event_string = "You tried to steal from %s." % location_data.name
+	event_view.add_event_text(event_string)
 	for cost in action_data.resource_cost:
 		if not inventory_manager.has(cost.name, cost.quantity):
 			print("Not enough resources.")

@@ -1,7 +1,7 @@
 @tool
 extends VBoxContainer
 
-signal action_done(action_data : ActionData)
+signal action_done(action_data : ActionData, location_data : LocationData)
 
 @export var action_type : Globals.ActionTypes :
 	set(value):
@@ -56,7 +56,7 @@ func _action_done_on_location():
 	if _selected_location == null : return
 	for action in _selected_location.actions_available:
 		if action.action == action_type:
-			action_done.emit(action)
+			action_done.emit(action, _selected_location)
 			return
 
 func _on_action_button_pressed():

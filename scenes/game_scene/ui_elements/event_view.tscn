@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3b7du4t8opy0"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/event_view.gd" id="1_b1e6l"]
+
+[node name="EventView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b1e6l")
+char_wait_time = 0.005
+scroll_delay = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="TextContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

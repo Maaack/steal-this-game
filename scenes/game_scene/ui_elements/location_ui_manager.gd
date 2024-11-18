@@ -18,9 +18,9 @@ func _on_location_discovered(location : LocationData):
 		return
 	for action in location.actions_available:
 		if not action.action in action_map:
-			var location_action_container = _add_location_action_container()
-			location_action_container.action_type = action.action
-			action_map[action.action] = location_action_container
+			var location_action_instance = _add_location_action_container()
+			location_action_instance.action_type = action.action
+			action_map[action.action] = location_action_instance
 		var container = action_map[action.action]
 		container.add_location(location)
 

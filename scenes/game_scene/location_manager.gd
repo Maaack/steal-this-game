@@ -25,8 +25,9 @@ func _fill_starting_locations():
 func _ready():
 	_fill_starting_locations.call_deferred()
 
-func scout():
+func scout() -> LocationData:
 	if undiscovered_locations.size() == 0: 
 		return
 	var location : LocationData = undiscovered_locations.pick_random()
 	discover_location(location)
+	return location
