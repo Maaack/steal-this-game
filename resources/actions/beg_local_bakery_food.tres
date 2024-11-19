@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ActionData" load_steps=7 format=3 uid="uid://d011bwx0gvaym"]
+
+[ext_resource type="Script" path="res://resources/action_data.gd" id="1_we5l5"]
+[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="2_6pfbv"]
+[ext_resource type="Resource" uid="uid://csyuhodmpm7ht" path="res://resources/game_resources/food.tres" id="3_p6rdw"]
+[ext_resource type="Resource" uid="uid://cfhbn6rm63v01" path="res://resources/game_resources/reputation.tres" id="4_cgouf"]
+
+[sub_resource type="Resource" id="Resource_we5l5"]
+script = ExtResource("2_6pfbv")
+numerical_unit = 0
+quantity = 2.0
+resource_unit = ExtResource("3_p6rdw")
+metadata/_custom_type_script = ExtResource("2_6pfbv")
+
+[sub_resource type="Resource" id="Resource_6pfbv"]
+script = ExtResource("2_6pfbv")
+numerical_unit = 0
+quantity = -1.0
+resource_unit = ExtResource("4_cgouf")
+metadata/_custom_type_script = ExtResource("2_6pfbv")
+
+[resource]
+script = ExtResource("1_we5l5")
+action = 5
+time_cost = 2
+resource_cost = Array[ExtResource("2_6pfbv")]([])
+resource_result = Array[ExtResource("2_6pfbv")]([SubResource("Resource_we5l5"), SubResource("Resource_6pfbv")])
+metadata/_custom_type_script = ExtResource("1_we5l5")

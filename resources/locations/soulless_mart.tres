@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="LocationData" load_steps=4 format=3 uid="uid://b7xixvlt8h8vr"]
+[gd_resource type="Resource" script_class="LocationData" load_steps=5 format=3 uid="uid://b7xixvlt8h8vr"]
 
 [ext_resource type="Script" path="res://resources/action_data.gd" id="1_uxsev"]
 [ext_resource type="Script" path="res://resources/location_data.gd" id="1_xen22"]
 [ext_resource type="Resource" uid="uid://dyhj18j2rcetp" path="res://resources/actions/steal_supermarket_food.tres" id="2_yddtf"]
+[ext_resource type="Resource" uid="uid://brjnfichi3l3w" path="res://resources/actions/beg_supermarket_food.tres" id="3_5sx7n"]
 
 [resource]
 script = ExtResource("1_xen22")
 location_type = 8
 name = "Soulless Mart"
 description = "Aisles upon aisles of soul-less products. Tons of staff working the soul-less jobs."
-actions_available = Array[ExtResource("1_uxsev")]([ExtResource("2_yddtf")])
+actions_available = Array[ExtResource("1_uxsev")]([ExtResource("2_yddtf"), ExtResource("3_5sx7n")])
 metadata/_custom_type_script = ExtResource("1_xen22")

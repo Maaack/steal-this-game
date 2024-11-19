@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://scenes/game_scene/ui_elements/inventory_ui_manager.gd" id="11_bmy5n"]
 [ext_resource type="Script" path="res://scenes/game_scene/location_manager.gd" id="13_7aihr"]
 [ext_resource type="Script" path="res://resources/location_data.gd" id="14_rkfhe"]
-[ext_resource type="Resource" uid="uid://ykomuh15k8nq" path="res://resources/locations/bakery.tres" id="15_g2ndc"]
+[ext_resource type="Resource" uid="uid://ykomuh15k8nq" path="res://resources/locations/mamas_sweet_bakery.tres" id="15_g2ndc"]
 [ext_resource type="Resource" uid="uid://f25fty1gflfj" path="res://resources/locations/fuds_4_less.tres" id="16_0v86b"]
 [ext_resource type="Resource" uid="uid://sbu7b3036yrn" path="res://resources/locations/goldberg_park.tres" id="17_ulq3g"]
 [ext_resource type="Resource" uid="uid://q838geb01o1l" path="res://resources/locations/rundown_park.tres" id="18_gpor5"]

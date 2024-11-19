@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LocationData" load_steps=5 format=3 uid="uid://ykomuh15k8nq"]
+
+[ext_resource type="Script" path="res://resources/action_data.gd" id="1_ht34i"]
+[ext_resource type="Resource" uid="uid://tukdh8hq8ea8" path="res://resources/actions/steal_local_bakery_food.tres" id="2_255ry"]
+[ext_resource type="Resource" uid="uid://d011bwx0gvaym" path="res://resources/actions/beg_local_bakery_food.tres" id="3_crqvk"]
+[ext_resource type="Script" path="res://resources/location_data.gd" id="4_gii36"]
+
+[resource]
+script = ExtResource("4_gii36")
+location_type = 7
+name = "Mama's Sweet Bakery"
+description = "A local bakery that appears to be run by a family."
+actions_available = Array[ExtResource("1_ht34i")]([ExtResource("2_255ry"), ExtResource("3_crqvk")])
+metadata/_custom_type_script = ExtResource("4_gii36")
