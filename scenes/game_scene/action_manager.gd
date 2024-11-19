@@ -37,7 +37,7 @@ func _on_action_done(action_type : Globals.ActionTypes):
 				event_string = "No new locations were discovered."
 				event_view.add_event_text(event_string)
 			else:
-				event_string = "You scouted and found %s" % location_scouted.name
+				event_string = "You scouted %s" % location_scouted.name
 				event_view.add_event_text(event_string)
 		Globals.ActionTypes.READ_SECRETS:
 			event_string = knowledge_manager.get_next_knowledge()

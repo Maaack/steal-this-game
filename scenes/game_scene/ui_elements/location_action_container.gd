@@ -61,7 +61,7 @@ func _action_done_on_location():
 
 func _on_action_button_pressed():
 	_action_done_on_location()
-	
+
 func _get_selected_location():
 	var _selected_item: TreeItem = %Tree.get_selected()
 	if _selected_item == null: return

@@ -1,10 +1,12 @@
+@tool
 class_name LocationManager
-extends Node
+extends DirectoryReader
 
 signal location_discovered(location_data : LocationData)
 
 @export var city_locations : Array[LocationData]
 @export var starting_locations : Array[LocationData]
+@export_tool_button("Refresh Locations") var _refresh_locations_action = _refresh_locations
 
 var undiscovered_locations : Array[LocationData]
 var discovered_locations : Array[LocationData]
@@ -22,7 +24,18 @@ func _fill_starting_locations():
 		if location in starting_locations: continue
 		undiscovered_locations.append(location)
 
+func _refresh_locations():
+	city_locations.clear()
+	for file in files:
+		var location_data : Resource = load(file)
+		if location_data is LocationData:
+			city_locations.append(location_data)
+
 func _ready():
+	if Engine.is_editor_hint(): return
+	directory = directory
+	_refresh_files()
+	_refresh_locations()
 	_fill_starting_locations.call_deferred()
 
 func scout() -> LocationData:
