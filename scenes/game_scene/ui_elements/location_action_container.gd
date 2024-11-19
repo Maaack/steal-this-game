@@ -54,10 +54,13 @@ func _ready():
 func _action_done_on_location():
 	var _location_action_data : ActionData
 	if _selected_location == null : return
+	var actions_available : Array = []
 	for action in _selected_location.actions_available:
 		if action.action == action_type:
-			action_done.emit(action, _selected_location)
-			return
+			actions_available.append(action)
+	if actions_available.size() == 0 : return
+	var random_action = actions_available.pick_random()
+	action_done.emit(random_action, _selected_location)
 
 func _on_action_button_pressed():
 	_action_done_on_location()
