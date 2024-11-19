@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ActionData" load_steps=5 format=3 uid="uid://dny1e1w84xkwj"]
+
+[ext_resource type="Script" path="res://resources/action_data.gd" id="1_r8gq0"]
+[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="2_7fpo6"]
+[ext_resource type="Resource" uid="uid://ba3ohonmtmvqm" path="res://resources/game_resources/fancy_clothes.tres" id="3_r8gq0"]
+
+[sub_resource type="Resource" id="Resource_n53nb"]
+script = ExtResource("2_7fpo6")
+numerical_unit = 0
+quantity = 1.0
+resource_unit = ExtResource("3_r8gq0")
+metadata/_custom_type_script = ExtResource("2_7fpo6")
+
+[resource]
+script = ExtResource("1_r8gq0")
+action = 6
+time_cost = 5
+resource_cost = Array[ExtResource("2_7fpo6")]([])
+resource_result = Array[ExtResource("2_7fpo6")]([SubResource("Resource_n53nb")])
+metadata/_custom_type_script = ExtResource("1_r8gq0")

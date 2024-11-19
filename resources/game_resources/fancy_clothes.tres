@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://ba3ohonmtmvqm"]
+
+[ext_resource type="Texture2D" uid="uid://rj3r7ove34hh" path="res://assets/icons/large-dress.png" id="1_0imju"]
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="2_y3por"]
+
+[resource]
+script = ExtResource("2_y3por")
+name = &"fancy clothes"
+icon = ExtResource("1_0imju")
+taxonomy = Array[StringName]([])
+metadata/_custom_type_script = ExtResource("2_y3por")
