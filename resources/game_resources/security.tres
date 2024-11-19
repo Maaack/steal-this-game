@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://cx2100knssrs0"]
+
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="1_13ql3"]
+[ext_resource type="Texture2D" uid="uid://7o3638dsj8vs" path="res://assets/icons/padlock.png" id="1_uvpxh"]
+
+[resource]
+script = ExtResource("1_13ql3")
+name = &"security"
+icon = ExtResource("1_uvpxh")
+taxonomy = Array[StringName]([])
+metadata/_custom_type_script = ExtResource("1_13ql3")

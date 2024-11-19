@@ -170,6 +170,9 @@ inventory_grid = NodePath("../MainUI/HBoxContainer/VBoxContainer/Panel/MarginCon
 [node name="LocationManager" type="Node" parent="."]
 script = ExtResource("13_7aihr")
 city_locations = Array[ExtResource("14_rkfhe")]([ExtResource("15_g2ndc"), ExtResource("16_0v86b"), ExtResource("17_ulq3g"), ExtResource("18_gpor5"), ExtResource("19_dqr2x")])
+files = Array[String](["res://resources/locations/bakery.tres", "res://resources/locations/fuds_4_less.tres", "res://resources/locations/goldberg_park.tres", "res://resources/locations/rundown_park.tres", "res://resources/locations/soulless_mart.tres"])
+directory = "res://resources/locations"
+extension = "tres"
 
 [node name="LocationUIManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "location_action_container")]
 script = ExtResource("19_g2ndc")
@@ -177,11 +180,14 @@ location_action_scene = ExtResource("5_v20na")
 location_manager = NodePath("../LocationManager")
 location_action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")
 
-[node name="KnowledgeManager" type="Node" parent="."]
+[node name="KnowledgeManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "event_view")]
 script = ExtResource("21_ulq3g")
+end_reached_message = "You've finished reading the source material. You must rely on personal experience."
+inventory_manager = NodePath("../InventoryManager")
+event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")
 files = Array[String](["res://resources/knowledge/chapter1.json"])
 directory = "res://resources/knowledge"
-end_reached_message = "You've finished reading the source material. You must rely on personal experience."
+extension = "json"
 
 [node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "knowledge_manager", "action_container", "event_view")]
 script = ExtResource("6_y85d6")

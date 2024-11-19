@@ -109,4 +109,23 @@ static func get_action_string(action_type : ActionTypes) -> String:
 		return _action_strings[action_type]
 	push_warning("no key matching type %s" % action_type)
 	return ""
-		
+
+
+static var game_resources : Array[ResourceUnit]
+
+static func _fill_game_resources():
+	var dir_access = DirAccess.open("res://resources/game_resources/")
+	for file in dir_access.get_files():
+		if not file.ends_with(".tres"):
+			continue
+		var resource_unit : Resource = load("res://resources/game_resources/%s" % file)
+		if resource_unit is ResourceUnit:
+			game_resources.append(resource_unit)
+
+static func get_resource_unit(resource_name : String) -> ResourceUnit:
+	if game_resources.is_empty(): _fill_game_resources()
+	for resource_unit in game_resources:
+		if resource_unit.name == resource_name:
+			return resource_unit
+	return
+

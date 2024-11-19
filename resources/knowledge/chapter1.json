@@ -4,7 +4,13 @@
 			"text": "Security Culture"
 		},
 		{
-			"text": "Police! They're everywhere!"
+			"text": "Police! They're everywhere!",
+         "resources": [
+            {
+               "name":"security",
+               "quantity":5
+            }
+         ]
 		}
 	]
 }
