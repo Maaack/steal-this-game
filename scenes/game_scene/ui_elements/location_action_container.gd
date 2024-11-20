@@ -55,9 +55,10 @@ func _ready():
 
 func _update_bar_with_resource(resource_name : String, max_value : float):
 	var quantity : float = 0
-	var quantity_data = _selected_location.resources.find_quantity(resource_name)
-	if quantity_data != null:
-		quantity = quantity_data.quantity
+	if _selected_location != null: 
+		var quantity_data = _selected_location.resources.find_quantity(resource_name)
+		if quantity_data != null:
+			quantity = quantity_data.quantity
 	progress_bar.max_value = max_value
 	progress_bar.value = quantity
 
@@ -71,8 +72,6 @@ func _action_done_on_location():
 	if actions_available.size() == 0 : return
 	var random_action : ActionData = actions_available.pick_random()
 	action_done.emit(random_action, _selected_location)
-	for location_resource in random_action.location_resource_result:
-		_update_bar_with_resource(location_resource.name, 10)
 
 func _on_action_button_pressed():
 	_action_done_on_location()
@@ -88,4 +87,11 @@ func _get_selected_location():
 func _on_tree_item_selected():
 	%ActionButton.disabled = false
 	_get_selected_location()
-	_update_bar_with_resource("suspicion", 10)
+
+func _process(delta):
+	match action_type:
+		Globals.ActionTypes.STEAL:
+			_update_bar_with_resource("suspicion", 10)
+	match action_type:
+		Globals.ActionTypes.BEG:
+			_update_bar_with_resource("fatigue", 10)

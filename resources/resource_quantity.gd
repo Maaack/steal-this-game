@@ -1,8 +1,8 @@
 extends Resource
 class_name ResourceQuantity
 
-enum NumericalUnitSetting{ DISCRETE, CONTINUOUS }
-@export var numerical_unit : NumericalUnitSetting = NumericalUnitSetting.DISCRETE
+enum NumericalUnitSetting{ CONTINUOUS, DISCRETE }
+@export var numerical_unit : NumericalUnitSetting = NumericalUnitSetting.CONTINUOUS
 @export var quantity = 1.0 :
 	set = set_quantity
 @export var resource_unit : ResourceUnit
