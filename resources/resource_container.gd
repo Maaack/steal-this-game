@@ -67,20 +67,20 @@ func add_to_total(content:ResourceQuantity):
 	var quantity_to_add = _get_quantity_to_add(content)
 	total_quantity.quantity += quantity_to_add
 
-func add_contents(values):
+func add_list(values):
 	if values == null:
 		return
 	if not values is Array:
 		values = [values]
 	for value in values:
-		add_content(value)
+		add(value)
 	return contents
 
-func add_content(value:ResourceQuantity):
+func add(value:ResourceQuantity):
 	if value == null:
 		return
 	if value is ResourceQuantity:
-		var current_unit = find_content(value.name)
+		var current_unit = find(value.name)
 		if current_unit is ResourceQuantity:
 			current_unit.quantity += value.quantity
 		else:
@@ -90,31 +90,31 @@ func add_content(value:ResourceQuantity):
 	update_quantities()
 	return contents
 
-func remove_contents(values):
+func remove_list(values):
 	if values == null:
 		return
 	if not values is Array:
 		values = [values]
 	for value in values:
-		remove_content(value)
+		remove(value)
 
-func has_content(value:ResourceQuantity) -> bool:
+func has(value:ResourceQuantity) -> bool:
 	if value == null:
 		return false
 	if value is ResourceQuantity:
-		var content = find_content(value.name)
+		var content = find(value.name)
 		if content is ResourceQuantity:
 			return content.quantity >= value.quantity
 		else:
 			return false
 	else:
-		return find_content(value.name) != null
+		return find(value.name) != null
 
-func remove_content(value:ResourceQuantity):
-	if value == null or not has_content(value):
+func remove(value:ResourceQuantity):
+	if value == null or not has(value):
 		return
 	if value is ResourceQuantity:
-		var content = find_content(value.name)
+		var content = find(value.name)
 		if content is ResourceQuantity:
 			content.quantity -= value.quantity
 	else:
@@ -128,7 +128,7 @@ func find_quantity(name_query:String) -> ResourceQuantity:
 			return quantity
 	return
 
-func find_content(name_query:String):
+func find(name_query:String):
 	for content in contents:
 		if content is ResourceQuantity and content.name == name_query:
 			return content

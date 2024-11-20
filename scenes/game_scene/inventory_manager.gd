@@ -9,7 +9,7 @@ signal quantity_updated(quantity:ResourceQuantity)
 var inventory : ResourceContainer
 
 func _fill_starting_inventory():
-	inventory.add_contents(starting_inventory)
+	inventory.add_list(starting_inventory)
 	inventory_updated.emit()
 	for quantity in starting_inventory:
 		quantity_updated.emit(quantity)
@@ -21,7 +21,7 @@ func _ready():
 func add(item : ResourceQuantity):
 	if item == null:
 		return
-	inventory.add_content(item)
+	inventory.add(item)
 	var quantity = inventory.find_quantity(item.name)
 	inventory_updated.emit()
 	quantity_updated.emit(quantity)
@@ -29,7 +29,7 @@ func add(item : ResourceQuantity):
 func remove_quantity(content:ResourceQuantity):
 	if content == null:
 		return
-	inventory.remove_content(content)
+	inventory.remove(content)
 	inventory_updated.emit()
 
 func remove(quantity_name : String, quantity_amount : float):
@@ -41,13 +41,13 @@ func remove(quantity_name : String, quantity_amount : float):
 func find(content:ResourceQuantity):
 	if content == null:
 		return
-	return inventory.find_content(content.name)
+	return inventory.find(content.name)
 
 func has(quantity_name : String, quantity_minimum : float) -> bool:
 	var quantity := ResourceQuantity.new()
 	quantity.name = quantity_name
 	quantity.quantity = quantity_minimum
-	return inventory.has_content(quantity)
+	return inventory.has(quantity)
 
 func remove_all(quantity_name : String = "", content : ResourceUnit = null):
 	if quantity_name.is_empty() and content:
@@ -57,4 +57,4 @@ func remove_all(quantity_name : String = "", content : ResourceUnit = null):
 	var quantity = inventory.find_quantity(quantity_name)
 	if quantity == null:
 		return
-	inventory.remove_content(quantity.duplicate())
+	inventory.remove(quantity.duplicate())
