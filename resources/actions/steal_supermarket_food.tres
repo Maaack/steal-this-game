@@ -1,8 +1,16 @@
-[gd_resource type="Resource" script_class="ActionData" load_steps=5 format=3 uid="uid://dyhj18j2rcetp"]
+[gd_resource type="Resource" script_class="ActionData" load_steps=7 format=3 uid="uid://dyhj18j2rcetp"]
 
 [ext_resource type="Script" path="res://resources/action_data.gd" id="1_edd77"]
+[ext_resource type="Resource" uid="uid://bacxuoowouecl" path="res://resources/game_resources/suspicion.tres" id="2_fh0rb"]
 [ext_resource type="Script" path="res://resources/resource_quantity.gd" id="2_vaxdw"]
 [ext_resource type="Resource" uid="uid://csyuhodmpm7ht" path="res://resources/game_resources/food.tres" id="3_vaxdw"]
+
+[sub_resource type="Resource" id="Resource_6tcht"]
+script = ExtResource("2_vaxdw")
+numerical_unit = 0
+quantity = 1.0
+resource_unit = ExtResource("2_fh0rb")
+metadata/_custom_type_script = ExtResource("2_vaxdw")
 
 [sub_resource type="Resource" id="Resource_n53nb"]
 script = ExtResource("2_vaxdw")
@@ -17,4 +25,5 @@ action = 6
 time_cost = 5
 resource_cost = Array[ExtResource("2_vaxdw")]([])
 resource_result = Array[ExtResource("2_vaxdw")]([SubResource("Resource_n53nb")])
+location_resource_result = Array[ExtResource("2_vaxdw")]([SubResource("Resource_6tcht")])
 metadata/_custom_type_script = ExtResource("1_edd77")

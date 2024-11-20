@@ -1,20 +1,29 @@
-[gd_resource type="Resource" script_class="ActionData" load_steps=5 format=3 uid="uid://dny1e1w84xkwj"]
+[gd_resource type="Resource" script_class="ActionData" load_steps=7 format=3 uid="uid://dny1e1w84xkwj"]
 
-[ext_resource type="Script" path="res://resources/action_data.gd" id="1_r8gq0"]
-[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="2_7fpo6"]
-[ext_resource type="Resource" uid="uid://ba3ohonmtmvqm" path="res://resources/game_resources/fancy_clothes.tres" id="3_r8gq0"]
+[ext_resource type="Script" path="res://resources/resource_quantity.gd" id="1_4es5r"]
+[ext_resource type="Resource" uid="uid://bacxuoowouecl" path="res://resources/game_resources/suspicion.tres" id="2_j1wqa"]
+[ext_resource type="Script" path="res://resources/action_data.gd" id="3_jk2uu"]
+[ext_resource type="Resource" uid="uid://ba3ohonmtmvqm" path="res://resources/game_resources/fancy_clothes.tres" id="4_d01i0"]
 
-[sub_resource type="Resource" id="Resource_n53nb"]
-script = ExtResource("2_7fpo6")
+[sub_resource type="Resource" id="Resource_6tcht"]
+script = ExtResource("1_4es5r")
 numerical_unit = 0
 quantity = 1.0
-resource_unit = ExtResource("3_r8gq0")
-metadata/_custom_type_script = ExtResource("2_7fpo6")
+resource_unit = ExtResource("2_j1wqa")
+metadata/_custom_type_script = ExtResource("1_4es5r")
+
+[sub_resource type="Resource" id="Resource_n53nb"]
+script = ExtResource("1_4es5r")
+numerical_unit = 0
+quantity = 1.0
+resource_unit = ExtResource("4_d01i0")
+metadata/_custom_type_script = ExtResource("1_4es5r")
 
 [resource]
-script = ExtResource("1_r8gq0")
+script = ExtResource("3_jk2uu")
 action = 6
 time_cost = 5
-resource_cost = Array[ExtResource("2_7fpo6")]([])
-resource_result = Array[ExtResource("2_7fpo6")]([SubResource("Resource_n53nb")])
-metadata/_custom_type_script = ExtResource("1_r8gq0")
+resource_cost = Array[ExtResource("1_4es5r")]([])
+resource_result = Array[ExtResource("1_4es5r")]([SubResource("Resource_n53nb")])
+location_resource_result = Array[ExtResource("1_4es5r")]([SubResource("Resource_6tcht")])
+metadata/_custom_type_script = ExtResource("3_jk2uu")

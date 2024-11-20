@@ -5,3 +5,4 @@ extends Resource
 @export var time_cost : int 
 @export var resource_cost : Array[ResourceQuantity]
 @export var resource_result : Array[ResourceQuantity]
+@export var location_resource_result : Array[ResourceQuantity]

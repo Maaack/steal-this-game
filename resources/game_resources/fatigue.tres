@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://cpmuyagksp4fg"]
+
+[ext_resource type="Texture2D" uid="uid://c5oevd7ws8dlh" path="res://assets/icons/tired-eye.png" id="1_bgsyb"]
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="2_l4wtx"]
+
+[resource]
+script = ExtResource("2_l4wtx")
+name = &"fatigue"
+icon = ExtResource("1_bgsyb")
+taxonomy = Array[StringName]([])
+metadata/_custom_type_script = ExtResource("2_l4wtx")

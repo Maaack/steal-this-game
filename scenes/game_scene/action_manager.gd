@@ -55,6 +55,8 @@ func _on_location_action_done(action_data : ActionData, location_data : Location
 		# TODO: Take resources
 	for result in action_data.resource_result:
 		inventory_manager.add(result.duplicate())
+	for result in action_data.location_resource_result:
+		location_data.resources.add(result.duplicate())
 
 func _on_child_entered_container(node: Node):
 	if node.has_signal(&"action_done"):
