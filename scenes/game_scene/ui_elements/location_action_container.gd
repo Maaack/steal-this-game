@@ -18,6 +18,8 @@ signal action_done(action_data : ActionData, location_data : LocationData)
 			_update_locations()
 
 var _selected_location : LocationData
+@onready var progress_bar : ProgressBar = %ProgressBar
+
 
 func _clear_tree():
 	%Tree.clear()
@@ -51,6 +53,14 @@ func _ready():
 	_set_button()
 	_update_locations()
 
+func _update_bar_with_resource(resource_name : String, max_value : float):
+	var quantity : float = 0
+	var quantity_data = _selected_location.resources.find_quantity(resource_name)
+	if quantity_data != null:
+		quantity = quantity_data.quantity
+	progress_bar.max_value = max_value
+	progress_bar.value = quantity
+
 func _action_done_on_location():
 	var _location_action_data : ActionData
 	if _selected_location == null : return
@@ -59,8 +69,10 @@ func _action_done_on_location():
 		if action.action == action_type:
 			actions_available.append(action)
 	if actions_available.size() == 0 : return
-	var random_action = actions_available.pick_random()
+	var random_action : ActionData = actions_available.pick_random()
 	action_done.emit(random_action, _selected_location)
+	for location_resource in random_action.location_resource_result:
+		_update_bar_with_resource(location_resource.name, 10)
 
 func _on_action_button_pressed():
 	_action_done_on_location()
@@ -76,3 +88,4 @@ func _get_selected_location():
 func _on_tree_item_selected():
 	%ActionButton.disabled = false
 	_get_selected_location()
+	_update_bar_with_resource("suspicion", 10)

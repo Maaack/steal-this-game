@@ -15,6 +15,13 @@ layout_mode = 2
 disabled = true
 text = "Ask"
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+max_value = 15.0
+show_percentage = false
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Locations:"
