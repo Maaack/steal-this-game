@@ -1,22 +1,21 @@
-[gd_resource type="Resource" script_class="ActionData" load_steps=7 format=3 uid="uid://dny1e1w84xkwj"]
+[gd_resource type="Resource" script_class="ActionData" load_steps=6 format=3 uid="uid://dny1e1w84xkwj"]
 
 [ext_resource type="Script" path="res://resources/resource_quantity.gd" id="1_4es5r"]
 [ext_resource type="Resource" uid="uid://bacxuoowouecl" path="res://resources/game_resources/suspicion.tres" id="2_j1wqa"]
 [ext_resource type="Script" path="res://resources/action_data.gd" id="3_jk2uu"]
-[ext_resource type="Resource" uid="uid://ba3ohonmtmvqm" path="res://resources/game_resources/fancy_clothes.tres" id="4_d01i0"]
 
-[sub_resource type="Resource" id="Resource_6tcht"]
+[sub_resource type="Resource" id="Resource_4es5r"]
 script = ExtResource("1_4es5r")
 numerical_unit = 0
-quantity = 1.0
+quantity = 0.05
 resource_unit = ExtResource("2_j1wqa")
 metadata/_custom_type_script = ExtResource("1_4es5r")
 
-[sub_resource type="Resource" id="Resource_n53nb"]
+[sub_resource type="Resource" id="Resource_afyrh"]
 script = ExtResource("1_4es5r")
 numerical_unit = 0
-quantity = 1.0
-resource_unit = ExtResource("4_d01i0")
+quantity = 0.25
+resource_unit = ExtResource("2_j1wqa")
 metadata/_custom_type_script = ExtResource("1_4es5r")
 
 [resource]
@@ -24,6 +23,6 @@ script = ExtResource("3_jk2uu")
 action = 6
 time_cost = 5
 resource_cost = Array[ExtResource("1_4es5r")]([])
-resource_result = Array[ExtResource("1_4es5r")]([SubResource("Resource_n53nb")])
-location_resource_result = Array[ExtResource("1_4es5r")]([SubResource("Resource_6tcht")])
+resource_result = Array[ExtResource("1_4es5r")]([SubResource("Resource_afyrh")])
+location_resource_result = Array[ExtResource("1_4es5r")]([SubResource("Resource_4es5r")])
 metadata/_custom_type_script = ExtResource("3_jk2uu")

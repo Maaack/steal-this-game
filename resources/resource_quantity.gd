@@ -7,7 +7,7 @@ enum NumericalUnitSetting{ CONTINUOUS, DISCRETE }
 	set = set_quantity
 @export var resource_unit : ResourceUnit
 
-var name : String :
+var name : StringName :
 	get:
 		return resource_unit.name
 	set(value):

@@ -5,10 +5,10 @@
 [ext_resource type="Script" path="res://resources/resource_quantity.gd" id="2_vaxdw"]
 [ext_resource type="Resource" uid="uid://csyuhodmpm7ht" path="res://resources/game_resources/food.tres" id="3_vaxdw"]
 
-[sub_resource type="Resource" id="Resource_6tcht"]
+[sub_resource type="Resource" id="Resource_fh0rb"]
 script = ExtResource("2_vaxdw")
 numerical_unit = 0
-quantity = 1.0
+quantity = 0.1
 resource_unit = ExtResource("2_fh0rb")
 metadata/_custom_type_script = ExtResource("2_vaxdw")
 
@@ -25,5 +25,5 @@ action = 6
 time_cost = 5
 resource_cost = Array[ExtResource("2_vaxdw")]([])
 resource_result = Array[ExtResource("2_vaxdw")]([SubResource("Resource_n53nb")])
-location_resource_result = Array[ExtResource("2_vaxdw")]([SubResource("Resource_6tcht")])
+location_resource_result = Array[ExtResource("2_vaxdw")]([SubResource("Resource_fh0rb")])
 metadata/_custom_type_script = ExtResource("1_edd77")

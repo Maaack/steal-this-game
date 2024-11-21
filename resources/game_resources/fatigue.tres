@@ -7,5 +7,4 @@
 script = ExtResource("2_l4wtx")
 name = &"fatigue"
 icon = ExtResource("1_bgsyb")
-taxonomy = Array[StringName]([])
 metadata/_custom_type_script = ExtResource("2_l4wtx")

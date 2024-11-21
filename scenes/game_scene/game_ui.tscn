@@ -201,6 +201,8 @@ knowledge_manager = NodePath("../KnowledgeManager")
 action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")
 event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")
 
-[node name="TimeManager" type="Node" parent="." node_paths=PackedStringArray("location_manager")]
+[node name="TimeManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "actions_container")]
 script = ExtResource("24_dqr2x")
 location_manager = NodePath("../LocationManager")
+actions_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ActionsContainer")
+game_speed = 2.0

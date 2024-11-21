@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjlwc0ulw3km3"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/resource_meter.gd" id="1_wbn2r"]
+
+[node name="ResourceMeter" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_wbn2r")
+resource_name = null
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+max_value = 1.0
+step = 0.001
+show_percentage = false

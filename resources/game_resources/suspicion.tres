@@ -7,5 +7,4 @@
 script = ExtResource("2_yqbp1")
 name = &"suspicion"
 icon = ExtResource("1_d4k7a")
-taxonomy = Array[StringName]([])
 metadata/_custom_type_script = ExtResource("2_yqbp1")

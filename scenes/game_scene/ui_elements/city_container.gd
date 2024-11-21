@@ -13,6 +13,7 @@ signal action_done(action : Globals.ActionTypes)
 		city_actions = value
 		if is_inside_tree():
 			_update_actions()
+@export var action_button_scene : PackedScene
 
 func _clear_actions():
 	for child in %ActionsContainer.get_children():
@@ -21,9 +22,9 @@ func _clear_actions():
 func _update_actions():
 	_clear_actions()
 	for action_type in city_actions:
-		var button = Button.new()
-		button.text = Globals.get_action_string(action_type)
-		button.pressed.connect(_on_action_pressed.bind(action_type))
+		var button = action_button_scene.instantiate()
+		button.button_text = Globals.get_action_string(action_type)
+		button.button_pressed.connect(_on_action_pressed.bind(action_type))
 		%ActionsContainer.add_child(button)
 
 func _ready():
@@ -31,3 +32,8 @@ func _ready():
 
 func _on_action_pressed(action_type : Globals.ActionTypes):
 	action_done.emit(action_type)
+
+func tick(delta: float):
+	for child in %ActionsContainer.get_children():
+		if child is ActionButton:
+			child.tick(delta)

@@ -1,26 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx5ss2xptakj3"]
+[gd_scene load_steps=4 format=3 uid="uid://dx5ss2xptakj3"]
 
 [ext_resource type="Script" path="res://scenes/game_scene/ui_elements/location_action_container.gd" id="1_h6lkj"]
+[ext_resource type="PackedScene" uid="uid://cjlwc0ulw3km3" path="res://scenes/game_scene/ui_elements/resource_meter.tscn" id="2_0l6xd"]
+[ext_resource type="PackedScene" uid="uid://c6df3skcwcmox" path="res://scenes/game_scene/ui_elements/action_button_container.tscn" id="2_scrqn"]
 
 [node name="LocationActionContainer" type="VBoxContainer"]
-custom_minimum_size = Vector2(240, 260)
+custom_minimum_size = Vector2(240, 300)
 offset_right = 240.0
 offset_bottom = 260.0
 script = ExtResource("1_h6lkj")
-action_type = 4
+resource_meter_scene = ExtResource("2_0l6xd")
 
-[node name="ActionButton" type="Button" parent="."]
+[node name="ActionButtonContainer" parent="." instance=ExtResource("2_scrqn")]
 unique_name_in_owner = true
 layout_mode = 2
+button_text = "Read"
 disabled = true
-text = "Ask"
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 8)
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-max_value = 15.0
-show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text_overrun_behavior = 4
+
+[node name="TypeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/NameLabel"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 224.0
+offset_bottom = 34.0
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ResourceContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -28,9 +76,10 @@ text = "Locations:"
 
 [node name="Tree" type="Tree" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 124)
 layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
 
-[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
+[connection signal="button_pressed" from="ActionButtonContainer" to="." method="_on_action_button_container_button_pressed"]
 [connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]

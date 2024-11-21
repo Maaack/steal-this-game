@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_cgouf"]
 script = ExtResource("2_v05ho")
 numerical_unit = 0
-quantity = 1.0
+quantity = 0.05
 resource_unit = ExtResource("2_u7pgm")
 metadata/_custom_type_script = ExtResource("2_v05ho")
 

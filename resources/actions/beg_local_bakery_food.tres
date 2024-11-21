@@ -6,10 +6,10 @@
 [ext_resource type="Resource" uid="uid://csyuhodmpm7ht" path="res://resources/game_resources/food.tres" id="3_p6rdw"]
 [ext_resource type="Resource" uid="uid://cfhbn6rm63v01" path="res://resources/game_resources/reputation.tres" id="4_cgouf"]
 
-[sub_resource type="Resource" id="Resource_cgouf"]
+[sub_resource type="Resource" id="Resource_p6rdw"]
 script = ExtResource("2_6pfbv")
 numerical_unit = 0
-quantity = 1.0
+quantity = 0.5
 resource_unit = ExtResource("2_p6rdw")
 metadata/_custom_type_script = ExtResource("2_6pfbv")
 
@@ -33,5 +33,5 @@ action = 5
 time_cost = 2
 resource_cost = Array[ExtResource("2_6pfbv")]([])
 resource_result = Array[ExtResource("2_6pfbv")]([SubResource("Resource_we5l5"), SubResource("Resource_6pfbv")])
-location_resource_result = Array[ExtResource("2_6pfbv")]([SubResource("Resource_cgouf")])
+location_resource_result = Array[ExtResource("2_6pfbv")]([SubResource("Resource_p6rdw")])
 metadata/_custom_type_script = ExtResource("1_we5l5")
