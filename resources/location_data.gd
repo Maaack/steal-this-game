@@ -7,3 +7,6 @@ extends Resource
 @export var actions_available : Array[ActionData]
 
 var resources : ResourceContainer = ResourceContainer.new()
+
+func get_location_string():
+	return Globals.get_location_string(location_type)

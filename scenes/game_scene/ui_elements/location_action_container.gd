@@ -109,6 +109,7 @@ func _update_selected_location_resource_meters():
 
 func _update_selected_location_details():
 	%NameLabel.text = _selected_location.name
+	%TypeLabel.text = _selected_location.get_location_string()
 	%DescriptionLabel.text = _selected_location.description
 	_update_selected_location_resource_meters()
 

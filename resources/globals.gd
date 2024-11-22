@@ -104,10 +104,24 @@ static var _action_strings : Dictionary = {
 	ActionTypes.GIVE: "Give",
 }
 
+static var _location_strings : Dictionary = {
+	LocationTypes.APARTMENTS : "Apartments",
+	LocationTypes.BAKERY : "Bakery",
+	LocationTypes.SUPERMARKET : "Supermarket",
+	LocationTypes.GROCERY_STORE : "Grocery Store",
+	LocationTypes.CHAIN_CLOTHING_STORE : "Clothing Depot Chain",
+}
+
 static func get_action_string(action_type : ActionTypes) -> String:
 	if action_type in _action_strings:
 		return _action_strings[action_type]
 	push_warning("no key matching type %s" % action_type)
+	return ""
+
+static func get_location_string(location_type : LocationTypes) -> String:
+	if location_type in _location_strings:
+		return _location_strings[location_type]
+	push_warning("no key matching type %s" % location_type)
 	return ""
 
 

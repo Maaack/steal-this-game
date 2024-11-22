@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://biktaclghs8u1"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://biktaclghs8u1"]
 
 [ext_resource type="FontFile" uid="uid://dpeqt5iq8v0si" path="res://assets/fonts/lato/Lato-Regular.ttf" id="1_ols5k"]
 [ext_resource type="StyleBox" uid="uid://csjnhp0fhn13y" path="res://resources/styleboxes/black_box_hover_flat.tres" id="1_vnc4k"]
@@ -7,8 +7,10 @@
 [ext_resource type="StyleBox" uid="uid://2rix2x10ao8d" path="res://resources/styleboxes/black_box_flat.tres" id="2_x127s"]
 [ext_resource type="StyleBox" uid="uid://5xx8h8me0sif" path="res://resources/styleboxes/progress_bar_flat.tres" id="4_qjhx0"]
 [ext_resource type="StyleBox" uid="uid://c4y71ugaff2lo" path="res://resources/styleboxes/graphite_box_flat.tres" id="5_0ahyh"]
+[ext_resource type="FontFile" uid="uid://bnc8d6ilbukg4" path="res://assets/fonts/lato/Lato-Semibold.ttf" id="5_bjb6u"]
 [ext_resource type="StyleBox" uid="uid://hqwx716xbg42" path="res://resources/styleboxes/progress_bar_blue_flat.tres" id="5_u427p"]
 [ext_resource type="StyleBox" uid="uid://b5gux1paty7oq" path="res://resources/styleboxes/progress_bar_red_flat.tres" id="6_7rtxy"]
+[ext_resource type="FontFile" uid="uid://c5wfebw1ihdxg" path="res://assets/fonts/lato/Lato-Italic.ttf" id="6_bjb6u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hofdy"]
 
@@ -36,6 +38,13 @@ Button/styles/focus = ExtResource("2_hofdy")
 Button/styles/hover = ExtResource("1_vnc4k")
 Button/styles/normal = ExtResource("2_x127s")
 Button/styles/pressed = ExtResource("2_x127s")
+LocationName/base_type = &"Label"
+LocationName/colors/font_color = Color(0.973535, 0.973535, 0.973535, 1)
+LocationName/font_sizes/font_size = 22
+LocationName/fonts/font = ExtResource("5_bjb6u")
+LocationType/base_type = &"Label"
+LocationType/colors/font_color = Color(0.235294, 0.231373, 0.431373, 1)
+LocationType/fonts/font = ExtResource("6_bjb6u")
 Panel/styles/panel = ExtResource("2_x127s")
 PanelContainer/styles/panel = ExtResource("5_0ahyh")
 ProgressBar/styles/background = ExtResource("4_qjhx0")
