@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_b1e6l")
 char_wait_time = 0.005
 scroll_delay = 1.0
+v_scroll_margin = 6.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
