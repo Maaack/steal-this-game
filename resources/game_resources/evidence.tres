@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://cqgcpnj07jptl"]
+
+[ext_resource type="Texture2D" uid="uid://drth7j6wybedb" path="res://assets/icons/finger-print.png" id="1_soi12"]
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="2_yrgfl"]
+
+[resource]
+script = ExtResource("2_yrgfl")
+name = &"evidence"
+icon = ExtResource("1_soi12")
+metadata/_custom_type_script = ExtResource("2_yrgfl")

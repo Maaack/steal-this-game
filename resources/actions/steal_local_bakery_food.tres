@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="ActionData" load_steps=9 format=3 uid="uid://tukdh8hq8ea8"]
+[gd_resource type="Resource" script_class="ActionData" load_steps=11 format=3 uid="uid://tukdh8hq8ea8"]
 
 [ext_resource type="Script" path="res://resources/action_data.gd" id="1_ehynw"]
 [ext_resource type="Resource" uid="uid://bacxuoowouecl" path="res://resources/game_resources/suspicion.tres" id="2_gotwf"]
 [ext_resource type="Script" path="res://resources/resource_quantity.gd" id="2_vl4ya"]
 [ext_resource type="Resource" uid="uid://csyuhodmpm7ht" path="res://resources/game_resources/food.tres" id="3_linsh"]
+[ext_resource type="Resource" uid="uid://cqgcpnj07jptl" path="res://resources/game_resources/evidence.tres" id="3_qslod"]
 [ext_resource type="Resource" uid="uid://cfhbn6rm63v01" path="res://resources/game_resources/reputation.tres" id="4_gotwf"]
 
 [sub_resource type="Resource" id="Resource_afyrh"]
@@ -11,6 +12,13 @@ script = ExtResource("2_vl4ya")
 numerical_unit = 0
 quantity = 0.25
 resource_unit = ExtResource("2_gotwf")
+metadata/_custom_type_script = ExtResource("2_vl4ya")
+
+[sub_resource type="Resource" id="Resource_0d6go"]
+script = ExtResource("2_vl4ya")
+numerical_unit = 0
+quantity = 0.05
+resource_unit = ExtResource("3_qslod")
 metadata/_custom_type_script = ExtResource("2_vl4ya")
 
 [sub_resource type="Resource" id="Resource_n53nb"]
@@ -33,5 +41,5 @@ action = 6
 time_cost = 2
 resource_cost = Array[ExtResource("2_vl4ya")]([])
 resource_result = Array[ExtResource("2_vl4ya")]([SubResource("Resource_n53nb"), SubResource("Resource_31seb")])
-location_resource_result = Array[ExtResource("2_vl4ya")]([SubResource("Resource_afyrh")])
+location_resource_result = Array[ExtResource("2_vl4ya")]([SubResource("Resource_afyrh"), SubResource("Resource_0d6go")])
 metadata/_custom_type_script = ExtResource("1_ehynw")
