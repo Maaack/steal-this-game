@@ -1,6 +1,10 @@
 @tool
 extends HBoxContainer
 
+@export var resource_name : String :
+	set(value):
+		resource_name = value
+		tooltip_text = resource_name
 @export var icon : Texture :
 	set(value):
 		icon = value
@@ -16,7 +20,6 @@ extends HBoxContainer
 		max_quantity = value
 		if is_inside_tree():
 			_update_label()
-@export var resource_name : String
 
 func _update_label():
 	if max_quantity > 0:

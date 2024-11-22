@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game_scene/ui_elements/location_action_container.gd" id="1_h6lkj"]
 [ext_resource type="PackedScene" uid="uid://cjlwc0ulw3km3" path="res://scenes/game_scene/ui_elements/resource_meter.tscn" id="2_0l6xd"]
-[ext_resource type="PackedScene" uid="uid://c6df3skcwcmox" path="res://scenes/game_scene/ui_elements/action_button_container.tscn" id="2_scrqn"]
+[ext_resource type="PackedScene" uid="uid://c6df3skcwcmox" path="res://scenes/game_scene/ui_elements/action_button.tscn" id="2_scrqn"]
 
 [node name="LocationActionContainer" type="VBoxContainer"]
 custom_minimum_size = Vector2(240, 300)
@@ -11,11 +11,11 @@ offset_bottom = 260.0
 script = ExtResource("1_h6lkj")
 resource_meter_scene = ExtResource("2_0l6xd")
 
-[node name="ActionButtonContainer" parent="." instance=ExtResource("2_scrqn")]
+[node name="ActionButton" parent="." instance=ExtResource("2_scrqn")]
 unique_name_in_owner = true
 layout_mode = 2
-button_text = "Read"
 disabled = true
+text = "Read"
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 200)
@@ -81,5 +81,5 @@ layout_mode = 2
 size_flags_vertical = 3
 hide_root = true
 
-[connection signal="button_pressed" from="ActionButtonContainer" to="." method="_on_action_button_container_button_pressed"]
+[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
 [connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]

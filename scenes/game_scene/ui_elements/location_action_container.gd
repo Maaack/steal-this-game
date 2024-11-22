@@ -26,7 +26,7 @@ var _selected_location : LocationData
 func _clear_tree():
 	%Tree.clear()
 	%Tree.create_item()
-	%ActionButtonContainer.disabled = true
+	%ActionButton.disabled = true
 
 func _add_location_as_tree_item(location_data : LocationData):
 	var action_tree_item : TreeItem = %Tree.create_item()
@@ -48,7 +48,7 @@ func _update_locations():
 	_add_locations_items()
 
 func _set_button():
-	%ActionButtonContainer.button_text = Globals.get_action_string(action_type)
+	%ActionButton.text = Globals.get_action_string(action_type)
 
 func _ready():
 	action_type = action_type
@@ -113,7 +113,7 @@ func _update_selected_location():
 	_update_selected_location_details()
 
 func _on_tree_item_selected():
-	%ActionButtonContainer.disabled = false
+	%ActionButton.disabled = false
 	_update_selected_location()
 
 func _process(delta):
@@ -121,8 +121,5 @@ func _process(delta):
 		var resource_instance = resource_meter_map[resource_name]
 		_update_bar_with_resource(resource_instance, resource_name)
 
-func _on_action_button_container_button_pressed():
-	_action_done_on_location()
-
 func tick(delta: float):
-	%ActionButtonContainer.tick(delta)
+	%ActionButton.tick(delta)

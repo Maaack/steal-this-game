@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6df3skcwcmox"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/action_button.gd" id="1_h4la7"]
+
+[node name="ActionButton" type="Button"]
+offset_right = 1280.0
+offset_bottom = 28.0
+text = "fds"
+script = ExtResource("1_h4la7")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"ProgressBarDelay"
+max_value = 1.0
+step = 0.001
+show_percentage = false

@@ -22,9 +22,9 @@ func _clear_actions():
 func _update_actions():
 	_clear_actions()
 	for action_type in city_actions:
-		var button = action_button_scene.instantiate()
-		button.button_text = Globals.get_action_string(action_type)
-		button.button_pressed.connect(_on_action_pressed.bind(action_type))
+		var button : Button = action_button_scene.instantiate()
+		button.text = Globals.get_action_string(action_type)
+		button.pressed.connect(_on_action_pressed.bind(action_type))
 		%ActionsContainer.add_child(button)
 
 func _ready():

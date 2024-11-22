@@ -13,6 +13,7 @@ icon = ExtResource("2_5hl4c")
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 4
 
 [node name="Label" type="Label" parent="."]

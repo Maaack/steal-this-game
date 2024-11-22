@@ -31,6 +31,10 @@ window/size/viewport_height=720
 
 enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
+[gui]
+
+theme/custom="res://resources/main_theme.tres"
+
 [internationalization]
 
 locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
@@ -44,3 +48,5 @@ copy_path="res://"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

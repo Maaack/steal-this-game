@@ -17,7 +17,7 @@ func _on_quantity_updated(quantity : ResourceQuantity):
 	if not quantity.name in inventory_map:
 		inventory_map[quantity.name] = _add_inventory_container()
 	var container = inventory_map[quantity.name]
-	container.name = quantity.name
+	container.resource_name = quantity.name
 	container.icon = quantity.icon
 	container.quantity = quantity.quantity
 
