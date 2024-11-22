@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://3ejp72w42kql"]
+
+[ext_resource type="Texture2D" uid="uid://dl4qi8qbjpr2k" path="res://assets/icons/money-stack.png" id="1_6rjn7"]
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="2_gdbhh"]
+
+[resource]
+script = ExtResource("2_gdbhh")
+name = &"money"
+icon = ExtResource("1_6rjn7")
+metadata/_custom_type_script = ExtResource("2_gdbhh")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://m53ryug825ik"]
+
+[ext_resource type="Texture2D" uid="uid://ltx4xmuvjwq3" path="res://assets/icons/fist.png" id="1_802lv"]
+[ext_resource type="Script" path="res://resources/resource_unit.gd" id="2_ipppq"]
+
+[resource]
+script = ExtResource("2_ipppq")
+name = &"determination"
+icon = ExtResource("1_802lv")
+metadata/_custom_type_script = ExtResource("2_ipppq")
