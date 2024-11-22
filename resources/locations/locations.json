@@ -2,10 +2,11 @@
 	"locations": [
 		{
 			"name": "Stacy's",
-			"description": "Thousands of products made over-seas by underpaid workers. The markup is 100x, but there's always a 25% off sale.",
+			"location_type": 27,
+			"description": "Apparel mass-produced over-seas by underpaid workers. The markup is 100x, but there's always a 25% off sale.",
 			"actions_available": [
 				{
-					"action_type": 7,
+					"action_type": 5,
 					"resource_cost": [],
 					"resource_result": [
 						{
@@ -25,12 +26,67 @@
 					]
 				},
 				{
-					"action_type": 7,
+					"action_type": 5,
+					"resource_cost": [],
+					"resource_result": [
+						{
+							"name": "fancy clothes",
+							"quantity": 1.0
+						}
+					],
+					"location_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.05
+						},
+						{
+							"name": "evidence",
+							"quantity": 0.02
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mama's Baked Sweets",
+			"location_type": 6,
+			"description": "A local bakery that appears to be run by a family.",
+			"actions_available": [
+				{
+					"action_type": 5,
 					"resource_cost": [],
 					"resource_result": [
 						{
 							"name": "food",
-							"quantity": 3.0
+							"quantity": 2.0
+						}
+					],
+					"location_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.25
+						},
+						{
+							"name": "evidence",
+							"quantity": 0.05
+						}
+					]
+				}
+				
+			]
+		},
+		{
+			"name": "MagMart",
+			"location_type": 7,
+			"description": "Aisles upon aisles of soul-less products. Tons of staff working the soul-less jobs.",
+			"actions_available": [
+				{
+					"action_type": 5,
+					"resource_cost": [],
+					"resource_result": [
+						{
+							"name": "food",
+							"quantity": 2.0
 						}
 					],
 					"location_resource_result": [
@@ -44,7 +100,11 @@
 						}
 					]
 				}
+				
 			]
 		}
 	]
 }
+
+
+

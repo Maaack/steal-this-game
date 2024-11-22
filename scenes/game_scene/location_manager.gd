@@ -25,6 +25,8 @@ func _parse_locations(locations : Array) -> Array:
 		var location_data = LocationData.new()
 		if "name" in _location:
 			location_data.name = _location["name"]
+		if "location_type" in _location:
+			location_data.location_type = _location["location_type"]
 		if "description" in _location:
 			location_data.description = _location["description"]
 		if "actions_available" in _location:

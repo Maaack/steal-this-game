@@ -2,42 +2,10 @@
 class_name Globals
 extends Object
 
-enum ResourceTaxonomies{
-	FOOD,
-	DRINK,
-	
-}
-
-enum ResourceTypes{
-	ENERGY,
-	HYDRATION,
-	NUTRITION,
-	CALORIES,
-	HYGIENE,
-	PHYSICAL_HEALTH,
-	MENTAL_HEALTH,
-	MONEY,
-	BREAD,
-	RICE,
-	VEGGIES,
-	FRUITS,
-	GRANOLA,
-	YOGURT,
-	COFFEE,
-	MILK,
-	PIZZA
-}
-
-enum WorldResourceTypes{
-	
-}
-
-
 enum ActionTypes{
 	READ_SECRETS,
 	SCOUT,
 	SCOPE,
-	WASH,
 	ASK,
 	BEG,
 	STEAL,
@@ -50,7 +18,6 @@ enum ActionTypes{
 }
 
 enum LocationTypes{
-	ALLEY,
 	APARTMENTS,
 	OFFICES,
 	GAS_STATION,
