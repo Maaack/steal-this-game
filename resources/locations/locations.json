@@ -7,7 +7,12 @@
 			"actions_available": [
 				{
 					"action_type": 5,
-					"resource_cost": [],
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
 					"resource_result": [
 						{
 							"name": "clothes",
@@ -27,7 +32,12 @@
 				},
 				{
 					"action_type": 5,
-					"resource_cost": [],
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
 					"resource_result": [
 						{
 							"name": "fancy clothes",
@@ -54,7 +64,12 @@
 			"actions_available": [
 				{
 					"action_type": 5,
-					"resource_cost": [],
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
 					"resource_result": [
 						{
 							"name": "food",
@@ -82,7 +97,12 @@
 			"actions_available": [
 				{
 					"action_type": 5,
-					"resource_cost": [],
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
 					"resource_result": [
 						{
 							"name": "food",

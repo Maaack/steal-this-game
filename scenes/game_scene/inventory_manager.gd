@@ -37,6 +37,9 @@ func remove(quantity_name : String, quantity_amount : float):
 	quantity.name = quantity_name
 	quantity.quantity = quantity_amount
 	remove_quantity(quantity)
+	var remaining_quantity = inventory.find_quantity(quantity_name)
+	inventory_updated.emit()
+	quantity_updated.emit(remaining_quantity)
 
 func find(content:ResourceQuantity):
 	if content == null:

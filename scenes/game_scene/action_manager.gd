@@ -52,7 +52,8 @@ func _on_location_action_done(action_data : ActionData, location_data : Location
 		if not inventory_manager.has(cost.name, cost.quantity):
 			print("Not enough resources.")
 			return
-		# TODO: Take resources
+	for cost in action_data.resource_cost:
+		inventory_manager.remove(cost.name, cost.quantity)
 	for result in action_data.resource_result:
 		inventory_manager.add(result.duplicate())
 	for result in action_data.location_resource_result:
