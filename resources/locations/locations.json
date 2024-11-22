@@ -1,0 +1,50 @@
+{
+	"locations": [
+		{
+			"name": "Stacy's",
+			"description": "Thousands of products made over-seas by underpaid workers. The markup is 100x, but there's always a 25% off sale.",
+			"actions_available": [
+				{
+					"action_type": 7,
+					"resource_cost": [],
+					"resource_result": [
+						{
+							"name": "clothes",
+							"quantity": 1.0
+						}
+					],
+					"location_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.05
+						},
+						{
+							"name": "evidence",
+							"quantity": 0.005
+						}
+					]
+				},
+				{
+					"action_type": 7,
+					"resource_cost": [],
+					"resource_result": [
+						{
+							"name": "food",
+							"quantity": 3.0
+						}
+					],
+					"location_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.05
+						},
+						{
+							"name": "evidence",
+							"quantity": 0.005
+						}
+					]
+				}
+			]
+		}
+	]
+}
