@@ -7,19 +7,21 @@
 			"actions_available": [
 				{
 					"action_type": 5,
+					"try_message": "You attempt to swipe some clothing.",
 					"resource_cost": [
 						{
 							"name": "energy",
 							"quantity": 1.0
 						}
 					],
-					"resource_result": [
+					"success_message": "You tuck a shirt and pants under your shirt and pants.",
+					"success_resource_result": [
 						{
 							"name": "clothes",
-							"quantity": 1.0
+							"quantity": 2.0
 						}
 					],
-					"location_resource_result": [
+					"location_success_resource_result": [
 						{
 							"name": "suspicion",
 							"quantity": 0.05
@@ -32,19 +34,21 @@
 				},
 				{
 					"action_type": 5,
+					"try_message": "You consider misappropriating elegant attire.",
 					"resource_cost": [
 						{
 							"name": "energy",
 							"quantity": 1.0
 						}
 					],
-					"resource_result": [
+					"success_message": "You walk out a fancier person.",
+					"success_resource_result": [
 						{
 							"name": "fancy clothes",
 							"quantity": 1.0
 						}
 					],
-					"location_resource_result": [
+					"location_success_resource_result": [
 						{
 							"name": "suspicion",
 							"quantity": 0.05
@@ -64,19 +68,21 @@
 			"actions_available": [
 				{
 					"action_type": 5,
+					"try_message": "You try lifting some baked goods.",
 					"resource_cost": [
 						{
 							"name": "energy",
 							"quantity": 1.0
 						}
 					],
-					"resource_result": [
+					"success_message": "The staff grimaced as they watched you walk out with food.",
+					"success_resource_result": [
 						{
 							"name": "food",
 							"quantity": 2.0
 						}
 					],
-					"location_resource_result": [
+					"location_success_resource_result": [
 						{
 							"name": "suspicion",
 							"quantity": 0.25
@@ -97,19 +103,21 @@
 			"actions_available": [
 				{
 					"action_type": 5,
+					"try_message": "You attempt to apply a five-finger discount.",
 					"resource_cost": [
 						{
 							"name": "energy",
 							"quantity": 1.0
 						}
 					],
-					"resource_result": [
+					"success_message": "You easily walk out with your new stuff.",
+					"success_resource_result": [
 						{
-							"name": "food",
+							"name": "clothes",
 							"quantity": 2.0
 						}
 					],
-					"location_resource_result": [
+					"location_success_resource_result": [
 						{
 							"name": "suspicion",
 							"quantity": 0.05

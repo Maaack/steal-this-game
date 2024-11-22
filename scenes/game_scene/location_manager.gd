@@ -35,6 +35,8 @@ func _parse_locations(locations : Array) -> Array:
 				var action_data := ActionData.new()
 				if "action_type" in _action:
 					action_data.action = _action["action_type"]
+				if "try_message" in _action:
+					action_data.try_message = _action["try_message"]
 				if "resource_cost" in _action:
 					var _resources : Array = _action["resource_cost"]
 					for _resource in _resources:
@@ -49,8 +51,10 @@ func _parse_locations(locations : Array) -> Array:
 						else:
 							push_warning("location action resource cost missing quantity")
 						action_data.resource_cost.append(resource_data)
-				if "resource_result" in _action:
-					var _resources : Array = _action["resource_result"]
+				if "success_message" in _action:
+					action_data.success_message = _action["success_message"]
+				if "success_resource_result" in _action:
+					var _resources : Array = _action["success_resource_result"]
 					for _resource in _resources:
 						var resource_data = ResourceQuantity.new()
 						if "name" in _resource:
@@ -62,9 +66,9 @@ func _parse_locations(locations : Array) -> Array:
 							resource_data.quantity = _resource["quantity"]
 						else:
 							push_warning("location action resource result missing quantity")
-						action_data.resource_result.append(resource_data)
-				if "location_resource_result" in _action:
-					var _resources : Array = _action["location_resource_result"]
+						action_data.success_resource_result.append(resource_data)
+				if "location_success_resource_result" in _action:
+					var _resources : Array = _action["location_success_resource_result"]
 					for _resource in _resources:
 						var resource_data = ResourceQuantity.new()
 						if "name" in _resource:
@@ -76,7 +80,7 @@ func _parse_locations(locations : Array) -> Array:
 							resource_data.quantity = _resource["quantity"]
 						else:
 							push_warning("location action location resource result missing quantity")
-						action_data.location_resource_result.append(resource_data)
+						action_data.location_success_resource_result.append(resource_data)
 				location_data.actions_available.append(action_data)
 		parsed_locations.append(location_data)
 	return parsed_locations

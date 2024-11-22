@@ -44,19 +44,16 @@ func _on_action_done(action_type : Globals.ActionTypes):
 			
 func _on_location_action_done(action_data : ActionData, location_data : LocationData):
 	var event_string : String
-	match action_data.action:
-		Globals.ActionTypes.STEAL:
-			event_string = "You tried to steal from %s." % location_data.name
-	event_view.add_event_text(event_string)
+	event_view.add_event_text(action_data.try_message)
 	for cost in action_data.resource_cost:
 		if not inventory_manager.has(cost.name, cost.quantity):
 			print("Not enough resources.")
 			return
 	for cost in action_data.resource_cost:
 		inventory_manager.remove(cost.name, cost.quantity)
-	for result in action_data.resource_result:
+	for result in action_data.success_resource_result:
 		inventory_manager.add(result.duplicate())
-	for result in action_data.location_resource_result:
+	for result in action_data.location_success_resource_result:
 		location_data.resources.add(result.duplicate())
 
 func _on_child_entered_container(node: Node):
