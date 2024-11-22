@@ -22,6 +22,7 @@ signal action_done(action_data : ActionData, location_data : LocationData)
 
 var resource_meter_map : Dictionary[StringName, ResourceMeter]
 var _selected_location : LocationData
+var _selectable_items : Array[TreeItem]
 
 func _clear_tree():
 	%Tree.clear()
@@ -31,8 +32,14 @@ func _clear_tree():
 func _add_location_as_tree_item(location_data : LocationData):
 	var action_tree_item : TreeItem = %Tree.create_item()
 	action_tree_item.set_text(0, location_data.name)
+	_selectable_items.append(action_tree_item)
 	if location_data == _selected_location:
 		action_tree_item.select(0)
+
+func _select_first_if_null():
+	if _selected_location == null and _selectable_items.size() > 0:
+		_selectable_items[0].select(0)
+		_update_selected_location()
 
 func _add_locations_items():
 	for location in locations:
@@ -42,10 +49,12 @@ func add_location(location: LocationData):
 	if location not in locations:
 		locations.append(location)
 		_add_location_as_tree_item(location)
+	_select_first_if_null()
 
 func _update_locations():
 	_clear_tree()
 	_add_locations_items()
+	_select_first_if_null()
 
 func _set_button():
 	%ActionButton.text = Globals.get_action_string(action_type)
