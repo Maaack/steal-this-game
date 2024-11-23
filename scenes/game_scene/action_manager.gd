@@ -45,14 +45,29 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			action_button.wait(10.0)
 			await action_button.wait_time_passed
 			knowledge_manager.read()
-			
+
+func _format_comma_separated_list(strings : Array[String]) -> String:
+	if strings.size() > 2:
+		var last_string = strings.pop_back()
+		return ", ".join(strings) + " and " + last_string
+	elif strings.size() == 2:
+		return strings[0] + " and " + strings[1]
+	elif strings.size() == 1:
+		return strings[0]
+	else:
+		return ""
+
 func _on_location_action_done(action_data : ActionData, location_data : LocationData, action_button : ActionButton):
 	var event_string : String
 	event_view.add_event_text(action_data.try_message)
+	var missing_resources : Array[String] = []
 	for cost in action_data.resource_cost:
 		if not inventory_manager.has(cost.name, cost.quantity):
-			event_view.add_event_text("Not enough resources.")
-			return
+			missing_resources.append(cost.name)
+	if missing_resources.size() > 0:
+		event_view.add_event_text("Not enough %s." % _format_comma_separated_list(missing_resources))
+		return
+
 	for cost in action_data.resource_cost:
 		inventory_manager.remove(cost.name, cost.quantity)
 	action_button.wait(action_data.time_cost)
