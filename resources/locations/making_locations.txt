@@ -37,21 +37,20 @@ LocationTypes
 	UNIVERSITY: 35
 	BUS_STATION: 36
 	TRAIN_STATION: 37
-}
+
 
 
 ActionTypes
-	READ_SECRETS: 0
+	READ: 0
 	SCOUT: 1
-	SCOPE: 2
-	ASK: 3
+	WORK: 2
+	BUY: 3
 	BEG: 4
 	STEAL: 5
-	WORK: 6
-	SLEEP: 7
-	COOK: 8
-	GROW: 9
-	RENT: 10
-	GIVE: 11
-}
+	REST: 6
+	COOK: 7
+	GROW: 8
+	RENT: 0
+	GIVE: 10
+
 

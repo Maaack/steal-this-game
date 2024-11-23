@@ -82,6 +82,7 @@ func _action_done_on_location():
 	if actions_available.size() == 0 : return
 	var random_action : ActionData = actions_available.pick_random()
 	action_done.emit(random_action, _selected_location)
+	%ActionButton.wait(random_action.time_cost)
 	_update_selected_location_resource_meters()
 
 func _on_action_button_pressed():

@@ -28,10 +28,11 @@ func _ready():
 			child.action_done.connect(_on_location_action_done)
 	action_container.child_entered_tree.connect(_on_child_entered_container)
 
-func _on_action_done(action_type : Globals.ActionTypes):
+func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
 	var event_string : String
 	match action_type:
 		Globals.ActionTypes.SCOUT:
+			action_button.wait(5)
 			var location_scouted = location_manager.scout()
 			if location_scouted == null:
 				event_string = "No new locations were discovered."
@@ -39,7 +40,8 @@ func _on_action_done(action_type : Globals.ActionTypes):
 			else:
 				event_string = "You scouted %s" % location_scouted.name
 				event_view.add_event_text(event_string)
-		Globals.ActionTypes.READ_SECRETS:
+		Globals.ActionTypes.READ:
+			action_button.wait(10)
 			knowledge_manager.read()
 			
 func _on_location_action_done(action_data : ActionData, location_data : LocationData):
@@ -47,10 +49,11 @@ func _on_location_action_done(action_data : ActionData, location_data : Location
 	event_view.add_event_text(action_data.try_message)
 	for cost in action_data.resource_cost:
 		if not inventory_manager.has(cost.name, cost.quantity):
-			print("Not enough resources.")
+			event_view.add_event_text("Not enough resources.")
 			return
 	for cost in action_data.resource_cost:
 		inventory_manager.remove(cost.name, cost.quantity)
+	
 	for result in action_data.success_resource_result:
 		inventory_manager.add(result.duplicate())
 	for result in action_data.location_success_resource_result:

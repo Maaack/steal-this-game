@@ -3,7 +3,7 @@ class_name Globals
 extends Object
 
 enum ActionTypes{
-	READ_SECRETS,
+	READ,
 	SCOUT,
 	WORK,
 	BUY,
@@ -58,7 +58,7 @@ enum LocationTypes{
 }
 
 static var _action_strings : Dictionary = {
-	ActionTypes.READ_SECRETS : "Read",
+	ActionTypes.READ : "Read",
 	ActionTypes.SCOUT : "Scout",
 	ActionTypes.WORK : "Work",
 	ActionTypes.BUY : "Buy",
@@ -96,8 +96,8 @@ static var game_resources : Array[ResourceUnit]
 static func _fill_game_resources():
 	var dir_access = DirAccess.open("res://resources/game_resources/")
 	for file in dir_access.get_files():
-		if not file.ends_with(".tres"):
-			continue
+		if file.ends_with(".remap"):
+			file = file.trim_suffix(".remap")
 		var resource_unit : Resource = load("res://resources/game_resources/%s" % file)
 		if resource_unit is ResourceUnit:
 			game_resources.append(resource_unit)
@@ -107,5 +107,6 @@ static func get_resource_unit(resource_name : String) -> ResourceUnit:
 	for resource_unit in game_resources:
 		if resource_unit.name == resource_name:
 			return resource_unit
+	push_warning("resource matching '%s' not found" % resource_name)
 	return
 

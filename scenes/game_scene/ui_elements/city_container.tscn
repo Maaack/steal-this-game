@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cho0vbenclk7c"]
 
-[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/city_container.gd" id="1_slc6t"]
+[ext_resource type="Script" uid="uid://c7n05mt24axy4" path="res://scenes/game_scene/ui_elements/city_container.gd" id="1_slc6t"]
 [ext_resource type="PackedScene" uid="uid://c6df3skcwcmox" path="res://scenes/game_scene/ui_elements/action_button.tscn" id="2_6tldy"]
 
 [node name="CityContainer" type="VBoxContainer"]

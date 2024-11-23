@@ -37,6 +37,8 @@ func _parse_locations(locations : Array) -> Array:
 					action_data.action = _action["action_type"]
 				if "try_message" in _action:
 					action_data.try_message = _action["try_message"]
+				if "time_cost" in _action:
+					action_data.time_cost = _action["time_cost"]
 				if "resource_cost" in _action:
 					var _resources : Array = _action["resource_cost"]
 					for _resource in _resources:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6df3skcwcmox"]
 
-[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/action_button.gd" id="1_h4la7"]
+[ext_resource type="Script" uid="uid://dj5a1tqgjbubo" path="res://scenes/game_scene/ui_elements/action_button.gd" id="1_h4la7"]
 
 [node name="ActionButton" type="Button"]
 offset_right = 1280.0

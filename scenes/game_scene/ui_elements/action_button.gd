@@ -6,26 +6,25 @@ extends Button
 	set(value):
 		wait_time = value
 
-var time_left : float = 0.0
+var wait_time_left : float = 0.0
 
-func _on_button_pressed():
+func wait(time):
+	if is_zero_approx(time): return
+	wait_time = time
+	wait_time_left = wait_time
 	disabled = true
-	time_left = wait_time
 
 func get_progress() -> float:
 	var progress : float = 1.0
-	if not (is_zero_approx(time_left) or is_zero_approx(wait_time)):
-		progress -= time_left/wait_time
+	if not (is_zero_approx(wait_time_left) or is_zero_approx(wait_time)):
+		progress -= wait_time_left/wait_time
 	return progress
 
 func _process(delta):
 	%ProgressBar.value = 1.0 - get_progress()
 
 func tick(delta: float):
-	if time_left <= 0: return
-	time_left -= min(time_left, delta)
-	if is_zero_approx(time_left):
+	if wait_time_left <= 0: return
+	wait_time_left -= min(wait_time_left, delta)
+	if is_zero_approx(wait_time_left):
 		disabled = false
-
-func _ready():
-	pressed.connect(_on_button_pressed)
