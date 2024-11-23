@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c6df3skcwcmox" path="res://scenes/game_scene/ui_elements/action_button.tscn" id="2_scrqn"]
 
 [node name="LocationActionContainer" type="VBoxContainer"]
-custom_minimum_size = Vector2(200, 300)
+custom_minimum_size = Vector2(240, 300)
 offset_right = 240.0
 offset_bottom = 260.0
 script = ExtResource("1_h6lkj")
@@ -91,4 +91,5 @@ size_flags_vertical = 3
 hide_root = true
 
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
+[connection signal="wait_time_passed" from="ActionButton" to="." method="_on_action_button_wait_time_passed"]
 [connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]

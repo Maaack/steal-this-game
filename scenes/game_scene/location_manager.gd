@@ -83,6 +83,36 @@ func _parse_locations(locations : Array) -> Array:
 						else:
 							push_warning("location action location resource result missing quantity")
 						action_data.location_success_resource_result.append(resource_data)
+				if "failure_message" in _action:
+					action_data.failure_message = _action["failure_message"]
+				if "failure_resource_result" in _action:
+					var _resources : Array = _action["failure_resource_result"]
+					for _resource in _resources:
+						var resource_data = ResourceQuantity.new()
+						if "name" in _resource:
+							resource_data.resource_unit = Globals.get_resource_unit(_resource["name"])
+						else:
+							push_warning("location action resource result missing name")
+							continue
+						if "quantity" in _resource:
+							resource_data.quantity = _resource["quantity"]
+						else:
+							push_warning("location action resource result missing quantity")
+						action_data.failure_resource_result.append(resource_data)
+				if "location_failure_resource_result" in _action:
+					var _resources : Array = _action["location_failure_resource_result"]
+					for _resource in _resources:
+						var resource_data = ResourceQuantity.new()
+						if "name" in _resource:
+							resource_data.resource_unit = Globals.get_resource_unit(_resource["name"])
+						else:
+							push_warning("location action location resource result missing name")
+							continue
+						if "quantity" in _resource:
+							resource_data.quantity = _resource["quantity"]
+						else:
+							push_warning("location action location resource result missing quantity")
+						action_data.location_failure_resource_result.append(resource_data)
 				location_data.actions_available.append(action_data)
 		parsed_locations.append(location_data)
 	return parsed_locations

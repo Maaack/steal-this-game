@@ -8,3 +8,6 @@ extends Resource
 @export var success_message : String
 @export var success_resource_result : Array[ResourceQuantity]
 @export var location_success_resource_result : Array[ResourceQuantity]
+@export var failure_message : String
+@export var failure_resource_result : Array[ResourceQuantity]
+@export var location_failure_resource_result : Array[ResourceQuantity]

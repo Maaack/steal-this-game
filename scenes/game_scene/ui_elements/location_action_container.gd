@@ -133,3 +133,6 @@ func _process(delta):
 
 func tick(delta: float):
 	%ActionButton.tick(delta)
+
+func _on_action_button_wait_time_passed():
+	_update_selected_location_resource_meters.call_deferred()

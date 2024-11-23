@@ -90,7 +90,6 @@ static func get_location_string(location_type : LocationTypes) -> String:
 	push_warning("no key matching type %s" % location_type)
 	return ""
 
-
 static var game_resources : Array[ResourceUnit]
 
 static func _fill_game_resources():

@@ -53,6 +53,19 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			await action_button.wait_time_passed
 			knowledge_manager.read()
 
+func _get_action_success(action_data : ActionData, location_data : LocationData) -> bool:
+	var resource_quantities : Dictionary[StringName, float]
+	for quantity_data in location_data.resources.quantities:
+		resource_quantities[quantity_data.name] = quantity_data.quantity
+	match action_data.action:
+		Globals.ActionTypes.STEAL:
+			if not &"suspicion" in resource_quantities: return true
+			return randf() > resource_quantities[&"suspicion"]
+		Globals.ActionTypes.BEG:
+			if not &"fatigue" in resource_quantities: return true
+			return randf() > resource_quantities[&"fatigue"]
+	return true
+
 func _on_location_action_done(action_data : ActionData, location_data : LocationData, action_button : ActionButton):
 	var event_string : String
 	_write_event(action_data.try_message)
@@ -67,13 +80,20 @@ func _on_location_action_done(action_data : ActionData, location_data : Location
 		inventory_manager.remove(cost.name, cost.quantity)
 	action_button.wait(action_data.time_cost)
 	await action_button.wait_time_passed
-	if not action_data.success_message.is_empty():
-		_write_success(action_data.success_message)
-	for result in action_data.success_resource_result:
-		inventory_manager.add(result.duplicate())
-	for result in action_data.location_success_resource_result:
-		location_data.resources.add(result.duplicate())
-
+	if _get_action_success(action_data, location_data):
+		if not action_data.success_message.is_empty():
+			_write_success(action_data.success_message)
+		for result in action_data.success_resource_result:
+			inventory_manager.add(result.duplicate())
+		for result in action_data.location_success_resource_result:
+			location_data.resources.add(result.duplicate())
+	else:
+		if not action_data.failure_message.is_empty():
+			_write_failure(action_data.failure_message)
+		for result in action_data.failure_resource_result:
+			inventory_manager.add(result.duplicate())
+		for result in action_data.location_failure_resource_result:
+			location_data.resources.add(result.duplicate())
 func _on_child_entered_container(node: Node):
 	if node.has_signal(&"action_done"):
 		node.action_done.connect(_on_location_action_done)
