@@ -2,6 +2,8 @@
 class_name ActionButton
 extends Button
 
+signal wait_time_passed
+
 @export var wait_time : float = 1.0 :
 	set(value):
 		wait_time = value
@@ -27,4 +29,5 @@ func tick(delta: float):
 	if wait_time_left <= 0: return
 	wait_time_left -= min(wait_time_left, delta)
 	if is_zero_approx(wait_time_left):
+		wait_time_passed.emit()
 		disabled = false

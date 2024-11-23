@@ -1,7 +1,7 @@
 @tool
 extends VBoxContainer
 
-signal action_done(action_data : ActionData, location_data : LocationData)
+signal action_done(action_data : ActionData, location_data : LocationData, action_button : ActionButton)
 
 @export var action_type : Globals.ActionTypes :
 	set(value):
@@ -81,8 +81,7 @@ func _action_done_on_location():
 			actions_available.append(action)
 	if actions_available.size() == 0 : return
 	var random_action : ActionData = actions_available.pick_random()
-	action_done.emit(random_action, _selected_location)
-	%ActionButton.wait(random_action.time_cost)
+	action_done.emit(random_action, _selected_location, %ActionButton)
 	_update_selected_location_resource_meters()
 
 func _on_action_button_pressed():

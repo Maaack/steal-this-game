@@ -6,6 +6,32 @@
 			"description": "Apparel mass-produced over-seas by underpaid workers. The markup is 100x, but there's always a 25% off sale.",
 			"actions_available": [
 				{
+					"action_type": 3,
+					"try_message": "You go in to shop.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						},
+						{
+							"name": "money",
+							"quantity": 25.0
+						}
+					],
+					"success_message": "You buy a discount shirt and pants.",
+					"success_resource_result": [
+						{
+							"name": "clothes",
+							"quantity": 2.0
+						},
+						{
+							"name": "determination",
+							"quantity": -1.0
+						}
+					],
+					"location_success_resource_result": []
+				},
+				{
 					"action_type": 5,
 					"try_message": "You attempt to swipe some clothing.",
 					"resource_cost": [
@@ -41,7 +67,7 @@
 							"quantity": 1.0
 						}
 					],
-					"success_message": "You walk out a fancier person.",
+					"success_message": "You walk out a bulkier, fancier person.",
 					"success_resource_result": [
 						{
 							"name": "fancy clothes",
@@ -103,7 +129,7 @@
 			"actions_available": [
 				{
 					"action_type": 5,
-					"try_message": "You attempt to apply a five-finger discount.",
+					"try_message": "You try redeeming a five-finger discount.",
 					"resource_cost": [
 						{
 							"name": "energy",
