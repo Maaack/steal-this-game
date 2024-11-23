@@ -110,3 +110,13 @@ static func get_resource_unit(resource_name : String) -> ResourceUnit:
 	push_warning("resource matching '%s' not found" % resource_name)
 	return
 
+static func get_comma_separated_list(strings : Array[String]) -> String:
+	if strings.size() > 2:
+		var last_string = strings.pop_back()
+		return ", ".join(strings) + " and " + last_string
+	elif strings.size() == 2:
+		return strings[0] + " and " + strings[1]
+	elif strings.size() == 1:
+		return strings[0]
+	else:
+		return ""

@@ -5,7 +5,8 @@ signal writing_text_finished
 
 @export var char_wait_time: float = 0.025
 @export var event_color: Color = Color.WHITE
-@export var disabled_color: Color = Color.WHITE
+@export var success_color: Color = Color.WHITE
+@export var failure_color: Color = Color.WHITE
 @export var scroll_delay : float = 0.5
 @export var v_scroll_margin: float = 8.0 
 
@@ -58,6 +59,16 @@ func advance_buffer_text():
 func add_event_text(value : String):
 	advance_buffer_text()
 	rich_text_label.text = "%s\n" % value
+	_write_out_line()
+
+func add_failure_text(value : String):
+	advance_buffer_text()
+	rich_text_label.text = "[color=#%s][b]Failure: [/b][/color]%s\n" % [failure_color.to_html(false), value]
+	_write_out_line()
+
+func add_success_text(value : String):
+	advance_buffer_text()
+	rich_text_label.text = "[color=#%s][b]Success: [/b][/color]%s\n" % [success_color.to_html(false), value]
 	_write_out_line()
 
 func add_read_text(value : String):

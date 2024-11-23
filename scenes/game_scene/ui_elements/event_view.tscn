@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b3b7du4t8opy0"]
 
-[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/event_view.gd" id="1_b1e6l"]
+[ext_resource type="Script" uid="uid://bsva0d3q0kg2y" path="res://scenes/game_scene/ui_elements/event_view.gd" id="1_b1e6l"]
 
 [node name="EventView" type="Control"]
 layout_mode = 3
@@ -11,6 +11,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b1e6l")
 char_wait_time = 0.005
+event_color = Color(0.973535, 0.973535, 0.973535, 1)
+success_color = Color(0.235294, 0.231373, 0.431373, 1)
+failure_color = Color(0.698039, 0.133333, 0.203922, 1)
 scroll_delay = 1.0
 v_scroll_margin = 6.0
 
