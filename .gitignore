@@ -3,3 +3,6 @@
 /android/
 
 /addons/
+/exports/
+
+*.uid
