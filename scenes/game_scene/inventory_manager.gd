@@ -26,6 +26,12 @@ func add(item : ResourceQuantity):
 	inventory_updated.emit()
 	quantity_updated.emit(quantity, item.quantity)
 
+func add_by_name(quantity_name : StringName, quantity_amount : float):
+	var quantity := ResourceQuantity.new()
+	quantity.resource_unit = Globals.get_resource_unit(quantity_name)
+	quantity.quantity = quantity_amount
+	add(quantity)
+
 func remove(content:ResourceQuantity):
 	if content == null:
 		return
@@ -34,9 +40,9 @@ func remove(content:ResourceQuantity):
 	inventory_updated.emit()
 	quantity_updated.emit(remaining_quantity, -content.quantity)
 
-func remove_by_name(quantity_name : String, quantity_amount : float):
+func remove_by_name(quantity_name : StringName, quantity_amount : float):
 	var quantity := ResourceQuantity.new()
-	quantity.name = quantity_name
+	quantity.resource_unit = Globals.get_resource_unit(quantity_name)
 	quantity.quantity = quantity_amount
 	remove(quantity)
 

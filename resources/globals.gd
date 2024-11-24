@@ -18,6 +18,7 @@ enum ActionTypes{
 	GIVE,
 	ADVOCATE,
 	LIBERATE,
+	EAT,
 }
 
 enum LocationTypes{
@@ -75,6 +76,7 @@ static var _action_strings : Dictionary = {
 	ActionTypes.GIVE: "Give",
 	ActionTypes.ADVOCATE: "Advocate",
 	ActionTypes.LIBERATE: "Liberate",
+	ActionTypes.EAT: "Eat",
 }
 
 static var _location_strings : Dictionary = {
@@ -108,7 +110,7 @@ static func _fill_game_resources():
 		if resource_unit is ResourceUnit:
 			game_resources.append(resource_unit)
 
-static func get_resource_unit(resource_name : String) -> ResourceUnit:
+static func get_resource_unit(resource_name : StringName) -> ResourceUnit:
 	if game_resources.is_empty(): _fill_game_resources()
 	for resource_unit in game_resources:
 		if resource_unit.name == resource_name:

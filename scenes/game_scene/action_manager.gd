@@ -53,6 +53,15 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			await action_button.wait_time_passed
 			_write_success("You read...")
 			knowledge_manager.read()
+		Globals.ActionTypes.EAT:
+			if not inventory_manager.has(&"food", 1):
+				_write_failure("You are out of food.")
+				return
+			action_button.wait(0.5)
+			await action_button.wait_time_passed
+			_write_success("You eat...")
+			inventory_manager.remove_by_name(&"food", 1)
+			inventory_manager.add_by_name(&"energy", 1)
 
 func _get_action_success(action_data : ActionData, location_data : LocationData) -> bool:
 	var resource_quantities : Dictionary[StringName, float]

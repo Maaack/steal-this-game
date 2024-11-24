@@ -117,6 +117,9 @@ func remove(value:ResourceQuantity):
 		var content = find(value.name)
 		if content is ResourceQuantity:
 			content.quantity -= value.quantity
+		else:
+			value.quantity = -value.quantity
+			contents.append(value)
 	else:
 		contents.erase(value)
 	update_quantities()
