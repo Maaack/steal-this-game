@@ -27,7 +27,6 @@ var _selectable_items : Array[TreeItem]
 func _clear_tree():
 	%Tree.clear()
 	%Tree.create_item()
-	%ActionButton.disabled = true
 
 func _add_location_as_tree_item(location_data : LocationData):
 	var action_tree_item : TreeItem = %Tree.create_item()
@@ -123,7 +122,6 @@ func _update_selected_location():
 	_update_selected_location_details()
 
 func _on_tree_item_selected():
-	%ActionButton.disabled = false
 	_update_selected_location()
 
 func _process(delta):

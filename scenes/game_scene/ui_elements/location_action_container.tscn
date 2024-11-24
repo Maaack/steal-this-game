@@ -14,7 +14,6 @@ resource_meter_scene = ExtResource("2_0l6xd")
 [node name="ActionButton" parent="." instance=ExtResource("2_scrqn")]
 unique_name_in_owner = true
 layout_mode = 2
-disabled = true
 text = "Read"
 
 [node name="Panel" type="Panel" parent="."]
