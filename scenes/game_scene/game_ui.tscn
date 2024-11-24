@@ -183,11 +183,12 @@ layout_mode = 2
 script = ExtResource("8_vbgr5")
 starting_inventory = Array[ExtResource("8_onvsj")]([SubResource("Resource_7aihr"), SubResource("Resource_ulq3g"), SubResource("Resource_0v86b"), SubResource("Resource_gpor5")])
 
-[node name="InventoryUIManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "inventory_grid")]
+[node name="InventoryUIManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "inventory_grid", "event_view")]
 script = ExtResource("11_bmy5n")
 inventory_container_scene = ExtResource("7_8qp3c")
 inventory_manager = NodePath("../InventoryManager")
 inventory_grid = NodePath("../MainUI/HBoxContainer/VBoxContainer/Panel/MarginContainer/GridContainer")
+event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")
 
 [node name="LocationManager" type="Node" parent="."]
 script = ExtResource("13_7aihr")

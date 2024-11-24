@@ -56,7 +56,7 @@ func _ready():
 
 func read():
 	if undiscovered_knowledge.size() == 0:
-		event_view.add_event_text(end_reached_message)
+		event_view.add_text(end_reached_message)
 		return
 	var knowledge_part : KnowledgePart = undiscovered_knowledge.pop_front()
 	if not knowledge_part.text.is_empty():

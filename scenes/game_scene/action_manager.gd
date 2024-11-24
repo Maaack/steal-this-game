@@ -29,7 +29,7 @@ func _ready():
 	action_container.child_entered_tree.connect(_on_child_entered_container)
 
 func _write_event(text : String):
-	event_view.add_event_text(text)
+	event_view.add_text(text)
 
 func _write_failure(text : String):
 	event_view.add_failure_text(text)
@@ -78,7 +78,7 @@ func _on_location_action_done(action_data : ActionData, location_data : Location
 		_write_failure("Not enough %s." % Globals.get_comma_separated_list(missing_resources))
 		return
 	for cost in action_data.resource_cost:
-		inventory_manager.remove(cost.name, cost.quantity)
+		inventory_manager.remove(cost)
 	action_button.wait(action_data.time_cost)
 	await action_button.wait_time_passed
 	if _get_action_success(action_data, location_data):

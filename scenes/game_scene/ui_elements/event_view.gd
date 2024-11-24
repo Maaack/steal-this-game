@@ -55,10 +55,19 @@ func advance_buffer_text():
 	rich_text_label.visible_characters_behavior = TextServer.VC_CHARS_AFTER_SHAPING
 	text_container.add_child(rich_text_label)
 	_scroll_down_to_text.call_deferred()
-	
-func add_event_text(value : String):
+
+func add_text(value : String):
+	if value.is_empty(): return
 	advance_buffer_text()
 	rich_text_label.text = "%s\n" % value
+	_write_out_line()
+
+func add_quantity(quantity_name : String, delta : float, good : bool = true):
+	advance_buffer_text()
+	if (delta > 0 and good) or (delta < 0 and not good):
+		rich_text_label.text = "%s [color=#%s][b]%+.0f[/b][/color]\n" % [quantity_name.capitalize(), success_color.to_html(false), delta]
+	else:
+		rich_text_label.text = "%s [color=#%s][b]%.0f[/b][/color]\n" % [quantity_name.capitalize(), failure_color.to_html(false), delta]
 	_write_out_line()
 
 func add_failure_text(value : String):

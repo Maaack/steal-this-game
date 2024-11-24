@@ -5,6 +5,7 @@ extends Node
 @export var inventory_manager : InventoryManager
 @export var inventory_grid : Container
 @export var max_visible : int = 0
+@export var event_view : EventView
 
 var inventory_map : Dictionary
 
@@ -13,13 +14,14 @@ func _add_inventory_container() -> Node:
 	inventory_grid.add_child(instance)
 	return instance
 
-func _on_quantity_updated(quantity : ResourceQuantity):
+func _on_quantity_updated(quantity : ResourceQuantity, delta : float):
 	if not quantity.name in inventory_map:
 		inventory_map[quantity.name] = _add_inventory_container()
 	var container = inventory_map[quantity.name]
 	container.resource_name = quantity.name
 	container.icon = quantity.icon
 	container.quantity = quantity.quantity
+	event_view.add_quantity(quantity.name, delta)
 
 func _ready():
 	inventory_manager.quantity_updated.connect(_on_quantity_updated)
