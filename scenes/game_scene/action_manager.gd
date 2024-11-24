@@ -46,11 +46,12 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			if location_scouted == null:
 				_write_event("No new locations were discovered.")
 			else:
-				_write_event("You scouted %s" % location_scouted.name)
+				_write_success("You scouted %s" % location_scouted.name)
 		Globals.ActionTypes.READ:
-			_write_event("You try reading another section.")
+			_write_event("You open your secret book to the next section.")
 			action_button.wait(10.0)
 			await action_button.wait_time_passed
+			_write_success("You read...")
 			knowledge_manager.read()
 
 func _get_action_success(action_data : ActionData, location_data : LocationData) -> bool:
