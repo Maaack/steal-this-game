@@ -21,6 +21,9 @@ resource_cost = Array[ExtResource("3_gl82b")]([])
 success_message = ""
 success_resource_result = Array[ExtResource("3_gl82b")]([SubResource("Resource_gl82b")])
 location_success_resource_result = Array[ExtResource("3_gl82b")]([])
+failure_message = ""
+failure_resource_result = Array[ExtResource("3_gl82b")]([])
+location_failure_resource_result = Array[ExtResource("3_gl82b")]([])
 metadata/_custom_type_script = ExtResource("1_bkrpy")
 
 [resource]
