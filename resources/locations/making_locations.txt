@@ -39,18 +39,19 @@ LocationTypes
 	TRAIN_STATION: 37
 
 
-
 ActionTypes
 	READ: 0
 	SCOUT: 1
-	WORK: 2
-	BUY: 3
-	BEG: 4
-	STEAL: 5
-	REST: 6
-	COOK: 7
-	GROW: 8
-	RENT: 0
-	GIVE: 10
-
-
+	REST: 2
+	WORK: 3
+	BUY: 4
+    SELL: 5
+	BEG: 6
+	STEAL: 7
+	COOK: 8
+    CRAFT: 9
+	GROW: 10
+	RENT: 11
+	GIVE: 12
+    ADVOCATE: 13
+    LIBERATE: 14

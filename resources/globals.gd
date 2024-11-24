@@ -5,15 +5,19 @@ extends Object
 enum ActionTypes{
 	READ,
 	SCOUT,
+	REST,
 	WORK,
 	BUY,
+	SELL,
 	BEG,
 	STEAL,
-	REST,
 	COOK,
+	CRAFT,
 	GROW,
 	RENT,
 	GIVE,
+	ADVOCATE,
+	LIBERATE,
 }
 
 enum LocationTypes{
@@ -60,14 +64,17 @@ enum LocationTypes{
 static var _action_strings : Dictionary = {
 	ActionTypes.READ : "Read",
 	ActionTypes.SCOUT : "Scout",
+	ActionTypes.REST : "Rest",
 	ActionTypes.WORK : "Work",
 	ActionTypes.BUY : "Buy",
+	ActionTypes.SELL : "Sell",
 	ActionTypes.BEG : "Beg",
 	ActionTypes.STEAL : "Steal",
-	ActionTypes.REST : "Rest",
 	ActionTypes.COOK: "Cook",
 	ActionTypes.GROW: "Grow",
 	ActionTypes.GIVE: "Give",
+	ActionTypes.ADVOCATE: "Advocate",
+	ActionTypes.LIBERATE: "Liberate",
 }
 
 static var _location_strings : Dictionary = {

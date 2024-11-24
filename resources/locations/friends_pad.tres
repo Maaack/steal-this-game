@@ -14,8 +14,8 @@ metadata/_custom_type_script = ExtResource("3_gl82b")
 
 [sub_resource type="Resource" id="Resource_v6qh2"]
 script = ExtResource("1_bkrpy")
-action = 6
-time_cost = 1.0
+action = 2
+time_cost = 10.0
 try_message = ""
 resource_cost = Array[ExtResource("3_gl82b")]([])
 success_message = ""
