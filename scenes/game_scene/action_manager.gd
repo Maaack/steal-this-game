@@ -57,12 +57,13 @@ func _add_location_action_scene() -> Node:
 func _on_selected_location_changed(location_data : LocationData, action_type : Globals.ActionTypes):
 	selected_location_map[action_type] = location_data
 
-func _get_action_location(action_type : Globals.ActionTypes) -> LocationData:
+func _get_action_location(action_type : Globals.ActionTypes, wait_flag : bool = false) -> LocationData:
 	if action_node == null or detailed_action_type != action_type:
 		_add_location_action_scene()
 		if action_node is LocationAction:
 			action_node.action_type = action_type
 			action_node.locations = location_manager.discovered_locations
+			action_node.wait(wait_flag)
 			if action_type in selected_location_map:
 				action_node.selected_location = selected_location_map[action_type]
 			action_node.selected_location_changed.connect(_on_selected_location_changed)
@@ -85,7 +86,7 @@ func _has_required_resources(resource_cost : Array[ResourceQuantity]) -> bool:
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
 	# Match location actions
 	if action_type in location_actions:
-		var location_data : LocationData = _get_action_location(action_type)
+		var location_data : LocationData = _get_action_location(action_type, action_button.waiting)
 		if location_data and not action_button.waiting:
 			_on_location_action_done(action_type, location_data, action_button)
 	if action_button.waiting: return
