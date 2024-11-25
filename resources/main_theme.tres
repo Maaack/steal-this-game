@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=29 format=3 uid="uid://biktaclghs8u1"]
+[gd_resource type="Theme" load_steps=34 format=3 uid="uid://biktaclghs8u1"]
 
 [ext_resource type="FontFile" uid="uid://dpeqt5iq8v0si" path="res://assets/fonts/lato/Lato-Regular.ttf" id="1_ols5k"]
 [ext_resource type="StyleBox" uid="uid://j2vyjd7v2ljr" path="res://resources/styleboxes/black_box_disabled_flat.tres" id="1_x127s"]
@@ -21,6 +21,12 @@
 [ext_resource type="StyleBox" uid="uid://bvht57aoxt1gw" path="res://resources/styleboxes/tab_selected_flat.tres" id="16_whago"]
 [ext_resource type="StyleBox" uid="uid://bu7duhsavlvnr" path="res://resources/styleboxes/tab_unselected_flat.tres" id="18_d8x3d"]
 [ext_resource type="StyleBox" uid="uid://cxp4k6uinf3ls" path="res://resources/styleboxes/scroll_grabber_pressed_flat.tres" id="19_opsya"]
+[ext_resource type="StyleBox" uid="uid://ctqxcdu6djf3e" path="res://resources/styleboxes/red_box_flat.tres" id="21_wv8md"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8md"]
+bg_color = Color(0.698039, 0.133333, 0.203922, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgisk"]
 
@@ -34,6 +40,22 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 0)
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wv8md"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4ulf"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opsya"]
+bg_color = Color(0.235294, 0.231373, 0.431373, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8x3d"]
 
@@ -56,6 +78,11 @@ Button/styles/focus = ExtResource("2_hofdy")
 Button/styles/hover = ExtResource("2_x127s")
 Button/styles/normal = ExtResource("5_fgisk")
 Button/styles/pressed = ExtResource("5_d8x3d")
+DisabledLabel/base_type = &"Label"
+DisabledLabel/colors/font_color = Color(0, 0, 0, 1)
+DisabledLabel/font_sizes/font_size = 24
+DisabledLabel/fonts/font = ExtResource("5_bjb6u")
+DisabledLabel/styles/normal = SubResource("StyleBoxFlat_wv8md")
 HScrollBar/styles/grabber = ExtResource("11_rrxf3")
 HScrollBar/styles/grabber_highlight = ExtResource("12_2e0dr")
 HScrollBar/styles/grabber_pressed = ExtResource("19_opsya")
@@ -75,8 +102,16 @@ ProgressBar/styles/fill = ExtResource("5_u427p")
 ProgressBarDelay/base_type = &"ProgressBar"
 ProgressBarDelay/styles/background = SubResource("StyleBoxEmpty_hofdy")
 ProgressBarDelay/styles/fill = SubResource("StyleBoxFlat_0ahyh")
+ProgressBarDelayHovered/base_type = &"ProgressBar"
+ProgressBarDelayHovered/styles/background = SubResource("StyleBoxEmpty_wv8md")
+ProgressBarDelayHovered/styles/fill = SubResource("StyleBoxFlat_c4ulf")
 ProgressBarRed/base_type = &"ProgressBar"
 ProgressBarRed/styles/fill = ExtResource("6_7rtxy")
+SelectedLabel/base_type = &"Label"
+SelectedLabel/colors/font_color = Color(0.973535, 0.973535, 0.973535, 1)
+SelectedLabel/font_sizes/font_size = 24
+SelectedLabel/fonts/font = ExtResource("5_bjb6u")
+SelectedLabel/styles/normal = SubResource("StyleBoxFlat_opsya")
 TabContainer/colors/font_disabled_color = Color(0.698039, 0.133333, 0.203922, 1)
 TabContainer/colors/font_hovered_color = Color(0.235294, 0.231373, 0.431373, 1)
 TabContainer/colors/font_selected_color = Color(0.973535, 0.973535, 0.973535, 1)
@@ -107,3 +142,12 @@ VScrollBar/styles/grabber_highlight = ExtResource("12_2e0dr")
 VScrollBar/styles/grabber_pressed = ExtResource("19_opsya")
 VScrollBar/styles/scroll = ExtResource("13_fgisk")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_s1fdf")
+WaitingButton/base_type = &"Button"
+WaitingButton/colors/font_color = Color(0.698039, 0.133333, 0.203922, 1)
+WaitingButton/colors/font_focus_color = Color(0.698039, 0.133333, 0.203922, 1)
+WaitingButton/colors/font_hover_color = Color(0, 0, 0, 1)
+WaitingButton/colors/font_hover_pressed_color = Color(0.698039, 0.133333, 0.203922, 1)
+WaitingButton/colors/font_pressed_color = Color(0.698039, 0.133333, 0.203922, 1)
+WaitingButton/styles/hover = ExtResource("21_wv8md")
+WaitingButton/styles/normal = ExtResource("1_x127s")
+WaitingButton/styles/pressed = ExtResource("1_x127s")

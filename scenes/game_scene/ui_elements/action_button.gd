@@ -9,12 +9,14 @@ signal wait_time_passed
 		wait_time = value
 
 var wait_time_left : float = 0.0
+var waiting : bool = false
 
 func wait(time):
 	if is_zero_approx(time): return
 	wait_time = time
 	wait_time_left = wait_time
-	disabled = true
+	waiting = true
+	theme_type_variation = &"WaitingButton"
 
 func get_progress() -> float:
 	var progress : float = 1.0
@@ -30,4 +32,15 @@ func tick(delta: float):
 	wait_time_left -= min(wait_time_left, delta)
 	if is_zero_approx(wait_time_left):
 		wait_time_passed.emit()
-		disabled = false
+		waiting = false
+		theme_type_variation = &""
+
+func _on_mouse_entered():
+	%ProgressBar.theme_type_variation = &"ProgressBarDelayHovered"
+
+func _on_mouse_exited():
+	%ProgressBar.theme_type_variation = &"ProgressBarDelay"
+
+func _ready():
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
