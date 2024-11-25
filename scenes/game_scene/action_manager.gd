@@ -90,9 +90,9 @@ func _on_location_action_done(action_data : ActionData, location_data : Location
 	var missing_resources : Array[String] = []
 	for cost in action_data.resource_cost:
 		if not inventory_manager.has(cost.name, cost.quantity):
-			missing_resources.append(cost.name)
+			missing_resources.append("%.0f %s" % [cost.quantity, cost.name])
 	if missing_resources.size() > 0:
-		_write_failure("Not enough %s." % Globals.get_comma_separated_list(missing_resources))
+		_write_failure("Requires %s." % Globals.get_comma_separated_list(missing_resources))
 		return
 	for cost in action_data.resource_cost:
 		inventory_manager.remove(cost)
