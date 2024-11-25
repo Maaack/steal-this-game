@@ -3,7 +3,7 @@ extends Node
 const SUSPICION_DECAY : float = 0.001
 
 @export var location_manager : LocationManager
-@export var actions_container : Container
+@export var action_containers : Array[Container]
 @export var enabled : bool = true
 @export_range(0, 16) var game_speed : float = 1.0
 
@@ -18,6 +18,6 @@ func  _process(delta):
 					var min_decay : float = min(decay, decay_quantity.quantity)
 					decay_quantity.quantity = min_decay
 					location.resources.remove(decay_quantity)
-	for child in actions_container.get_children():
+	for child in action_containers:
 		if child.has_method("tick"):
 			child.tick(delta * game_speed)

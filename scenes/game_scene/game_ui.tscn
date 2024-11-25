@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=26 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" uid="uid://585vwtfgqq8m" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://usfxd0w76034" path="res://scenes/game_scene/location_manager.gd" id="13_7aihr"]
 [ext_resource type="Script" uid="uid://dhuxqbrpyvqcb" path="res://resources/location_data.gd" id="16_ulq3g"]
 [ext_resource type="Resource" uid="uid://dbt465fgoh4lm" path="res://resources/locations/friends_pad.tres" id="17_gpor5"]
-[ext_resource type="Script" uid="uid://cgayoq2u77sv2" path="res://scenes/game_scene/ui_elements/location_ui_manager.gd" id="19_g2ndc"]
 [ext_resource type="Script" uid="uid://c3x1nuj4r0paw" path="res://scenes/game_scene/knowledge_manager.gd" id="21_ulq3g"]
 [ext_resource type="Script" uid="uid://c2x3uwavoyywb" path="res://scenes/game_scene/time_manager.gd" id="24_dqr2x"]
 
@@ -58,11 +57,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PauseMenuController" type="Node" parent="." node_paths=PackedStringArray("focused_viewport")]
-script = ExtResource("1_5l4j3")
-pause_menu_packed = ExtResource("2_ltc4h")
-focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_q3ilf")]
 
@@ -127,18 +121,21 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer"]
 layout_mode = 2
 
-[node name="ActionsContainer" type="HBoxContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ScrollContainer"]
+[node name="CityContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer" instance=ExtResource("5_ul61k")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="CityContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ScrollContainer/ActionsContainer" instance=ExtResource("5_ul61k")]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ActionsContainer" type="HBoxContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-city_name = "San Francisco"
-city_actions = Array[int]([0, 1, 15])
 
 [node name="Panel" type="Panel" parent="MainUI/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
@@ -196,12 +193,6 @@ starting_locations = Array[ExtResource("16_ulq3g")]([ExtResource("17_gpor5")])
 directory = "res://resources/locations"
 extension = "json"
 
-[node name="LocationUIManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "location_action_container")]
-script = ExtResource("19_g2ndc")
-location_action_scene = ExtResource("5_v20na")
-location_manager = NodePath("../LocationManager")
-location_action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ScrollContainer/ActionsContainer")
-
 [node name="KnowledgeManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "event_view")]
 script = ExtResource("21_ulq3g")
 end_reached_message = "You've finished reading the source material. You must rely on personal experience."
@@ -211,18 +202,26 @@ files = Array[String](["res://resources/knowledge/chapter1.json"])
 directory = "res://resources/knowledge"
 extension = "json"
 
-[node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "knowledge_manager", "action_container", "event_view")]
+[node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "knowledge_manager", "action_container", "city_container", "event_view")]
 script = ExtResource("6_y85d6")
 city_name = "San Francisco"
-city_actions = Array[int]([0, 1, 15])
+free_actions = Array[int]([14, 15, 0, 1])
+unlocked_actions = Array[int]([0, 1, 15, 14, 2, 3, 4, 5])
 inventory_manager = NodePath("../InventoryManager")
 location_manager = NodePath("../LocationManager")
 knowledge_manager = NodePath("../KnowledgeManager")
-action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ScrollContainer/ActionsContainer")
+action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/ScrollContainer/ActionsContainer")
+city_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")
 event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")
+location_action_scene = ExtResource("5_v20na")
 
-[node name="TimeManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "actions_container")]
+[node name="TimeManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "action_containers")]
 script = ExtResource("24_dqr2x")
 location_manager = NodePath("../LocationManager")
-actions_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/ScrollContainer/ActionsContainer")
+action_containers = [NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")]
 game_speed = 2.0
+
+[node name="PauseMenuController" type="Node" parent="." node_paths=PackedStringArray("focused_viewport")]
+script = ExtResource("1_5l4j3")
+pause_menu_packed = ExtResource("2_ltc4h")
+focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")

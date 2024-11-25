@@ -5,7 +5,6 @@
 [node name="ActionButton" type="Button"]
 offset_right = 1280.0
 offset_bottom = 28.0
-text = "fds"
 script = ExtResource("1_h4la7")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]

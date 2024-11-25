@@ -1,32 +1,37 @@
-@tool
 extends Node
 
 @export var city_name : String :
 	set(value):
 		city_name = value
 		if is_inside_tree():
-			%CityContainer.city_name = city_name
-@export var city_actions : Array[Globals.ActionTypes] :
+			city_container.city_name = city_name
+@export var free_actions : Array[Globals.ActionTypes] :
 	set(value):
-		city_actions = value
-		if is_inside_tree():
-			%CityContainer.city_actions = city_actions
+		free_actions = value
+		for action in free_actions:
+			if action not in unlocked_actions:
+				unlocked_actions.append(action)
+@export var unlocked_actions : Array[Globals.ActionTypes]
 
 @export var inventory_manager : InventoryManager
 @export var location_manager : LocationManager
 @export var knowledge_manager : KnowledgeManager
 @export var action_container : Container
+@export var city_container : CityContainer
 @export var event_view : EventView
+@export var location_action_scene : PackedScene
+
+var available_actions : Array[Globals.ActionTypes]
+var action_node : Control
+var detailed_action_type : Globals.ActionTypes
 
 func _ready():
 	city_name = city_name
-	city_actions = city_actions
-	%CityContainer.action_done.connect(_on_action_done)
-	for child in %ActionsContainer.get_children():
-		if child.has_signal(&"action_done"):
-			if child.action_done.is_connected(_on_action_done): continue
-			child.action_done.connect(_on_location_action_done)
-	action_container.child_entered_tree.connect(_on_child_entered_container)
+	available_actions = free_actions
+	for action_type in available_actions:
+		city_container.add_action(action_type)
+	city_container.action_done.connect(_on_action_done)
+	location_manager.location_discovered.connect(_on_location_discovered)
 
 func _write_event(text : String):
 	event_view.add_text(text)
@@ -37,8 +42,56 @@ func _write_failure(text : String):
 func _write_success(text : String):
 	event_view.add_success_text(text)
 
+func _clear_action_container():
+	if action_node:
+		action_node.queue_free()
+
+func _add_location_action_scene() -> Node:
+	_clear_action_container()
+	action_node = location_action_scene.instantiate()
+	action_container.add_child(action_node)
+	return action_node
+
+func _get_action_location(action_type : Globals.ActionTypes) -> LocationData:
+	if action_node == null or detailed_action_type != action_type:
+		_add_location_action_scene()
+		if action_node is LocationAction:
+			action_node.action_type = action_type
+			action_node.locations = location_manager.discovered_locations
+			detailed_action_type = action_type
+			return null
+	elif action_node is LocationAction:
+		return action_node.selected_location
+	return null
+
+func _has_required_resources(resource_cost : Array[ResourceQuantity]) -> bool:
+	var missing_resources : Array[String] = []
+	for cost in resource_cost:
+		if not inventory_manager.has(cost.name, cost.quantity):
+			missing_resources.append("%.0f %s" % [cost.quantity, cost.name])
+	if missing_resources.size() > 0:
+		_write_failure("Requires %s." % Globals.get_comma_separated_list(missing_resources))
+		return false
+	return true
+
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
 	match action_type:
+		Globals.ActionTypes.LIBERATE:
+			if not inventory_manager.has(&"food", 1000):
+				_write_failure("Requires 1000 food.")
+				return
+			if not inventory_manager.has(&"reputation", 1000):
+				_write_failure("Requires 1000 reputation.")
+				return
+			if not inventory_manager.has(&"energy", 100):
+				_write_failure("Requires 100 energy.")
+				return
+			if not inventory_manager.has(&"determination", 100):
+				_write_failure("Requires 100 determination.")
+				return
+			action_button.wait(60)
+			await action_button.wait_time_passed
+			_write_success("You liberate %s!" % city_name)
 		Globals.ActionTypes.SCOUT:
 			action_button.wait(5.0)
 			await action_button.wait_time_passed
@@ -55,13 +108,17 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			knowledge_manager.read()
 		Globals.ActionTypes.EAT:
 			if not inventory_manager.has(&"food", 1):
-				_write_failure("You are out of food.")
+				_write_failure("Requires 1 food.")
 				return
 			action_button.wait(0.5)
 			await action_button.wait_time_passed
 			_write_success("You eat...")
 			inventory_manager.remove_by_name(&"food", 1)
 			inventory_manager.add_by_name(&"energy", 1)
+		_:
+			var location_data : LocationData = _get_action_location(action_type)
+			if location_data:
+				_on_location_action_done(action_type, location_data, action_button)
 
 func _get_quantity_or_zero(quantity_name: StringName, quantities_map : Dictionary[StringName, float]) -> float:
 	if quantity_name in quantities_map:
@@ -84,8 +141,11 @@ func _get_action_success(action_data : ActionData, location_data : LocationData)
 			return _roll_against_quantity(&"fatigue", resource_quantities) and _roll_against_quantity(&"suspicion", resource_quantities)
 	return true
 
-func _on_location_action_done(action_data : ActionData, location_data : LocationData, action_button : ActionButton):
+func _on_location_action_done(action_type : Globals.ActionTypes, location_data : LocationData, action_button : ActionButton):
 	var event_string : String
+	var action_data = location_data.get_action(action_type)
+	if not action_data:
+		push_error("no action %s on %s" % [action_type, location_data.name])
 	_write_event(action_data.try_message)
 	var missing_resources : Array[String] = []
 	for cost in action_data.resource_cost:
@@ -112,6 +172,15 @@ func _on_location_action_done(action_data : ActionData, location_data : Location
 			inventory_manager.add(result.duplicate())
 		for result in action_data.location_failure_resource_result:
 			location_data.resources.add(result.duplicate())
-func _on_child_entered_container(node: Node):
-	if node.has_signal(&"action_done"):
-		node.action_done.connect(_on_location_action_done)
+
+func _add_available_action(action_type : Globals.ActionTypes):
+	if not action_type in available_actions and action_type in unlocked_actions:
+			available_actions.append(action_type)
+			city_container.add_action(action_type)
+
+func _on_location_discovered(location : LocationData):
+	if location == null: 
+		push_warning("no location provided to discover")
+		return
+	for action in location.actions_available:
+		_add_available_action(action.action)

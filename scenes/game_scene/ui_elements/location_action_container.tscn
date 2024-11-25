@@ -4,23 +4,51 @@
 [ext_resource type="PackedScene" uid="uid://cjlwc0ulw3km3" path="res://scenes/game_scene/ui_elements/resource_meter.tscn" id="2_0l6xd"]
 [ext_resource type="PackedScene" uid="uid://c6df3skcwcmox" path="res://scenes/game_scene/ui_elements/action_button.tscn" id="2_scrqn"]
 
-[node name="LocationActionContainer" type="VBoxContainer"]
-custom_minimum_size = Vector2(240, 300)
-offset_right = 240.0
-offset_bottom = 260.0
+[node name="LocationAction" type="BoxContainer"]
+custom_minimum_size = Vector2(500, 360)
+offset_right = 500.0
+offset_bottom = 360.0
+vertical = true
 script = ExtResource("1_h6lkj")
 resource_meter_scene = ExtResource("2_0l6xd")
 
+[node name="ActionLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+horizontal_alignment = 1
+
 [node name="ActionButton" parent="." instance=ExtResource("2_scrqn")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Read"
 
-[node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 200)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Locations:"
+
+[node name="Tree" type="Tree" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_vertical = 3
+hide_root = true
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,17 +60,17 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
 theme_type_variation = &"LocationName"
 text_overrun_behavior = 4
 
-[node name="TypeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/NameLabel"]
+[node name="TypeLabel" type="Label" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/NameLabel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
@@ -56,39 +84,28 @@ grow_vertical = 0
 theme_type_variation = &"LocationType"
 horizontal_alignment = 2
 
-[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="DescriptionLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="RichTextLabel" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 
-[node name="HSeparator2" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="ResourceContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="ResourceContainer" type="VBoxContainer" parent="HBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-text = "Locations:"
-
-[node name="Tree" type="Tree" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 124)
-layout_mode = 2
-size_flags_vertical = 3
-hide_root = true
-
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
 [connection signal="wait_time_passed" from="ActionButton" to="." method="_on_action_button_wait_time_passed"]
-[connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/Tree" to="." method="_on_tree_item_selected"]
