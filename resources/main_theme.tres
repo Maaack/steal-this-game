@@ -1,13 +1,13 @@
-[gd_resource type="Theme" load_steps=28 format=3 uid="uid://biktaclghs8u1"]
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://biktaclghs8u1"]
 
 [ext_resource type="FontFile" uid="uid://dpeqt5iq8v0si" path="res://assets/fonts/lato/Lato-Regular.ttf" id="1_ols5k"]
-[ext_resource type="StyleBox" uid="uid://csjnhp0fhn13y" path="res://resources/styleboxes/black_box_hover_flat.tres" id="1_vnc4k"]
 [ext_resource type="StyleBox" uid="uid://j2vyjd7v2ljr" path="res://resources/styleboxes/black_box_disabled_flat.tres" id="1_x127s"]
 [ext_resource type="StyleBox" uid="uid://qf1h1uwbqb03" path="res://resources/styleboxes/focus_box_flat.tres" id="2_hofdy"]
 [ext_resource type="StyleBox" uid="uid://2rix2x10ao8d" path="res://resources/styleboxes/black_box_flat.tres" id="2_x127s"]
 [ext_resource type="StyleBox" uid="uid://5xx8h8me0sif" path="res://resources/styleboxes/progress_bar_flat.tres" id="4_qjhx0"]
 [ext_resource type="StyleBox" uid="uid://c4y71ugaff2lo" path="res://resources/styleboxes/graphite_box_flat.tres" id="5_0ahyh"]
 [ext_resource type="FontFile" uid="uid://bnc8d6ilbukg4" path="res://assets/fonts/lato/Lato-Semibold.ttf" id="5_bjb6u"]
+[ext_resource type="StyleBox" uid="uid://c5s8k6a6yxd46" path="res://resources/styleboxes/blue_box_hover_flat.tres" id="5_d8x3d"]
 [ext_resource type="StyleBox" uid="uid://bp14mhoqareox" path="res://resources/styleboxes/white_box_flat.tres" id="5_fgisk"]
 [ext_resource type="StyleBox" uid="uid://hqwx716xbg42" path="res://resources/styleboxes/progress_bar_blue_flat.tres" id="5_u427p"]
 [ext_resource type="StyleBox" uid="uid://b5gux1paty7oq" path="res://resources/styleboxes/progress_bar_red_flat.tres" id="6_7rtxy"]
@@ -20,6 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://nk0j13ghxo6x" path="res://resources/styleboxes/tab_hovered_flat.tres" id="16_d8x3d"]
 [ext_resource type="StyleBox" uid="uid://bvht57aoxt1gw" path="res://resources/styleboxes/tab_selected_flat.tres" id="16_whago"]
 [ext_resource type="StyleBox" uid="uid://bu7duhsavlvnr" path="res://resources/styleboxes/tab_unselected_flat.tres" id="18_d8x3d"]
+[ext_resource type="StyleBox" uid="uid://cxp4k6uinf3ls" path="res://resources/styleboxes/scroll_grabber_pressed_flat.tres" id="19_opsya"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgisk"]
 
@@ -44,19 +45,20 @@ corner_radius_bottom_left = 4
 
 [resource]
 default_font = ExtResource("1_ols5k")
-Button/colors/font_color = Color(0.973535, 0.973535, 0.973535, 1)
+Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.698039, 0.133333, 0.203922, 1)
-Button/colors/font_hover_color = Color(0.235294, 0.231373, 0.431373, 1)
-Button/colors/font_hover_pressed_color = Color(0.235294, 0.231373, 0.431373, 1)
-Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.973535, 0.973535, 0.973535, 1)
+Button/colors/font_hover_pressed_color = Color(0.973535, 0.973535, 0.973535, 1)
+Button/colors/font_pressed_color = Color(0.235294, 0.231373, 0.431373, 1)
 Button/styles/disabled = ExtResource("1_x127s")
 Button/styles/focus = ExtResource("2_hofdy")
-Button/styles/hover = ExtResource("1_vnc4k")
-Button/styles/normal = ExtResource("2_x127s")
-Button/styles/pressed = ExtResource("5_fgisk")
+Button/styles/hover = ExtResource("2_x127s")
+Button/styles/normal = ExtResource("5_fgisk")
+Button/styles/pressed = ExtResource("5_d8x3d")
 HScrollBar/styles/grabber = ExtResource("11_rrxf3")
 HScrollBar/styles/grabber_highlight = ExtResource("12_2e0dr")
-HScrollBar/styles/grabber_pressed = ExtResource("11_rrxf3")
+HScrollBar/styles/grabber_pressed = ExtResource("19_opsya")
 HScrollBar/styles/scroll = ExtResource("7_2e0dr")
 HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_fgisk")
 LocationName/base_type = &"Label"
@@ -102,6 +104,6 @@ Tree/styles/selected = ExtResource("5_0ahyh")
 Tree/styles/selected_focus = ExtResource("5_0ahyh")
 VScrollBar/styles/grabber = ExtResource("11_rrxf3")
 VScrollBar/styles/grabber_highlight = ExtResource("12_2e0dr")
-VScrollBar/styles/grabber_pressed = ExtResource("11_rrxf3")
+VScrollBar/styles/grabber_pressed = ExtResource("19_opsya")
 VScrollBar/styles/scroll = ExtResource("13_fgisk")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_s1fdf")
