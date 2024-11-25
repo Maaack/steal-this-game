@@ -14,13 +14,12 @@
 			]
 		},
 		{
-			"text": "Something else about security",
-			"resources": [
-				{
-				"name":"security",
-				"quantity":5
-				}
-			]
+			"text": "Section 2: Food\n\nYou can beg for food!",
+			"action_unlocks": [6]
+		},
+		{
+			"text": "You can steal food, too!",
+			"action_unlocks": [7]
 		}
 	]
 }
