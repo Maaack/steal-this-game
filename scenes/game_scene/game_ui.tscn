@@ -215,6 +215,7 @@ action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/
 city_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")
 event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")
 location_action_scene = ExtResource("5_v20na")
+location_actions = Array[int]([2, 3, 4, 5, 6, 7, 10, 13])
 
 [node name="TimeManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "action_containers")]
 script = ExtResource("24_dqr2x")

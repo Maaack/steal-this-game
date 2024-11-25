@@ -20,6 +20,7 @@ extends Node
 @export var city_container : CityContainer
 @export var event_view : EventView
 @export var location_action_scene : PackedScene
+@export var location_actions : Array[Globals.ActionTypes]
 
 var available_actions : Array[Globals.ActionTypes]
 var action_node : Control
@@ -82,6 +83,12 @@ func _has_required_resources(resource_cost : Array[ResourceQuantity]) -> bool:
 	return true
 
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
+	# Match location actions
+	if action_type in location_actions:
+		var location_data : LocationData = _get_action_location(action_type)
+		if location_data and not action_button.waiting:
+			_on_location_action_done(action_type, location_data, action_button)
+	if action_button.waiting: return
 	match action_type:
 		Globals.ActionTypes.LIBERATE:
 			if not inventory_manager.has(&"food", 1000):
@@ -123,9 +130,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			inventory_manager.remove_by_name(&"food", 1)
 			inventory_manager.add_by_name(&"energy", 1)
 		_:
-			var location_data : LocationData = _get_action_location(action_type)
-			if location_data:
-				_on_location_action_done(action_type, location_data, action_button)
+			push_warning("No condition for action %s" % Globals.get_action_string(action_type))
 
 func _get_quantity_or_zero(quantity_name: StringName, quantities_map : Dictionary[StringName, float]) -> float:
 	if quantity_name in quantities_map:
