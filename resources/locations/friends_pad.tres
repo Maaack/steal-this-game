@@ -1,35 +1,13 @@
-[gd_resource type="Resource" script_class="LocationData" load_steps=7 format=3 uid="uid://dbt465fgoh4lm"]
+[gd_resource type="Resource" script_class="LocationData" load_steps=4 format=3 uid="uid://dbt465fgoh4lm"]
 
 [ext_resource type="Script" uid="uid://5on8elfd70ti" path="res://resources/action_data.gd" id="1_bkrpy"]
-[ext_resource type="Script" uid="uid://cmb2xqkhuymla" path="res://resources/resource_quantity.gd" id="3_gl82b"]
+[ext_resource type="Resource" uid="uid://brofm3m7djrai" path="res://resources/actions/rest_at_friends_pad.tres" id="2_bkrpy"]
 [ext_resource type="Script" uid="uid://dhuxqbrpyvqcb" path="res://resources/location_data.gd" id="3_v6qh2"]
-[ext_resource type="Resource" uid="uid://bvr04akq0k4jf" path="res://resources/game_resources/energy.tres" id="4_v6qh2"]
-
-[sub_resource type="Resource" id="Resource_gl82b"]
-script = ExtResource("3_gl82b")
-numerical_unit = 0
-quantity = 10.0
-resource_unit = ExtResource("4_v6qh2")
-metadata/_custom_type_script = ExtResource("3_gl82b")
-
-[sub_resource type="Resource" id="Resource_v6qh2"]
-script = ExtResource("1_bkrpy")
-action = 2
-time_cost = 10.0
-try_message = ""
-resource_cost = Array[ExtResource("3_gl82b")]([])
-success_message = ""
-success_resource_result = Array[ExtResource("3_gl82b")]([SubResource("Resource_gl82b")])
-location_success_resource_result = Array[ExtResource("3_gl82b")]([])
-failure_message = ""
-failure_resource_result = Array[ExtResource("3_gl82b")]([])
-location_failure_resource_result = Array[ExtResource("3_gl82b")]([])
-metadata/_custom_type_script = ExtResource("1_bkrpy")
 
 [resource]
 script = ExtResource("3_v6qh2")
 location_type = 0
 name = "Friend's Pad"
-description = "Your friend is letting you crash in their extra room for a month. They even let you use the kitchen."
-actions_available = Array[ExtResource("1_bkrpy")]([SubResource("Resource_v6qh2")])
+description = "Your friend said they'd let you crash on the couch every once in a while."
+actions_available = Array[ExtResource("1_bkrpy")]([ExtResource("2_bkrpy")])
 metadata/_custom_type_script = ExtResource("3_v6qh2")

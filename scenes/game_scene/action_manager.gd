@@ -63,17 +63,25 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			inventory_manager.remove_by_name(&"food", 1)
 			inventory_manager.add_by_name(&"energy", 1)
 
+func _get_quantity_or_zero(quantity_name: StringName, quantities_map : Dictionary[StringName, float]) -> float:
+	if quantity_name in quantities_map:
+		return quantities_map[quantity_name]
+	return 0.0
+
+func _roll_against_quantity(quantity_name: StringName, quantities_map : Dictionary[StringName, float]) -> bool:
+	return randf() > _get_quantity_or_zero(quantity_name, quantities_map)
+
 func _get_action_success(action_data : ActionData, location_data : LocationData) -> bool:
 	var resource_quantities : Dictionary[StringName, float]
 	for quantity_data in location_data.resources.quantities:
 		resource_quantities[quantity_data.name] = quantity_data.quantity
 	match action_data.action:
 		Globals.ActionTypes.STEAL:
-			if not &"suspicion" in resource_quantities: return true
-			return randf() > resource_quantities[&"suspicion"]
+			return _roll_against_quantity(&"suspicion", resource_quantities)
 		Globals.ActionTypes.BEG:
-			if not &"fatigue" in resource_quantities: return true
-			return randf() > resource_quantities[&"fatigue"]
+			return _roll_against_quantity(&"fatigue", resource_quantities)
+		_:
+			return _roll_against_quantity(&"fatigue", resource_quantities) and _roll_against_quantity(&"suspicion", resource_quantities)
 	return true
 
 func _on_location_action_done(action_data : ActionData, location_data : LocationData, action_button : ActionButton):

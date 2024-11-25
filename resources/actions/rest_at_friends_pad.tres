@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="ActionData" load_steps=8 format=3 uid="uid://brofm3m7djrai"]
+
+[ext_resource type="Script" uid="uid://cmb2xqkhuymla" path="res://resources/resource_quantity.gd" id="1_e3ic6"]
+[ext_resource type="Resource" uid="uid://cpmuyagksp4fg" path="res://resources/game_resources/fatigue.tres" id="2_gurjf"]
+[ext_resource type="Script" uid="uid://5on8elfd70ti" path="res://resources/action_data.gd" id="2_i10ko"]
+[ext_resource type="Resource" uid="uid://bvr04akq0k4jf" path="res://resources/game_resources/energy.tres" id="3_gurjf"]
+
+[sub_resource type="Resource" id="Resource_i10ko"]
+script = ExtResource("1_e3ic6")
+numerical_unit = 0
+quantity = 0.05
+resource_unit = ExtResource("2_gurjf")
+metadata/_custom_type_script = ExtResource("1_e3ic6")
+
+[sub_resource type="Resource" id="Resource_t0g5s"]
+script = ExtResource("1_e3ic6")
+numerical_unit = 0
+quantity = 0.2
+resource_unit = ExtResource("2_gurjf")
+metadata/_custom_type_script = ExtResource("1_e3ic6")
+
+[sub_resource type="Resource" id="Resource_gl82b"]
+script = ExtResource("1_e3ic6")
+numerical_unit = 0
+quantity = 8.0
+resource_unit = ExtResource("3_gurjf")
+metadata/_custom_type_script = ExtResource("1_e3ic6")
+
+[resource]
+script = ExtResource("2_i10ko")
+action = 2
+time_cost = 30.0
+try_message = "You try crashing at your friend's pad."
+resource_cost = Array[ExtResource("1_e3ic6")]([])
+success_message = "Your get a good nights sleep on the living room couch."
+success_resource_result = Array[ExtResource("1_e3ic6")]([SubResource("Resource_gl82b")])
+location_success_resource_result = Array[ExtResource("1_e3ic6")]([SubResource("Resource_t0g5s")])
+failure_message = "Your request to crash the night is politely declined."
+failure_resource_result = Array[ExtResource("1_e3ic6")]([])
+location_failure_resource_result = Array[ExtResource("1_e3ic6")]([SubResource("Resource_i10ko")])
+metadata/_custom_type_script = ExtResource("2_i10ko")

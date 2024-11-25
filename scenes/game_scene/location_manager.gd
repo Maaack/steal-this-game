@@ -39,6 +39,8 @@ func _parse_locations(locations : Array) -> Array:
 					action_data.try_message = _action["try_message"]
 				if "time_cost" in _action:
 					action_data.time_cost = _action["time_cost"]
+				else:
+					push_warning("%s at %s has no set time_cost" % [action_data.action, location_data.name])
 				if "resource_cost" in _action:
 					var _resources : Array = _action["resource_cost"]
 					for _resource in _resources:

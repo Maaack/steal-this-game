@@ -7,6 +7,7 @@
 			"actions_available": [
 				{
 					"action_type": 4,
+					"time_cost":3,
 					"try_message": "You go in to shop.",
 					"resource_cost": [
 						{
@@ -33,6 +34,7 @@
 				},
 				{
 					"action_type": 7,
+					"time_cost":5,
 					"try_message": "You attempt to swipe some clothing.",
 					"resource_cost": [
 						{
@@ -68,6 +70,7 @@
 				},
 				{
 					"action_type": 7,
+					"time_cost":5,
 					"try_message": "You consider misappropriating elegant attire.",
 					"resource_cost": [
 						{
@@ -110,6 +113,7 @@
 			"actions_available": [
 				{
 					"action_type": 4,
+					"time_cost":3,
 					"try_message": "You go to shop at the bakery.",
 					"resource_cost": [
 						{
@@ -132,6 +136,7 @@
 				},
 				{
 					"action_type": 7,
+					"time_cost":5,
 					"try_message": "You try lifting some baked goods.",
 					"resource_cost": [
 						{
@@ -175,6 +180,7 @@
 			"actions_available": [
 				{
 					"action_type": 4,
+					"time_cost":3,
 					"try_message": "You go to shop at the supermarket.",
 					"resource_cost": [
 						{
@@ -201,6 +207,7 @@
 				},
 				{
 					"action_type": 7,
+					"time_cost":5,
 					"try_message": "You try redeeming a five-finger discount.",
 					"resource_cost": [
 						{
@@ -244,13 +251,14 @@
 			"actions_available": [
 				{
 					"action_type": 2,
+					"time_cost":30,
 					"try_message": "You try falling asleep on a secluded bench.",
 					"resource_cost": [],
 					"success_message": "You get some rest, though wake up a little sore.",
 					"success_resource_result": [
 						{
 							"name": "energy",
-							"quantity": 6.0
+							"quantity": 4.0
 						}
 					],
 					"location_success_resource_result": [
@@ -270,8 +278,14 @@
 				},
 				{
 					"action_type": 13,
+					"time_cost":10,
 					"try_message": "You try to spread a message of hope and resistance.",
-					"resource_cost": [],
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
 					"success_message": "You connect with someone over their personal struggles.",
 					"success_resource_result": [
 						{
