@@ -208,6 +208,7 @@ script = ExtResource("6_y85d6")
 city_name = "San Francisco"
 free_actions = Array[int]([15, 0, 1])
 unlocked_actions = Array[int]([0, 1, 15, 2, 3, 4, 5])
+location_actions = Array[int]([2, 3, 4, 5, 6, 7, 10, 13])
 inventory_manager = NodePath("../InventoryManager")
 location_manager = NodePath("../LocationManager")
 knowledge_manager = NodePath("../KnowledgeManager")
@@ -215,7 +216,6 @@ action_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/
 city_container = NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")
 event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")
 location_action_scene = ExtResource("5_v20na")
-location_actions = Array[int]([2, 3, 4, 5, 6, 7, 10, 13])
 
 [node name="TimeManager" type="Node" parent="." node_paths=PackedStringArray("location_manager", "action_containers")]
 script = ExtResource("24_dqr2x")

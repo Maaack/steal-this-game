@@ -25,8 +25,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8md"]
 bg_color = Color(0.698039, 0.133333, 0.203922, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgisk"]
 
@@ -54,8 +52,6 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opsya"]
 bg_color = Color(0.235294, 0.231373, 0.431373, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8x3d"]
 

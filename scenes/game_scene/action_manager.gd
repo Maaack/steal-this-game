@@ -12,6 +12,7 @@ extends Node
 			if action not in unlocked_actions:
 				unlocked_actions.append(action)
 @export var unlocked_actions : Array[Globals.ActionTypes]
+@export var location_actions : Array[Globals.ActionTypes]
 
 @export var inventory_manager : InventoryManager
 @export var location_manager : LocationManager
@@ -20,7 +21,6 @@ extends Node
 @export var city_container : CityContainer
 @export var event_view : EventView
 @export var location_action_scene : PackedScene
-@export var location_actions : Array[Globals.ActionTypes]
 
 var available_actions : Array[Globals.ActionTypes]
 var action_node : Control
@@ -168,7 +168,10 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 		return
 	for cost in action_data.resource_cost:
 		inventory_manager.remove(cost)
+	# Begin action
 	action_button.wait(action_data.time_cost)
+	if action_node.action_type == action_type and action_node.has_method(&"wait"):
+		action_node.wait(true)
 	await action_button.wait_time_passed
 	if _get_action_success(action_data, location_data):
 		if not action_data.success_message.is_empty():
@@ -184,6 +187,8 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 			inventory_manager.add(result.duplicate())
 		for result in action_data.location_failure_resource_result:
 			location_data.resources.add(result.duplicate())
+	if action_node.action_type == action_type and action_node.has_method(&"wait"):
+		action_node.wait(false)
 
 func _add_available_action(action_type : Globals.ActionTypes):
 	if not action_type in available_actions and action_type in unlocked_actions:

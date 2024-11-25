@@ -163,3 +163,9 @@ func tick(delta: float):
 
 func _on_action_button_wait_time_passed():
 	_update_selected_location_resource_meters.call_deferred()
+
+func wait(flag: bool = true):
+	if flag:
+		%ActionLabel.theme_type_variation = &"DisabledLabel"
+	else:
+		%ActionLabel.theme_type_variation = &"SelectedLabel"
