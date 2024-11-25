@@ -2,6 +2,8 @@
 class_name KnowledgeManager
 extends DirectoryReader
 
+signal action_learned(action_type : Globals.ActionTypes)
+
 @export_multiline var end_reached_message : String = ""
 @export var inventory_manager : InventoryManager
 @export var event_view : EventView
@@ -9,6 +11,7 @@ extends DirectoryReader
 class KnowledgePart :
 	var text : String
 	var resources : Array[ResourceQuantity]
+	var action_unlocks : Array[Globals.ActionTypes]
 
 var undiscovered_knowledge : Array[KnowledgePart] = []
 var discovered_knowledge : Array[KnowledgePart] = []
@@ -37,13 +40,16 @@ func _parse_knowledge_parts(parts : Array) -> Array:
 				resource_quantity.resource_unit = Globals.get_resource_unit(resource["name"])
 				resource_quantity.quantity = resource["quantity"]
 				knowledge_part.resources.append(resource_quantity)
+		if "action_unlocks" in part:
+			for action_type_int in part["action_unlocks"]:
+				knowledge_part.action_unlocks.append(action_type_int as Globals.ActionTypes)
 		parsed_parts.append(knowledge_part)
 	return parsed_parts
 
 func _parse_knowledge_file(file_path) -> Array:
 	var json_data = _read_json_from_file(file_path)
-	if "parts" in json_data:
-		return _parse_knowledge_parts(json_data["parts"])
+	if "knowledge" in json_data:
+		return _parse_knowledge_parts(json_data["knowledge"])
 	return []
 
 func _ready():
@@ -63,4 +69,6 @@ func read():
 		event_view.add_read_text(knowledge_part.text)
 	for resource_quantity in knowledge_part.resources:
 		inventory_manager.add(resource_quantity)
+	for action_type in knowledge_part.action_unlocks:
+		action_learned.emit(action_type)
 	discovered_knowledge.append(knowledge_part)

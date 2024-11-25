@@ -34,6 +34,7 @@ func _ready():
 		city_container.add_action(action_type)
 	city_container.action_done.connect(_on_action_done)
 	location_manager.location_discovered.connect(_on_location_discovered)
+	knowledge_manager.action_learned.connect(_on_action_learned)
 
 func _write_event(text : String):
 	event_view.add_text(text)
@@ -205,3 +206,11 @@ func _on_location_discovered(location : LocationData):
 	if action_node is LocationAction:
 		action_node.locations = location_manager.discovered_locations
 		action_node.update_locations()
+
+func _unlock_action(action_type : Globals.ActionTypes):
+	if action_type not in unlocked_actions:
+		unlocked_actions.append(action_type)
+		_add_available_action(action_type)
+
+func _on_action_learned(action_type : Globals.ActionTypes):
+	_unlock_action(action_type)

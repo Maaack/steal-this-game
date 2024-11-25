@@ -1,16 +1,26 @@
 {
-	"parts": [
+	"knowledge": [
 		{
-			"text": "Security Culture"
+			"text": "Steal This Book (vol 4)\n\nTable of Contents\nChapter 1: Survive\nChapter 2: Fight\nChapter 3: Liberate",
+			"action_unlocks": [14]
 		},
 		{
-			"text": "Police! They're everywhere!",
-         "resources": [
-            {
-               "name":"security",
-               "quantity":5
-            }
-         ]
+			"text": "Survive\n\nSection 1: Security Culture\n\nPolice! They're everywhere!",
+			"resources": [
+				{
+				"name":"security",
+				"quantity":5
+				}
+			]
+		},
+		{
+			"text": "Something else about security",
+			"resources": [
+				{
+				"name":"security",
+				"quantity":5
+				}
+			]
 		}
 	]
 }
