@@ -50,7 +50,7 @@ enum LocationTypes{
 	GUN_STORE,
 	DISCOUNT_CLOTHING_STORE,
 	CHAIN_CLOTHING_STORE,
-	FASHION_STORE,
+	CRAFTS_STORE,
 	COSTUME_STORE,
 	POLICE_STATION,
 	FIRE_STATION,
@@ -82,9 +82,15 @@ static var _action_strings : Dictionary = {
 static var _location_strings : Dictionary = {
 	LocationTypes.APARTMENTS : "Apartments",
 	LocationTypes.BAKERY : "Bakery",
+	LocationTypes.PARK : "Park",
+	LocationTypes.OFFICES : "Offices",
 	LocationTypes.SUPERMARKET : "Supermarket",
 	LocationTypes.GROCERY_STORE : "Grocery Store",
+	LocationTypes.GAS_STATION : "Gas Station",
+	LocationTypes.GARDENING_STORE : "Gardening Store",
+	LocationTypes.CRAFTS_STORE : "Crafts Store",
 	LocationTypes.CHAIN_CLOTHING_STORE : "Clothing Depot Chain",
+	LocationTypes.BANK : "Bank",
 }
 
 static func get_action_string(action_type : ActionTypes) -> String:
