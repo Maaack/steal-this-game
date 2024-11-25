@@ -9,7 +9,7 @@ signal action_done(action_data : ActionData, location_data : LocationData, actio
 		var _value_changed = action_type != value
 		action_type = value
 		if is_inside_tree() and _value_changed:
-			_update_locations()
+			update_locations()
 			_set_label()
 			_set_button()
 	
@@ -18,7 +18,7 @@ signal action_done(action_data : ActionData, location_data : LocationData, actio
 		var _value_changed = locations != value
 		locations = value
 		if is_inside_tree() and _value_changed:
-			_update_locations()
+			update_locations()
 @export var resource_meter_scene : PackedScene
 
 @onready var resource_container : Container = %ResourceContainer
@@ -41,7 +41,7 @@ func _add_location_as_tree_item(location_data : LocationData):
 func _select_first_if_null():
 	if selected_location == null and _selectable_items.size() > 0:
 		_selectable_items[0].select(0)
-		_updateselected_location()
+		_update_selected_location()
 
 func _add_locations_items():
 	for location in locations:
@@ -51,10 +51,10 @@ func _add_locations_items():
 func add_location(location: LocationData):
 	if location not in locations:
 		locations.append(location)
-		_add_location_as_tree_item(location)
+		update_locations()
 	_select_first_if_null()
 
-func _update_locations():
+func update_locations():
 	_clear_tree()
 	_add_locations_items()
 	_select_first_if_null()
@@ -68,7 +68,7 @@ func _set_button():
 func _ready():
 	action_type = action_type
 	_set_button()
-	_update_locations()
+	update_locations()
 
 func _update_bar_with_resource(resource_meter : ResourceMeter, resource_name : String):
 	var quantity : float = 0
@@ -88,7 +88,7 @@ func _action_done_on_location():
 	if actions_available.size() == 0 : return
 	var random_action : ActionData = actions_available.pick_random()
 	action_done.emit(random_action, selected_location, %ActionButton)
-	_updateselected_location_resource_meters()
+	_update_selected_location_resource_meters()
 
 func _on_action_button_pressed():
 	_action_done_on_location()
@@ -108,30 +108,34 @@ func _add_meter_for_resource(quantity : ResourceQuantity):
 	resource_container.add_child(resource_meter_instance)
 	resource_meter_map[quantity.name] = resource_meter_instance
 
-func _updateselected_location_resource_meters():
+func _update_selected_location_resource_meters():
 	_clear_resource_container()
 	for quantity in selected_location.resources.contents:
 		_add_meter_for_resource(quantity)
 
-func _updateselected_location_details():
+func _update_selected_location_details():
 	%NameLabel.text = selected_location.name
 	%TypeLabel.text = selected_location.get_location_string()
 	%DescriptionLabel.text = selected_location.description
-	_updateselected_location_resource_meters()
+	_update_selected_location_resource_meters()
 
-func _updateselected_location():
+func _update_selected_location():
 	var _selected_item: TreeItem = %Tree.get_selected()
 	if _selected_item == null: return
 	for location in locations:
 		if location.name == _selected_item.get_text(0):
 			selected_location = location
 			break
-	_updateselected_location_details()
+	_update_selected_location_details()
 
 func _on_tree_item_selected():
-	_updateselected_location()
+	_update_selected_location()
 
 func _process(delta):
+	if selected_location == null: return
+	for quantity in selected_location.resources.quantities:
+		if quantity.name not in resource_meter_map:
+			_add_meter_for_resource(quantity)
 	for resource_name in resource_meter_map:
 		var resource_instance = resource_meter_map[resource_name]
 		_update_bar_with_resource(resource_instance, resource_name)
@@ -140,4 +144,4 @@ func tick(delta: float):
 	%ActionButton.tick(delta)
 
 func _on_action_button_wait_time_passed():
-	_updateselected_location_resource_meters.call_deferred()
+	_update_selected_location_resource_meters.call_deferred()

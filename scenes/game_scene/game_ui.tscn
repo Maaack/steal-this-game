@@ -205,8 +205,8 @@ extension = "json"
 [node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "knowledge_manager", "action_container", "city_container", "event_view")]
 script = ExtResource("6_y85d6")
 city_name = "San Francisco"
-free_actions = Array[int]([14, 15, 0, 1])
-unlocked_actions = Array[int]([0, 1, 15, 14, 2, 3, 4, 5])
+free_actions = Array[int]([15, 0, 1])
+unlocked_actions = Array[int]([0, 1, 15, 2, 3, 4, 5])
 inventory_manager = NodePath("../InventoryManager")
 location_manager = NodePath("../LocationManager")
 knowledge_manager = NodePath("../KnowledgeManager")

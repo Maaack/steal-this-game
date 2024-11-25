@@ -184,3 +184,6 @@ func _on_location_discovered(location : LocationData):
 		return
 	for action in location.actions_available:
 		_add_available_action(action.action)
+	if action_node is LocationAction:
+		action_node.locations = location_manager.discovered_locations
+		action_node.update_locations()
