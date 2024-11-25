@@ -24,6 +24,7 @@ extends Node
 var available_actions : Array[Globals.ActionTypes]
 var action_node : Control
 var detailed_action_type : Globals.ActionTypes
+var selected_location_map : Dictionary[Globals.ActionTypes, LocationData]
 
 func _ready():
 	city_name = city_name
@@ -52,12 +53,18 @@ func _add_location_action_scene() -> Node:
 	action_container.add_child(action_node)
 	return action_node
 
+func _on_selected_location_changed(location_data : LocationData, action_type : Globals.ActionTypes):
+	selected_location_map[action_type] = location_data
+
 func _get_action_location(action_type : Globals.ActionTypes) -> LocationData:
 	if action_node == null or detailed_action_type != action_type:
 		_add_location_action_scene()
 		if action_node is LocationAction:
 			action_node.action_type = action_type
 			action_node.locations = location_manager.discovered_locations
+			if action_type in selected_location_map:
+				action_node.selected_location = selected_location_map[action_type]
+			action_node.selected_location_changed.connect(_on_selected_location_changed)
 			detailed_action_type = action_type
 			return null
 	elif action_node is LocationAction:

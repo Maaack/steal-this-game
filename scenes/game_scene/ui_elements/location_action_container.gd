@@ -3,6 +3,7 @@ class_name LocationAction
 extends BoxContainer
 
 signal action_done(action_data : ActionData, location_data : LocationData, action_button : ActionButton)
+signal selected_location_changed(location_data : LocationData)
 
 @export var action_type : Globals.ActionTypes :
 	set(value):
@@ -24,24 +25,41 @@ signal action_done(action_data : ActionData, location_data : LocationData, actio
 @onready var resource_container : Container = %ResourceContainer
 
 var resource_meter_map : Dictionary[StringName, ResourceMeter]
-var selected_location : LocationData
-var _selectable_items : Array[TreeItem]
+var selected_location : LocationData :
+	set(value):
+		var _value_changed = selected_location != value
+		selected_location = value
+		if _value_changed:
+			_refresh_selected_location()
+			selected_location_changed.emit(selected_location, action_type)
+
+var _selectable_item_map : Dictionary[TreeItem, LocationData]
 
 func _clear_tree():
 	%Tree.clear()
 	%Tree.create_item()
+	_selectable_item_map.clear()
 
 func _add_location_as_tree_item(location_data : LocationData):
 	var action_tree_item : TreeItem = %Tree.create_item()
 	action_tree_item.set_text(0, location_data.name)
-	_selectable_items.append(action_tree_item)
+	_selectable_item_map[action_tree_item] = location_data
 	if location_data == selected_location:
 		action_tree_item.select(0)
 
-func _select_first_if_null():
-	if selected_location == null and _selectable_items.size() > 0:
-		_selectable_items[0].select(0)
-		_update_selected_location()
+func _refresh_selected_location():
+	for tree_item in _selectable_item_map:
+		# Select first if none selected
+		if selected_location == null:
+			if not tree_item.is_selected(0):
+				tree_item.select(0)
+			return
+		else:
+			var location_data = _selectable_item_map[tree_item]
+			if location_data == selected_location:
+				if not tree_item.is_selected(0):
+					tree_item.select(0)
+				return
 
 func _add_locations_items():
 	for location in locations:
@@ -52,12 +70,12 @@ func add_location(location: LocationData):
 	if location not in locations:
 		locations.append(location)
 		update_locations()
-	_select_first_if_null()
+	_refresh_selected_location()
 
 func update_locations():
 	_clear_tree()
 	_add_locations_items()
-	_select_first_if_null()
+	_refresh_selected_location()
 
 func _set_label():
 	%ActionLabel.text = Globals.get_action_string(action_type)
