@@ -94,7 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="MainUI/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MainUI/HBoxContainer/Panel"]
@@ -221,7 +221,7 @@ location_action_scene = ExtResource("5_v20na")
 script = ExtResource("24_dqr2x")
 location_manager = NodePath("../LocationManager")
 action_containers = [NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")]
-game_speed = 5.0
+game_speed = 15.0
 
 [node name="PauseMenuController" type="Node" parent="." node_paths=PackedStringArray("focused_viewport")]
 script = ExtResource("1_5l4j3")

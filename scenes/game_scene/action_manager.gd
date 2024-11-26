@@ -26,6 +26,7 @@ var discovered_location_actions : Array[Globals.LocationAction]
 var action_node : Control
 var detailed_action_type : Globals.ActionTypes
 var selected_location_map : Dictionary[Globals.ActionTypes, LocationData]
+var bonuses : Array[Globals.Bonus]
 
 func _ready():
 	city_name = city_name
@@ -36,7 +37,9 @@ func _ready():
 	location_manager.location_discovered.connect(_on_location_discovered)
 	knowledge_manager.action_learned.connect(_on_action_learned)
 	knowledge_manager.location_action_learned.connect(_on_location_action_learned)
+	knowledge_manager.bonus_gained.connect(_on_bonus_gained)
 
+#region writing stuff
 func _write_event(text : String):
 	event_view.add_text(text)
 
@@ -49,6 +52,19 @@ func _write_success(text : String):
 func _write_discovered(text : String, type : String = "", is_new : bool = true):
 	event_view.add_discovered_text(text, type, is_new)
 
+func _write_bonus(bonus : Globals.ResourceBonus):
+	bonus
+	var text : String
+	if bonus is Globals.LocationActionResourceBonus:
+		text = "%s %s at %s" % [Globals.get_action_string(bonus.action_type), bonus.resource_name.capitalize(), Globals.get_location_string(bonus.location_type)]
+	elif bonus is Globals.ActionResourceBonus:
+		text = "%s %s" % [Globals.get_action_string(bonus.action_type), bonus.resource_name.capitalize()]
+	else:
+		text = "%s" % bonus.resource_name.capitalize()
+	event_view.add_bonus_text(text, bonus.bonus)
+#endregion
+
+#region location container
 func _clear_action_container():
 	if action_node:
 		action_node.queue_free()
@@ -78,7 +94,9 @@ func _get_action_location(action_type : Globals.ActionTypes, wait_flag : bool = 
 	elif action_node is LocationActionBox:
 		return action_node.selected_location
 	return null
+#endregion
 
+#region action processing
 func _has_required_resources(resource_cost : Array[ResourceQuantity]) -> bool:
 	var missing_resources : Array[String] = []
 	for cost in resource_cost:
@@ -196,6 +214,7 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 			location_data.resources.add(result.duplicate())
 	if action_node.action_type == action_type and action_node.has_method(&"wait"):
 		action_node.wait(false)
+#endregion
 
 func _can_use_location_based_action(action_type : Globals.ActionTypes) -> bool:
 	return action_type in discovered_actions and action_type in location_based_actions and action_type in location_manager.available_actions
@@ -263,3 +282,7 @@ func _discover_location_action(location_action: Globals.LocationAction):
 
 func _on_location_action_learned(location_action: Globals.LocationAction):
 	_discover_location_action(location_action)
+
+func _on_bonus_gained(bonus : Globals.Bonus):
+	bonuses.append(bonus)
+	_write_bonus(bonus)

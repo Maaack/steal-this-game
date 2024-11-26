@@ -16,16 +16,19 @@ signal writing_text_finished
 @onready var margin_container : MarginContainer = %MarginContainer
 @onready var text_container : Container = %TextContainer
 
+var original_margin_right : float
+
 func _ready() -> void:
-	margin_container.set("theme_override_constants/margin_right", v_scroll_margin)
+	original_margin_right = margin_container.get("theme_override_constants/margin_right") or 0.0
+	margin_container.set("theme_override_constants/margin_right", original_margin_right + v_scroll_margin)
 	_v_scroll.connect("visibility_changed", Callable(self, "_on_scroll_bar_visibility_changed"))
 
 func _on_scroll_bar_visibility_changed() -> void:
 	pass
 	if _v_scroll.visible:
-		margin_container.set("theme_override_constants/margin_right", 0)
+		margin_container.set("theme_override_constants/margin_right", original_margin_right)
 	else:
-		margin_container.set("theme_override_constants/margin_right", v_scroll_margin)
+		margin_container.set("theme_override_constants/margin_right", original_margin_right + v_scroll_margin)
 
 func _stop_writing_text():
 	emit_signal("writing_text_finished")
@@ -69,10 +72,12 @@ func add_text(value : String):
 
 func add_quantity(quantity_name : String, delta : float, good : bool = true):
 	_set_rich_text_label()
+	var color_string : String
 	if (delta > 0 and good) or (delta < 0 and not good):
-		rich_text_label.text += "%s [color=#%s][b]%+.0f[/b][/color]\n" % [quantity_name.capitalize(), success_color.to_html(false), delta]
+		color_string = success_color.to_html(false)
 	else:
-		rich_text_label.text += "%s [color=#%s][b]%.0f[/b][/color]\n" % [quantity_name.capitalize(), failure_color.to_html(false), delta]
+		color_string = failure_color.to_html(false)
+	rich_text_label.text += "%s [color=#%s][b]%.0f[/b][/color]\n" % [quantity_name.capitalize(), color_string, delta]
 	_write_out_line()
 
 func add_failure_text(value : String):
@@ -98,6 +103,17 @@ func add_discovered_text(value : String, type : String = "", is_new: bool = true
 	if not type.is_empty():
 		type = "[/b] (%s)[b]" % type
 	rich_text_label.text += "[color=#%s][b]Discovered%s: [/b][/color]%s\n" % [success_color.to_html(false), type, value]
+	_write_out_line()
+
+func add_bonus_text(value : String, bonus : float, good: bool = true):
+	_set_rich_text_label()
+	rich_text_label.text += "[color=#%s][b]Discovered[/b] (Bonus)[b]: [/b][/color]" % success_color.to_html(false)
+	var color_string : String
+	if (bonus > 0 and good) or (bonus < 0 and not good):
+		color_string = success_color.to_html(false)
+	else:
+		color_string = failure_color.to_html(false)
+	rich_text_label.text += "%s [color=#%s][b]%+.f%%[/b][/color]\n" % [value, color_string, bonus * 100]
 	_write_out_line()
 
 func add_event_title(value : String):

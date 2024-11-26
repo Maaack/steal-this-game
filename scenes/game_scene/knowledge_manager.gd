@@ -4,6 +4,7 @@ extends DirectoryReader
 
 signal action_learned(action_type : Globals.ActionTypes)
 signal location_action_learned(location_action : Globals.LocationAction)
+signal bonus_gained(bonus : Globals.Bonus)
 
 @export_multiline var end_reached_message : String = ""
 @export var inventory_manager : InventoryManager
@@ -14,6 +15,7 @@ class KnowledgePart :
 	var resources : Array[ResourceQuantity]
 	var action_unlocks : Array[Globals.ActionTypes]
 	var location_action_unlocks : Array[Globals.LocationAction]
+	var bonuses : Array[Globals.Bonus]
 
 var undiscovered_knowledge : Array[KnowledgePart] = []
 var discovered_knowledge : Array[KnowledgePart] = []
@@ -57,6 +59,25 @@ func _parse_knowledge_parts(parts : Array) -> Array:
 				else:
 					push_warning("location action missing action_type")
 				knowledge_part.location_action_unlocks.append(location_action)
+		if "bonuses" in part:
+			for bonus_parts in part["bonuses"]:
+				var bonus : Globals.Bonus
+				if "location_type" in bonus_parts:
+					if bonus == null: bonus = Globals.LocationActionResourceBonus.new()
+					bonus.location_type = bonus_parts["location_type"]
+				if "action_type" in bonus_parts:
+					if bonus == null: bonus = Globals.ActionResourceBonus.new()
+					bonus.action_type = bonus_parts["action_type"]
+				if "resource_name" in bonus_parts: 
+					if bonus == null: bonus = Globals.ResourceBonus.new()
+					bonus.resource_name = bonus_parts["resource_name"]
+				else:
+					push_warning("bonus_parts missing resource_name")
+				if "bonus" in bonus_parts: 
+					bonus.bonus = bonus_parts["bonus"]
+				else:
+					push_warning("bonus_parts missing bonus")
+				knowledge_part.bonuses.append(bonus)
 		parsed_parts.append(knowledge_part)
 	return parsed_parts
 
@@ -87,4 +108,6 @@ func read():
 		action_learned.emit(action_type)
 	for location_action in knowledge_part.location_action_unlocks:
 		location_action_learned.emit(location_action)
+	for bonus in knowledge_part.bonuses:
+		bonus_gained.emit(bonus)
 	discovered_knowledge.append(knowledge_part)

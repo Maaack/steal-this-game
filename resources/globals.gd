@@ -69,6 +69,21 @@ class LocationAction:
 	func get_string():
 		return "%s at %s" % [Globals.get_action_string(action_type), Globals.get_location_string(location_type)]
 
+class Bonus:
+	var bonus : float 
+	
+	func get_multiplier():
+		return 1 + bonus
+
+class ResourceBonus extends Bonus:
+	var resource_name : StringName
+
+class ActionResourceBonus extends ResourceBonus:
+	var action_type : Globals.ActionTypes
+
+class LocationActionResourceBonus extends ActionResourceBonus:
+	var location_type : Globals.LocationTypes
+
 static var _action_strings : Dictionary = {
 	ActionTypes.READ : "Read",
 	ActionTypes.SCOUT : "Scout",
