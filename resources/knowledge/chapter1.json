@@ -210,7 +210,18 @@
 		},
 		{
 			"text": "You can steal food, too!",
-			"action_unlocks": [7]
+			"location_action_unlocks":[
+				{
+					"action_type": 7,
+					"location_type": 6
+				},
+				{
+					"action_type": 7,
+					"location_type": 7
+				}
+
+			]
+
 		}
 	]
 }
