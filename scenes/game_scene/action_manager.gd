@@ -5,13 +5,13 @@ extends Node
 		city_name = value
 		if is_inside_tree():
 			city_container.city_name = city_name
-@export var free_actions : Array[Globals.ActionTypes] :
+@export var available_actions : Array[Globals.ActionTypes] :
 	set(value):
-		free_actions = value
-		for action in free_actions:
-			if action not in unlocked_actions:
-				unlocked_actions.append(action)
-@export var unlocked_actions : Array[Globals.ActionTypes]
+		available_actions = value
+		for action in available_actions:
+			if action not in discovered_actions:
+				discovered_actions.append(action)
+@export var discovered_actions : Array[Globals.ActionTypes]
 @export var location_actions : Array[Globals.ActionTypes]
 
 @export var inventory_manager : InventoryManager
@@ -22,14 +22,13 @@ extends Node
 @export var event_view : EventView
 @export var location_action_scene : PackedScene
 
-var available_actions : Array[Globals.ActionTypes]
 var action_node : Control
 var detailed_action_type : Globals.ActionTypes
 var selected_location_map : Dictionary[Globals.ActionTypes, LocationData]
 
 func _ready():
 	city_name = city_name
-	available_actions = free_actions
+	available_actions = available_actions
 	for action_type in available_actions:
 		city_container.add_action(action_type)
 	city_container.action_done.connect(_on_action_done)
@@ -197,8 +196,8 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 
 func _add_available_action(action_type : Globals.ActionTypes):
 	if (action_type in available_actions) or \
-		(action_type in location_actions and action_type not in location_manager.discovered_actions) or \
-		(action_type not in unlocked_actions):
+	(action_type not in discovered_actions) or \
+	(action_type in location_actions and action_type not in location_manager.discovered_actions):
 		return
 	available_actions.append(action_type)
 	city_container.add_action(action_type)
@@ -214,8 +213,8 @@ func _on_location_discovered(location : LocationData):
 		action_node.update_locations()
 
 func _unlock_action(action_type : Globals.ActionTypes):
-	if action_type not in unlocked_actions:
-		unlocked_actions.append(action_type)
+	if action_type not in discovered_actions:
+		discovered_actions.append(action_type)
 		_write_discovered(Globals.get_action_string(action_type), "Action")
 		_add_available_action(action_type)
 

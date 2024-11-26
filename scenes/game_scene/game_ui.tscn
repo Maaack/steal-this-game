@@ -206,8 +206,8 @@ extension = "json"
 [node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "knowledge_manager", "action_container", "city_container", "event_view")]
 script = ExtResource("6_y85d6")
 city_name = "San Francisco"
-free_actions = Array[int]([15, 0, 1])
-unlocked_actions = Array[int]([0, 1, 15, 2, 3, 4, 5])
+available_actions = Array[int]([15, 0, 1])
+discovered_actions = Array[int]([0, 1, 15, 2, 3, 4, 5])
 location_actions = Array[int]([2, 3, 4, 5, 6, 7, 10, 13])
 inventory_manager = NodePath("../InventoryManager")
 location_manager = NodePath("../LocationManager")
@@ -221,7 +221,7 @@ location_action_scene = ExtResource("5_v20na")
 script = ExtResource("24_dqr2x")
 location_manager = NodePath("../LocationManager")
 action_containers = [NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")]
-game_speed = 2.0
+game_speed = 5.0
 
 [node name="PauseMenuController" type="Node" parent="." node_paths=PackedStringArray("focused_viewport")]
 script = ExtResource("1_5l4j3")
