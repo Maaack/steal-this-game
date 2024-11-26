@@ -19,6 +19,7 @@ enum ActionTypes{
 	ADVOCATE,
 	LIBERATE,
 	EAT,
+	ORGANIZE,
 }
 
 enum LocationTypes{
@@ -91,6 +92,7 @@ static var _action_strings : Dictionary = {
 	ActionTypes.LIBERATE: "Liberate",
 	ActionTypes.EAT: "Eat",
 	ActionTypes.SCAVENGE: "Scavenge",
+	ActionTypes.ORGANIZE: "Organize"
 }
 
 static var _location_strings : Dictionary = {

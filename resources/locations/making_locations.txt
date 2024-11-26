@@ -46,3 +46,4 @@ ActionTypes
     ADVOCATE: 13
     LIBERATE: 14
     EAT: 15
+    ORGANIZE: 16

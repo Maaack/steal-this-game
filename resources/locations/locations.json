@@ -393,12 +393,8 @@
 					"failure_resource_result": [],
 					"location_failure_resource_result": [
 						{
-							"name": "suspicion",
-							"quantity": 0.25
-						},
-						{
-							"name": "determination",
-							"quantity": 1.0
+							"name": "fatigue",
+							"quantity": 0.1
 						}
 					]
 				}

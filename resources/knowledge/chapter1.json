@@ -2,15 +2,7 @@
 	"knowledge": [
 		{
 			"text": "[font_size=24][b]Steal This Book[/b][/font_size]\n[i](3rd Edition)[/i]\n\n[b]Table of Contents[/b]\nChapter 1: Survive\nChapter 2: Fight\nChapter 3: Liberate",
-			"action_unlocks": [14]
-		},
-		{
-			"text": "[b]Survive[/b]\n\n[b]Section 1: Security Culture[/b]\nSecurity Culture is the most powerful tool to keep us in the fight. The %!&$ have their spies and they are ready to use them to defame, fracture, jail, and intimidate our movement — this is no bullshit.",
 			"resources": [
-				{
-					"name":"security",
-					"quantity":1
-				},
 				{
 					"name":"determination",
 					"quantity":1
@@ -18,158 +10,156 @@
 			]
 		},
 		{
-			"text": "• NEVER BRAG about past actions!\n• NEVER USE NAMES when planning an action!\n• Only discuss action with those who NEED TO KNOW!\n• After an action, NEVER DISCUSS it with OUTSIDERS!",
+			"text": "[b]Survive[/b]\n\n[b]Section 1: Security Culture[/b]\nSecurity Culture is the most powerful tool to keep us in the fight. The %!&$ have their spies and they are ready to use them to defame, fracture, jail, and intimidate our movement — this is no bullshit.",
+			"action_unlocks":[13],
 			"resources": [
-				{
-					"name":"security",
-					"quantity":1
-				},
 				{
 					"name":"determination",
 					"quantity":1
+				}
+			]
+		},
+		{
+			"text": "Keep all groups small and intimate, one is best; three is a the number to never exceed for actions; group together several threes for very big actions.",
+			"action_unlocks":[16]
+		},
+		{
+			"text": "• NEVER BRAG about past actions!\n• NEVER USE NAMES when planning an action!\n• Only discuss action with those who NEED TO KNOW!\n• After an action, NEVER DISCUSS it with OUTSIDERS!",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"suspicion",
+					"bonus":-0.05
+				},
+				{
+					"action_type": 16,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "• NEVER ADMIT anything to the authorities, even for a deal when they claim others have ratted out! If you haven't ratted them out yet, they probably haven't ratted you out either.\n• While you're at it, DON'T TELL THE AUTHORITIES ANYTHING!",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
-				},
-				{
-					"name":"determination",
-					"quantity":1
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Electronic Communication[/b]\nE-mail is never safe. Ever. If you're planning a mass direct action event, you must use a spokescouncil meeting or other face-to-face organizing strategy.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
+					"action_type": 13,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				},
 				{
-					"name":"determination",
-					"quantity":1
+					"action_type": 16,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Websites[/b]\nThe State reads protest websites all the time... If you post specific details about a direct action on the Internet, you can expect there to be cops there when you show up.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
+					"action_type": 13,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				},
 				{
-					"name":"determination",
-					"quantity":1
+					"action_type": 16,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Identity[/b]\nAssume everyone is a cop. I am a cop. You are a cop. The only people you can assume are not cops are your mother (unless she is a cop) and your affinity group.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
-				},
-				{
-					"name":"determination",
-					"quantity":1
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Phones[/b]\nYour phone will leave you implicated with whatever action you do. In general, treat a phone as if someone were listening. Never give specifics.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
-				},
-				{
-					"name":"determination",
-					"quantity":1
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Documents[/b]\nEven if you do remain silent, your vehicle, gear, and person will be searched for documents and clues to identity you as well as indicate connection to past or present illegal activity.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
-				},
-				{
-					"name":"determination",
-					"quantity":1
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Fear[/b]\nPerhaps the easiest time for security culture to break down is in the heat of a protest when the police begin their repression tactics. You'll want to call out a friend's name, or the area to regroup. Build trust for these situations beforehand.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
-				},
-				{
-					"name":"determination",
-					"quantity":1
+					"action_type": 16,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Names[/b]\nDon't use people's names at a direct action protest... Use special nicknames or aliases, as concealing your identity from the authorities is important.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
-				},
-				{
-					"name":"determination",
-					"quantity":1
+					"action_type": 16,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Appearance[/b]\nDon't look sketchy. If you're having a spokescouncil meeting in a public place, take off your bandanas! Though as mentioned, concealing your identity is important.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
+					"action_type": 13,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				},
 				{
-					"name":"determination",
-					"quantity":1
+					"action_type": 16,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Masks[/b]\nIf you are engaging in civil disobedience and you don't plan on being arrested, you should conceal your face. When combined with a hat and some sunglasses, this makes you nearly impossible to identify.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
+					"action_type": 13,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				},
 				{
-					"name":"determination",
-					"quantity":1
+					"action_type": 16,
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
 		{
 			"text": "[b]Safe Sex[/b]\nThere is an implied special bond and dissolution of barriers between those who spend their naked time together... The problem is that many relationships end after a time. Short term relationships or even one night stands can be very dangerous, too.",
-			"resources": [
+			"bonuses": [
 				{
-					"name":"security",
-					"quantity":1
-				},
-				{
-					"name":"determination",
-					"quantity":1
+					"resource_name":"suspicion",
+					"bonus":-0.05
 				}
 			]
 		},
@@ -177,9 +167,14 @@
 			"text": "[b]Conclusion[/b]\nMaintaining a tight security culture is essential for creating a cohesive, safe, and effective movement based on the principals of trust and solidarity. This guide may seem harsh and paranoid, and you should always use reason.",
 			"resources": [
 				{
-					"name":"security",
+					"name":"determination",
 					"quantity":1
-				},
+				}
+			]
+		},
+		{
+			"text": "[b]Section 2: Free Food[/b]\n\n[b]General Guide[/b]\nAmerika is the most wasteful nation on Earth, consuming the most food per person in the world and throwing it away.",
+			"resources": [
 				{
 					"name":"determination",
 					"quantity":1
@@ -187,17 +182,46 @@
 			]
 		},
 		{
-			"text": "[b]Section 2: Free Food[/b]\n\n[b]General Guide[/b]\nAmerika is the most wasteful nation on Earth, consuming the most food per person in the world and throwing it away."
-		},
-		{
-			"text": "[b]Blood and Guts[/b]\nPicky Americans throw away lots of good meat that everyone else considers to be delicacies. Things like hearts, kidneys, livers, stomachs and lungs can all be had for cheap. Even fresh blood can be turned into food."
+			"text": "[b]Blood and Guts[/b]\nPicky Americans throw away lots of good meat that everyone else considers to be delicacies. Things like hearts, kidneys, livers, stomachs and lungs can all be had for cheap. Even fresh blood can be turned into food.",
+			"bonuses": [
+				{
+					"resource_name":"food",
+					"bonus":0.25
+				}
+			]
 		},
 		{
 			"text": "[b]Dumpster Diving[/b]\nNo discussion of free food would be complete without talking dumpster diving, but remember that you can score great bike parts, computers, weird electronics, clothes, toys, paperback books, etc.",
 			"action_unlocks":[11]
 		},
 		{
-			"text": "Scout what grocery stores, restaurants, and food services are nearby and check their dumpsters when no one is outside. Learn when the trash pick-up day is and what time fresh food is dumped."
+			"text": "Scout what grocery stores, restaurants, and food services are nearby and check their dumpsters when no one is outside. Learn when the trash pick-up day is and what time fresh food is dumped.",
+			"bonuses": [
+				{
+					"action_type": 11,
+					"location_type": 1,
+					"resource_name":"food",
+					"bonus":0.25
+				},
+				{
+					"action_type": 11,
+					"location_type": 2,
+					"resource_name":"food",
+					"bonus":0.25
+				},
+				{
+					"action_type": 11,
+					"location_type": 12,
+					"resource_name":"food",
+					"bonus":0.25
+				},
+				{
+					"action_type": 11,
+					"location_type": 13,
+					"resource_name":"food",
+					"bonus":0.25
+				}
+			]
 		},
 		{
 			"text": "Don't make a mess. The manager will have no reason to lock the dumpster, and the cops can't charge you for littering.",
@@ -205,6 +229,13 @@
 				{
 					"name":"determination",
 					"quantity":1
+				}
+			],
+			"bonuses": [
+				{
+					"action_type": 11,
+					"resource_name":"suspicion",
+					"bonus":-0.25
 				}
 			]
 		},
@@ -219,9 +250,7 @@
 					"action_type": 7,
 					"location_type": 7
 				}
-
 			]
-
 		}
 	]
 }
