@@ -21,7 +21,6 @@ func _on_quantity_updated(quantity : ResourceQuantity, delta : float):
 	container.resource_name = quantity.name
 	container.icon = quantity.icon
 	container.quantity = quantity.quantity
-	event_view.add_quantity(quantity.name, delta)
 
 func _ready():
 	inventory_manager.quantity_updated.connect(_on_quantity_updated)

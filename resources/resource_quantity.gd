@@ -4,6 +4,7 @@ class_name ResourceQuantity
 enum NumericalUnitSetting{ CONTINUOUS, DISCRETE }
 @export var numerical_unit : NumericalUnitSetting = NumericalUnitSetting.CONTINUOUS
 @export var quantity = 1.0 :
+	get = get_quantity,
 	set = set_quantity
 @export var resource_unit : ResourceUnit
 
@@ -24,6 +25,9 @@ func _to_string():
 
 func set_quantity(value:float):
 	quantity = _discrete_unit_check(value)
+
+func get_quantity():
+	return quantity
 
 func _discrete_unit_check(new_quantity : float):
 	if new_quantity != null && numerical_unit == NumericalUnitSetting.DISCRETE:
@@ -54,7 +58,7 @@ func copy_from(value: ResourceQuantity):
 	if value == null:
 		return
 	quantity = value.quantity
-	resource_unit.copy_from(value.resource_unit)
+	resource_unit = value.resource_unit
 
 func add(value, conserve_quantities:bool=true):
 	if not is_instance_valid(value):

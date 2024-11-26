@@ -24,7 +24,6 @@ func _ready() -> void:
 	_v_scroll.connect("visibility_changed", Callable(self, "_on_scroll_bar_visibility_changed"))
 
 func _on_scroll_bar_visibility_changed() -> void:
-	pass
 	if _v_scroll.visible:
 		margin_container.set("theme_override_constants/margin_right", original_margin_right)
 	else:
@@ -70,14 +69,23 @@ func add_text(value : String):
 	rich_text_label.text = "%s\n" % value
 	_write_out_line()
 
-func add_quantity(quantity_name : String, delta : float, good : bool = true):
+func add_quantity_text(quantity : ResourceQuantity, good : bool = true):
 	_set_rich_text_label()
 	var color_string : String
-	if (delta > 0 and good) or (delta < 0 and not good):
+	if (quantity.quantity > 0 and good) or (quantity.quantity < 0 and not good):
 		color_string = success_color.to_html(false)
 	else:
 		color_string = failure_color.to_html(false)
-	rich_text_label.text += "%s [color=#%s][b]%.0f[/b][/color]\n" % [quantity_name.capitalize(), color_string, delta]
+	var delta_string : String = "[color=#%s][b]%+.0f[/b][/color]" % [color_string, quantity.quantity]
+	if quantity is ResourceBonusQuantity:
+		var multi_color_string : String
+		if quantity.multiplier > 1.0:
+			multi_color_string = success_color.to_html(false)
+		elif  quantity.multiplier < 1.0:
+			multi_color_string = failure_color.to_html(false)
+		var multi_string : String = "[color=#%s]%.2f[/color]" % [multi_color_string, quantity.multiplier]
+		delta_string = "[color=#%s]%+.0f[/color] x %s = [color=#%s][b]%+.0f[/b][/color]" % [color_string, quantity.get_raw_quantity(), multi_string, color_string, quantity.quantity]
+	rich_text_label.text += "%s %s\n" % [quantity.name.capitalize(), delta_string]
 	_write_out_line()
 
 func add_failure_text(value : String):

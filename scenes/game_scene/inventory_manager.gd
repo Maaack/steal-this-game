@@ -21,10 +21,12 @@ func _ready():
 func add(item : ResourceQuantity):
 	if item == null:
 		return
-	inventory.add(item)
-	var quantity = inventory.find_quantity(item.name)
+	var item_copy = ResourceQuantity.new()
+	item_copy.copy_from(item)
+	inventory.add(item_copy)
+	var quantity = inventory.find_quantity(item_copy.name)
 	inventory_updated.emit()
-	quantity_updated.emit(quantity, item.quantity)
+	quantity_updated.emit(quantity, item_copy.quantity)
 
 func add_by_name(quantity_name : StringName, quantity_amount : float):
 	var quantity := ResourceQuantity.new()

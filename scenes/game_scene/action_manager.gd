@@ -53,7 +53,6 @@ func _write_discovered(text : String, type : String = "", is_new : bool = true):
 	event_view.add_discovered_text(text, type, is_new)
 
 func _write_bonus(bonus : Globals.ResourceBonus):
-	bonus
 	var text : String
 	if bonus is Globals.LocationActionResourceBonus:
 		text = "%s %s at %s" % [Globals.get_action_string(bonus.action_type), bonus.resource_name.capitalize(), Globals.get_location_string(bonus.location_type)]
@@ -62,6 +61,9 @@ func _write_bonus(bonus : Globals.ResourceBonus):
 	else:
 		text = "%s" % bonus.resource_name.capitalize()
 	event_view.add_bonus_text(text, bonus.bonus)
+
+func _write_quantity(quantity: ResourceQuantity):
+	event_view.add_quantity_text(quantity)
 #endregion
 
 #region location container
@@ -106,6 +108,64 @@ func _has_required_resources(resource_cost : Array[ResourceQuantity]) -> bool:
 		_write_failure("Requires %s." % Globals.get_comma_separated_list(missing_resources))
 		return false
 	return true
+
+func _get_location_action_resource_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> float:
+	var multiplier : float = 1.0
+	var used : Array[Globals.Bonus]
+	for bonus in bonuses_ref:
+		if bonus is Globals.LocationActionResourceBonus:
+			if bonus.resource_name == resource_name and \
+			bonus.action_type == action_type and \
+			bonus.location_type == location_type:
+				multiplier *= bonus.get_multiplier()
+				used.append(bonus)
+	for bonus in used:
+		bonuses_ref.erase(bonus)
+	return multiplier
+	
+func _get_action_resource_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName, action_type : Globals.ActionTypes) -> float:
+	var multiplier : float = 1.0
+	var used : Array[Globals.Bonus]
+	for bonus in bonuses_ref:
+		if bonus is Globals.ActionResourceBonus:
+			if bonus.resource_name == resource_name and \
+			bonus.action_type == action_type:
+				multiplier *= bonus.get_multiplier()
+				used.append(bonus)
+	for bonus in used:
+		bonuses_ref.erase(bonus)
+	return multiplier
+	
+func _get_resource_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName) -> float:
+	var multiplier : float = 1.0
+	var used : Array[Globals.Bonus]
+	for bonus in bonuses_ref:
+		if bonus is Globals.ResourceBonus:
+			if bonus.resource_name == resource_name:
+				multiplier *= bonus.get_multiplier()
+				used.append(bonus)
+	for bonus in used:
+		bonuses_ref.erase(bonus)
+	return multiplier
+
+func _get_total_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> float:
+	bonuses_ref = bonuses_ref.duplicate()
+	var multiplier : float = 1.0
+	multiplier *= _get_location_action_resource_bonus(bonuses_ref, resource_name, action_type, location_type)
+	multiplier *= _get_action_resource_bonus(bonuses_ref, resource_name, action_type)
+	multiplier *= _get_resource_bonus(bonuses_ref, resource_name)
+	return multiplier
+
+func _get_quantity_with_bonus(quantity : ResourceQuantity, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> ResourceQuantity:
+	var multiplier : float = _get_total_bonus(bonuses, quantity.name, action_type, location_type)
+	var quantity_with_bonus : ResourceQuantity
+	if multiplier != 1.0:
+		quantity_with_bonus = ResourceBonusQuantity.new()
+		quantity_with_bonus.multiplier = multiplier
+	else:
+		quantity_with_bonus = ResourceQuantity.new()
+	quantity_with_bonus.copy_from(quantity)
+	return quantity_with_bonus
 
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
 	# Match location actions
@@ -202,16 +262,22 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 		if not action_data.success_message.is_empty():
 			_write_success(action_data.success_message)
 		for result in action_data.success_resource_result:
-			inventory_manager.add(result.duplicate())
+			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
+			inventory_manager.add(quantity_with_bonus)
+			_write_quantity(quantity_with_bonus)
 		for result in action_data.location_success_resource_result:
-			location_data.resources.add(result.duplicate())
+			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
+			location_data.resources.add(quantity_with_bonus)
 	else:
 		if not action_data.failure_message.is_empty():
 			_write_failure(action_data.failure_message)
 		for result in action_data.failure_resource_result:
-			inventory_manager.add(result.duplicate())
+			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
+			inventory_manager.add(quantity_with_bonus)
+			_write_quantity(quantity_with_bonus)
 		for result in action_data.location_failure_resource_result:
-			location_data.resources.add(result.duplicate())
+			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
+			location_data.resources.add(quantity_with_bonus)
 	if action_node.action_type == action_type and action_node.has_method(&"wait"):
 		action_node.wait(false)
 #endregion
