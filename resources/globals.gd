@@ -14,7 +14,7 @@ enum ActionTypes{
 	COOK,
 	CRAFT,
 	GROW,
-	RENT,
+	SCAVENGE,
 	GIVE,
 	ADVOCATE,
 	LIBERATE,
@@ -77,6 +77,7 @@ static var _action_strings : Dictionary = {
 	ActionTypes.ADVOCATE: "Advocate",
 	ActionTypes.LIBERATE: "Liberate",
 	ActionTypes.EAT: "Eat",
+	ActionTypes.SCAVENGE: "Scavenge",
 }
 
 static var _location_strings : Dictionary = {

@@ -51,7 +51,8 @@ ActionTypes
 	COOK: 8
     CRAFT: 9
 	GROW: 10
-	RENT: 11
+	SCAVENGE: 11
 	GIVE: 12
     ADVOCATE: 13
     LIBERATE: 14
+    EAT: 15

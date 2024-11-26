@@ -82,7 +82,7 @@ func add_success_text(value : String):
 
 func add_read_text(value : String):
 	advance_buffer_text()
-	rich_text_label.text = "[center][i]%s[/i][center]\n" % value
+	rich_text_label.text = "\n[center]%s[center]\n\n" % value
 	_write_out_line()
 
 func add_discovered_text(value : String, type : String = ""):

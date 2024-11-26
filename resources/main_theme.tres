@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=34 format=3 uid="uid://biktaclghs8u1"]
+[gd_resource type="Theme" load_steps=36 format=3 uid="uid://biktaclghs8u1"]
 
 [ext_resource type="FontFile" uid="uid://dpeqt5iq8v0si" path="res://assets/fonts/lato/Lato-Regular.ttf" id="1_ols5k"]
 [ext_resource type="StyleBox" uid="uid://j2vyjd7v2ljr" path="res://resources/styleboxes/black_box_disabled_flat.tres" id="1_x127s"]
@@ -18,7 +18,9 @@
 [ext_resource type="StyleBox" uid="uid://5jbs5wdntpcg" path="res://resources/styleboxes/vscroll_scroll_flat.tres" id="13_fgisk"]
 [ext_resource type="StyleBox" uid="uid://clti0k0ge6e74" path="res://resources/styleboxes/tab_disabled_flat.tres" id="15_7e08u"]
 [ext_resource type="StyleBox" uid="uid://nk0j13ghxo6x" path="res://resources/styleboxes/tab_hovered_flat.tres" id="16_d8x3d"]
+[ext_resource type="FontFile" uid="uid://xf6o0adwkxmn" path="res://assets/fonts/lato/Lato-Bold.ttf" id="16_lmfyq"]
 [ext_resource type="StyleBox" uid="uid://bvht57aoxt1gw" path="res://resources/styleboxes/tab_selected_flat.tres" id="16_whago"]
+[ext_resource type="FontFile" uid="uid://begs25qdrkfdt" path="res://assets/fonts/lato/Lato-BoldItalic.ttf" id="17_8723n"]
 [ext_resource type="StyleBox" uid="uid://bu7duhsavlvnr" path="res://resources/styleboxes/tab_unselected_flat.tres" id="18_d8x3d"]
 [ext_resource type="StyleBox" uid="uid://cxp4k6uinf3ls" path="res://resources/styleboxes/scroll_grabber_pressed_flat.tres" id="19_opsya"]
 [ext_resource type="StyleBox" uid="uid://ctqxcdu6djf3e" path="res://resources/styleboxes/red_box_flat.tres" id="21_wv8md"]
@@ -103,6 +105,9 @@ ProgressBarDelayHovered/styles/background = SubResource("StyleBoxEmpty_wv8md")
 ProgressBarDelayHovered/styles/fill = SubResource("StyleBoxFlat_c4ulf")
 ProgressBarRed/base_type = &"ProgressBar"
 ProgressBarRed/styles/fill = ExtResource("6_7rtxy")
+RichTextLabel/fonts/bold_font = ExtResource("16_lmfyq")
+RichTextLabel/fonts/bold_italics_font = ExtResource("17_8723n")
+RichTextLabel/fonts/italics_font = ExtResource("6_bjb6u")
 SelectedLabel/base_type = &"Label"
 SelectedLabel/colors/font_color = Color(0.973535, 0.973535, 0.973535, 1)
 SelectedLabel/font_sizes/font_size = 24
