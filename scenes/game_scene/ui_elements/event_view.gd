@@ -44,10 +44,8 @@ func _scroll_down_to_text():
 	var tween = create_tween()
 	tween.tween_property(scroll_container, "scroll_vertical", height, scroll_delay)
 
-func advance_buffer_text():
-	if rich_text_label and rich_text_label.visible_ratio < 1.0:
-		rich_text_label.visible_ratio = 1.0
-		_stop_writing_text()
+func _set_rich_text_label():
+	if rich_text_label: return 
 	rich_text_label = RichTextLabel.new()
 	rich_text_label.scroll_active = false
 	rich_text_label.fit_content = true
@@ -56,6 +54,13 @@ func advance_buffer_text():
 	text_container.add_child(rich_text_label)
 	_scroll_down_to_text.call_deferred()
 
+func advance_buffer_text():
+	if rich_text_label and rich_text_label.visible_ratio < 1.0:
+		rich_text_label.visible_ratio = 1.0
+		_stop_writing_text()
+	rich_text_label = null
+	_set_rich_text_label()
+
 func add_text(value : String):
 	if value.is_empty(): return
 	advance_buffer_text()
@@ -63,11 +68,11 @@ func add_text(value : String):
 	_write_out_line()
 
 func add_quantity(quantity_name : String, delta : float, good : bool = true):
-	advance_buffer_text()
+	_set_rich_text_label()
 	if (delta > 0 and good) or (delta < 0 and not good):
-		rich_text_label.text = "%s [color=#%s][b]%+.0f[/b][/color]\n" % [quantity_name.capitalize(), success_color.to_html(false), delta]
+		rich_text_label.text += "%s [color=#%s][b]%+.0f[/b][/color]\n" % [quantity_name.capitalize(), success_color.to_html(false), delta]
 	else:
-		rich_text_label.text = "%s [color=#%s][b]%.0f[/b][/color]\n" % [quantity_name.capitalize(), failure_color.to_html(false), delta]
+		rich_text_label.text += "%s [color=#%s][b]%.0f[/b][/color]\n" % [quantity_name.capitalize(), failure_color.to_html(false), delta]
 	_write_out_line()
 
 func add_failure_text(value : String):
@@ -82,14 +87,17 @@ func add_success_text(value : String):
 
 func add_read_text(value : String):
 	advance_buffer_text()
-	rich_text_label.text = "\n[center]%s[center]\n\n" % value
+	rich_text_label.text = "\n[center]%s[/center]\n\n" % value
 	_write_out_line()
 
-func add_discovered_text(value : String, type : String = ""):
-	advance_buffer_text()
+func add_discovered_text(value : String, type : String = "", is_new: bool = true):
+	if is_new:
+		advance_buffer_text()
+	else:
+		_set_rich_text_label()
 	if not type.is_empty():
 		type = "[/b] (%s)[b]" % type
-	rich_text_label.text = "[color=#%s][b]Discovered%s: [/b][/color]%s\n" % [success_color.to_html(false), type, value]
+	rich_text_label.text += "[color=#%s][b]Discovered%s: [/b][/color]%s\n" % [success_color.to_html(false), type, value]
 	_write_out_line()
 
 func add_event_title(value : String):

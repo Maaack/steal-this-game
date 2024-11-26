@@ -46,8 +46,8 @@ func _write_failure(text : String):
 func _write_success(text : String):
 	event_view.add_success_text(text)
 
-func _write_discovered(text : String, type : String = ""):
-	event_view.add_discovered_text(text, type)
+func _write_discovered(text : String, type : String = "", is_new : bool = true):
+	event_view.add_discovered_text(text, type, is_new)
 
 func _clear_action_container():
 	if action_node:
@@ -68,6 +68,7 @@ func _get_action_location(action_type : Globals.ActionTypes, wait_flag : bool = 
 		if action_node is LocationActionBox:
 			action_node.action_type = action_type
 			action_node.locations = location_manager.discovered_locations
+			action_node.actionable_location_types = _get_location_types_by_action(action_type)
 			action_node.wait(wait_flag)
 			if action_type in selected_location_map:
 				action_node.selected_location = selected_location_map[action_type]
@@ -119,7 +120,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			if location_scouted == null:
 				_write_event("No new locations were discovered.")
 			else:
-				_write_discovered(location_scouted.name, "Location")
+				_write_discovered(location_scouted.name, "Location", true)
 		Globals.ActionTypes.READ:
 			_write_event("You try reading more secrets...")
 			action_button.wait(10.0)
@@ -204,6 +205,17 @@ func _add_available_action(action_type : Globals.ActionTypes):
 	available_actions.append(action_type)
 	city_container.add_action(action_type)
 
+func _get_location_types_by_action(action_type : Globals.ActionTypes) -> Array[Globals.LocationTypes]:
+	var actionable_locations : Array[Globals.LocationTypes]
+	for location_action in discovered_location_actions:
+		if location_action.action_type == action_type:
+			actionable_locations.append(location_action)
+	return actionable_locations
+
+func _add_actionable_location_type(location_type : Globals.LocationTypes):
+	if action_node is LocationActionBox:
+		action_node.add_actionable_location_type(location_type)
+
 func _on_location_discovered(location : LocationData):
 	if location == null: 
 		push_warning("no location provided to discover")
@@ -217,7 +229,7 @@ func _on_location_discovered(location : LocationData):
 func _discover_action(action_type : Globals.ActionTypes):
 	if action_type in discovered_actions: return
 	discovered_actions.append(action_type)
-	_write_discovered(Globals.get_action_string(action_type), "Action")
+	_write_discovered(Globals.get_action_string(action_type), "Action", false)
 	_add_available_action(action_type)
 
 func _on_action_learned(action_type : Globals.ActionTypes):
@@ -233,7 +245,7 @@ func _has_discovered_location_action(location_action: Globals.LocationAction) ->
 func _discover_location_action(location_action: Globals.LocationAction):
 	if _has_discovered_location_action(location_action): return
 	discovered_location_actions.append(location_action)
-	_write_discovered(location_action.get_string(), "Action")
+	_write_discovered(location_action.get_string(), "Action", false)
 	_add_available_action(location_action.action_type)
 
 func _on_location_action_learned(location_action: Globals.LocationAction):

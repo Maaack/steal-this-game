@@ -24,6 +24,7 @@ signal selected_location_changed(location_data : LocationData)
 
 @onready var resource_container : Container = %ResourceContainer
 
+var actionable_location_types : Array[Globals.LocationTypes]
 var resource_meter_map : Dictionary[StringName, ResourceMeter]
 var selected_location : LocationData :
 	set(value):
@@ -64,11 +65,19 @@ func _refresh_selected_location():
 func _add_locations_items():
 	for location in locations:
 		if location.has_action(action_type):
+			if actionable_location_types.size() > 0 and location.location_type not in actionable_location_types:
+				continue
 			_add_location_as_tree_item(location)
 
 func add_location(location: LocationData):
 	if location not in locations:
 		locations.append(location)
+		update_locations()
+	_refresh_selected_location()
+
+func add_actionable_location_type(location_type : Globals.LocationTypes):
+	if location_type not in actionable_location_types:
+		actionable_location_types.append(location_type)
 		update_locations()
 	_refresh_selected_location()
 
