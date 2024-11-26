@@ -85,6 +85,13 @@ func add_read_text(value : String):
 	rich_text_label.text = "[center][i]%s[/i][center]\n" % value
 	_write_out_line()
 
+func add_discovered_text(value : String, type : String = ""):
+	advance_buffer_text()
+	if not type.is_empty():
+		type = "[/b] (%s)[b]" % type
+	rich_text_label.text = "[color=#%s][b]Discovered%s: [/b][/color]%s\n" % [success_color.to_html(false), type, value]
+	_write_out_line()
+
 func add_event_title(value : String):
 	advance_buffer_text()
 	rich_text_label.text += "[color=#%s][b]%s[/b][/color]\n" % [event_color.to_html(false), value]

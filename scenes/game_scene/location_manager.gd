@@ -8,6 +8,10 @@ signal location_discovered(location_data : LocationData)
 @export var starting_locations : Array[LocationData]
 @export_tool_button("Refresh Locations") var _refresh_locations_action = _refresh_locations
 
+var undiscovered_locations : Array[LocationData]
+var discovered_locations : Array[LocationData]
+var discovered_actions : Array[Globals.ActionTypes]
+
 #Loads Json to Dictionary
 func _read_json_from_file(file_path) -> Dictionary:
 	assert (FileAccess.file_exists(file_path))
@@ -125,13 +129,13 @@ func _parse_location_file(file_path) -> Array:
 		return _parse_locations(json_data["locations"])
 	return []
 
-var undiscovered_locations : Array[LocationData]
-var discovered_locations : Array[LocationData]
-
 func discover_location(discovered_location : LocationData):
 	discovered_locations.append(discovered_location)
 	if discovered_location in undiscovered_locations:
 		undiscovered_locations.erase(discovered_location)
+	for action_data in discovered_location.actions_available:
+		if action_data.action not in discovered_actions:
+			discovered_actions.append(action_data.action)
 	location_discovered.emit(discovered_location)
 
 func _fill_starting_locations():

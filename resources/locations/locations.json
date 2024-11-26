@@ -135,6 +135,47 @@
 					"location_success_resource_result": []
 				},
 				{
+					"action_type": 6,
+					"time_cost":3,
+					"try_message": "You beg for food at the bakery.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "The staff take some pity on you and offer bird bread.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 2.0
+						},
+						{
+							"name": "reputation",
+							"quantity": -1.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.25
+						}
+					],
+					"failure_message": "The staff say they don't have anything to give you.",
+					"failure_resource_result": [
+						{
+							"name": "reputation",
+							"quantity": -1.0
+						}
+					],
+					"location_failure_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.10
+						}
+					]
+				},
+				{
 					"action_type": 7,
 					"time_cost":5,
 					"try_message": "You try lifting some baked goods.",
@@ -149,6 +190,10 @@
 						{
 							"name": "food",
 							"quantity": 2.0
+						},
+						{
+							"name": "reputation",
+							"quantity": -2.0
 						}
 					],
 					"location_success_resource_result": [
@@ -204,6 +249,47 @@
 						}
 					],
 					"location_success_resource_result": []
+				},
+				{
+					"action_type": 6,
+					"time_cost":3,
+					"try_message": "You try begging for food in front of the supermarket.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "Some shoppers take pity and skim off extra food from their bulk purchases.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 2.0
+						},
+						{
+							"name": "reputation",
+							"quantity": -1.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.10
+						}
+					],
+					"failure_message": "Shoppers are reluctant to give up their freshly purchased food.",
+					"failure_resource_result": [
+						{
+							"name": "reputation",
+							"quantity": -1.0
+						}
+					],
+					"location_failure_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.01
+						}
+					]
 				},
 				{
 					"action_type": 7,

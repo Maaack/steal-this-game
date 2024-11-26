@@ -45,6 +45,9 @@ func _write_failure(text : String):
 func _write_success(text : String):
 	event_view.add_success_text(text)
 
+func _write_discovered(text : String, type : String = ""):
+	event_view.add_discovered_text(text, type)
+
 func _clear_action_container():
 	if action_node:
 		action_node.queue_free()
@@ -107,7 +110,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 				return
 			action_button.wait(60)
 			await action_button.wait_time_passed
-			_write_success("You liberate %s!" % city_name)
+			_write_success("Liberated %s!" % city_name)
 		Globals.ActionTypes.SCOUT:
 			action_button.wait(5.0)
 			await action_button.wait_time_passed
@@ -115,12 +118,12 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			if location_scouted == null:
 				_write_event("No new locations were discovered.")
 			else:
-				_write_success("You scouted %s" % location_scouted.name)
+				_write_discovered(location_scouted.name, "Location")
 		Globals.ActionTypes.READ:
-			_write_event("You open your secret book to the next section.")
+			_write_event("You try reading more secrets...")
 			action_button.wait(10.0)
 			await action_button.wait_time_passed
-			_write_success("You read...")
+			_write_success("Read...")
 			knowledge_manager.read()
 		Globals.ActionTypes.EAT:
 			if not inventory_manager.has(&"food", 1):
@@ -128,7 +131,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 				return
 			action_button.wait(0.5)
 			await action_button.wait_time_passed
-			_write_success("You eat...")
+			_write_success("Ate...")
 			inventory_manager.remove_by_name(&"food", 1)
 			inventory_manager.add_by_name(&"energy", 1)
 		_:
@@ -193,9 +196,12 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 		action_node.wait(false)
 
 func _add_available_action(action_type : Globals.ActionTypes):
-	if not action_type in available_actions and action_type in unlocked_actions:
-			available_actions.append(action_type)
-			city_container.add_action(action_type)
+	if (action_type in available_actions) or \
+		(action_type in location_actions and action_type not in location_manager.discovered_actions) or \
+		(action_type not in unlocked_actions):
+		return
+	available_actions.append(action_type)
+	city_container.add_action(action_type)
 
 func _on_location_discovered(location : LocationData):
 	if location == null: 
@@ -210,6 +216,7 @@ func _on_location_discovered(location : LocationData):
 func _unlock_action(action_type : Globals.ActionTypes):
 	if action_type not in unlocked_actions:
 		unlocked_actions.append(action_type)
+		_write_discovered(Globals.get_action_string(action_type), "Action")
 		_add_available_action(action_type)
 
 func _on_action_learned(action_type : Globals.ActionTypes):

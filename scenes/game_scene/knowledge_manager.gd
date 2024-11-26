@@ -67,6 +67,7 @@ func read():
 	var knowledge_part : KnowledgePart = undiscovered_knowledge.pop_front()
 	if not knowledge_part.text.is_empty():
 		event_view.add_read_text(knowledge_part.text)
+	await get_tree().create_timer(1.0, true).timeout
 	for resource_quantity in knowledge_part.resources:
 		inventory_manager.add(resource_quantity)
 	for action_type in knowledge_part.action_unlocks:
