@@ -24,7 +24,13 @@ signal selected_location_changed(location_data : LocationData)
 
 @onready var resource_container : Container = %ResourceContainer
 
-var actionable_location_types : Array[Globals.LocationTypes]
+var actionable_location_types : Array[Globals.LocationTypes] :
+	set(value):
+		var _value_changed = actionable_location_types != value
+		actionable_location_types = value
+		if is_inside_tree() and _value_changed:
+			update_locations()
+
 var resource_meter_map : Dictionary[StringName, ResourceMeter]
 var selected_location : LocationData :
 	set(value):

@@ -197,10 +197,23 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 	if action_node.action_type == action_type and action_node.has_method(&"wait"):
 		action_node.wait(false)
 
+func _can_use_location_based_action(action_type : Globals.ActionTypes) -> bool:
+	return action_type in discovered_actions and action_type in location_based_actions and action_type in location_manager.available_actions
+
+func _can_use_location_action(action_type : Globals.ActionTypes) -> bool:
+	for location_action in discovered_location_actions:
+		if location_action.action_type != action_type: continue
+		for location_data in location_manager.discovered_locations:
+			if location_action.location_type != location_data.location_type: continue
+			if location_data.has_action(action_type):
+				return true
+	return false
+
+func _can_use_action(action_type : Globals.ActionTypes) -> bool:
+	return (action_type in discovered_actions and action_type not in location_based_actions) or _can_use_location_based_action(action_type) or _can_use_location_action(action_type)
+
 func _add_available_action(action_type : Globals.ActionTypes):
-	if (action_type in available_actions) or \
-	(action_type not in discovered_actions) or \
-	(action_type in location_based_actions and action_type not in location_manager.discovered_actions):
+	if action_type in available_actions or not _can_use_action(action_type):
 		return
 	available_actions.append(action_type)
 	city_container.add_action(action_type)
@@ -209,7 +222,7 @@ func _get_location_types_by_action(action_type : Globals.ActionTypes) -> Array[G
 	var actionable_locations : Array[Globals.LocationTypes]
 	for location_action in discovered_location_actions:
 		if location_action.action_type == action_type:
-			actionable_locations.append(location_action)
+			actionable_locations.append(location_action.location_type)
 	return actionable_locations
 
 func _add_actionable_location_type(location_type : Globals.LocationTypes):

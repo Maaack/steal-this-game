@@ -10,7 +10,7 @@ signal location_discovered(location_data : LocationData)
 
 var undiscovered_locations : Array[LocationData]
 var discovered_locations : Array[LocationData]
-var discovered_actions : Array[Globals.ActionTypes]
+var available_actions : Array[Globals.ActionTypes]
 
 #Loads Json to Dictionary
 func _read_json_from_file(file_path) -> Dictionary:
@@ -134,8 +134,8 @@ func discover_location(discovered_location : LocationData):
 	if discovered_location in undiscovered_locations:
 		undiscovered_locations.erase(discovered_location)
 	for action_data in discovered_location.actions_available:
-		if action_data.action not in discovered_actions:
-			discovered_actions.append(action_data.action)
+		if action_data.action not in available_actions:
+			available_actions.append(action_data.action)
 	location_discovered.emit(discovered_location)
 
 func _fill_starting_locations():
