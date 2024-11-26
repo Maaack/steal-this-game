@@ -2,7 +2,7 @@
 	"locations": [
 		{
 			"name": "Stacy's",
-			"location_type": 27,
+			"location_type": 17,
 			"description": "Apparel mass-produced over-seas by underpaid workers. The markup is 100x, but there's always a 25% off sale.",
 			"actions_available": [
 				{
@@ -108,7 +108,7 @@
 		},
 		{
 			"name": "Mama's Baked Sweets",
-			"location_type": 6,
+			"location_type": 2,
 			"description": "A local bakery that appears to be run by a family.",
 			"actions_available": [
 				{
@@ -220,7 +220,7 @@
 		},
 		{
 			"name": "MagMart",
-			"location_type": 7,
+			"location_type": 3,
 			"description": "Aisles upon aisles of soul-less products. Tons of staff working the soul-less jobs.",
 			"actions_available": [
 				{
@@ -332,7 +332,7 @@
 		},
 		{
 			"name": "Rundown Park",
-			"location_type": 10,
+			"location_type": 7,
 			"description": "This park doesn't get many visitors anymore. Some have taken up a semi-permanent residence.",
 			"actions_available": [
 				{

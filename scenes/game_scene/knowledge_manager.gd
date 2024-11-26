@@ -104,6 +104,7 @@ func read():
 		event_view.add_read_text(knowledge_part.text)
 	for resource_quantity in knowledge_part.resources:
 		inventory_manager.add(resource_quantity)
+		event_view.add_quantity_text(resource_quantity)
 	for action_type in knowledge_part.action_unlocks:
 		action_learned.emit(action_type)
 	for location_action in knowledge_part.location_action_unlocks:

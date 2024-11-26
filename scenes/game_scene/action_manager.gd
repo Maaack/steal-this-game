@@ -27,6 +27,9 @@ var action_node : Control
 var detailed_action_type : Globals.ActionTypes
 var selected_location_map : Dictionary[Globals.ActionTypes, LocationData]
 var bonuses : Array[Globals.Bonus]
+var resource_bonuses : Array[Globals.ResourceBonus]
+var action_resource_bonuses : Array[Globals.ActionResourceBonus]
+var location_action_resource_bonuses : Array[Globals.LocationActionResourceBonus]
 
 func _ready():
 	city_name = city_name
@@ -109,55 +112,43 @@ func _has_required_resources(resource_cost : Array[ResourceQuantity]) -> bool:
 		return false
 	return true
 
-func _get_location_action_resource_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> float:
+func _get_location_action_resource_bonus(resource_name: StringName, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> float:
 	var multiplier : float = 1.0
-	var used : Array[Globals.Bonus]
-	for bonus in bonuses_ref:
+	for bonus in location_action_resource_bonuses:
 		if bonus is Globals.LocationActionResourceBonus:
 			if bonus.resource_name == resource_name and \
 			bonus.action_type == action_type and \
 			bonus.location_type == location_type:
 				multiplier *= bonus.get_multiplier()
-				used.append(bonus)
-	for bonus in used:
-		bonuses_ref.erase(bonus)
 	return multiplier
 	
-func _get_action_resource_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName, action_type : Globals.ActionTypes) -> float:
+func _get_action_resource_bonus(resource_name: StringName, action_type : Globals.ActionTypes) -> float:
 	var multiplier : float = 1.0
-	var used : Array[Globals.Bonus]
-	for bonus in bonuses_ref:
+	for bonus in action_resource_bonuses:
 		if bonus is Globals.ActionResourceBonus:
 			if bonus.resource_name == resource_name and \
 			bonus.action_type == action_type:
 				multiplier *= bonus.get_multiplier()
-				used.append(bonus)
-	for bonus in used:
-		bonuses_ref.erase(bonus)
 	return multiplier
 	
-func _get_resource_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName) -> float:
+func _get_resource_bonus(resource_name: StringName) -> float:
 	var multiplier : float = 1.0
-	var used : Array[Globals.Bonus]
-	for bonus in bonuses_ref:
+	for bonus in resource_bonuses:
 		if bonus is Globals.ResourceBonus:
 			if bonus.resource_name == resource_name:
 				multiplier *= bonus.get_multiplier()
-				used.append(bonus)
-	for bonus in used:
-		bonuses_ref.erase(bonus)
+
 	return multiplier
 
-func _get_total_bonus(bonuses_ref : Array[Globals.Bonus], resource_name: StringName, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> float:
-	bonuses_ref = bonuses_ref.duplicate()
+func _get_total_bonus(resource_name: StringName, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> float:
 	var multiplier : float = 1.0
-	multiplier *= _get_location_action_resource_bonus(bonuses_ref, resource_name, action_type, location_type)
-	multiplier *= _get_action_resource_bonus(bonuses_ref, resource_name, action_type)
-	multiplier *= _get_resource_bonus(bonuses_ref, resource_name)
+	multiplier *= _get_location_action_resource_bonus(resource_name, action_type, location_type)
+	multiplier *= _get_action_resource_bonus(resource_name, action_type)
+	multiplier *= _get_resource_bonus(resource_name)
 	return multiplier
 
 func _get_quantity_with_bonus(quantity : ResourceQuantity, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> ResourceQuantity:
-	var multiplier : float = _get_total_bonus(bonuses, quantity.name, action_type, location_type)
+	var multiplier : float = _get_total_bonus(quantity.name, action_type, location_type)
 	var quantity_with_bonus : ResourceQuantity
 	if multiplier != 1.0:
 		quantity_with_bonus = ResourceBonusQuantity.new()
@@ -351,4 +342,10 @@ func _on_location_action_learned(location_action: Globals.LocationAction):
 
 func _on_bonus_gained(bonus : Globals.Bonus):
 	bonuses.append(bonus)
+	if bonus is Globals.LocationActionResourceBonus:
+		location_action_resource_bonuses.append(bonus)
+	elif bonus is Globals.ActionResourceBonus:
+		action_resource_bonuses.append(bonus)
+	elif bonus is Globals.ResourceBonus:
+		resource_bonuses.append(bonus)
 	_write_bonus(bonus)
