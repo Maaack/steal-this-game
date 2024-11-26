@@ -3,21 +3,17 @@ class_name KnowledgeManager
 extends DirectoryReader
 
 signal action_learned(action_type : Globals.ActionTypes)
-signal location_action_learned(location_type : Globals.LocationTypes, action_type : Globals.ActionTypes)
+signal location_action_learned(location_action : Globals.LocationAction)
 
 @export_multiline var end_reached_message : String = ""
 @export var inventory_manager : InventoryManager
 @export var event_view : EventView
 
-class LocationAction:
-	var location_type : Globals.LocationTypes
-	var action_type : Globals.ActionTypes
-
 class KnowledgePart :
 	var text : String
 	var resources : Array[ResourceQuantity]
 	var action_unlocks : Array[Globals.ActionTypes]
-	var location_action_unlocks : Array[LocationAction]
+	var location_action_unlocks : Array[Globals.LocationAction]
 
 var undiscovered_knowledge : Array[KnowledgePart] = []
 var discovered_knowledge : Array[KnowledgePart] = []
@@ -51,7 +47,7 @@ func _parse_knowledge_parts(parts : Array) -> Array:
 				knowledge_part.action_unlocks.append(action_type_int as Globals.ActionTypes)
 		if "location_action_unlocks" in part:
 			for location_action_parts in part["location_action_unlocks"]:
-				var location_action = LocationAction.new()
+				var location_action = Globals.LocationAction.new()
 				if "location_type" in location_action_parts:
 					location_action.location_type = location_action_parts["location_type"]
 				else:
@@ -91,5 +87,5 @@ func read():
 	for action_type in knowledge_part.action_unlocks:
 		action_learned.emit(action_type)
 	for location_action in knowledge_part.location_action_unlocks:
-		location_action_learned.emit(location_action.location_type, location_action.action_type)
+		location_action_learned.emit(location_action)
 	discovered_knowledge.append(knowledge_part)

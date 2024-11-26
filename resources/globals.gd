@@ -62,6 +62,13 @@ enum LocationTypes{
 	TRAIN_STATION,
 }
 
+class LocationAction:
+	var location_type : Globals.LocationTypes
+	var action_type : Globals.ActionTypes
+	
+	func get_string():
+		return "%s at %s" % [Globals.get_action_string(action_type), Globals.get_location_string(location_type)]
+
 static var _action_strings : Dictionary = {
 	ActionTypes.READ : "Read",
 	ActionTypes.SCOUT : "Scout",

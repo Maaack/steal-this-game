@@ -22,11 +22,7 @@ extends Node
 @export var event_view : EventView
 @export var location_action_scene : PackedScene
 
-class LocationAction:
-	var location_type : Globals.LocationTypes
-	var action_type : Globals.ActionTypes
-
-var discovered_location_actions : Array[LocationAction]
+var discovered_location_actions : Array[Globals.LocationAction]
 var action_node : Control
 var detailed_action_type : Globals.ActionTypes
 var selected_location_map : Dictionary[Globals.ActionTypes, LocationData]
@@ -227,21 +223,18 @@ func _discover_action(action_type : Globals.ActionTypes):
 func _on_action_learned(action_type : Globals.ActionTypes):
 	_discover_action(action_type)
 
-func _has_discovered_location_action(location_type: Globals.LocationTypes, action_type : Globals.ActionTypes) -> bool:
-	for location_action in discovered_location_actions:
-		if location_action.location_type == location_type and location_action.action_type == action_type:
+func _has_discovered_location_action(location_action: Globals.LocationAction) -> bool:
+	for discovered_location_action in discovered_location_actions:
+		if location_action.location_type == discovered_location_action.location_type and\
+		location_action.action_type == discovered_location_action.action_type:
 			return true
 	return false
 
-func _discover_location_action(location_type: Globals.LocationTypes, action_type : Globals.ActionTypes):
-	if _has_discovered_location_action(location_type, action_type): return
-	var location_action = LocationAction.new()
-	location_action.location_type = location_type
-	location_action.action_type = action_type
+func _discover_location_action(location_action: Globals.LocationAction):
+	if _has_discovered_location_action(location_action): return
 	discovered_location_actions.append(location_action)
-	var discover_string = "%s at %s" % [Globals.get_action_string(action_type), Globals.get_location_string(location_type)]
-	_write_discovered(discover_string, "Action")
-	_add_available_action(action_type)
+	_write_discovered(location_action.get_string(), "Action")
+	_add_available_action(location_action.action_type)
 
-func _on_location_action_learned(location_type: Globals.LocationTypes, action_type : Globals.ActionTypes):
-	_discover_location_action(location_type, action_type)
+func _on_location_action_learned(location_action: Globals.LocationAction):
+	_discover_location_action(location_action)
