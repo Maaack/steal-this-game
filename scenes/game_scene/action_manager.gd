@@ -12,7 +12,7 @@ extends Node
 			if action not in discovered_actions:
 				discovered_actions.append(action)
 @export var discovered_actions : Array[Globals.ActionTypes]
-@export var location_actions : Array[Globals.ActionTypes]
+@export var location_based_actions : Array[Globals.ActionTypes]
 
 @export var inventory_manager : InventoryManager
 @export var location_manager : LocationManager
@@ -22,6 +22,11 @@ extends Node
 @export var event_view : EventView
 @export var location_action_scene : PackedScene
 
+class LocationAction:
+	var location_type : Globals.LocationTypes
+	var action_type : Globals.ActionTypes
+
+var discovered_location_actions : Array[LocationAction]
 var action_node : Control
 var detailed_action_type : Globals.ActionTypes
 var selected_location_map : Dictionary[Globals.ActionTypes, LocationData]
@@ -34,6 +39,7 @@ func _ready():
 	city_container.action_done.connect(_on_action_done)
 	location_manager.location_discovered.connect(_on_location_discovered)
 	knowledge_manager.action_learned.connect(_on_action_learned)
+	knowledge_manager.location_action_learned.connect(_on_location_action_learned)
 
 func _write_event(text : String):
 	event_view.add_text(text)
@@ -63,7 +69,7 @@ func _on_selected_location_changed(location_data : LocationData, action_type : G
 func _get_action_location(action_type : Globals.ActionTypes, wait_flag : bool = false) -> LocationData:
 	if action_node == null or detailed_action_type != action_type:
 		_add_location_action_scene()
-		if action_node is LocationAction:
+		if action_node is LocationActionBox:
 			action_node.action_type = action_type
 			action_node.locations = location_manager.discovered_locations
 			action_node.wait(wait_flag)
@@ -72,7 +78,7 @@ func _get_action_location(action_type : Globals.ActionTypes, wait_flag : bool = 
 			action_node.selected_location_changed.connect(_on_selected_location_changed)
 			detailed_action_type = action_type
 			return null
-	elif action_node is LocationAction:
+	elif action_node is LocationActionBox:
 		return action_node.selected_location
 	return null
 
@@ -88,7 +94,7 @@ func _has_required_resources(resource_cost : Array[ResourceQuantity]) -> bool:
 
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
 	# Match location actions
-	if action_type in location_actions:
+	if action_type in location_based_actions:
 		var location_data : LocationData = _get_action_location(action_type, action_button.waiting)
 		if location_data and not action_button.waiting:
 			_on_location_action_done(action_type, location_data, action_button)
@@ -197,7 +203,7 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 func _add_available_action(action_type : Globals.ActionTypes):
 	if (action_type in available_actions) or \
 	(action_type not in discovered_actions) or \
-	(action_type in location_actions and action_type not in location_manager.discovered_actions):
+	(action_type in location_based_actions and action_type not in location_manager.discovered_actions):
 		return
 	available_actions.append(action_type)
 	city_container.add_action(action_type)
@@ -208,15 +214,34 @@ func _on_location_discovered(location : LocationData):
 		return
 	for action in location.actions_available:
 		_add_available_action(action.action)
-	if action_node is LocationAction:
+	if action_node is LocationActionBox:
 		action_node.locations = location_manager.discovered_locations
 		action_node.update_locations()
 
-func _unlock_action(action_type : Globals.ActionTypes):
-	if action_type not in discovered_actions:
-		discovered_actions.append(action_type)
-		_write_discovered(Globals.get_action_string(action_type), "Action")
-		_add_available_action(action_type)
+func _discover_action(action_type : Globals.ActionTypes):
+	if action_type in discovered_actions: return
+	discovered_actions.append(action_type)
+	_write_discovered(Globals.get_action_string(action_type), "Action")
+	_add_available_action(action_type)
 
 func _on_action_learned(action_type : Globals.ActionTypes):
-	_unlock_action(action_type)
+	_discover_action(action_type)
+
+func _has_discovered_location_action(location_type: Globals.LocationTypes, action_type : Globals.ActionTypes) -> bool:
+	for location_action in discovered_location_actions:
+		if location_action.location_type == location_type and location_action.action_type == action_type:
+			return true
+	return false
+
+func _discover_location_action(location_type: Globals.LocationTypes, action_type : Globals.ActionTypes):
+	if _has_discovered_location_action(location_type, action_type): return
+	var location_action = LocationAction.new()
+	location_action.location_type = location_type
+	location_action.action_type = action_type
+	discovered_location_actions.append(location_action)
+	var discover_string = "%s at %s" % [Globals.get_action_string(action_type), Globals.get_location_string(location_type)]
+	_write_discovered(discover_string, "Action")
+	_add_available_action(action_type)
+
+func _on_location_action_learned(location_type: Globals.LocationTypes, action_type : Globals.ActionTypes):
+	_discover_location_action(location_type, action_type)

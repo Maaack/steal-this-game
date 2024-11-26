@@ -3,15 +3,21 @@ class_name KnowledgeManager
 extends DirectoryReader
 
 signal action_learned(action_type : Globals.ActionTypes)
+signal location_action_learned(location_type : Globals.LocationTypes, action_type : Globals.ActionTypes)
 
 @export_multiline var end_reached_message : String = ""
 @export var inventory_manager : InventoryManager
 @export var event_view : EventView
 
+class LocationAction:
+	var location_type : Globals.LocationTypes
+	var action_type : Globals.ActionTypes
+
 class KnowledgePart :
 	var text : String
 	var resources : Array[ResourceQuantity]
 	var action_unlocks : Array[Globals.ActionTypes]
+	var location_action_unlocks : Array[LocationAction]
 
 var undiscovered_knowledge : Array[KnowledgePart] = []
 var discovered_knowledge : Array[KnowledgePart] = []
@@ -43,6 +49,18 @@ func _parse_knowledge_parts(parts : Array) -> Array:
 		if "action_unlocks" in part:
 			for action_type_int in part["action_unlocks"]:
 				knowledge_part.action_unlocks.append(action_type_int as Globals.ActionTypes)
+		if "location_action_unlocks" in part:
+			for location_action_parts in part["location_action_unlocks"]:
+				var location_action = LocationAction.new()
+				if "location_type" in location_action_parts:
+					location_action.location_type = location_action_parts["location_type"]
+				else:
+					push_warning("location action missing location_type")
+				if "action_type" in location_action_parts:
+					location_action.action_type = location_action_parts["action_type"]
+				else:
+					push_warning("location action missing action_type")
+				knowledge_part.location_action_unlocks.append(location_action)
 		parsed_parts.append(knowledge_part)
 	return parsed_parts
 
@@ -72,4 +90,6 @@ func read():
 		inventory_manager.add(resource_quantity)
 	for action_type in knowledge_part.action_unlocks:
 		action_learned.emit(action_type)
+	for location_action in knowledge_part.location_action_unlocks:
+		location_action_learned.emit(location_action.location_type, location_action.action_type)
 	discovered_knowledge.append(knowledge_part)

@@ -85,6 +85,7 @@ static var _location_strings : Dictionary = {
 	LocationTypes.BAKERY : "Bakery",
 	LocationTypes.PARK : "Park",
 	LocationTypes.OFFICES : "Offices",
+	LocationTypes.FARMERS_MARKET : "Farmer's Market",
 	LocationTypes.SUPERMARKET : "Supermarket",
 	LocationTypes.GROCERY_STORE : "Grocery Store",
 	LocationTypes.GAS_STATION : "Gas Station",

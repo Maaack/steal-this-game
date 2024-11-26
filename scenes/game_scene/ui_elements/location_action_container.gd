@@ -1,5 +1,5 @@
 @tool
-class_name LocationAction
+class_name LocationActionBox
 extends BoxContainer
 
 signal action_done(action_data : ActionData, location_data : LocationData, action_button : ActionButton)

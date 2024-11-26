@@ -1,7 +1,7 @@
 {
 	"knowledge": [
 		{
-			"text": "[font_size=24][b]Steal This Book (3rd Edition)[/b][/font_size]\n\n[b]Table of Contents[/b]\nChapter 1: Survive\nChapter 2: Fight\nChapter 3: Liberate",
+			"text": "[font_size=24][b]Steal This Book[/b][/font_size]\n[i](3rd Edition)[/i]\n\n[b]Table of Contents[/b]\nChapter 1: Survive\nChapter 2: Fight\nChapter 3: Liberate",
 			"action_unlocks": [14]
 		},
 		{
@@ -187,13 +187,28 @@
 			]
 		},
 		{
-			"text": "[b]Section 2: Free Food[/b]\n\n[b]General Guide[/b]\nAmerika is the most wasteful nation on Earth, consuming the most food per person in the world and throwing it away.",
-			"action_unlocks": [11]
+			"text": "[b]Section 2: Free Food[/b]\n\n[b]General Guide[/b]\nAmerika is the most wasteful nation on Earth, consuming the most food per person in the world and throwing it away."
 		},
 		{
-			"text": "[b]Blood and Guts[/b]\nPicky Americans throw away lots of good meat that everyone else considers to be delicacies. Things like hearts, kidneys, livers, stomachs and lungs can all be had for cheap. Even fresh blood can be turned into food.",
-			"action_unlocks": [6]
-		},		{
+			"text": "[b]Blood and Guts[/b]\nPicky Americans throw away lots of good meat that everyone else considers to be delicacies. Things like hearts, kidneys, livers, stomachs and lungs can all be had for cheap. Even fresh blood can be turned into food."
+		},
+		{
+			"text": "[b]Dumpster Diving[/b]\nNo discussion of free food would be complete without talking dumpster diving, but remember that you can score great bike parts, computers, weird electronics, clothes, toys, paperback books, etc.",
+			"action_unlocks":[11]
+		},
+		{
+			"text": "Scout what grocery stores, restaurants, and food services are nearby and check their dumpsters when no one is outside. Learn when the trash pick-up day is and what time fresh food is dumped."
+		},
+		{
+			"text": "Don't make a mess. The manager will have no reason to lock the dumpster, and the cops can't charge you for littering.",
+			"resources": [
+				{
+					"name":"determination",
+					"quantity":1
+				}
+			]
+		},
+		{
 			"text": "You can steal food, too!",
 			"action_unlocks": [7]
 		}
