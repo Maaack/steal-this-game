@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=36 format=3 uid="uid://biktaclghs8u1"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://biktaclghs8u1"]
 
 [ext_resource type="FontFile" uid="uid://dpeqt5iq8v0si" path="res://assets/fonts/lato/Lato-Regular.ttf" id="1_ols5k"]
 [ext_resource type="StyleBox" uid="uid://j2vyjd7v2ljr" path="res://resources/styleboxes/black_box_disabled_flat.tres" id="1_x127s"]
@@ -24,6 +24,7 @@
 [ext_resource type="StyleBox" uid="uid://bu7duhsavlvnr" path="res://resources/styleboxes/tab_unselected_flat.tres" id="18_d8x3d"]
 [ext_resource type="StyleBox" uid="uid://cxp4k6uinf3ls" path="res://resources/styleboxes/scroll_grabber_pressed_flat.tres" id="19_opsya"]
 [ext_resource type="StyleBox" uid="uid://ctqxcdu6djf3e" path="res://resources/styleboxes/red_box_flat.tres" id="21_wv8md"]
+[ext_resource type="StyleBox" uid="uid://dolf3y75cqy23" path="res://resources/styleboxes/blue_box_flat.tres" id="22_8723n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8md"]
 bg_color = Color(0.698039, 0.133333, 0.203922, 1)
@@ -131,13 +132,16 @@ Tree/colors/font_selected_color = Color(0.973535, 0.973535, 0.973535, 1)
 Tree/colors/guide_color = Color(0, 0, 0, 0)
 Tree/colors/parent_hl_line_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 Tree/colors/relationship_line_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+Tree/constants/inner_item_margin_left = 4
+Tree/constants/inner_item_margin_right = 4
+Tree/constants/item_margin = 0
 Tree/styles/button_hover = SubResource("StyleBoxEmpty_0ahyh")
 Tree/styles/button_pressed = SubResource("StyleBoxEmpty_83bj2")
 Tree/styles/focus = ExtResource("2_hofdy")
 Tree/styles/hovered = ExtResource("5_0ahyh")
 Tree/styles/panel = ExtResource("2_x127s")
-Tree/styles/selected = ExtResource("5_0ahyh")
-Tree/styles/selected_focus = ExtResource("5_0ahyh")
+Tree/styles/selected = ExtResource("22_8723n")
+Tree/styles/selected_focus = ExtResource("22_8723n")
 VScrollBar/styles/grabber = ExtResource("11_rrxf3")
 VScrollBar/styles/grabber_highlight = ExtResource("12_2e0dr")
 VScrollBar/styles/grabber_pressed = ExtResource("19_opsya")
