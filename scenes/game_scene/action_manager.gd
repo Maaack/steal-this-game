@@ -158,6 +158,35 @@ func _get_quantity_with_bonus(quantity : ResourceQuantity, action_type : Globals
 	quantity_with_bonus.copy_from(quantity)
 	return quantity_with_bonus
 
+func _add_quantity(quantity : ResourceQuantity):
+	inventory_manager.add(quantity)
+	_write_quantity(quantity)
+
+func _add_by_name(quantity_name : StringName, amount : float):
+	var quantity := ResourceQuantity.new()
+	quantity.resource_unit = Globals.get_resource_unit(quantity_name)
+	quantity.quantity = amount
+	_add_quantity(quantity)
+
+func _remove_quantity(quantity : ResourceQuantity):
+	inventory_manager.remove(quantity)
+	var inverse_quantity = quantity.duplicate()
+	inverse_quantity.quantity *= -1.0
+	_write_quantity(inverse_quantity)
+
+func _remove_by_name(quantity_name : StringName, amount : float):
+	var quantity := ResourceQuantity.new()
+	quantity.resource_unit = Globals.get_resource_unit(quantity_name)
+	quantity.quantity = amount
+	_remove_quantity(quantity)
+
+func _has_then_remove(resource_name : StringName, amount : float = 1) -> bool:
+	if not inventory_manager.has(resource_name, amount):
+		_write_failure("Requires 1 %s." % resource_name)
+		return false
+	_remove_by_name(resource_name, amount)
+	return true
+
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
 	# Match location actions
 	if action_type in location_based_actions:
@@ -167,22 +196,16 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 	if action_button.waiting: return
 	match action_type:
 		Globals.ActionTypes.LIBERATE:
-			if not inventory_manager.has(&"food", 1000):
-				_write_failure("Requires 1000 food.")
-				return
-			if not inventory_manager.has(&"reputation", 1000):
-				_write_failure("Requires 1000 reputation.")
-				return
-			if not inventory_manager.has(&"energy", 100):
-				_write_failure("Requires 100 energy.")
-				return
-			if not inventory_manager.has(&"determination", 100):
-				_write_failure("Requires 100 determination.")
-				return
+			if not _has_then_remove(&"food", 1000): return
+			if not _has_then_remove(&"reputation", 1000): return
+			if not _has_then_remove(&"energy", 100): return
+			if not _has_then_remove(&"determination", 100): return
 			action_button.wait(60)
 			await action_button.wait_time_passed
 			_write_success("Liberated %s!" % city_name)
 		Globals.ActionTypes.SCOUT:
+			_write_event("You try exploring the city...")
+			if not _has_then_remove(&"energy", 1): return
 			action_button.wait(5.0)
 			await action_button.wait_time_passed
 			var location_scouted = location_manager.scout()
@@ -192,19 +215,17 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 				_write_discovered(location_scouted.name, "Location", true)
 		Globals.ActionTypes.READ:
 			_write_event("You try reading more secrets...")
+			if not _has_then_remove(&"energy", 1): return
 			action_button.wait(10.0)
 			await action_button.wait_time_passed
 			_write_success("Read...")
 			knowledge_manager.read()
 		Globals.ActionTypes.EAT:
-			if not inventory_manager.has(&"food", 1):
-				_write_failure("Requires 1 food.")
-				return
+			if not _has_then_remove(&"food", 1): return
 			action_button.wait(0.5)
 			await action_button.wait_time_passed
 			_write_success("Ate...")
-			inventory_manager.remove_by_name(&"food", 1)
-			inventory_manager.add_by_name(&"energy", 1)
+			_add_by_name(&"energy", 1)
 		_:
 			push_warning("No condition for action %s" % Globals.get_action_string(action_type))
 
@@ -243,10 +264,7 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 		_write_failure("Requires %s." % Globals.get_comma_separated_list(missing_resources))
 		return
 	for cost in action_data.resource_cost:
-		inventory_manager.remove(cost)
-		var inverse_quantity = cost.duplicate()
-		inverse_quantity.quantity *= -1.0
-		_write_quantity(inverse_quantity)
+		_remove_quantity(cost)
 	# Begin action
 	action_button.wait(action_data.time_cost)
 	if action_node.action_type == action_type and action_node.has_method(&"wait"):
@@ -257,8 +275,7 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 			_write_success(action_data.success_message)
 		for result in action_data.success_resource_result:
 			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
-			inventory_manager.add(quantity_with_bonus)
-			_write_quantity(quantity_with_bonus)
+			_add_quantity(quantity_with_bonus)
 		for result in action_data.location_success_resource_result:
 			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
 			location_data.resources.add(quantity_with_bonus)
@@ -267,8 +284,7 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 			_write_failure(action_data.failure_message)
 		for result in action_data.failure_resource_result:
 			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
-			inventory_manager.add(quantity_with_bonus)
-			_write_quantity(quantity_with_bonus)
+			_add_quantity(quantity_with_bonus)
 		for result in action_data.location_failure_resource_result:
 			var quantity_with_bonus = _get_quantity_with_bonus(result, action_type, location_data.location_type)
 			location_data.resources.add(quantity_with_bonus)
