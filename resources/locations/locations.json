@@ -67,6 +67,40 @@
 							"quantity": 0.05
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "DCK-HL",
+			"location_type": 17,
+			"description": "Clothing for those that need to say they are better than you.",
+			"actions_available": [
+				{
+					"action_type": 4,
+					"time_cost":3,
+					"try_message": "You go in to shop.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						},
+						{
+							"name": "money",
+							"quantity": 100.0
+						}
+					],
+					"success_message": "You buy fancy clothes.",
+					"success_resource_result": [
+						{
+							"name": "fancy clothes",
+							"quantity": 2.0
+						},
+						{
+							"name": "determination",
+							"quantity": -1.0
+						}
+					],
+					"location_success_resource_result": []
 				},
 				{
 					"action_type": 7,
@@ -214,8 +248,39 @@
 							"quantity": 0.10
 						}
 					]
+				},
+				{
+					"action_type": 11,
+					"time_cost":10,
+					"try_message": "You check the bakery's trash bins.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You find day old bread and baked goods.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 3.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.05
+						}
+					],
+					"failure_message": "A lady comes out to scold you for scaring staff and customers.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.10
+						}
+					]
 				}
-				
 			]
 		},
 		{
@@ -326,6 +391,38 @@
 							"quantity": 0.10
 						}
 					]
+				},
+				{
+					"action_type": 11,
+					"time_cost":10,
+					"try_message": "You look through the bins behind the supermarket.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You find a lot of food still wrapped up.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 3.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.05
+						}
+					],
+					"failure_message": "The manager comes out with a security guard to tell you to leave.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.10
+						}
+					]
 				}
 				
 			]
@@ -363,6 +460,38 @@
 					]
 				},
 				{
+					"action_type": 11,
+					"time_cost":10,
+					"try_message": "You look through garbage bins for food.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You find a couple morcels to eat.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 2.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.10
+						}
+					],
+					"failure_message": "A police officer hovers over you until you leave.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.25
+						}
+					]
+				},
+				{
 					"action_type": 13,
 					"time_cost":10,
 					"try_message": "You try to spread a message of hope and resistance.",
@@ -390,6 +519,50 @@
 						}
 					],
 					"failure_message": "The people are apathetic to you and your message.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.1
+						}
+					]
+				},
+				{
+					"action_type": 16,
+					"time_cost":30,
+					"try_message": "You try to organize a small spokescouncil meeting in the park.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						},
+						{
+							"name": "reputation",
+							"quantity": 20.0
+						},
+						{
+							"name": "determination",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You organize a small meeting of like-minded people.",
+					"success_resource_result": [
+						{
+							"name": "reputation",
+							"quantity": 40.0
+						},
+						{
+							"name": "determination",
+							"quantity": 4.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.5
+						}
+					],
+					"failure_message": "No one shows up for your meeting.",
 					"failure_resource_result": [],
 					"location_failure_resource_result": [
 						{

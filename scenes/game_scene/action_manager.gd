@@ -17,7 +17,7 @@ extends Node
 @export var inventory_manager : InventoryManager
 @export var location_manager : LocationManager
 @export var knowledge_manager : KnowledgeManager
-@export var action_container : Container
+@export var action_container : Control
 @export var city_container : CityContainer
 @export var event_view : EventView
 @export var location_action_scene : PackedScene
@@ -244,6 +244,9 @@ func _on_location_action_done(action_type : Globals.ActionTypes, location_data :
 		return
 	for cost in action_data.resource_cost:
 		inventory_manager.remove(cost)
+		var inverse_quantity = cost.duplicate()
+		inverse_quantity.quantity *= -1.0
+		_write_quantity(inverse_quantity)
 	# Begin action
 	action_button.wait(action_data.time_cost)
 	if action_node.action_type == action_type and action_node.has_method(&"wait"):
