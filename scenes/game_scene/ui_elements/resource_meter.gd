@@ -16,7 +16,16 @@ extends HBoxContainer
 	set(value):
 		resource_name = value
 		tooltip_text = resource_name
+@export var good : bool :
+	set(value):
+		good = value
+		if is_inside_tree():
+			if good:
+				%ProgressBar.theme_type_variation = &"ProgressBarGood"
+			else:
+				%ProgressBar.theme_type_variation = &"ProgressBarBad"
 
 func _ready():
 	icon = icon
 	progress = progress
+	good = good

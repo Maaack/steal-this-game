@@ -140,6 +140,7 @@ func _add_meter_for_resource(quantity : ResourceQuantity):
 	resource_meter_instance.resource_name = quantity.name
 	resource_meter_instance.icon = quantity.icon
 	resource_meter_instance.progress = quantity.quantity
+	resource_meter_instance.good = false
 	resource_container.add_child(resource_meter_instance)
 	resource_meter_map[quantity.name] = resource_meter_instance
 
