@@ -33,6 +33,19 @@ func _parse_locations(locations : Array) -> Array:
 			location_data.location_type = _location["location_type"]
 		if "description" in _location:
 			location_data.description = _location["description"]
+		if "resources" in _location:
+			for _resource in _location["resources"]:
+				var _quantity = ResourceQuantity.new()
+				if "name" in _resource:
+					_quantity.resource_unit = Globals.get_resource_unit(_resource["name"])
+				else:
+					push_warning("location action resource cost missing name")
+					continue
+				if "quantity" in _resource:
+					_quantity.quantity = _resource["quantity"]
+				else:
+					push_warning("location action resource cost missing quantity")
+				location_data.resources.add(_quantity)
 		if "actions_available" in _location:
 			var _actions : Array = _location["actions_available"]
 			for _action in _actions:
@@ -48,77 +61,77 @@ func _parse_locations(locations : Array) -> Array:
 				if "resource_cost" in _action:
 					var _resources : Array = _action["resource_cost"]
 					for _resource in _resources:
-						var resource_data = ResourceQuantity.new()
+						var _quantity = ResourceQuantity.new()
 						if "name" in _resource:
-							resource_data.resource_unit = Globals.get_resource_unit(_resource["name"])
+							_quantity.resource_unit = Globals.get_resource_unit(_resource["name"])
 						else:
 							push_warning("location action resource cost missing name")
 							continue
 						if "quantity" in _resource:
-							resource_data.quantity = _resource["quantity"]
+							_quantity.quantity = _resource["quantity"]
 						else:
 							push_warning("location action resource cost missing quantity")
-						action_data.resource_cost.append(resource_data)
+						action_data.resource_cost.append(_quantity)
 				if "success_message" in _action:
 					action_data.success_message = _action["success_message"]
 				if "success_resource_result" in _action:
 					var _resources : Array = _action["success_resource_result"]
 					for _resource in _resources:
-						var resource_data = ResourceQuantity.new()
+						var _quantity = ResourceQuantity.new()
 						if "name" in _resource:
-							resource_data.resource_unit = Globals.get_resource_unit(_resource["name"])
+							_quantity.resource_unit = Globals.get_resource_unit(_resource["name"])
 						else:
 							push_warning("location action resource result missing name")
 							continue
 						if "quantity" in _resource:
-							resource_data.quantity = _resource["quantity"]
+							_quantity.quantity = _resource["quantity"]
 						else:
 							push_warning("location action resource result missing quantity")
-						action_data.success_resource_result.append(resource_data)
+						action_data.success_resource_result.append(_quantity)
 				if "location_success_resource_result" in _action:
 					var _resources : Array = _action["location_success_resource_result"]
 					for _resource in _resources:
-						var resource_data = ResourceQuantity.new()
+						var _quantity = ResourceQuantity.new()
 						if "name" in _resource:
-							resource_data.resource_unit = Globals.get_resource_unit(_resource["name"])
+							_quantity.resource_unit = Globals.get_resource_unit(_resource["name"])
 						else:
 							push_warning("location action location resource result missing name")
 							continue
 						if "quantity" in _resource:
-							resource_data.quantity = _resource["quantity"]
+							_quantity.quantity = _resource["quantity"]
 						else:
 							push_warning("location action location resource result missing quantity")
-						action_data.location_success_resource_result.append(resource_data)
+						action_data.location_success_resource_result.append(_quantity)
 				if "failure_message" in _action:
 					action_data.failure_message = _action["failure_message"]
 				if "failure_resource_result" in _action:
 					var _resources : Array = _action["failure_resource_result"]
 					for _resource in _resources:
-						var resource_data = ResourceQuantity.new()
+						var _quantity = ResourceQuantity.new()
 						if "name" in _resource:
-							resource_data.resource_unit = Globals.get_resource_unit(_resource["name"])
+							_quantity.resource_unit = Globals.get_resource_unit(_resource["name"])
 						else:
 							push_warning("location action resource result missing name")
 							continue
 						if "quantity" in _resource:
-							resource_data.quantity = _resource["quantity"]
+							_quantity.quantity = _resource["quantity"]
 						else:
 							push_warning("location action resource result missing quantity")
-						action_data.failure_resource_result.append(resource_data)
+						action_data.failure_resource_result.append(_quantity)
 				if "location_failure_resource_result" in _action:
 					var _resources : Array = _action["location_failure_resource_result"]
 					for _resource in _resources:
-						var resource_data = ResourceQuantity.new()
+						var _quantity = ResourceQuantity.new()
 						if "name" in _resource:
-							resource_data.resource_unit = Globals.get_resource_unit(_resource["name"])
+							_quantity.resource_unit = Globals.get_resource_unit(_resource["name"])
 						else:
 							push_warning("location action location resource result missing name")
 							continue
 						if "quantity" in _resource:
-							resource_data.quantity = _resource["quantity"]
+							_quantity.quantity = _resource["quantity"]
 						else:
 							push_warning("location action location resource result missing quantity")
-						action_data.location_failure_resource_result.append(resource_data)
+						action_data.location_failure_resource_result.append(_quantity)
 				location_data.actions_available.append(action_data)
 		parsed_locations.append(location_data)
 	return parsed_locations
