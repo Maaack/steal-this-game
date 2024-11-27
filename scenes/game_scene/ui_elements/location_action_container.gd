@@ -21,6 +21,8 @@ signal selected_location_changed(location_data : LocationData)
 		if is_inside_tree() and _value_changed:
 			update_locations()
 @export var resource_meter_scene : PackedScene
+@export var success_color: Color = Color.WHITE
+@export var failure_color: Color = Color.WHITE
 
 @onready var resource_container : Container = %ResourceContainer
 
@@ -146,10 +148,58 @@ func _update_selected_location_resource_meters():
 	for quantity in selected_location.resources.contents:
 		_add_meter_for_resource(quantity)
 
+func _clear_action_details():
+	for child in %CostsContainer.get_children():
+		child.queue_free()
+	for child in %SuccessContainer.get_children():
+		child.queue_free()
+	for child in %FailureContainer.get_children():
+		child.queue_free()
+
+func _add_label_for_quantity(quantity : ResourceQuantity, container : Control, percent : bool = false, good : bool = true):
+	var label = RichTextLabel.new()
+	label.scroll_active = false
+	label.fit_content = true
+	label.bbcode_enabled = true
+	var color_string : String
+	if (quantity.quantity > 0 and good) or (quantity.quantity < 0 and not good):
+		color_string = success_color.to_html(false)
+	else:
+		color_string = failure_color.to_html(false)
+	if percent:
+		label.text = "%s [color=#%s][b]%+.0f%%[/b][/color]" % [quantity.name.capitalize(), color_string, quantity.quantity * 100]
+	else:
+		label.text = "%s [color=#%s][b]%+.0f[/b][/color]" % [quantity.name.capitalize(), color_string, quantity.quantity]
+	container.add_child(label)
+	return label
+
+func _add_details_for_action(action : ActionData):
+	for quantity in action.resource_cost:
+		quantity = quantity.duplicate()
+		quantity.quantity *= -1.0
+		_add_label_for_quantity(quantity, %CostsContainer)
+	for quantity in action.success_resource_result:
+		_add_label_for_quantity(quantity, %SuccessContainer)
+	for quantity in action.location_success_resource_result:
+		var label = _add_label_for_quantity(quantity, %SuccessContainer, true, false)
+		label.text = "(Local) %s" % label.text
+	for quantity in action.failure_resource_result:
+		_add_label_for_quantity(quantity, %FailureContainer)
+	for quantity in action.location_failure_resource_result:
+		var label = _add_label_for_quantity(quantity, %FailureContainer, true, false)
+		label.text = "(Local) %s" % label.text
+
+func _update_selected_location_action_details():
+	_clear_action_details()
+	for action in selected_location.actions_available:
+		if action.action == action_type:
+			_add_details_for_action(action)
+
 func _update_selected_location_details():
 	%NameLabel.text = selected_location.name
 	%TypeLabel.text = selected_location.get_location_string()
 	%DescriptionLabel.text = selected_location.description
+	_update_selected_location_action_details()
 	_update_selected_location_resource_meters()
 
 func _update_selected_location():

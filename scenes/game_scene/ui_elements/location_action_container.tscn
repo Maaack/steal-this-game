@@ -6,11 +6,16 @@
 
 [node name="LocationAction" type="BoxContainer"]
 custom_minimum_size = Vector2(500, 360)
-offset_right = 500.0
-offset_bottom = 360.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 vertical = true
 script = ExtResource("1_h6lkj")
 resource_meter_scene = ExtResource("2_0l6xd")
+success_color = Color(0.235294, 0.231373, 0.431373, 1)
+failure_color = Color(0.698039, 0.133333, 0.203922, 1)
 
 [node name="ActionLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -98,18 +103,70 @@ layout_mode = 2
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-size_flags_vertical = 3
 bbcode_enabled = true
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ResourceContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="ActionDetailsContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
+layout_mode = 2
+text = "Cost"
+
+[node name="CostsContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SuccessLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.235294, 0.231373, 0.431373, 1)
+text = "On Success"
+
+[node name="SuccessContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FailureLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.698039, 0.133333, 0.203922, 1)
+text = "On Failure"
+
+[node name="FailureContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResourceContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
