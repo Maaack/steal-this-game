@@ -1,0 +1,175 @@
+{
+	"knowledge": [
+		{
+			"text": "[b]Section 2: Free Food[/b]\n\n[b]General Guide[/b]\nAmerika is the most wasteful nation on Earth, consuming the most food per person in the world and throwing it away.",
+			"resources": [
+				{
+					"name":"determination",
+					"quantity":1
+				}
+			]
+		},
+		{
+			"text": "[b]Blood and Guts[/b]\nPicky Americans throw away lots of good meat that everyone else considers to be delicacies. Things like hearts, kidneys, livers, stomachs and lungs can all be had for cheap. Even fresh blood can be turned into food.",
+			"bonuses": [
+				{
+					"resource_name":"food",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Dumpster Diving[/b]\nNo discussion of free food would be complete without talking dumpster diving, but remember that you can score great bike parts, computers, weird electronics, clothes, toys, paperback books, etc.",
+			"action_unlocks":[11]
+		},
+		{
+			"text": "Scout what grocery stores, restaurants, and food services are nearby and check their dumpsters when no one is outside. Learn when the trash pick-up day is and what time fresh food is dumped.",
+			"bonuses": [
+				{
+					"action_type": 11,
+					"location_type": 1,
+					"resource_name":"food",
+					"bonus":0.25
+				},
+				{
+					"action_type": 11,
+					"location_type": 2,
+					"resource_name":"food",
+					"bonus":0.25
+				},
+				{
+					"action_type": 11,
+					"location_type": 12,
+					"resource_name":"food",
+					"bonus":0.25
+				},
+				{
+					"action_type": 11,
+					"location_type": 13,
+					"resource_name":"food",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "Don't make a mess. The manager will have no reason to lock the dumpster, and the cops can't charge you for littering.",
+			"resources": [
+				{
+					"name":"determination",
+					"quantity":1
+				}
+			],
+			"bonuses": [
+				{
+					"action_type": 11,
+					"resource_name":"suspicion",
+					"bonus":-0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Day Old Bread Stores[/b]\nAsk for bread a bakery is going to throw away; say it's for your pet. Most times they will squash it down in a buggy, but squashed bread is still tasty.",
+			"location_action_unlocks":[
+				{
+					"action_type": 6,
+					"location_type": 2
+				}
+			]
+		},
+		{
+			"text": "[b]Free Drinks[/b]\nGet your hands on a plastic cup from a gas station or fast-food restaurant. This guarantees you free drinks there for as long as you have the cup.",
+			"bonuses":[
+				{
+					"action_type": 11,
+					"location_type": 12,
+					"resource_name": "food",
+					"bonus":0.25
+				},
+				{
+					"action_type": 11,
+					"location_type": 20,
+					"resource_name": "food",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Hotel Grazing[/b]\nMany hotels offer complimentary breakfasts. The best ones to hit are business-styled suite hotels, which offer free hot breakfasts. Make sure that they don't check for a reservation or room key. Dress nice.",
+			"bonuses":[
+				{
+					"action_type": 11,
+					"location_type": 11,
+					"resource_name": "food",
+					"bonus":0.5
+				}
+			]
+		},
+		{
+			"text": "[b]Fast Food Chains[/b]\nOn a busy Friday or Saturday night near the local bars. After last call, stand as if waiting for food for about 15 minutes, then approach a clerk. Tell them you've been waiting for your order. They'll usually make it for you.'",
+			"bonuses":[
+				{
+					"action_type": 11,
+					"location_type": 12,
+					"resource_name": "food",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Convenience Stores[/b]\nIf you make friends with the staff they'll often let you chew on their hyperinflated shelves and encased junk food. Don't be too open about it; give them some plausible deniablity in case you somehow get caught.",
+			"bonuses":[
+				{
+					"action_type": 11,
+					"location_type": 11,
+					"resource_name": "food",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "The convenience store recognizes the needs of the under-ground economy of drug dealers and undocumented illegal aliens, and cater to their privacy needs in a way that rakes in huge profits.",
+			"resources": [
+				{
+					"name":"determination",
+					"quantity":1
+				}
+			]
+		},
+		{
+			"text": "[b]Cafes[/b]Most cafes give away their remaining pastries at the end of the day due to their sales policies to refresh the stock each morning. In addition, friendly staff may give as many free samples of different drinks and snacks as you want.",
+			"location_action_unlocks":[
+				{
+					"action_type": 6,
+					"location_type": 13
+				}
+			],
+			"bonuses":[
+				{
+					"action_type": 11,
+					"location_type": 13,
+					"resource_name": "food",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Free Meat and Cheese[/b]Many grocery stores will give away free samples of the meats and cheeses sold in the deli. Dress appropriately, fill a basket with products, and then ask the deli hand to taste a meat or cheese that interests you.",
+			"location_action_unlocks":[
+				{
+					"action_type": 6,
+					"location_type": 1
+				}
+			]
+		},
+		{
+			"text": "[b]Free Food For Your Own Church[/b]Join the Universal life Church, a free and legally recognized Church. Once joined, you will be a legally ordained minister. Then ask for donations to your food bank. Please have a conscience about this.",
+			"bonuses":[
+				{
+					"action_type": 6,
+					"resource_name": "food",
+					"bonus":0.25
+				}
+			]
+		}
+	]
+}

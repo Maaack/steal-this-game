@@ -178,15 +178,11 @@
 							"quantity": 1.0
 						}
 					],
-					"success_message": "The staff take some pity on you and offer bird bread.",
+					"success_message": "The staff take some pity on you and offer day old bread.",
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 2.0
-						},
-						{
-							"name": "reputation",
-							"quantity": -1.0
+							"quantity": 3.0
 						}
 					],
 					"location_success_resource_result": [
@@ -307,10 +303,6 @@
 						{
 							"name": "food",
 							"quantity": 2.0
-						},
-						{
-							"name": "determination",
-							"quantity": -1.0
 						}
 					],
 					"location_success_resource_result": []
@@ -325,11 +317,11 @@
 							"quantity": 1.0
 						}
 					],
-					"success_message": "Some shoppers take pity and skim off extra food from their bulk purchases.",
+					"success_message": "Some people take pity and skim off extra food from their excess.",
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 2.0
+							"quantity": 4.0
 						},
 						{
 							"name": "reputation",
@@ -342,7 +334,7 @@
 							"quantity": 0.10
 						}
 					],
-					"failure_message": "Shoppers are reluctant to give up their freshly purchased food.",
+					"failure_message": "People are reluctant to give up their freshly purchased food.",
 					"failure_resource_result": [
 						{
 							"name": "reputation",
@@ -402,11 +394,142 @@
 							"quantity": 1.0
 						}
 					],
-					"success_message": "You find a lot of food still wrapped up.",
+					"success_message": "You find some food and other goods still wrapped up.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 2.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.05
+						}
+					],
+					"failure_message": "The staff loading and unloading trucks blocked you from the trash bins.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.025
+						}
+					]
+				}
+				
+			]
+		},
+		{
+			"name": "Foods-2-Eat",
+			"location_type": 1,
+			"description": "A chain grocery store. Most of the food is over-processed junk, but the shelves get restocked regularly.",
+			"actions_available": [
+				{
+					"action_type": 4,
+					"time_cost":3,
+					"try_message": "You go to shop at the grocery store.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						},
+						{
+							"name": "money",
+							"quantity": 10.0
+						}
+					],
+					"success_message": "You buy a mix of fresh food and not-really-food.",
 					"success_resource_result": [
 						{
 							"name": "food",
 							"quantity": 3.0
+						}
+					],
+					"location_success_resource_result": []
+				},
+				{
+					"action_type": 6,
+					"time_cost":3,
+					"try_message": "You try asking the staff for some samples of meats and cheeses.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You get a good helping of snacks.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 4.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.2
+						}
+					],
+					"failure_message": "The staff are reluctant to hand out any more free food to you.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "fatigue",
+							"quantity": 0.1
+						}
+					]
+				},
+				{
+					"action_type": 7,
+					"time_cost":5,
+					"try_message": "You try lifting some food from the grocery store.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You manage to walk out with pockets stuffed with food.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 5.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.1
+						},
+						{
+							"name": "evidence",
+							"quantity": 0.025
+						}
+					],
+					"failure_message": "The watchful eyes of the grocery staff prevented you from getting any food.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.05
+						}
+					]
+				},
+				{
+					"action_type": 11,
+					"time_cost":10,
+					"try_message": "You look through the bins behind the grocery store.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You find a lot of food just recently passed the sell-by-date.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity": 4.0
 						}
 					],
 					"location_success_resource_result": [
@@ -420,7 +543,7 @@
 					"location_failure_resource_result": [
 						{
 							"name": "suspicion",
-							"quantity": 0.10
+							"quantity": 0.025
 						}
 					]
 				}
