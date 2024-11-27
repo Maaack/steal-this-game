@@ -84,7 +84,7 @@ func add_quantity_text(quantity : ResourceQuantity, good : bool = true):
 		elif  quantity.multiplier < 1.0:
 			multi_color_string = failure_color.to_html(false)
 		var multi_string : String = "[color=#%s]%.2f[/color]" % [multi_color_string, quantity.multiplier]
-		delta_string = "[color=#%s]%+.0f[/color] x %s = [color=#%s][b]%+.0f[/b][/color]" % [color_string, quantity.get_raw_quantity(), multi_string, color_string, quantity.quantity]
+		delta_string = "[color=#%s]%+.0f[/color] x %s = [color=#%s][b]%+.1f[/b][/color]" % [color_string, quantity.get_raw_quantity(), multi_string, color_string, quantity.quantity]
 	rich_text_label.text += "%s %s\n" % [quantity.name.capitalize(), delta_string]
 	_write_out_line()
 

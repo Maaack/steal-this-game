@@ -41,6 +41,9 @@ func _ready():
 	knowledge_manager.action_learned.connect(_on_action_learned)
 	knowledge_manager.location_action_learned.connect(_on_location_action_learned)
 	knowledge_manager.bonus_gained.connect(_on_bonus_gained)
+	_write_event("You arrive in %s with some money and copy of a book of secrets." % city_name)
+	await get_tree().create_timer(2, false).timeout
+	_write_event("Luckily, you know a friend with a couch.")
 
 #region writing stuff
 func _write_event(text : String):
