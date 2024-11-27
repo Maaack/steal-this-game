@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://b00avs38ao5jy"]
+
+[ext_resource type="Texture2D" uid="uid://bolcv474slual" path="res://assets/icons/stopwatch_detailed.png" id="1_e3lnm"]
+[ext_resource type="Script" uid="uid://cog0v6bgk76ub" path="res://resources/resource_unit.gd" id="2_cjtbo"]
+
+[resource]
+script = ExtResource("2_cjtbo")
+name = &"time"
+icon = ExtResource("1_e3lnm")
+metadata/_custom_type_script = ExtResource("2_cjtbo")

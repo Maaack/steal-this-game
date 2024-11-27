@@ -94,10 +94,6 @@
 						{
 							"name": "fancy clothes",
 							"quantity": 2.0
-						},
-						{
-							"name": "determination",
-							"quantity": -1.0
 						}
 					],
 					"location_success_resource_result": []

@@ -125,7 +125,7 @@ theme_override_constants/margin_bottom = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 40
 
 [node name="CityContainer" parent="MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer" instance=ExtResource("5_ul61k")]
 unique_name_in_owner = true

@@ -157,24 +157,39 @@ func _clear_action_details():
 	for child in %FailureContainer.get_children():
 		child.queue_free()
 
-func _add_label_for_quantity(quantity : ResourceQuantity, container : Control, percent : bool = false, good : bool = true):
+func _get_new_rich_text_label() -> RichTextLabel:
 	var label = RichTextLabel.new()
 	label.scroll_active = false
 	label.fit_content = true
 	label.bbcode_enabled = true
+	return label
+
+func _add_label_for_quantity(quantity : ResourceQuantity, container : Control, percent : bool = false, good : bool = true):
+	var label = _get_new_rich_text_label()
 	var color_string : String
 	if (quantity.quantity > 0 and good) or (quantity.quantity < 0 and not good):
 		color_string = success_color.to_html(false)
 	else:
 		color_string = failure_color.to_html(false)
-	if percent:
-		label.text = "%s [color=#%s][b]%+.0f%%[/b][/color]" % [quantity.name.capitalize(), color_string, quantity.quantity * 100]
+	var quantity_string : String
+	if quantity.name == &"time":
+		quantity_string = "%.0f sec." % quantity.quantity
+	elif percent:
+		quantity_string = "%+.0f%%" % (quantity.quantity * 100)
 	else:
-		label.text = "%s [color=#%s][b]%+.0f[/b][/color]" % [quantity.name.capitalize(), color_string, quantity.quantity]
+		quantity_string = "%+.0f" % quantity.quantity
+	label.text = "[img=16x16]%s[/img] %s [color=#%s][b]%s[/b][/color]" % [quantity.icon.resource_path, quantity.name.capitalize(), color_string, quantity_string]
 	container.add_child(label)
 	return label
 
+func _add_action_time_cost(action : ActionData):
+	var quantity := ResourceQuantity.new()
+	quantity.resource_unit = Globals.get_resource_unit(&"time")
+	quantity.quantity = action.time_cost
+	_add_label_for_quantity(quantity, %CostsContainer, false, false)
+
 func _add_details_for_action(action : ActionData):
+	_add_action_time_cost(action)
 	for quantity in action.resource_cost:
 		quantity = quantity.duplicate()
 		quantity.quantity *= -1.0
@@ -183,12 +198,12 @@ func _add_details_for_action(action : ActionData):
 		_add_label_for_quantity(quantity, %SuccessContainer)
 	for quantity in action.location_success_resource_result:
 		var label = _add_label_for_quantity(quantity, %SuccessContainer, true, false)
-		label.text = "(Local) %s" % label.text
+		label.text = "%s [i](Local)[/i]" % label.text
 	for quantity in action.failure_resource_result:
 		_add_label_for_quantity(quantity, %FailureContainer)
 	for quantity in action.location_failure_resource_result:
 		var label = _add_label_for_quantity(quantity, %FailureContainer, true, false)
-		label.text = "(Local) %s" % label.text
+		label.text = "%s [i](Local)[/i]" % label.text
 
 func _update_selected_location_action_details():
 	_clear_action_details()
