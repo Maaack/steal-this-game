@@ -176,6 +176,11 @@ func _add_label_for_quantity(quantity : ResourceQuantity, container : Control, p
 		quantity_string = "%.0f sec." % quantity.quantity
 	elif percent:
 		quantity_string = "%+.0f%%" % (quantity.quantity * 100)
+	elif quantity is ResourceRandIQuantity and (quantity.quantity_min != 0 or quantity.quantity_max != 0):
+		var sign_string : String = "+"
+		if quantity.quantity_min < 0:
+			sign_string = "-"
+		quantity_string = "%s(%.0f - %.0f)" % [sign_string, quantity.quantity_min, quantity.quantity_max]
 	else:
 		quantity_string = "%+.0f" % quantity.quantity
 	label.text = "[img=16x16]%s[/img] %s [color=#%s][b]%s[/b][/color]" % [quantity.icon.resource_path, quantity.name.capitalize(), color_string, quantity_string]

@@ -160,6 +160,11 @@
 						{
 							"name": "food",
 							"quantity": 4.0
+						},
+						{
+							"name": "reputation",
+							"quantity_min": 0.0,
+							"quantity_max": 1.0
 						}
 					],
 					"location_success_resource_result": []
@@ -178,7 +183,8 @@
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 3.0
+							"quantity_min": 2.0,
+							"quantity_max": 3.0
 						}
 					],
 					"location_success_resource_result": [
@@ -188,12 +194,7 @@
 						}
 					],
 					"failure_message": "The staff say they don't have anything to give you.",
-					"failure_resource_result": [
-						{
-							"name": "reputation",
-							"quantity": -1.0
-						}
-					],
+					"failure_resource_result": [],
 					"location_failure_resource_result": [
 						{
 							"name": "fatigue",
@@ -219,7 +220,7 @@
 						},
 						{
 							"name": "reputation",
-							"quantity": -2.0
+							"quantity": -1.0
 						}
 					],
 					"location_success_resource_result": [
@@ -255,7 +256,8 @@
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 3.0
+							"quantity_min": 1.0,
+							"quantity_max": 3.0
 						}
 					],
 					"location_success_resource_result": [
@@ -438,7 +440,8 @@
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 3.0
+							"quantity_min": 4.0,
+							"quantity_max": 5.0
 						}
 					],
 					"location_success_resource_result": []
