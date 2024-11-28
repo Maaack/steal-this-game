@@ -745,6 +745,187 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Molitov Inn",
+			"location_type": 11,
+			"description": "A basic hotel chain location.",
+			"actions_available": [
+				{
+					"action_type": 4,
+					"time_cost":30,
+					"try_message": "You try getting a room at the hotel.",
+					"resource_cost": [
+						{
+							"name": "money",
+							"quantity": 80.0
+						}
+					],
+					"success_message": "You get a room to yourself for the night with a complimentary breakfast.",
+					"success_resource_result": [
+						{
+							"name": "energy",
+							"quantity": 16.0
+						},
+						{
+							"name": "food",
+							"quantity_min": 4.0,
+							"quantity_max": 6.0
+						}
+
+					],
+					"location_success_resource_result": []
+				},
+				{
+					"action_type": 7,
+					"time_cost":10,
+					"try_message": "You walk out of the bathroom after a disguise change and enjoy the hotel's complimentary breakfast.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						},
+						{
+							"name": "clothes",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You fill your stomach and your pockets from the breakfast buffet.",
+					"success_resource_result": [
+						{
+							"name": "energy",
+							"quantity_min": 1.0,
+							"quantity_max": 4.0
+						},
+						{
+							"name": "food",
+							"quantity_min": 3.0,
+							"quantity_max": 8.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 0.0,
+							"quantity_max": 2.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.25
+						}
+					],
+					"failure_message": "A member of the hotel staff asks for your room key or reservation and you make up an excuse and bail without eating.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.1
+						}
+					]
+				},
+				{
+					"action_type": 11,
+					"time_cost":10,
+					"try_message": "You look through garbage bins behind the hotel kitchen.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You find a pile of breakfast food that was thrown away.",
+					"success_resource_result": [
+						{
+							"name": "food",
+							"quantity_min": 1.0,
+							"quantity_max": 4.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 1.0,
+							"quantity_max": 3.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.20
+						}
+					],
+					"failure_message": "A member of the kitchen staff asks you to leave before you manage to aquire anything.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.25
+						}
+					]
+				},
+				{
+					"action_type": 16,
+					"time_cost":30,
+					"try_message": "You try to organize a spokescouncil meeting in the hotel.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 15.0
+						},
+						{
+							"name": "money",
+							"quantity": 500.0
+						},
+						{
+							"name": "food",
+							"quantity": 200.0
+						},
+						{
+							"name": "reputation",
+							"quantity": 50.0
+						},
+						{
+							"name": "determination",
+							"quantity": 1.0
+						}
+					],
+					"success_message": "You successfully organize a public meeting in the hotel with catered food for attendees. It goes well!",
+					"success_resource_result": [
+						{
+							"name": "reputation",
+							"quantity_min": 100.0,
+							"quantity_max": 400.0
+						},
+						{
+							"name": "activists",
+							"quantity_min": 3.0,
+							"quantity_max": 10.0
+						},
+						{
+							"name": "determination",
+							"quantity_min": 1.0,
+							"quantity_max": 10.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.5
+						}
+					],
+					"failure_message": "The hotel cancels your reservation of their dining area for your spokescouncil meeting and refunds your money.",
+					"failure_resource_result": [
+						{
+							"name": "money",
+							"quantity": 500.0
+						}
+					],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.1
+						}
+					]
+				}
+			]
 		}
 	]
 }
