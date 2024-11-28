@@ -216,7 +216,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 		Globals.ActionTypes.SCOUT:
 			_write_event("You try exploring the city...")
 			if not _has_then_remove(&"energy", 1): return
-			action_button.wait(5.0)
+			action_button.wait(10.0)
 			await action_button.wait_time_passed
 			var location_scouted = location_manager.scout()
 			if location_scouted == null:
@@ -226,7 +226,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 		Globals.ActionTypes.READ:
 			_write_event("You try reading more secrets...")
 			if not _has_then_remove(&"energy", 1): return
-			action_button.wait(10.0)
+			action_button.wait(4.0)
 			await action_button.wait_time_passed
 			_write_success("Read...")
 			knowledge_manager.read()
