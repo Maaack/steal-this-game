@@ -24,19 +24,21 @@ func _read_json_from_file(file_path) -> Dictionary:
 	return json_data
 
 func _get_quantity_for_resource(resource) -> ResourceQuantity:
-	var _quantity = ResourceRandIQuantity.new()
-	if "name" in resource:
-		_quantity.resource_unit = Globals.get_resource_unit(resource["name"])
-	else:
-		push_warning("resource missing name")
+	var _quantity : ResourceQuantity
 	if "quantity" in resource:
+		_quantity = ResourceQuantity.new()
 		_quantity.quantity = resource["quantity"]
 	elif "quantity_max" in resource and "quantity_min" in resource:
+		_quantity = ResourceRandIQuantity.new()
 		_quantity.quantity_max = resource["quantity_max"]
 		_quantity.quantity_min = resource["quantity_min"]
 		_quantity.quantity = 0
 	else:
 		push_warning("resource missing quantity")
+	if "name" in resource:
+		_quantity.resource_unit = Globals.get_resource_unit(resource["name"])
+	else:
+		push_warning("resource missing name")
 	return _quantity
 
 func _parse_locations(locations : Array) -> Array:
