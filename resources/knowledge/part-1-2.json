@@ -13,7 +13,7 @@
 			"text": "[b]Blood and Guts[/b]\nPicky Americans throw away lots of good meat that everyone else considers to be delicacies. Things like hearts, kidneys, livers, stomachs and lungs can all be had for cheap. Even fresh blood can be turned into food.",
 			"bonuses": [
 				{
-					"resource_name":"food",
+					"resource_name":"raw ingredients",
 					"bonus":0.25
 				}
 			]
@@ -120,7 +120,7 @@
 			"bonuses":[
 				{
 					"action_type": 11,
-					"location_type": 11,
+					"location_type": 3,
 					"resource_name": "food",
 					"bonus":0.25
 				}
@@ -136,7 +136,7 @@
 			]
 		},
 		{
-			"text": "[b]Cafes[/b]Most cafes give away their remaining pastries at the end of the day due to their sales policies to refresh the stock each morning. In addition, friendly staff may give as many free samples of different drinks and snacks as you want.",
+			"text": "[b]Cafes[/b]\nMost cafes give away their remaining pastries at the end of the day due to their sales policies to refresh the stock each morning. In addition, friendly staff may give as many free samples of different drinks and snacks as you want.",
 			"location_action_unlocks":[
 				{
 					"action_type": 6,
@@ -153,7 +153,7 @@
 			]
 		},
 		{
-			"text": "[b]Free Meat and Cheese[/b]Many grocery stores will give away free samples of the meats and cheeses sold in the deli. Dress appropriately, fill a basket with products, and then ask the deli hand to taste a meat or cheese that interests you.",
+			"text": "[b]Free Meat and Cheese[/b]\nMany grocery stores will give away free samples of the meats and cheeses sold in the deli. Dress appropriately, fill a basket with products, and then ask the deli hand to taste a meat or cheese that interests you.",
 			"location_action_unlocks":[
 				{
 					"action_type": 6,
@@ -162,7 +162,7 @@
 			]
 		},
 		{
-			"text": "[b]Free Food For Your Own Church[/b]Join the Universal life Church, a free and legally recognized Church. Once joined, you will be a legally ordained minister. Then ask for donations to your food bank. Please have a conscience about this.",
+			"text": "[b]Free Food For Your Own Church[/b]\nJoin the Universal life Church, a free and legally recognized Church. Once joined, you will be a legally ordained minister. Then ask for donations to your food bank. Please have a conscience about this.",
 			"bonuses":[
 				{
 					"action_type": 6,
@@ -170,6 +170,10 @@
 					"bonus":0.25
 				}
 			]
+		},
+		{
+			"text": "[b]Cooking Basics[/b]\nKeep any loose clothing away from open flames, wash everything that comes in contact with the food, always wash your hands after touching raw meats and eggs, use oven mitts, be careful how you handle anything sharp, keep a fire extinguisher handy, and remember that “Baking Powder” and “Baking Soda” are two completely different things.",
+			"action_unlocks":[8]
 		}
 	]
 }

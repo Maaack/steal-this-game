@@ -144,10 +144,12 @@ func _get_resource_bonus(resource_name: StringName) -> float:
 
 	return multiplier
 
-func _get_total_bonus(resource_name: StringName, action_type : Globals.ActionTypes, location_type : Globals.LocationTypes) -> float:
+func _get_total_bonus(resource_name: StringName, action_type : Globals.ActionTypes = Globals.ActionTypes.NONE, location_type : Globals.LocationTypes = Globals.LocationTypes.NONE) -> float:
 	var multiplier : float = 1.0
-	multiplier *= _get_location_action_resource_bonus(resource_name, action_type, location_type)
-	multiplier *= _get_action_resource_bonus(resource_name, action_type)
+	if location_type != Globals.LocationTypes.NONE and action_type != Globals.ActionTypes.NONE:
+		multiplier *= _get_location_action_resource_bonus(resource_name, action_type, location_type)
+	if action_type != Globals.ActionTypes.NONE:
+		multiplier *= _get_action_resource_bonus(resource_name, action_type)
 	multiplier *= _get_resource_bonus(resource_name)
 	return multiplier
 
@@ -186,7 +188,7 @@ func _remove_by_name(quantity_name : StringName, amount : float):
 
 func _has_then_remove(resource_name : StringName, amount : float = 1) -> bool:
 	if not inventory_manager.has(resource_name, amount):
-		_write_failure("Requires 1 %s." % resource_name)
+		_write_failure("Requires %d %s." % [amount, resource_name])
 		return false
 	_remove_by_name(resource_name, amount)
 	return true
@@ -200,6 +202,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 		var location_data : LocationData = _get_action_location(action_type, action_button.waiting)
 		if location_data and not action_button.waiting:
 			_on_location_action_done(action_type, location_data, action_button)
+		return
 	if action_button.waiting: return
 	match action_type:
 		Globals.ActionTypes.LIBERATE:
@@ -233,6 +236,13 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			await action_button.wait_time_passed
 			_write_success("Ate...")
 			_add_by_name(&"energy", 1)
+		Globals.ActionTypes.COOK:
+			if not _has_then_remove(&"raw ingredients", 3): return
+			action_button.wait(15)
+			await action_button.wait_time_passed
+			_write_success("Cooked food...")
+			var total_food = 10 * _get_total_bonus(&"food", action_type)
+			_add_by_name(&"food", 10)
 		_:
 			push_warning("No condition for action %s" % Globals.get_action_string(action_type))
 

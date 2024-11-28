@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://cbuedn4w7g2jq"]
+
+[ext_resource type="Texture2D" uid="uid://cpptjw7rmoavv" path="res://assets/icons/backup.png" id="1_3qfvn"]
+[ext_resource type="Script" uid="uid://cog0v6bgk76ub" path="res://resources/resource_unit.gd" id="2_5tker"]
+
+[resource]
+script = ExtResource("2_5tker")
+name = &"activists"
+icon = ExtResource("1_3qfvn")
+metadata/_custom_type_script = ExtResource("2_5tker")

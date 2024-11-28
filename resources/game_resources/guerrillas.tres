@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://ccaqrsod6ruvb"]
+
+[ext_resource type="Texture2D" uid="uid://bagottabriixu" path="res://assets/icons/dark-squad.png" id="1_wehif"]
+[ext_resource type="Script" uid="uid://cog0v6bgk76ub" path="res://resources/resource_unit.gd" id="2_3fjlp"]
+
+[resource]
+script = ExtResource("2_3fjlp")
+name = &"guerrillas"
+icon = ExtResource("1_wehif")
+metadata/_custom_type_script = ExtResource("2_3fjlp")

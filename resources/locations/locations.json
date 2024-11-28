@@ -24,10 +24,6 @@
 						{
 							"name": "clothes",
 							"quantity": 2.0
-						},
-						{
-							"name": "determination",
-							"quantity": -1.0
 						}
 					],
 					"location_success_resource_result": []
@@ -172,14 +168,14 @@
 				{
 					"action_type": 6,
 					"time_cost":3,
-					"try_message": "You beg for food at the bakery.",
+					"try_message": "You ask for old bread from the staff at the bakery.",
 					"resource_cost": [
 						{
 							"name": "energy",
 							"quantity": 1.0
 						}
 					],
-					"success_message": "The staff take some pity on you and offer day old bread.",
+					"success_message": "The bakery staff give you their day old bread mushed into a ball.",
 					"success_resource_result": [
 						{
 							"name": "food",
@@ -258,6 +254,11 @@
 							"name": "food",
 							"quantity_min": 1.0,
 							"quantity_max": 3.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 0.0,
+							"quantity_max": 1.0
 						}
 					],
 					"location_success_resource_result": [
@@ -284,7 +285,7 @@
 			"actions_available": [
 				{
 					"action_type": 4,
-					"time_cost":3,
+					"time_cost":6,
 					"try_message": "You go to shop at the supermarket.",
 					"resource_cost": [
 						{
@@ -307,7 +308,7 @@
 				},
 				{
 					"action_type": 6,
-					"time_cost":3,
+					"time_cost":12,
 					"try_message": "You try begging for food in front of the supermarket.",
 					"resource_cost": [
 						{
@@ -319,7 +320,13 @@
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 4.0
+							"quantity_min": 1.0,
+							"quantity_max": 4.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 1.0,
+							"quantity_max": 5.0
 						},
 						{
 							"name": "reputation",
@@ -333,12 +340,7 @@
 						}
 					],
 					"failure_message": "People are reluctant to give up their freshly purchased food.",
-					"failure_resource_result": [
-						{
-							"name": "reputation",
-							"quantity": -1.0
-						}
-					],
+					"failure_resource_result": [],
 					"location_failure_resource_result": [
 						{
 							"name": "fatigue",
@@ -348,7 +350,7 @@
 				},
 				{
 					"action_type": 7,
-					"time_cost":5,
+					"time_cost":6,
 					"try_message": "You try redeeming a five-finger discount.",
 					"resource_cost": [
 						{
@@ -359,8 +361,14 @@
 					"success_message": "You easily walk out with your new stuff.",
 					"success_resource_result": [
 						{
-							"name": "clothes",
-							"quantity": 2.0
+							"name": "food",
+							"quantity_min": 1.0,
+							"quantity_max": 5.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 0.0,
+							"quantity_max": 3.0
 						}
 					],
 					"location_success_resource_result": [
@@ -442,6 +450,11 @@
 							"name": "food",
 							"quantity_min": 4.0,
 							"quantity_max": 5.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 2.0,
+							"quantity_max": 5.0
 						}
 					],
 					"location_success_resource_result": []
@@ -460,8 +473,8 @@
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 4.0
-						}
+							"quantity_min": 2.0,
+							"quantity_max": 4.0						}
 					],
 					"location_success_resource_result": [
 						{
@@ -492,7 +505,13 @@
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 5.0
+							"quantity_min": 2.0,
+							"quantity_max": 5.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 1.0,
+							"quantity_max": 6.0
 						}
 					],
 					"location_success_resource_result": [
@@ -524,12 +543,19 @@
 							"quantity": 1.0
 						}
 					],
-					"success_message": "You find a lot of food just recently passed the sell-by-date.",
+					"success_message": "You find food just recently passed the sell-by-date.",
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 4.0
+							"quantity_min": 1.0,
+							"quantity_max": 4.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 2.0,
+							"quantity_max": 4.0
 						}
+
 					],
 					"location_success_resource_result": [
 						{
@@ -595,7 +621,8 @@
 					"success_resource_result": [
 						{
 							"name": "food",
-							"quantity": 2.0
+							"quantity_min": 1.0,
+							"quantity_max": 3.0
 						}
 					],
 					"location_success_resource_result": [
@@ -621,6 +648,10 @@
 						{
 							"name": "energy",
 							"quantity": 1.0
+						},
+						{
+							"name": "determination",
+							"quantity": 1.0
 						}
 					],
 					"success_message": "You connect with someone over their personal struggles.",
@@ -631,7 +662,8 @@
 						},
 						{
 							"name": "determination",
-							"quantity": 1.0
+							"quantity_min": 1.0,
+							"quantity_max": 2.0
 						}
 					],
 					"location_success_resource_result": [
@@ -656,11 +688,15 @@
 					"resource_cost": [
 						{
 							"name": "energy",
-							"quantity": 1.0
+							"quantity": 5.0
+						},
+						{
+							"name": "food",
+							"quantity": 50.0
 						},
 						{
 							"name": "reputation",
-							"quantity": 20.0
+							"quantity": 25.0
 						},
 						{
 							"name": "determination",
@@ -671,17 +707,28 @@
 					"success_resource_result": [
 						{
 							"name": "reputation",
-							"quantity": 40.0
+							"quantity_min": 25.0,
+							"quantity_max": 50.0
+						},
+						{
+							"name": "activists",
+							"quantity_min": 0.0,
+							"quantity_max": 1.0
 						},
 						{
 							"name": "determination",
-							"quantity": 4.0
+							"quantity_min": 1.0,
+							"quantity_max": 4.0
 						}
 					],
 					"location_success_resource_result": [
 						{
 							"name": "fatigue",
 							"quantity": 0.5
+						},
+						{
+							"name": "suspicion",
+							"quantity": 0.25
 						}
 					],
 					"failure_message": "No one shows up for your meeting.",
@@ -690,6 +737,10 @@
 						{
 							"name": "fatigue",
 							"quantity": 0.1
+						},
+						{
+							"name": "suspicion",
+							"quantity": 0.05
 						}
 					]
 				}

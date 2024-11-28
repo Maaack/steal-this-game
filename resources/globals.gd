@@ -24,6 +24,7 @@ enum ActionTypes{
 }
 
 enum LocationTypes{
+	NONE = -1,
 	APARTMENTS,
 	GROCERY_STORE,
 	BAKERY,

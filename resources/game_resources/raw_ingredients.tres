@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://djq2758f78a71"]
+
+[ext_resource type="Script" uid="uid://cog0v6bgk76ub" path="res://resources/resource_unit.gd" id="1_aslxq"]
+[ext_resource type="Texture2D" uid="uid://dtuo3uhxwyc47" path="res://assets/icons/flour.png" id="1_e3k4n"]
+
+[resource]
+script = ExtResource("1_aslxq")
+name = &"raw ingredients"
+icon = ExtResource("1_e3k4n")
+metadata/_custom_type_script = ExtResource("1_aslxq")
