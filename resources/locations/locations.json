@@ -26,7 +26,10 @@
 							"quantity": 2.0
 						}
 					],
-					"location_success_resource_result": []
+					"location_success_resource_result": [],
+					"failure_message": "You are asked to leave by the manager. They don't want your business, even when it's legit.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": []
 				},
 				{
 					"action_type": 7,
@@ -92,7 +95,10 @@
 							"quantity": 2.0
 						}
 					],
-					"location_success_resource_result": []
+					"location_success_resource_result": [],
+					"failure_message": "The manager tells you to keep your dirty money and find somewhere else to shop.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": []
 				},
 				{
 					"action_type": 7,
@@ -163,7 +169,10 @@
 							"quantity_max": 1.0
 						}
 					],
-					"location_success_resource_result": []
+					"location_success_resource_result": [],
+					"failure_message": "A lady comes up and takes your handbasket away, then tells you to leave her bakery.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": []
 				},
 				{
 					"action_type": 6,
@@ -304,7 +313,10 @@
 							"quantity": 2.0
 						}
 					],
-					"location_success_resource_result": []
+					"location_success_resource_result": [],
+					"failure_message": "A disgruntled security guard tells you to leave.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": []
 				},
 				{
 					"action_type": 6,
@@ -457,7 +469,10 @@
 							"quantity_max": 5.0
 						}
 					],
-					"location_success_resource_result": []
+					"location_success_resource_result": [],
+					"failure_message": "A store manager tells you to leave before you can buy anything.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": []
 				},
 				{
 					"action_type": 6,
@@ -774,7 +789,10 @@
 						}
 
 					],
-					"location_success_resource_result": []
+					"location_success_resource_result": [],
+					"failure_message": "A hotel manager greets you coldly at check in to tell you they don't have a room for you.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": []
 				},
 				{
 					"action_type": 7,
@@ -950,7 +968,15 @@
 							"quantity_max": 20.0
 						}
 					],
-					"location_success_resource_result": []
+					"location_success_resource_result": [],
+					"failure_message": "Your application to deliver food is denied. At least you didn't waste your whole day.",
+					"failure_resource_result": [
+						{
+							"name": "energy",
+							"quantity": 7.0
+						}
+					],
+					"location_failure_resource_result": []
 				},
 				{
 					"action_type": 7,
@@ -987,7 +1013,12 @@
 						}
 					],
 					"failure_message": "Your application to [i]delivery[/i] goods for the delivery service is denied.",
-					"failure_resource_result": [],
+					"failure_resource_result": [
+						{
+							"name": "energy",
+							"quantity": 2.0
+						}
+					],
 					"location_failure_resource_result": [
 						{
 							"name": "suspicion",
