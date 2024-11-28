@@ -30,6 +30,7 @@ var bonuses : Array[Globals.Bonus]
 var resource_bonuses : Array[Globals.ResourceBonus]
 var action_resource_bonuses : Array[Globals.ActionResourceBonus]
 var location_action_resource_bonuses : Array[Globals.LocationActionResourceBonus]
+var selected_location_action_button : ActionButton
 
 func _ready():
 	city_name = city_name
@@ -193,6 +194,9 @@ func _has_then_remove(resource_name : StringName, amount : float = 1) -> bool:
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
 	# Match location actions
 	if action_type in location_based_actions:
+		city_container.animate_button_state(selected_location_action_button, false)
+		city_container.animate_button_state(action_button, true)
+		selected_location_action_button = action_button
 		var location_data : LocationData = _get_action_location(action_type, action_button.waiting)
 		if location_data and not action_button.waiting:
 			_on_location_action_done(action_type, location_data, action_button)

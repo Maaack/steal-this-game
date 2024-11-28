@@ -3,6 +3,7 @@ class_name Globals
 extends Object
 
 enum ActionTypes{
+	NONE = -1,
 	READ,
 	SCOUT,
 	REST,
