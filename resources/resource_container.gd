@@ -84,7 +84,9 @@ func add(value:ResourceQuantity):
 		if current_unit is ResourceQuantity:
 			current_unit.quantity += value.quantity
 		else:
-			contents.append(value)
+			var value_copy = ResourceQuantity.new()
+			value_copy.copy_from(value)
+			contents.append(value_copy)
 	else:
 		contents.append(value)
 	update_quantities()
