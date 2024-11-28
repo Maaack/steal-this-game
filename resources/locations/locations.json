@@ -911,7 +911,7 @@
 							"quantity": 0.5
 						}
 					],
-					"failure_message": "The hotel cancels your reservation of their dining area for your spokescouncil meeting and refunds your money.",
+					"failure_message": "The hotel cancels your reservation for your spokescouncil meeting with no explanation and refunds your money.",
 					"failure_resource_result": [
 						{
 							"name": "money",
@@ -922,6 +922,76 @@
 						{
 							"name": "suspicion",
 							"quantity": 0.1
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "W3-Deliver",
+			"location_type": 14,
+			"description": "A delivery service for people ordering food or groceries within the city. It's usually pretty easy to get work here, but the pay is dependent on tips.",
+			"actions_available": [
+				{
+					"action_type": 3,
+					"time_cost":30,
+					"try_message": "You apply to do a few delivery jobs for the company.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 10.0
+						}
+					],
+					"success_message": "It's not sustainable work, but you manage to make a few tips.",
+					"success_resource_result": [
+						{
+							"name": "money",
+							"quantity_min": 5.0,
+							"quantity_max": 20.0
+						}
+					],
+					"location_success_resource_result": []
+				},
+				{
+					"action_type": 7,
+					"time_cost":10,
+					"try_message": "You apply to do a few delivery jobs for the company, and plan to snag the biggest delivery of the day for yourself.",
+					"resource_cost": [
+						{
+							"name": "energy",
+							"quantity": 5.0
+						}
+					],
+					"success_message": "You wait until you've gotten a big grocery delivery, and take it for yourself.",
+					"success_resource_result": [
+						{
+							"name": "money",
+							"quantity_min": 5.0,
+							"quantity_max": 10.0
+						},
+						{
+							"name": "food",
+							"quantity_min": 5.0,
+							"quantity_max": 10.0
+						},
+						{
+							"name": "raw ingredients",
+							"quantity_min": 0.0,
+							"quantity_max": 2.0
+						}
+					],
+					"location_success_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 1.5
+						}
+					],
+					"failure_message": "Your application to [i]delivery[/i] goods for the delivery service is denied.",
+					"failure_resource_result": [],
+					"location_failure_resource_result": [
+						{
+							"name": "suspicion",
+							"quantity": 0.25
 						}
 					]
 				}
