@@ -251,21 +251,19 @@ func _get_quantity_or_zero(quantity_name: StringName, quantities_map : Dictionar
 		return quantities_map[quantity_name]
 	return 0.0
 
-func _roll_against_quantity(quantity_name: StringName, quantities_map : Dictionary[StringName, float]) -> bool:
-	return randf() > _get_quantity_or_zero(quantity_name, quantities_map)
+func _roll_against_quantity(quantity_name: StringName, quantities_map : Dictionary[StringName, float], base_risk : float = 0.0) -> bool:
+	return randf() > _get_quantity_or_zero(quantity_name, quantities_map) + base_risk
 
 func _get_action_success(action_data : ActionData, location_data : LocationData) -> bool:
 	var resource_quantities : Dictionary[StringName, float]
 	for quantity_data in location_data.resources.quantities:
 		resource_quantities[quantity_data.name] = quantity_data.quantity
-	match action_data.action:
-		Globals.ActionTypes.STEAL:
-			return _roll_against_quantity(&"suspicion", resource_quantities)
-		Globals.ActionTypes.BEG:
-			return _roll_against_quantity(&"fatigue", resource_quantities)
-		_:
-			return _roll_against_quantity(&"fatigue", resource_quantities) and _roll_against_quantity(&"suspicion", resource_quantities)
-	return true
+	var action_base_risk = Globals.get_action_risk(action_data.action)
+	var risky_resources = Globals.get_action_risky_resources(action_data.action)
+	var final_state : bool = true
+	for resource_name in risky_resources:
+		final_state = final_state and _roll_against_quantity(resource_name, resource_quantities)
+	return final_state
 
 func _on_location_action_done(action_type : Globals.ActionTypes, location_data : LocationData, action_button : ActionButton):
 	var event_string : String

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceUnit" load_steps=3 format=3 uid="uid://cj5yweqx5rb8a"]
+
+[ext_resource type="Texture2D" uid="uid://dygfl8xmhr05d" path="res://assets/icons/rolling-dices.png" id="1_buuf2"]
+[ext_resource type="Script" uid="uid://cog0v6bgk76ub" path="res://resources/resource_unit.gd" id="2_ke1vi"]
+
+[resource]
+script = ExtResource("2_ke1vi")
+name = &"risk"
+icon = ExtResource("1_buuf2")
+metadata/_custom_type_script = ExtResource("2_ke1vi")

@@ -120,6 +120,56 @@ static var _location_strings : Dictionary = {
 	LocationTypes.CRAFTS_STORE : "Crafts Store",
 }
 
+static var _base_action_risks : Dictionary[ActionTypes, float] = {
+	ActionTypes.READ : 0,
+	ActionTypes.SCOUT : 0,
+	ActionTypes.REST : 0,
+	ActionTypes.WORK : 0,
+	ActionTypes.BUY : 0,
+	ActionTypes.SELL : 0.5,
+	ActionTypes.BEG : 0.25,
+	ActionTypes.STEAL : 0.5,
+	ActionTypes.COOK: 0,
+	ActionTypes.GROW: 0.25,
+	ActionTypes.GIVE: 0,
+	ActionTypes.ADVOCATE: 0,
+	ActionTypes.LIBERATE: 0,
+	ActionTypes.EAT: 0,
+	ActionTypes.SCAVENGE: 0.25,
+	ActionTypes.ORGANIZE: 0.25
+}
+
+static var _action_risky_resources : Dictionary[ActionTypes, Array] = {
+	ActionTypes.READ : [],
+	ActionTypes.SCOUT : [],
+	ActionTypes.REST : [&"fatigue"],
+	ActionTypes.WORK : [&"suspicion", &"evidence"],
+	ActionTypes.BUY : [&"suspicion", &"evidence"],
+	ActionTypes.SELL : [],
+	ActionTypes.BEG : [ &"fatigue", &"suspicion"],
+	ActionTypes.STEAL : [&"suspicion", &"evidence"],
+	ActionTypes.COOK: [],
+	ActionTypes.GROW: [],
+	ActionTypes.GIVE: [],
+	ActionTypes.ADVOCATE: [&"fatigue", &"suspicion"],
+	ActionTypes.LIBERATE: [],
+	ActionTypes.EAT: [],
+	ActionTypes.SCAVENGE: [&"suspicion"],
+	ActionTypes.ORGANIZE: [&"fatigue", &"suspicion", &"evidence"]
+}
+
+static func get_action_risk(action_type : ActionTypes) -> float:
+	if action_type in _base_action_risks:
+		return _base_action_risks[action_type]
+	push_warning("no key matching type %s" % action_type)
+	return 0.0
+
+static func get_action_risky_resources(action_type : ActionTypes) -> Array:
+	if action_type in _action_risky_resources:
+		return _action_risky_resources[action_type]
+	push_warning("no key matching type %s" % action_type)
+	return []
+
 static func get_action_string(action_type : ActionTypes) -> String:
 	if action_type in _action_strings:
 		return _action_strings[action_type]
@@ -150,6 +200,11 @@ static func get_resource_unit(resource_name : StringName) -> ResourceUnit:
 			return resource_unit
 	push_warning("resource matching '%s' not found" % resource_name)
 	return
+
+static func get_resource_quantity(resource_name : StringName) -> ResourceQuantity:
+	var new_quantity = ResourceQuantity.new()
+	new_quantity.resource_unit = get_resource_unit(resource_name)
+	return new_quantity
 
 static func get_comma_separated_list(strings : Array[String]) -> String:
 	if strings.size() > 2:

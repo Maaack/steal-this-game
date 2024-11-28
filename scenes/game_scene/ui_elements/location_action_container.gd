@@ -189,6 +189,12 @@ func _add_label_for_quantity(quantity : ResourceQuantity, container : Control, p
 	container.add_child(label)
 	return label
 
+func _add_label_for_resource(quantity : ResourceUnit, container : Control):
+	var label = _get_new_rich_text_label()
+	label.text = "[img=16x16]%s[/img] %s" % [quantity.icon.resource_path, quantity.name.capitalize()]
+	container.add_child(label)
+	return label
+
 func _add_action_time_cost(action : ActionData):
 	var quantity := ResourceQuantity.new()
 	quantity.resource_unit = Globals.get_resource_unit(&"time")
@@ -218,11 +224,27 @@ func _update_selected_location_action_details():
 		if action.action == action_type:
 			_add_details_for_action(action)
 
+func _clear_location_action_risks():
+	for child in %RisksContainer.get_children():
+		child.queue_free()
+
+func _update_selected_location_action_risks():
+	_clear_location_action_risks()
+	var risk_quantity = Globals.get_resource_quantity(&"risk")
+	risk_quantity.quantity = Globals.get_action_risk(action_type)
+	var label = _add_label_for_quantity(risk_quantity, %RisksContainer, true, false)
+	label.text += " (Base)"
+	var risky_resources = Globals.get_action_risky_resources(action_type)
+	for resource_name in risky_resources:
+		var resource_unit = Globals.get_resource_unit(resource_name)
+		_add_label_for_resource(resource_unit, %RisksContainer)
+
 func _update_selected_location_details():
 	%NameLabel.text = selected_location.name
 	%TypeLabel.text = selected_location.get_location_string()
 	%DescriptionLabel.text = selected_location.description
 	_update_selected_location_action_details()
+	_update_selected_location_action_risks()
 	_update_selected_location_resource_meters()
 
 func _update_selected_location():
