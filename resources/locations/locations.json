@@ -1012,7 +1012,7 @@
 							"quantity": 1.5
 						}
 					],
-					"failure_message": "Your application to [i]delivery[/i] goods for the delivery service is denied.",
+					"failure_message": "Your application to [i]deliver[/i] goods is denied.",
 					"failure_resource_result": [
 						{
 							"name": "energy",

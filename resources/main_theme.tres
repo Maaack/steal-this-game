@@ -66,6 +66,8 @@ bg_color = Color(0.235294, 0.231373, 0.431373, 1)
 
 [resource]
 default_font = ExtResource("1_ols5k")
+BoldLabel/base_type = &"Label"
+BoldLabel/fonts/font = ExtResource("16_lmfyq")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.698039, 0.133333, 0.203922, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)

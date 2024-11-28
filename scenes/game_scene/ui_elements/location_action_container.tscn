@@ -40,6 +40,7 @@ layout_mode = 2
 
 [node name="LocationsLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"BoldLabel"
 text = "Locations:"
 
 [node name="Tree" type="Tree" parent="HBoxContainer/VBoxContainer"]
@@ -55,6 +56,7 @@ size_flags_horizontal = 3
 
 [node name="DetailsLabel" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_type_variation = &"BoldLabel"
 text = "Details:"
 
 [node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
@@ -99,11 +101,12 @@ theme_type_variation = &"LocationType"
 horizontal_alignment = 2
 
 [node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 bbcode_enabled = true
 
@@ -127,7 +130,9 @@ size_flags_vertical = 3
 
 [node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
 layout_mode = 2
-text = "Cost:"
+theme_type_variation = &"BoldLabel"
+text = "Cost"
+horizontal_alignment = 1
 
 [node name="CostsContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
 unique_name_in_owner = true
@@ -137,8 +142,11 @@ size_flags_vertical = 3
 
 [node name="SuccessLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
 layout_mode = 2
+theme_type_variation = &"BoldLabel"
 theme_override_colors/font_color = Color(0.235294, 0.231373, 0.431373, 1)
-text = "On Success:"
+theme_override_colors/font_outline_color = Color(0.973535, 0.973535, 0.973535, 1)
+text = "-- On Success --"
+horizontal_alignment = 1
 
 [node name="SuccessContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
 unique_name_in_owner = true
@@ -148,8 +156,11 @@ size_flags_vertical = 3
 
 [node name="FailureLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
 layout_mode = 2
+theme_type_variation = &"BoldLabel"
 theme_override_colors/font_color = Color(0.698039, 0.133333, 0.203922, 1)
-text = "On Failure:"
+theme_override_colors/font_outline_color = Color(0.973535, 0.973535, 0.973535, 1)
+text = "-- On Failure --"
+horizontal_alignment = 1
 
 [node name="FailureContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer2/ActionDetailsContainer"]
 unique_name_in_owner = true
@@ -173,16 +184,23 @@ size_flags_vertical = 3
 
 [node name="RisksLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Risks:"
+theme_type_variation = &"BoldLabel"
+text = "Risks"
+horizontal_alignment = 1
 
 [node name="RisksContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="LocalLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Local:"
+theme_type_variation = &"BoldLabel"
+text = "Local"
+horizontal_alignment = 1
 
 [node name="ResourceContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
