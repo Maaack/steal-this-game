@@ -166,11 +166,6 @@ func _get_new_rich_text_label() -> RichTextLabel:
 
 func _add_label_for_quantity(quantity : ResourceQuantity, container : Control, percent : bool = false, good : bool = true):
 	var label = _get_new_rich_text_label()
-	var color_string : String
-	if (quantity.quantity > 0 and good) or (quantity.quantity < 0 and not good):
-		color_string = success_color.to_html(false)
-	else:
-		color_string = failure_color.to_html(false)
 	var quantity_string : String
 	if quantity.name == &"time":
 		quantity_string = "%.0f sec." % quantity.quantity
@@ -178,11 +173,18 @@ func _add_label_for_quantity(quantity : ResourceQuantity, container : Control, p
 		quantity_string = "%+.0f%%" % (quantity.quantity * 100)
 	elif quantity is ResourceRandIQuantity and (quantity.quantity_min != 0 or quantity.quantity_max != 0):
 		var sign_string : String = "+"
-		if quantity.quantity_min < 0:
+		quantity.quantity = quantity.quantity_min if quantity.quantity_min != 0 else quantity.quantity_max
+		if quantity.quantity < 0:
 			sign_string = "-"
 		quantity_string = "%s(%.0f - %.0f)" % [sign_string, quantity.quantity_min, quantity.quantity_max]
 	else:
 		quantity_string = "%+.0f" % quantity.quantity
+	var color_string : String
+	if (quantity.quantity >= 0 and good) or (quantity.quantity <= 0 and not good):
+		color_string = success_color.to_html(false)
+	else:
+		color_string = failure_color.to_html(false)
+
 	label.text = "[img=16x16]%s[/img] %s [color=#%s][b]%s[/b][/color]" % [quantity.icon.resource_path, quantity.name.capitalize(), color_string, quantity_string]
 	container.add_child(label)
 	return label
