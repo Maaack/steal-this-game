@@ -7,6 +7,7 @@ signal city_liberated
 		city_name = value
 		if is_inside_tree():
 			city_container.city_name = city_name
+			knowledge_manager.city_name = city_name
 @export var available_actions : Array[Globals.ActionTypes] :
 	set(value):
 		available_actions = value

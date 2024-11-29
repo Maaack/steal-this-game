@@ -2,10 +2,10 @@
 	"knowledge": [
 		{
 			"text": "[b]Section 3: Free Clothing[/b]\n\n[b]Charity[/b]\nThe Salvation Army has been known to let folks get some clothes.",
-			"resources": [
+			"location_action_unlocks":[
 				{
-					"name":"determination",
-					"quantity":1
+					"action_type": 6,
+					"location_type": 8
 				}
 			]
 		},

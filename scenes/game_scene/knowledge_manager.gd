@@ -9,6 +9,7 @@ signal bonus_gained(bonus : Globals.Bonus)
 @export_multiline var end_reached_message : String = ""
 @export var inventory_manager : InventoryManager
 @export var event_view : EventView
+@export var city_name : String
 
 class KnowledgePart :
 	var text : String
@@ -95,13 +96,18 @@ func _ready():
 		var parsed_knowledge = _parse_knowledge_file(file)
 		undiscovered_knowledge.append_array(parsed_knowledge)
 
+func _replace_text(text : String) -> String:
+	var replaced_text : String
+	replaced_text = text.replace("{city_name}", city_name)
+	return replaced_text
+
 func read():
 	if undiscovered_knowledge.size() == 0:
 		event_view.add_text(end_reached_message)
 		return
 	var knowledge_part : KnowledgePart = undiscovered_knowledge.pop_front()
 	if not knowledge_part.text.is_empty():
-		event_view.add_read_text(knowledge_part.text)
+		event_view.add_read_text(_replace_text(knowledge_part.text))
 	for resource_quantity in knowledge_part.resources:
 		inventory_manager.add(resource_quantity)
 		event_view.add_quantity_text(resource_quantity)
