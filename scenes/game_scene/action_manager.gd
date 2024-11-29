@@ -1,5 +1,7 @@
 extends Node
 
+signal city_liberated
+
 @export var city_name : String :
 	set(value):
 		city_name = value
@@ -42,7 +44,7 @@ func _ready():
 	knowledge_manager.action_learned.connect(_on_action_learned)
 	knowledge_manager.location_action_learned.connect(_on_location_action_learned)
 	knowledge_manager.bonus_gained.connect(_on_bonus_gained)
-	_write_event("You arrive in %s with some money and copy of a book of secrets." % city_name)
+	_write_event("You arrive in %s with some money, snacks, and a book of secrets." % city_name)
 	await get_tree().create_timer(2, false).timeout
 	_write_event("Luckily, you know a friend with a couch.")
 
@@ -70,7 +72,7 @@ func _write_bonus(bonus : Globals.ResourceBonus):
 	event_view.add_bonus_text(text, bonus.bonus)
 
 func _write_quantity(quantity: ResourceQuantity):
-	event_view.add_quantity_text(quantity)
+	event_view.add_quantity_text(quantity, true)
 #endregion
 
 #region location container
@@ -206,13 +208,12 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 	if action_button.waiting: return
 	match action_type:
 		Globals.ActionTypes.LIBERATE:
-			if not _has_then_remove(&"food", 1000): return
-			if not _has_then_remove(&"reputation", 1000): return
-			if not _has_then_remove(&"energy", 100): return
-			if not _has_then_remove(&"determination", 100): return
+			_write_success("You try liberating %s..." % city_name)
+			if not _has_then_remove(&"activists", 1000): return
 			action_button.wait(60)
 			await action_button.wait_time_passed
 			_write_success("Liberated %s!" % city_name)
+			city_liberated.emit()
 		Globals.ActionTypes.SCOUT:
 			_write_event("You try exploring the city...")
 			if not _has_then_remove(&"energy", 1): return
@@ -231,18 +232,21 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 			_write_success("Read...")
 			knowledge_manager.read()
 		Globals.ActionTypes.EAT:
+			_write_success("You try eating...")
 			if not _has_then_remove(&"food", 1): return
 			action_button.wait(0.5)
 			await action_button.wait_time_passed
 			_write_success("Ate...")
-			_add_by_name(&"energy", 1)
+			var total_energy = randi_range(1, 2) * _get_total_bonus(&"energy", action_type)
+			_add_by_name(&"energy", total_energy)
 		Globals.ActionTypes.COOK:
+			_write_success("You try cooking...")
 			if not _has_then_remove(&"raw ingredients", 3): return
 			action_button.wait(15)
 			await action_button.wait_time_passed
 			_write_success("Cooked food...")
 			var total_food = 10 * _get_total_bonus(&"food", action_type)
-			_add_by_name(&"food", 10)
+			_add_by_name(&"food", total_food)
 		_:
 			push_warning("No condition for action %s" % Globals.get_action_string(action_type))
 

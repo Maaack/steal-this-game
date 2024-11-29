@@ -1,0 +1,69 @@
+{
+	"knowledge": [
+		{
+			"text": "[b]Section 2: Tell it All, Brothers and Sisters[/b]\n\n[b]Underground Newspapers[/b]\nUnderground Newspapers are a necessary part of any revolution. They provide novel, accurate information that would have otherwise been censored or ignored.",
+			"bonuses": [
+				{
+					"action_type": 16,
+					"resource_name":"activists",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "A journalist's responsibility is to provide the public with viable, accurate information that allows for the people to make informed decisions in their life. It is of utmost importance that you provide accurate and timely facts.",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"reputation",
+					"bonus":0.25
+				},
+				{
+					"action_type": 16,
+					"resource_name":"reputation",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Public Speaking[/b]\nThe emphasis of our fight is to let people know that they are being enslaved and how to escape their chains. Speaking in public is how we want to fight our battles, as this is an easy and professional way to appeal to larger audiences.",
+			"bonuses": [
+				{
+					"action_type": 16,
+					"resource_name":"activists",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Banners and Signs[/b]\nBannering is a great way to inform the public. Good examples are signs decrying labor busting, child labor, or unfair trade practices in relation to the products, services, or partners of the business you are protesting.",
+			"bonuses": [
+				{
+					"action_type": 16,
+					"resource_name":"activists",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Guerrilla Audio[/b]\nSometimes as radicals we need to play sounds, and there are times when the ability to rig up a speaker system is incredibly useful. All setups aim to accomplish the same purpose: make a lot of people hear you.",
+			"bonuses": [
+				{
+					"action_type": 16,
+					"resource_name":"activists",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Guerrilla Broadcasting[/b]\nPirate radio can be one of the most effective tools you have in our arsenal beyond a good web presence. You can own the media and even reach people who technologically handicapped.",
+			"bonuses": [
+				{
+					"action_type": 16,
+					"resource_name":"activists",
+					"bonus":0.25
+				}
+			]
+		}
+	]
+}

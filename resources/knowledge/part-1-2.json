@@ -174,6 +174,36 @@
 		{
 			"text": "[b]Cooking Basics[/b]\nKeep any loose clothing away from open flames, wash everything that comes in contact with the food, always wash your hands after touching raw meats and eggs, use oven mitts, be careful how you handle anything sharp, keep a fire extinguisher handy, and remember that “Baking Powder” and “Baking Soda” are two completely different things.",
 			"action_unlocks":[8]
+		},
+		{
+			"text": "[b]Planning Meals[/b]\nIf you will be feeding a group it is useful to get your crew to fill up on the cheap stuff and save on the expensive stuff. If possible start your meals with bread and simple soup, then let everyone fill up on the cheap starch like potato, rice, or easy steamed vegetables, finally serve the more expensive protein and fats.",
+			"bonuses":[
+				{
+					"action_type": 8,
+					"resource_name": "food",
+					"bonus":0.125
+				}
+			]
+		},
+		{
+			"text": "Attempt to serve meals that combine dark leafy vegetables, citrus fruits, healthy fats, and protein as well as meeting daily minimum calories for the work being done.",
+			"bonuses":[
+				{
+					"action_type": 15,
+					"resource_name": "energy",
+					"bonus":0.50
+				}
+			]
+		},
+		{
+			"text": "[b]Waste Note[/b]\nYour fridge full of expired or soured foods many people would throw out can supply you with ingredients.",
+			"bonuses":[
+				{
+					"action_type": 11,
+					"resource_name": "raw ingredients",
+					"bonus":0.125
+				}
+			]
 		}
 	]
 }

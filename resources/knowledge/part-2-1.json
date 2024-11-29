@@ -1,0 +1,94 @@
+{
+	"knowledge": [
+		{
+			"text": "[b]Fight[/b]\n\n[b]Section 1: Leadership[/b]\n\n[b]Leadership Training[/b]\nTake a job or volunteer in a position where you will be leading or managing people, any experience will begin to hone your skills, even if it is only shift lead at the burger hut.",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"reputation",
+					"bonus":0.25
+				},
+				{
+					"action_type": 16,
+					"resource_name":"reputation",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Confidence[/b]\nBuild your confidence by leading in sports, competitions, and problem solving exercises. Volunteering gives many opportunities to become comfortable in leadership.",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"reputation",
+					"bonus":0.25
+				},
+				{
+					"action_type": 16,
+					"resource_name":"reputation",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Honesty[/b]\nA leader at any level must be beyond reproach. If every member acted as if there was a news camera crew following them there would be less of a chance for disappointment or even blackmail.",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"reputation",
+					"bonus":0.25
+				},
+				{
+					"action_type": 16,
+					"resource_name":"reputation",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Punctuality[/b]\nKeep appointments and show up on time, or better yet, early. People appreciate having their time treated as if it is valuable, and will respect you for it.",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"reputation",
+					"bonus":0.25
+				},
+				{
+					"action_type": 16,
+					"resource_name":"reputation",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Join In[/b]\nJoin in and help with the work in a motivated way. Those following you will see your real commitment and be motivated themselves.",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"reputation",
+					"bonus":0.25
+				},
+				{
+					"action_type": 16,
+					"resource_name":"reputation",
+					"bonus":0.25
+				}
+			]
+		},
+		{
+			"text": "[b]Delegate Authority[/b]\nDesignate competent leaders and allow them to build a team and take care of the task. Your oversight should balance your stake in the outcome with your trust in delegate leaders.",
+			"bonuses": [
+				{
+					"action_type": 13,
+					"resource_name":"reputation",
+					"bonus":0.25
+				},
+				{
+					"action_type": 16,
+					"resource_name":"reputation",
+					"bonus":0.25
+				}
+			]
+		}
+	]
+}

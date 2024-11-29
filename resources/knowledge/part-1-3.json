@@ -1,0 +1,17 @@
+{
+	"knowledge": [
+		{
+			"text": "[b]Section 3: Free Clothing[/b]\n\n[b]Charity[/b]\nThe Salvation Army has been known to let folks get some clothes.",
+			"resources": [
+				{
+					"name":"determination",
+					"quantity":1
+				}
+			]
+		},
+		{
+			"text": "[b]Donate and Give Back[/b]\nIf the clothes are over a year old and you will never wear them again, it is time to give back to society. Someone, somewhere could use your old clothes.",
+			"action_unlocks": [12]
+		}
+	]
+}
