@@ -1,1181 +1,1318 @@
 {
-	"locations": [
+    "locations": [
+        {
+            "name": "Stacy's",
+            "location_type": 17,
+            "description": "Apparel mass-produced over-seas by underpaid workers. The markup is 100x, but there's always a 25% off sale.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You go in to shop.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 25
+                        }
+                    ],
+                    "success_message": "You buy a discount shirt and pants.",
+                    "success_resource_result": [
+                        {
+                            "name": "clothes",
+                            "quantity": 2
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "You are asked to leave by the manager. They don't want your business, even when it's legit.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 5,
+                    "try_message": "You attempt to swipe some clothing.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You tuck a shirt and pants under your shirt and pants.",
+                    "success_resource_result": [
+                        {
+                            "name": "clothes",
+                            "quantity": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        },
+                        {
+                            "name": "evidence",
+                            "quantity": 0.005
+                        }
+                    ],
+                    "failure_message": "A staff member follows you asking if you need help.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Mama's Baked Sweets",
+            "location_type": 2,
+            "description": "A local bakery that appears to be run by a family.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You go to shop at the bakery.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You buy Mama's delicious baked bread.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 4
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "A lady comes up and takes your handbasket away, then tells you to leave her bakery.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 6,
+                    "time_cost": 3,
+                    "try_message": "You ask for old bread from the staff at the bakery.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "The bakery staff give you their day old bread mushed into a ball.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 2,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "The staff say they don't have anything to give you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 5,
+                    "try_message": "You try lifting some baked goods.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "The staff grimaced as they watched you walk out with food.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 2,
+							"quantity_max": 8
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": -1
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        },
+                        {
+                            "name": "evidence",
+                            "quantity": 0.05
+                        }
+                    ],
+                    "failure_message": "A lady behind the counter started screaching and pointing at you! You put the items back and hid.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You check the bakery's trash bins.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find day old bread and baked goods.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ],
+                    "failure_message": "A lady comes out to scold you for scaring staff and customers.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "MagMart",
+            "location_type": 3,
+            "description": "Aisles upon aisles of soul-less products. Tons of staff working the soul-less jobs.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 6,
+                    "try_message": "You go to shop at the supermarket.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You buy over-processed food.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 2
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "A disgruntled security guard tells you to leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 6,
+                    "time_cost": 12,
+                    "try_message": "You try begging for food in front of the supermarket.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "Some people take pity and skim off extra food from their excess.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 1,
+                            "quantity_max": 5
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": -1
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        }
+                    ],
+                    "failure_message": "People are reluctant to give up their freshly purchased food.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.01
+                        }
+                    ]
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 6,
+                    "try_message": "You try redeeming a five-finger discount.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You easily walk out with your new stuff.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 5
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 0,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        },
+                        {
+                            "name": "evidence",
+                            "quantity": 0.005
+                        }
+                    ],
+                    "failure_message": "Even apathetic staff perked up around you. You missed a chance to swipe goods.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through the bins behind the supermarket.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find some food and other goods still wrapped up.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ],
+                    "failure_message": "The staff loading and unloading trucks blocked you from the trash bins.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.025
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Foods-2-Eat",
+            "location_type": 1,
+            "description": "A chain grocery store. Most of the food is over-processed junk, but the shelves get restocked regularly.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You go to shop at the grocery store.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You buy a mix of fresh food and not-really-food.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 4,
+                            "quantity_max": 5
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 2,
+                            "quantity_max": 5
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "A store manager tells you to leave before you can buy anything.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 6,
+                    "time_cost": 3,
+                    "try_message": "You try asking the staff for some samples of meats and cheeses.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You get a good helping of snacks.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 2,
+                            "quantity_max": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "The staff are reluctant to hand out any more free food to you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 5,
+                    "try_message": "You try lifting some food from the grocery store.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You manage to walk out with pockets stuffed with food.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 2,
+                            "quantity_max": 5
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 1,
+                            "quantity_max": 6
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        },
+                        {
+                            "name": "evidence",
+                            "quantity": 0.025
+                        }
+                    ],
+                    "failure_message": "The watchful eyes of the grocery staff prevented you from getting any food.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through the bins behind the grocery store.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find food just recently passed the sell-by-date.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 2,
+                            "quantity_max": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ],
+                    "failure_message": "The manager comes out with a security guard to tell you to leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.025
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Rundown Park",
+            "location_type": 7,
+            "description": "This park doesn't get many visitors anymore. Some have taken up a semi-permanent residence.",
+            "actions_available": [
+                {
+                    "action_type": 2,
+                    "time_cost": 30,
+                    "try_message": "You try falling asleep on a secluded bench.",
+                    "resource_cost": [],
+                    "success_message": "You get some rest, though wake up a little sore.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ],
+                    "failure_message": "A bored police officer prods you with his beating stick and makes you leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through garbage bins for food.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find a couple morcels to eat.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ],
+                    "failure_message": "A police officer hovers over you until you leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 12,
+                    "time_cost": 10,
+                    "try_message": "You offer people some of your food and clothing.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 3
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "Someone graciously accepts your help.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 3,
+                            "quantity_max": 10
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "No one seems to want your help right now.",
+                    "failure_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 3
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 1
+                        }
+                    ],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 13,
+                    "time_cost": 10,
+                    "try_message": "You try to spread a message of hope and resistance.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You connect with someone over their personal struggles.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "The people are apathetic to you and your message.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 16,
+                    "time_cost": 30,
+                    "try_message": "You try to organize a small spokescouncil meeting in the park.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 5
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 50
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": 25
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You organize a small meeting of like-minded people.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 25,
+                            "quantity_max": 50
+                        },
+                        {
+                            "name": "activists",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.5
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "No one shows up for your meeting.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Molitov Inn",
+            "location_type": 11,
+            "description": "A basic hotel chain location.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 30,
+                    "try_message": "You try getting a room at the hotel.",
+                    "resource_cost": [
+                        {
+                            "name": "money",
+                            "quantity": 80
+                        }
+                    ],
+                    "success_message": "You get a room to yourself for the night with a complimentary breakfast.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 16
+                        },
+                        {
+                            "name": "food",
+                            "quantity_min": 4,
+                            "quantity_max": 6
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "A hotel manager greets you coldly at check in to tell you they don't have a room for you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 10,
+                    "try_message": "You walk out of the bathroom after a disguise change and enjoy the hotel's complimentary breakfast.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You fill your stomach and your pockets from the breakfast buffet.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        },
+                        {
+                            "name": "food",
+                            "quantity_min": 3,
+                            "quantity_max": 8
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 0,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "A member of the hotel staff asks for your room key or reservation and you make up an excuse and bail without eating.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through garbage bins behind the hotel kitchen.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find a pile of breakfast food that was thrown away.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "A member of the kitchen staff asks you to leave before you manage to aquire anything.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 16,
+                    "time_cost": 30,
+                    "try_message": "You try to organize a spokescouncil meeting in the hotel.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 15
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 500
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 200
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": 50
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You successfully organize a public meeting in the hotel with catered food for attendees. It goes well!",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 100,
+                            "quantity_max": 400
+                        },
+                        {
+                            "name": "activists",
+                            "quantity_min": 3,
+                            "quantity_max": 10
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 10
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.5
+                        }
+                    ],
+                    "failure_message": "The hotel cancels your reservation for your spokescouncil meeting with no explanation and refunds your money.",
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 500
+                        }
+                    ],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "W3-Deliver",
+            "location_type": 14,
+            "description": "A delivery service for people ordering food or groceries within the city. It's usually pretty easy to get work here, but the pay is dependent on tips.",
+            "actions_available": [
+                {
+                    "action_type": 3,
+                    "time_cost": 30,
+                    "try_message": "You apply to do a few delivery jobs for the company.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "It's not sustainable work, but you manage to make a few tips.",
+                    "success_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity_min": 5,
+                            "quantity_max": 20
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "Your application to deliver food is denied. At least you didn't waste your whole day.",
+                    "failure_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 7
+                        }
+                    ],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 10,
+                    "try_message": "You apply to do a few delivery jobs for the company, and plan to snag the biggest delivery of the day for yourself.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 5
+                        }
+                    ],
+                    "success_message": "You wait until you've gotten a big grocery delivery, and take it for yourself.",
+                    "success_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity_min": 5,
+                            "quantity_max": 10
+                        },
+                        {
+                            "name": "food",
+                            "quantity_min": 5,
+                            "quantity_max": 10
+                        },
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 0,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 1.5
+                        }
+                    ],
+                    "failure_message": "Your application to [i]deliver[/i] goods is denied.",
+                    "failure_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 2
+                        }
+                    ],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "iLiveHereNow",
+            "location_type": 14,
+            "description": "A shared office space for start-ups grinding away people's youth and talent in the hopes of striking big for themselves.",
+            "actions_available": [
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You try searching through the trash bins behind the office complex.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find extra catered food that was thrown out, and some office swag from a company layoff.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.5
+                        }
+                    ],
+                    "failure_message": "You don't find anything useful.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Preachiest Charity",
+            "location_type": 8,
+            "description": "They'll take most donations. They offer 'salvation'. Sometimes they have something useful to offer.",
+            "actions_available": [
+                {
+                    "action_type": 3,
+                    "time_cost": 30,
+                    "try_message": "You offer to work at the 'charity'.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You earn a minimum pay and some gratitude.",
+                    "success_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 8
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "The preacher says they need your help today.",
+                    "failure_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 7
+                        }
+                    ],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You go in to shop.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You buy find some worn clothes priced very cheap.",
+                    "success_resource_result": [
+                        {
+                            "name": "clothes",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "You are asked to leave by the manager. They don't want your business, even when it's legit.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 6,
+                    "time_cost": 3,
+                    "try_message": "You try asking for some spare clothes.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You get some clothes that have bascially negative market value.",
+                    "success_resource_result": [
+                        {
+                            "name": "clothes",
+                            "quantity": 1
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 1
+                        }
+                    ],
+                    "failure_message": "The staff get really preachy with you about your life choices, but don't give anything else.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 12,
+                    "time_cost": 10,
+                    "try_message": "You offer the 'charity' some extra clothes.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 5
+                        }
+                    ],
+                    "success_message": "The organization graciously accepts your help.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 0,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": []
+                }
+            ]
+        },
 		{
-			"name": "Stacy's",
-			"location_type": 17,
-			"description": "Apparel mass-produced over-seas by underpaid workers. The markup is 100x, but there's always a 25% off sale.",
-			"actions_available": [
-				{
-					"action_type": 4,
-					"time_cost":3,
-					"try_message": "You go in to shop.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "money",
-							"quantity": 25.0
-						}
-					],
-					"success_message": "You buy a discount shirt and pants.",
-					"success_resource_result": [
-						{
-							"name": "clothes",
-							"quantity": 2.0
-						}
-					],
-					"location_success_resource_result": [],
-					"failure_message": "You are asked to leave by the manager. They don't want your business, even when it's legit.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 7,
-					"time_cost":5,
-					"try_message": "You attempt to swipe some clothing.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You tuck a shirt and pants under your shirt and pants.",
-					"success_resource_result": [
-						{
-							"name": "clothes",
-							"quantity": 2.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						},
-						{
-							"name": "evidence",
-							"quantity": 0.005
-						}
-					],
-					"failure_message": "A staff member follows you asking if you need help.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Mama's Baked Sweets",
-			"location_type": 2,
-			"description": "A local bakery that appears to be run by a family.",
-			"actions_available": [
-				{
-					"action_type": 4,
-					"time_cost":3,
-					"try_message": "You go to shop at the bakery.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "money",
-							"quantity": 10.0
-						}
-					],
-					"success_message": "You buy Mama's delicious baked bread.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity": 4.0
-						},
-						{
-							"name": "reputation",
-							"quantity_min": 0.0,
-							"quantity_max": 1.0
-						}
-					],
-					"location_success_resource_result": [],
-					"failure_message": "A lady comes up and takes your handbasket away, then tells you to leave her bakery.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 6,
-					"time_cost":3,
-					"try_message": "You ask for old bread from the staff at the bakery.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "The bakery staff give you their day old bread mushed into a ball.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 2.0,
-							"quantity_max": 3.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.25
-						}
-					],
-					"failure_message": "The staff say they don't have anything to give you.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.10
-						}
-					]
-				},
-				{
-					"action_type": 7,
-					"time_cost":5,
-					"try_message": "You try lifting some baked goods.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "The staff grimaced as they watched you walk out with food.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity": 2.0
-						},
-						{
-							"name": "reputation",
-							"quantity": -1.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						},
-						{
-							"name": "evidence",
-							"quantity": 0.05
-						}
-					],
-					"failure_message": "A lady behind the counter started screaching and pointing at you! You put the items back and hid.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.10
-						}
-					]
-				},
-				{
-					"action_type": 11,
-					"time_cost":10,
-					"try_message": "You check the bakery's trash bins.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You find day old bread and baked goods.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 1.0,
-							"quantity_max": 3.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 0.0,
-							"quantity_max": 1.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						}
-					],
-					"failure_message": "A lady comes out to scold you for scaring staff and customers.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.10
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "MagMart",
-			"location_type": 3,
-			"description": "Aisles upon aisles of soul-less products. Tons of staff working the soul-less jobs.",
-			"actions_available": [
-				{
-					"action_type": 4,
-					"time_cost":6,
-					"try_message": "You go to shop at the supermarket.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "money",
-							"quantity": 10.0
-						}
-					],
-					"success_message": "You buy over-processed food.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity": 2.0
-						}
-					],
-					"location_success_resource_result": [],
-					"failure_message": "A disgruntled security guard tells you to leave.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 6,
-					"time_cost":12,
-					"try_message": "You try begging for food in front of the supermarket.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "Some people take pity and skim off extra food from their excess.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 1.0,
-							"quantity_max": 4.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 1.0,
-							"quantity_max": 5.0
-						},
-						{
-							"name": "reputation",
-							"quantity": -1.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.10
-						}
-					],
-					"failure_message": "People are reluctant to give up their freshly purchased food.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.01
-						}
-					]
-				},
-				{
-					"action_type": 7,
-					"time_cost":6,
-					"try_message": "You try redeeming a five-finger discount.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You easily walk out with your new stuff.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 1.0,
-							"quantity_max": 5.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 0.0,
-							"quantity_max": 3.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						},
-						{
-							"name": "evidence",
-							"quantity": 0.005
-						}
-					],
-					"failure_message": "Even apathetic staff perked up around you. You missed a chance to swipe goods.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.10
-						}
-					]
-				},
-				{
-					"action_type": 11,
-					"time_cost":10,
-					"try_message": "You look through the bins behind the supermarket.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You find some food and other goods still wrapped up.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity": 2.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						}
-					],
-					"failure_message": "The staff loading and unloading trucks blocked you from the trash bins.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.025
-						}
-					]
-				}
-				
-			]
-		},
-		{
-			"name": "Foods-2-Eat",
-			"location_type": 1,
-			"description": "A chain grocery store. Most of the food is over-processed junk, but the shelves get restocked regularly.",
-			"actions_available": [
-				{
-					"action_type": 4,
-					"time_cost":3,
-					"try_message": "You go to shop at the grocery store.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "money",
-							"quantity": 10.0
-						}
-					],
-					"success_message": "You buy a mix of fresh food and not-really-food.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 4.0,
-							"quantity_max": 5.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 2.0,
-							"quantity_max": 5.0
-						}
-					],
-					"location_success_resource_result": [],
-					"failure_message": "A store manager tells you to leave before you can buy anything.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 6,
-					"time_cost":3,
-					"try_message": "You try asking the staff for some samples of meats and cheeses.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You get a good helping of snacks.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 2.0,
-							"quantity_max": 4.0						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.2
-						}
-					],
-					"failure_message": "The staff are reluctant to hand out any more free food to you.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.1
-						}
-					]
-				},
-				{
-					"action_type": 7,
-					"time_cost":5,
-					"try_message": "You try lifting some food from the grocery store.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You manage to walk out with pockets stuffed with food.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 2.0,
-							"quantity_max": 5.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 1.0,
-							"quantity_max": 6.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.1
-						},
-						{
-							"name": "evidence",
-							"quantity": 0.025
-						}
-					],
-					"failure_message": "The watchful eyes of the grocery staff prevented you from getting any food.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						}
-					]
-				},
-				{
-					"action_type": 11,
-					"time_cost":10,
-					"try_message": "You look through the bins behind the grocery store.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You find food just recently passed the sell-by-date.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 1.0,
-							"quantity_max": 4.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 2.0,
-							"quantity_max": 4.0
-						}
-
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						}
-					],
-					"failure_message": "The manager comes out with a security guard to tell you to leave.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.025
-						}
-					]
-				}
-				
-			]
-		},
-		{
-			"name": "Rundown Park",
-			"location_type": 7,
-			"description": "This park doesn't get many visitors anymore. Some have taken up a semi-permanent residence.",
-			"actions_available": [
-				{
-					"action_type": 2,
-					"time_cost":30,
-					"try_message": "You try falling asleep on a secluded bench.",
-					"resource_cost": [],
-					"success_message": "You get some rest, though wake up a little sore.",
-					"success_resource_result": [
-						{
-							"name": "energy",
-							"quantity": 4.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.10
-						}
-					],
-					"failure_message": "A bored police officer prods you with his beating stick and makes you leave.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						}
-					]
-				},
-				{
-					"action_type": 11,
-					"time_cost":10,
-					"try_message": "You look through garbage bins for food.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You find a couple morcels to eat.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 1.0,
-							"quantity_max": 3.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.10
-						}
-					],
-					"failure_message": "A police officer hovers over you until you leave.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						}
-					]
-				},
-				{
-					"action_type": 12,
-					"time_cost":10,
-					"try_message": "You offer people some of your food and clothing.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "food",
-							"quantity": 3.0
-						},
-						{
-							"name": "clothes",
-							"quantity": 1.0
-						}
-
-					],
-					"success_message": "Someone graciously accepts your help.",
-					"success_resource_result": [
-						{
-							"name": "reputation",
-							"quantity_min": 3.0,
-							"quantity_max": 10.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.25
-						}
-					],
-					"failure_message": "No one seems to want your help right now.",
-					"failure_resource_result": [
-						{
-							"name": "food",
-							"quantity": 3.0
-						},
-						{
-							"name": "clothes",
-							"quantity": 1.0
-						}
-					],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 13,
-					"time_cost":10,
-					"try_message": "You try to spread a message of hope and resistance.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "determination",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You connect with someone over their personal struggles.",
-					"success_resource_result": [
-						{
-							"name": "reputation",
-							"quantity": 1.0
-						},
-						{
-							"name": "determination",
-							"quantity_min": 1.0,
-							"quantity_max": 2.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.2
-						}
-					],
-					"failure_message": "The people are apathetic to you and your message.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.1
-						}
-					]
-				},
-				{
-					"action_type": 16,
-					"time_cost":30,
-					"try_message": "You try to organize a small spokescouncil meeting in the park.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 5.0
-						},
-						{
-							"name": "food",
-							"quantity": 50.0
-						},
-						{
-							"name": "reputation",
-							"quantity": 25.0
-						},
-						{
-							"name": "determination",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You organize a small meeting of like-minded people.",
-					"success_resource_result": [
-						{
-							"name": "reputation",
-							"quantity_min": 25.0,
-							"quantity_max": 50.0
-						},
-						{
-							"name": "activists",
-							"quantity_min": 0.0,
-							"quantity_max": 1.0
-						},
-						{
-							"name": "determination",
-							"quantity_min": 1.0,
-							"quantity_max": 4.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.5
-						},
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						}
-					],
-					"failure_message": "No one shows up for your meeting.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.1
-						},
-						{
-							"name": "suspicion",
-							"quantity": 0.05
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Molitov Inn",
-			"location_type": 11,
-			"description": "A basic hotel chain location.",
-			"actions_available": [
-				{
-					"action_type": 4,
-					"time_cost":30,
-					"try_message": "You try getting a room at the hotel.",
-					"resource_cost": [
-						{
-							"name": "money",
-							"quantity": 80.0
-						}
-					],
-					"success_message": "You get a room to yourself for the night with a complimentary breakfast.",
-					"success_resource_result": [
-						{
-							"name": "energy",
-							"quantity": 16.0
-						},
-						{
-							"name": "food",
-							"quantity_min": 4.0,
-							"quantity_max": 6.0
-						}
-
-					],
-					"location_success_resource_result": [],
-					"failure_message": "A hotel manager greets you coldly at check in to tell you they don't have a room for you.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 7,
-					"time_cost":10,
-					"try_message": "You walk out of the bathroom after a disguise change and enjoy the hotel's complimentary breakfast.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "clothes",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You fill your stomach and your pockets from the breakfast buffet.",
-					"success_resource_result": [
-						{
-							"name": "energy",
-							"quantity_min": 1.0,
-							"quantity_max": 4.0
-						},
-						{
-							"name": "food",
-							"quantity_min": 3.0,
-							"quantity_max": 8.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 0.0,
-							"quantity_max": 2.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						}
-					],
-					"failure_message": "A member of the hotel staff asks for your room key or reservation and you make up an excuse and bail without eating.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.1
-						}
-					]
-				},
-				{
-					"action_type": 11,
-					"time_cost":10,
-					"try_message": "You look through garbage bins behind the hotel kitchen.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You find a pile of breakfast food that was thrown away.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 1.0,
-							"quantity_max": 4.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 1.0,
-							"quantity_max": 3.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.20
-						}
-					],
-					"failure_message": "A member of the kitchen staff asks you to leave before you manage to aquire anything.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						}
-					]
-				},
-				{
-					"action_type": 16,
-					"time_cost":30,
-					"try_message": "You try to organize a spokescouncil meeting in the hotel.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 15.0
-						},
-						{
-							"name": "money",
-							"quantity": 500.0
-						},
-						{
-							"name": "food",
-							"quantity": 200.0
-						},
-						{
-							"name": "reputation",
-							"quantity": 50.0
-						},
-						{
-							"name": "determination",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You successfully organize a public meeting in the hotel with catered food for attendees. It goes well!",
-					"success_resource_result": [
-						{
-							"name": "reputation",
-							"quantity_min": 100.0,
-							"quantity_max": 400.0
-						},
-						{
-							"name": "activists",
-							"quantity_min": 3.0,
-							"quantity_max": 10.0
-						},
-						{
-							"name": "determination",
-							"quantity_min": 1.0,
-							"quantity_max": 10.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.5
-						}
-					],
-					"failure_message": "The hotel cancels your reservation for your spokescouncil meeting with no explanation and refunds your money.",
-					"failure_resource_result": [
-						{
-							"name": "money",
-							"quantity": 500.0
-						}
-					],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.1
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "W3-Deliver",
-			"location_type": 14,
-			"description": "A delivery service for people ordering food or groceries within the city. It's usually pretty easy to get work here, but the pay is dependent on tips.",
-			"actions_available": [
-				{
-					"action_type": 3,
-					"time_cost":30,
-					"try_message": "You apply to do a few delivery jobs for the company.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 10.0
-						}
-					],
-					"success_message": "It's not sustainable work, but you manage to make a few tips.",
-					"success_resource_result": [
-						{
-							"name": "money",
-							"quantity_min": 5.0,
-							"quantity_max": 20.0
-						}
-					],
-					"location_success_resource_result": [],
-					"failure_message": "Your application to deliver food is denied. At least you didn't waste your whole day.",
-					"failure_resource_result": [
-						{
-							"name": "energy",
-							"quantity": 7.0
-						}
-					],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 7,
-					"time_cost":10,
-					"try_message": "You apply to do a few delivery jobs for the company, and plan to snag the biggest delivery of the day for yourself.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 5.0
-						}
-					],
-					"success_message": "You wait until you've gotten a big grocery delivery, and take it for yourself.",
-					"success_resource_result": [
-						{
-							"name": "money",
-							"quantity_min": 5.0,
-							"quantity_max": 10.0
-						},
-						{
-							"name": "food",
-							"quantity_min": 5.0,
-							"quantity_max": 10.0
-						},
-						{
-							"name": "raw ingredients",
-							"quantity_min": 0.0,
-							"quantity_max": 2.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 1.5
-						}
-					],
-					"failure_message": "Your application to [i]deliver[/i] goods is denied.",
-					"failure_resource_result": [
-						{
-							"name": "energy",
-							"quantity": 2.0
-						}
-					],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "iLiveHereNow",
-			"location_type": 14,
-			"description": "A shared office space for start-ups grinding away people's youth and talent in the hopes of striking big for themselves.",
-			"actions_available": [
-				{
-					"action_type": 11,
-					"time_cost":10,
-					"try_message": "You try searching through the trash bins behind the office complex.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You find extra catered food that was thrown out, and some office swag from a company layoff.",
-					"success_resource_result": [
-						{
-							"name": "food",
-							"quantity_min": 1.0,
-							"quantity_max": 2.0
-						},
-						{
-							"name": "clothes",
-							"quantity_min": 1.0,
-							"quantity_max": 2.0
-						}
-
-					],
-					"location_success_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.5
-						}
-					],
-					"failure_message": "You don't find anything useful.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "suspicion",
-							"quantity": 0.25
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "The Preachiest Charity",
-			"location_type": 8,
-			"description": "They'll take most donations. They offer 'salvation'. Sometimes they have something useful to offer.",
-			"actions_available": [
-				{
-					"action_type": 3,
-					"time_cost":30,
-					"try_message": "You offer to work at the 'charity'.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 10.0
-						}
-					],
-					"success_message": "You earn a minimum pay and some gratitude.",
-					"success_resource_result": [
-						{
-							"name": "money",
-							"quantity": 8.0
-						},
-						{
-							"name": "reputation",
-							"quantity_min": 0.0,
-							"quantity_max": 1.0
-						}
-					],
-					"location_success_resource_result": [],
-					"failure_message": "The preacher says they need your help today.",
-					"failure_resource_result": [
-						{
-							"name": "energy",
-							"quantity": 7.0
-						}
-					],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 4,
-					"time_cost":3,
-					"try_message": "You go in to shop.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "money",
-							"quantity": 10.0
-						}
-					],
-					"success_message": "You buy find some worn clothes priced very cheap.",
-					"success_resource_result": [
-						{
-							"name": "clothes",
-							"quantity_min": 1.0,
-							"quantity_max": 2.0
-						}
-					],
-					"location_success_resource_result": [],
-					"failure_message": "You are asked to leave by the manager. They don't want your business, even when it's legit.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": []
-				},
-				{
-					"action_type": 6,
-					"time_cost":3,
-					"try_message": "You try asking for some spare clothes.",
-					"resource_cost": [	
-						{
-							"name": "energy",
-							"quantity": 1.0
-						}
-					],
-					"success_message": "You get some clothes that have bascially negative market value.",
-					"success_resource_result": [
-						{
-							"name": "clothes",
-							"quantity": 1.0
-						}
-					],
-					"location_success_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 1.0
-						}
-					],
-					"failure_message": "The staff get really preachy with you about your life choices, but don't give anything else.",
-					"failure_resource_result": [],
-					"location_failure_resource_result": [
-						{
-							"name": "fatigue",
-							"quantity": 0.25
-						}
-					]
-				},
-				{
-					"action_type": 12,
-					"time_cost":10,
-					"try_message": "You offer the 'charity' some extra clothes.",
-					"resource_cost": [
-						{
-							"name": "energy",
-							"quantity": 1.0
-						},
-						{
-							"name": "clothes",
-							"quantity": 5.0
-						}
-
-					],
-					"success_message": "The organization graciously accepts your help.",
-					"success_resource_result": [
-						{
-							"name": "reputation",
-							"quantity_min": 0.0,
-							"quantity_max": 2.0
-						}
-					],
-					"location_success_resource_result": []
-				}
-			]
-		}
-	]
+            "name": "Luigi's Brother's Pizza",
+            "location_type": 12,
+            "description": "A local pizza and Italian restaurant owned by a guy probably named Mario.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You try to order something off the menu.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You buy a delicious and fresh pizza.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 4
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "The manager, probably named Mario, too, says they cannot seat you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 6,
+                    "time_cost": 3,
+                    "try_message": "You ask for any extra food from the kitchen staff.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "The kitchen staff offer you some of their expired uncooked food..",
+                    "success_resource_result": [
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 2,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.5
+                        }
+                    ],
+                    "failure_message": "The staff say they don't have anything to give you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 5,
+                    "try_message": "You try to order something off the menu and leave before the check.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You fill your belly and duck out before the waiter notices you.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 4,
+							"quantity_max": 6
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": -1
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.5
+                        },
+                        {
+                            "name": "evidence",
+                            "quantity": 0.1
+                        }
+                    ],
+                    "failure_message": "The manager, probably named Mario, too, says they cannot seat you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You check the restaurant's trash bins.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find food that's been discarded by patrons of the restaurant.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "A kitchen staff member tells you to stop digging through their trash.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
-
-
-
