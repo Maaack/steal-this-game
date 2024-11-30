@@ -14,13 +14,8 @@
 			"text": "A journalist's responsibility is to provide the public with viable, accurate information that allows for the people to make informed decisions in their life. It is of utmost importance that you provide accurate and timely facts.",
 			"bonuses": [
 				{
-					"action_type": 13,
-					"resource_name":"reputation",
-					"bonus":0.25
-				},
-				{
 					"action_type": 16,
-					"resource_name":"reputation",
+					"resource_name":"activists",
 					"bonus":0.25
 				}
 			]

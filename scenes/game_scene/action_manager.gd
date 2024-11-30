@@ -210,8 +210,8 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 	match action_type:
 		Globals.ActionTypes.LIBERATE:
 			_write_success("You try liberating %s..." % city_name)
-			if not _has_then_remove(&"activists", 1000): return
-			action_button.wait(60)
+			if not _has_then_remove(&"activists", 100): return
+			action_button.wait(10)
 			await action_button.wait_time_passed
 			_write_success("Liberated %s!" % city_name)
 			city_liberated.emit()

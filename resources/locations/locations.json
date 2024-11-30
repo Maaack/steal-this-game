@@ -636,7 +636,7 @@
                 {
                     "action_type": 12,
                     "time_cost": 10,
-                    "try_message": "You offer people some of your food and clothing.",
+                    "try_message": "You offer people some of your food.",
                     "resource_cost": [
                         {
                             "name": "energy",
@@ -644,11 +644,7 @@
                         },
                         {
                             "name": "food",
-                            "quantity": 3
-                        },
-                        {
-                            "name": "clothes",
-                            "quantity": 1
+                            "quantity": 5
                         }
                     ],
                     "success_message": "Someone graciously accepts your help.",
@@ -721,7 +717,7 @@
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 30,
+                    "time_cost": 15,
                     "try_message": "You try to organize a small spokescouncil meeting in the park.",
                     "resource_cost": [
                         {
@@ -750,13 +746,13 @@
                         },
                         {
                             "name": "activists",
-                            "quantity_min": 0,
-                            "quantity_max": 1
+                            "quantity_min": 1,
+                            "quantity_max": 3
                         },
                         {
                             "name": "determination",
                             "quantity_min": 1,
-                            "quantity_max": 4
+                            "quantity_max": 3
                         }
                     ],
                     "location_success_resource_result": [
@@ -784,6 +780,101 @@
                 }
             ]
         },
+		{
+            "name": "Best Motels 17",
+            "location_type": 10,
+            "description": "A basic motel chain location. Not the sketchiest one in the world, either.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 30,
+                    "try_message": "You try getting a room at the motel.",
+                    "resource_cost": [
+                        {
+                            "name": "money",
+                            "quantity": 25
+                        }
+                    ],
+                    "success_message": "You get a room to yourself for the night, though the neighbors aren't the best.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 12
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "The motel manager tells you they don't have a room for you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 10,
+                    "try_message": "You try to find an unlocked room someone left early catch a few hours of sleep before house-keeping shows up.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You catch a few hours of sleep before house-keeping kicks you out of the room.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity_min": 2,
+                            "quantity_max": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "You can't find a room to crash in, even for a few hours.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through garbage bins behind the motel.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find some leftovers dumped by the cleaning staff.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "A member of the cleaning staff asks you to leave their garbage alone.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "name": "Molitov Inn",
             "location_type": 11,
@@ -796,7 +887,7 @@
                     "resource_cost": [
                         {
                             "name": "money",
-                            "quantity": 80
+                            "quantity": 50
                         }
                     ],
                     "success_message": "You get a room to yourself for the night with a complimentary breakfast.",
@@ -903,16 +994,16 @@
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 30,
+                    "time_cost": 15,
                     "try_message": "You try to organize a spokescouncil meeting in the hotel.",
                     "resource_cost": [
                         {
                             "name": "energy",
-                            "quantity": 15
+                            "quantity": 10
                         },
                         {
                             "name": "money",
-                            "quantity": 500
+                            "quantity": 200
                         },
                         {
                             "name": "food",
@@ -920,7 +1011,7 @@
                         },
                         {
                             "name": "reputation",
-                            "quantity": 50
+                            "quantity": 100
                         },
                         {
                             "name": "determination",
@@ -936,13 +1027,13 @@
                         },
                         {
                             "name": "activists",
-                            "quantity_min": 3,
-                            "quantity_max": 10
+                            "quantity_min": 5,
+                            "quantity_max": 15
                         },
                         {
                             "name": "determination",
                             "quantity_min": 1,
-                            "quantity_max": 10
+                            "quantity_max": 4
                         }
                     ],
                     "location_success_resource_result": [
@@ -954,8 +1045,12 @@
                     "failure_message": "The hotel cancels your reservation for your spokescouncil meeting with no explanation and refunds your money.",
                     "failure_resource_result": [
                         {
+                            "name": "energy",
+                            "quantity": 8
+                        },
+                        {
                             "name": "money",
-                            "quantity": 500
+                            "quantity": 250
                         }
                     ],
                     "location_failure_resource_result": [
@@ -1515,7 +1610,7 @@
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 30,
+                    "time_cost": 15,
                     "try_message": "You try to organize a small spokescouncil meeting in the park.",
                     "resource_cost": [
                         {
@@ -1550,7 +1645,7 @@
                         {
                             "name": "determination",
                             "quantity_min": 1,
-                            "quantity_max": 6
+                            "quantity_max": 3
                         }
                     ],
                     "location_success_resource_result": [
@@ -1677,7 +1772,7 @@
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 30,
+                    "time_cost": 15,
                     "try_message": "You try to organize a small spokescouncil meeting in the cafe.",
                     "resource_cost": [
                         {
@@ -1706,13 +1801,13 @@
                         },
                         {
                             "name": "activists",
-                            "quantity_min": 0,
-                            "quantity_max": 1
+                            "quantity_min": 1,
+                            "quantity_max": 2
                         },
                         {
                             "name": "determination",
                             "quantity_min": 1,
-                            "quantity_max": 4
+                            "quantity_max": 3
                         }
                     ],
                     "location_success_resource_result": [
@@ -1739,7 +1834,500 @@
                     ]
                 }
             ]
+        },
+		{
+            "name": "Church of Saints",
+            "location_type": 8,
+            "description": "A small church for some Christian denomination. Sometimes they do some charitable work.",
+            "actions_available": [
+                {
+                    "action_type": 6,
+                    "time_cost": 3,
+                    "try_message": "You try asking for some spare food.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You get some wafers.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 1
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.5
+                        }
+                    ],
+                    "failure_message": "The priest offers you salvation through the word- you walk away.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+				{
+                    "action_type": 16,
+                    "time_cost": 15,
+                    "try_message": "You try to organize a spokescouncil meeting in the church.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 5
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 40
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 100
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": 50
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You successfully rent the church space to organize a public meeting with food. Some people attend.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 50,
+                            "quantity_max": 100
+                        },
+                        {
+                            "name": "activists",
+                            "quantity_min": 2,
+                            "quantity_max": 5
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.5
+                        }
+                    ],
+                    "failure_message": "The church cancels your reservation for your spokescouncil meeting, but keeps your money as a donation.",
+                    "failure_resource_result": [
+						
+						{
+						"name": "energy",
+						"quantity": 3
+					}
+                    ],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                }
+            ]
+        },
+		{
+            "name": "City Park",
+            "location_type": 7,
+            "description": "The biggest park in the city! It is packed with visitors at all hours, and regularly patrolled.",
+            "actions_available": [
+                {
+                    "action_type": 2,
+                    "time_cost": 30,
+                    "try_message": "You try falling asleep on a secluded bench.",
+                    "resource_cost": [],
+                    "success_message": "You get some rest, though wake up a little sore.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.4
+                        }
+                    ],
+                    "failure_message": "A bored police officer prods you with his beating stick and makes you leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.6
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through garbage bins for food.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find a couple morcels to eat.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ],
+                    "failure_message": "A police officer hovers over you until you leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 12,
+                    "time_cost": 10,
+                    "try_message": "You offer people some of your food and clothing.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 12
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 4
+						}
+                    ],
+                    "success_message": "Someone graciously accepts your help.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 10,
+                            "quantity_max": 25
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "No one seems to want your help right now.",
+                    "failure_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 12
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 4
+                        }
+                    ],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 13,
+                    "time_cost": 10,
+                    "try_message": "You try to spread a message of hope and resistance.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You connect with someone over their personal struggles.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "The people are apathetic to you and your message.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 16,
+                    "time_cost": 15,
+                    "try_message": "You try to organize a large spokescouncil meeting in the park.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 10
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 400
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": 200
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You organize a large meeting of like-minded people.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 200,
+                            "quantity_max": 400
+                        },
+                        {
+                            "name": "activists",
+                            "quantity_min": 8,
+                            "quantity_max": 20
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 5
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.5
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "No one shows up for your meeting.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ]
+                }
+            ]
+        },
+		{
+            "name": "Too-Many-Dicks Bar",
+            "location_type": 2,
+            "description": "A bar with not enough chicks.",
+            "actions_available": [
+				{
+                    "action_type": 3,
+                    "time_cost": 30,
+                    "try_message": "You apply to do clean-up work at the bar.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You manage to make some money for your time.",
+                    "success_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "Your application to do bar cleaning was denied.",
+                    "failure_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 7
+                        }
+                    ],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You go to buy a drink.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You buy some liquid confidence.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity_min": 5,
+                            "quantity_max": 6
+						},
+                        {
+                            "name": "determination",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "The bartender says they're tapped out.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                }
+            ]
+        },
+		{
+            "name": "La Cuisine So French",
+            "location_type": 12,
+            "description": "A classy, pretentious, and expensive restaurant to eat at.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You try to order something off the menu.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 50
+                        }
+                    ],
+                    "success_message": "You buy a meal that is probably really good, but those portions were tiny!",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 2
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "The hostess says they cannot seat you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 7,
+                    "time_cost": 5,
+                    "try_message": "You try to order something off the menu and leave before the check.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You enjoy some hors d'oeuvre and leave before the waiter expects it.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+							"quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        },
+                        {
+                            "name": "evidence",
+                            "quantity": 0.05
+                        }
+                    ],
+                    "failure_message": "The hostess says they cannot seat you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You check the restaurant's trash bins.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find food that's been discarded by patrons of the restaurant.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "A kitchen staff member tells you to stop digging through their trash.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                }
+            ]
         }
-		
     ]
 }
