@@ -28,7 +28,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "You are asked to leave by the manager. They don't want your business, even when it's legit.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 25
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -79,7 +84,7 @@
                     ],
                     "success_message": "You find clothes that just went out of season.",
                     "success_resource_result": [
-						{
+                        {
                             "name": "clothes",
                             "quantity_min": 1,
                             "quantity_max": 3
@@ -135,7 +140,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "A lady comes up and takes your handbasket away, then tells you to leave her bakery.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -186,7 +196,7 @@
                         {
                             "name": "food",
                             "quantity_min": 2,
-							"quantity_max": 8
+                            "quantity_max": 8
                         },
                         {
                             "name": "reputation",
@@ -280,7 +290,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "A disgruntled security guard tells you to leave.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -388,12 +403,12 @@
                             "name": "food",
                             "quantity": 2
                         },
-						{
+                        {
                             "name": "raw ingredients",
                             "quantity_min": 1,
                             "quantity_max": 3
                         },
-						{
+                        {
                             "name": "clothes",
                             "quantity_min": 0,
                             "quantity_max": 2
@@ -450,7 +465,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "A store manager tells you to leave before you can buy anything.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -726,7 +746,7 @@
                         },
                         {
                             "name": "food",
-                            "quantity": 50
+                            "quantity": 25
                         },
                         {
                             "name": "reputation",
@@ -780,7 +800,7 @@
                 }
             ]
         },
-		{
+        {
             "name": "Best Motels 17",
             "location_type": 10,
             "description": "A basic motel chain location. Not the sketchiest one in the world, either.",
@@ -804,7 +824,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "The motel manager tells you they don't have a room for you.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 25
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -904,7 +929,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "A hotel manager greets you coldly at check in to tell you they don't have a room for you.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 50
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -1007,7 +1037,7 @@
                         },
                         {
                             "name": "food",
-                            "quantity": 200
+                            "quantity": 100
                         },
                         {
                             "name": "reputation",
@@ -1251,7 +1281,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "You are asked to leave by the manager. They don't want your business, even when it's legit.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -1312,7 +1347,7 @@
                 }
             ]
         },
-		{
+        {
             "name": "Luigi's Brother's Pizza",
             "location_type": 12,
             "description": "A local pizza and Italian restaurant owned by a guy probably named Mario.",
@@ -1345,7 +1380,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "The manager, probably named Mario, too, says they cannot seat you.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -1396,7 +1436,7 @@
                         {
                             "name": "food",
                             "quantity_min": 4,
-							"quantity_max": 6
+                            "quantity_max": 6
                         },
                         {
                             "name": "reputation",
@@ -1457,7 +1497,7 @@
                 }
             ]
         },
-		{
+        {
             "name": "Hippie Park",
             "location_type": 7,
             "description": "Not the biggest park in the city, but a well-visited one.",
@@ -1538,7 +1578,7 @@
                         {
                             "name": "clothes",
                             "quantity": 2
-						}
+                        }
                     ],
                     "success_message": "Someone graciously accepts your help.",
                     "success_resource_result": [
@@ -1619,7 +1659,7 @@
                         },
                         {
                             "name": "food",
-                            "quantity": 100
+                            "quantity": 50
                         },
                         {
                             "name": "reputation",
@@ -1673,7 +1713,7 @@
                 }
             ]
         },
-		{
+        {
             "name": "World-Ending Coffee",
             "location_type": 13,
             "description": "A chain cafe that offers recreational and legal stimulants ground from definitely ethically traded beans.",
@@ -1697,12 +1737,17 @@
                         {
                             "name": "energy",
                             "quantity_min": 5,
-							"quantity_max": 7
+                            "quantity_max": 7
                         }
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "The cafe says it cannot serve you today.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -1781,7 +1826,7 @@
                         },
                         {
                             "name": "food",
-                            "quantity": 50
+                            "quantity": 25
                         },
                         {
                             "name": "reputation",
@@ -1835,7 +1880,7 @@
                 }
             ]
         },
-		{
+        {
             "name": "Church of Saints",
             "location_type": 8,
             "description": "A small church for some Christian denomination. Sometimes they do some charitable work.",
@@ -1872,7 +1917,7 @@
                         }
                     ]
                 },
-				{
+                {
                     "action_type": 16,
                     "time_cost": 15,
                     "try_message": "You try to organize a spokescouncil meeting in the church.",
@@ -1887,7 +1932,7 @@
                         },
                         {
                             "name": "food",
-                            "quantity": 100
+                            "quantity": 50
                         },
                         {
                             "name": "reputation",
@@ -1924,11 +1969,10 @@
                     ],
                     "failure_message": "The church cancels your reservation for your spokescouncil meeting, but keeps your money as a donation.",
                     "failure_resource_result": [
-						
-						{
-						"name": "energy",
-						"quantity": 3
-					}
+                        {
+                            "name": "energy",
+                            "quantity": 3
+                        }
                     ],
                     "location_failure_resource_result": [
                         {
@@ -1939,7 +1983,7 @@
                 }
             ]
         },
-		{
+        {
             "name": "City Park",
             "location_type": 7,
             "description": "The biggest park in the city! It is packed with visitors at all hours, and regularly patrolled.",
@@ -2020,7 +2064,7 @@
                         {
                             "name": "clothes",
                             "quantity": 4
-						}
+                        }
                     ],
                     "success_message": "Someone graciously accepts your help.",
                     "success_resource_result": [
@@ -2101,7 +2145,7 @@
                         },
                         {
                             "name": "food",
-                            "quantity": 400
+                            "quantity": 200
                         },
                         {
                             "name": "reputation",
@@ -2155,12 +2199,12 @@
                 }
             ]
         },
-		{
+        {
             "name": "Too-Many-Dicks Bar",
             "location_type": 2,
-            "description": "A bar with not enough chicks.",
+            "description": "A bar with never enough 'chicks'.",
             "actions_available": [
-				{
+                {
                     "action_type": 3,
                     "time_cost": 30,
                     "try_message": "You apply to do clean-up work at the bar.",
@@ -2207,7 +2251,7 @@
                             "name": "energy",
                             "quantity_min": 5,
                             "quantity_max": 6
-						},
+                        },
                         {
                             "name": "determination",
                             "quantity_min": 0,
@@ -2216,12 +2260,17 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "The bartender says they're tapped out.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
                     "location_failure_resource_result": []
                 }
             ]
         },
-		{
+        {
             "name": "La Cuisine So French",
             "location_type": 12,
             "description": "A classy, pretentious, and expensive restaurant to eat at.",
@@ -2240,7 +2289,7 @@
                             "quantity": 50
                         }
                     ],
-                    "success_message": "You buy a meal that is probably really good, but those portions were tiny!",
+                    "success_message": "You buy a meal of tiny proportions. Like it's good, but more would be better.",
                     "success_resource_result": [
                         {
                             "name": "food",
@@ -2254,7 +2303,12 @@
                     ],
                     "location_success_resource_result": [],
                     "failure_message": "The hostess says they cannot seat you.",
-                    "failure_resource_result": [],
+                    "failure_resource_result": [
+                        {
+                            "name": "money",
+                            "quantity": 50
+                        }
+                    ],
                     "location_failure_resource_result": []
                 },
                 {
@@ -2272,7 +2326,7 @@
                         {
                             "name": "food",
                             "quantity_min": 1,
-							"quantity_max": 2
+                            "quantity_max": 2
                         }
                     ],
                     "location_success_resource_result": [
