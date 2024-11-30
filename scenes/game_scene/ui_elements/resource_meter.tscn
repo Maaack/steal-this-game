@@ -7,7 +7,6 @@ custom_minimum_size = Vector2(0, 16)
 offset_right = 16.0
 offset_bottom = 16.0
 script = ExtResource("1_wbn2r")
-good = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -33,7 +32,7 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_type_variation = &"ProgressBarGood"
+theme_type_variation = &"ProgressBarBad"
 max_value = 1.0
 step = 0.001
 show_percentage = false

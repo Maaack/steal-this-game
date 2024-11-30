@@ -12,6 +12,10 @@
 		{
 			"text": "[b]Donate and Give Back[/b]\nIf the clothes are over a year old and you will never wear them again, it is time to give back to society. Someone, somewhere could use your old clothes.",
 			"action_unlocks": [12]
+		},
+		{
+			"text": "[b]Shoplifting[/b]\nCorportions are not people. Stealing from them is not only okay, but ethical. Never steal from a brother or sister, though.",
+			"action_unlocks": [7]
 		}
 	]
 }

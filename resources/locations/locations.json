@@ -66,6 +66,39 @@
                             "quantity": 0.05
                         }
                     ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through the bins behind the clothing chain.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find clothes that just went out of season.",
+                    "success_resource_result": [
+						{
+                            "name": "clothes",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ],
+                    "failure_message": "A security guard comes out and tells you to leave Stacy's trash alone.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.025
+                        }
+                    ]
                 }
             ]
         },
@@ -269,8 +302,8 @@
                         },
                         {
                             "name": "raw ingredients",
-                            "quantity_min": 1,
-                            "quantity_max": 5
+                            "quantity_min": 0,
+                            "quantity_max": 3
                         },
                         {
                             "name": "reputation",
@@ -313,6 +346,11 @@
                             "name": "raw ingredients",
                             "quantity_min": 0,
                             "quantity_max": 3
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity_min": 0,
+                            "quantity_max": 2
                         }
                     ],
                     "location_success_resource_result": [
@@ -349,6 +387,16 @@
                         {
                             "name": "food",
                             "quantity": 2
+                        },
+						{
+                            "name": "raw ingredients",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        },
+						{
+                            "name": "clothes",
+                            "quantity_min": 0,
+                            "quantity_max": 2
                         }
                     ],
                     "location_success_resource_result": [
@@ -1062,11 +1110,11 @@
                             "quantity": 10
                         }
                     ],
-                    "success_message": "You earn a minimum pay and some gratitude.",
+                    "success_message": "You earn a pitiful pay and some gratitude.",
                     "success_resource_result": [
                         {
                             "name": "money",
-                            "quantity": 8
+                            "quantity": 5
                         },
                         {
                             "name": "reputation",
@@ -1215,7 +1263,7 @@
                             "quantity": 1
                         }
                     ],
-                    "success_message": "The kitchen staff offer you some of their expired uncooked food..",
+                    "success_message": "The kitchen staff offer you some of their expired uncooked food.",
                     "success_resource_result": [
                         {
                             "name": "raw ingredients",
@@ -1313,6 +1361,385 @@
                     ]
                 }
             ]
+        },
+		{
+            "name": "Hippie Park",
+            "location_type": 7,
+            "description": "Not the biggest park in the city, but a well-visited one.",
+            "actions_available": [
+                {
+                    "action_type": 2,
+                    "time_cost": 30,
+                    "try_message": "You try falling asleep on a secluded bench.",
+                    "resource_cost": [],
+                    "success_message": "You get some rest, though wake up a little sore.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "A bored police officer prods you with his beating stick and makes you leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.5
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You look through garbage bins for food.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find a couple morcels to eat.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity_min": 1,
+                            "quantity_max": 3
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ],
+                    "failure_message": "A police officer hovers over you until you leave.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 12,
+                    "time_cost": 10,
+                    "try_message": "You offer people some of your food and clothing.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 6
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 2
+						}
+                    ],
+                    "success_message": "Someone graciously accepts your help.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 5,
+                            "quantity_max": 15
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "No one seems to want your help right now.",
+                    "failure_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 6
+                        },
+                        {
+                            "name": "clothes",
+                            "quantity": 2
+                        }
+                    ],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 13,
+                    "time_cost": 10,
+                    "try_message": "You try to spread a message of hope and resistance.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You connect with someone over their personal struggles.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "The people are apathetic to you and your message.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 16,
+                    "time_cost": 30,
+                    "try_message": "You try to organize a small spokescouncil meeting in the park.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 5
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 100
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": 50
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You organize a small meeting of like-minded people.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 50,
+                            "quantity_max": 100
+                        },
+                        {
+                            "name": "activists",
+                            "quantity_min": 2,
+                            "quantity_max": 4
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 6
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.5
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "No one shows up for your meeting.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ]
+                }
+            ]
+        },
+		{
+            "name": "World-Ending Coffee",
+            "location_type": 13,
+            "description": "A chain cafe that offers recreational and legal stimulants ground from definitely ethically traded beans.",
+            "actions_available": [
+                {
+                    "action_type": 4,
+                    "time_cost": 3,
+                    "try_message": "You try to order something off the menu.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "money",
+                            "quantity": 10
+                        }
+                    ],
+                    "success_message": "You buy a coffee and down it.",
+                    "success_resource_result": [
+                        {
+                            "name": "energy",
+                            "quantity_min": 5,
+							"quantity_max": 7
+                        }
+                    ],
+                    "location_success_resource_result": [],
+                    "failure_message": "The cafe says it cannot serve you today.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": []
+                },
+                {
+                    "action_type": 6,
+                    "time_cost": 3,
+                    "try_message": "You ask for any extra food from the staff.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "The staff offer you a day old croissant.",
+                    "success_resource_result": [
+                        {
+                            "name": "food",
+                            "quantity": 1
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.5
+                        }
+                    ],
+                    "failure_message": "The staff say they don't have anything to give you.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.25
+                        }
+                    ]
+                },
+                {
+                    "action_type": 11,
+                    "time_cost": 10,
+                    "try_message": "You check the cafe's trash bins.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You find some ungrounded beans.",
+                    "success_resource_result": [
+                        {
+                            "name": "raw ingredients",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ],
+                    "failure_message": "A cafe staff member tells you to stop digging through their trash.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
+                        }
+                    ]
+                },
+                {
+                    "action_type": 16,
+                    "time_cost": 30,
+                    "try_message": "You try to organize a small spokescouncil meeting in the cafe.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 5
+                        },
+                        {
+                            "name": "food",
+                            "quantity": 50
+                        },
+                        {
+                            "name": "reputation",
+                            "quantity": 25
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You organize a small meeting of like-minded people.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 25,
+                            "quantity_max": 50
+                        },
+                        {
+                            "name": "activists",
+                            "quantity_min": 0,
+                            "quantity_max": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.5
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.25
+                        }
+                    ],
+                    "failure_message": "No one shows up for your meeting.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.05
+                        }
+                    ]
+                }
+            ]
         }
+		
     ]
 }
