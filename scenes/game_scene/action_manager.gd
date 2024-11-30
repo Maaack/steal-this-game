@@ -26,6 +26,8 @@ signal city_liberated
 @export var event_view : EventView
 @export var location_action_scene : PackedScene
 
+var enabled : bool = false
+
 var discovered_location_actions : Array[Globals.LocationAction]
 var action_node : Control
 var detailed_action_type : Globals.ActionTypes
@@ -46,9 +48,13 @@ func _ready():
 	knowledge_manager.action_learned.connect(_on_action_learned)
 	knowledge_manager.location_action_learned.connect(_on_location_action_learned)
 	knowledge_manager.bonus_gained.connect(_on_bonus_gained)
+
+func enter_city():
+	enabled = true
 	_write_event("You arrive in %s with some money, snacks, and a book of secrets." % city_name)
 	await get_tree().create_timer(2, false).timeout
 	_write_event("Luckily, you know a friend with a couch.")
+	location_manager.fill_starting_locations()
 
 #region writing stuff
 func _write_event(text : String):
@@ -198,6 +204,7 @@ func _has_then_remove(resource_name : StringName, amount : float = 1) -> bool:
 	return true
 
 func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionButton):
+	if not enabled: false
 	# Match location actions
 	if action_type in location_based_actions:
 		city_container.animate_button_state(selected_location_action_button, false)

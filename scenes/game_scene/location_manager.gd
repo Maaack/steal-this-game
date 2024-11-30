@@ -115,7 +115,7 @@ func discover_location(discovered_location : LocationData):
 			available_actions.append(action_data.action)
 	location_discovered.emit(discovered_location)
 
-func _fill_starting_locations():
+func fill_starting_locations():
 	for location in starting_locations:
 		discover_location(location)
 	for location in city_locations:
@@ -143,7 +143,6 @@ func _ready():
 			var parsed_locations = _parse_location_file(file)
 			city_locations.append_array(parsed_locations)
 	_refresh_locations()
-	_fill_starting_locations.call_deferred()
 
 func scout() -> LocationData:
 	if undiscovered_locations.size() == 0: 

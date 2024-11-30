@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=27 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" uid="uid://585vwtfgqq8m" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://k5nryt7flfii" path="res://scenes/game_scene/success_manager.gd" id="21_0v86b"]
 [ext_resource type="Script" uid="uid://c3x1nuj4r0paw" path="res://scenes/game_scene/knowledge_manager.gd" id="21_ulq3g"]
 [ext_resource type="PackedScene" uid="uid://c2cbwicwfuruk" path="res://scenes/overlaid_menus/game_won_menu.tscn" id="22_ulq3g"]
+[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/city_name_control.gd" id="23_gpor5"]
 [ext_resource type="Script" uid="uid://c2x3uwavoyywb" path="res://scenes/game_scene/time_manager.gd" id="24_dqr2x"]
 
 [sub_resource type="Resource" id="Resource_0v86b"]
@@ -72,6 +73,7 @@ render_target_update_mode = 4
 script = ExtResource("6_4lue2")
 
 [node name="MainUI" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,7 +199,6 @@ extension = "json"
 
 [node name="ActionManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "location_manager", "knowledge_manager", "action_container", "city_container", "event_view")]
 script = ExtResource("6_y85d6")
-city_name = "San Francisco"
 available_actions = Array[int]([0, 1, 15])
 discovered_actions = Array[int]([0, 1, 15, 2, 3, 4, 5])
 location_based_actions = Array[int]([2, 3, 4, 5, 6, 7, 10, 13, 11, 16, 12])
@@ -213,6 +214,7 @@ location_action_scene = ExtResource("5_v20na")
 script = ExtResource("24_dqr2x")
 location_manager = NodePath("../LocationManager")
 action_containers = [NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")]
+game_speed = 15.0
 
 [node name="PauseMenuController" type="Node" parent="." node_paths=PackedStringArray("focused_viewport")]
 script = ExtResource("1_5l4j3")
@@ -226,3 +228,69 @@ ending_scene = "uid://cg4c8cga5j160"
 game_won_scene = ExtResource("22_ulq3g")
 action_manager = NodePath("../ActionManager")
 time_manager = NodePath("../TimeManager")
+
+[node name="CityNameControl" type="Control" parent="." node_paths=PackedStringArray("main_ui", "action_manager", "knowledge_manager", "time_manager")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("23_gpor5")
+main_ui = NodePath("../MainUI")
+action_manager = NodePath("../ActionManager")
+knowledge_manager = NodePath("../KnowledgeManager")
+time_manager = NodePath("../TimeManager")
+default_city_name = "Sitty City"
+
+[node name="Panel" type="Panel" parent="CityNameControl"]
+custom_minimum_size = Vector2(300, 125)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -62.5
+offset_right = 150.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CityNameControl/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CityNameControl/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="CityNameControl/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name your city..."
+horizontal_alignment = 1
+
+[node name="CityNameEdit" type="LineEdit" parent="CityNameControl/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Sitty City"
+alignment = 1
+max_length = 40
+
+[node name="CityNameAcceptButton" type="Button" parent="CityNameControl/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Continue"
+
+[connection signal="pressed" from="CityNameControl/Panel/MarginContainer/VBoxContainer/CityNameAcceptButton" to="CityNameControl" method="_on_city_name_accept_button_pressed"]
