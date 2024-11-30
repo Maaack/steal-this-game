@@ -1,3 +1,4 @@
+class_name ActionManager
 extends Node
 
 signal city_liberated
