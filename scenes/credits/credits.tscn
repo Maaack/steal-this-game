@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://vh3lgdxinc5o"]
+[gd_scene load_steps=4 format=3 uid="uid://vh3lgdxinc5o"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/credits/credits.tscn" id="1_ssipu"]
-[ext_resource type="Script" path="res://scenes/credits/credits.gd" id="2_bejde"]
+[ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://addons/maaacks_game_template/base/scenes/credits/credits.tscn" id="1_ssipu"]
+[ext_resource type="Script" uid="uid://d32mg0bfiufvi" path="res://scenes/credits/credits.gd" id="2_bejde"]
+[ext_resource type="Texture2D" uid="uid://cxjay4bpoudmk" path="res://assets/images/revolution_is_love.png" id="3_c8xcy"]
 
 [node name="Credits" instance=ExtResource("1_ssipu")]
 script = ExtResource("2_bejde")
@@ -40,3 +41,9 @@ Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]M
 Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
 License: [url=LICENSE.txt]MIT License[/url]  
 [/center]"
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_c8xcy")
+stretch_mode = 5
