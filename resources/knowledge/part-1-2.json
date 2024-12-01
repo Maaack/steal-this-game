@@ -181,7 +181,7 @@
 				{
 					"action_type": 8,
 					"resource_name": "food",
-					"bonus":0.125
+					"bonus":0.25
 				}
 			]
 		},
@@ -196,12 +196,12 @@
 			]
 		},
 		{
-			"text": "[b]Waste Note[/b]\nYour fridge full of expired or soured foods many people would throw out can supply you with ingredients.",
+			"text": "[b]Waste Not[/b]\nYour fridge full of expired or soured foods many people would throw out can supply you with ingredients.",
 			"bonuses":[
 				{
 					"action_type": 11,
 					"resource_name": "raw ingredients",
-					"bonus":0.125
+					"bonus":0.25
 				}
 			]
 		}

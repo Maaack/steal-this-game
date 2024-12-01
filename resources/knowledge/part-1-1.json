@@ -78,37 +78,9 @@
 			]
 		},
 		{
-			"text": "[b]Identity[/b]\nAssume everyone is a cop. I am a cop. You are a cop. The only people you can assume are not cops are your mother (unless she is a cop) and your affinity group.",
-			"bonuses": [
-				{
-					"resource_name":"suspicion",
-					"bonus":-0.05
-				}
-			]
-		},
-		{
 			"text": "[b]Phones[/b]\nYour phone will leave you implicated with whatever action you do. In general, treat a phone as if someone were listening. Never give specifics.",
 			"bonuses": [
 				{
-					"resource_name":"suspicion",
-					"bonus":-0.05
-				}
-			]
-		},
-		{
-			"text": "[b]Documents[/b]\nEven if you do remain silent, your vehicle, gear, and person will be searched for documents and clues to identity you as well as indicate connection to past or present illegal activity.",
-			"bonuses": [
-				{
-					"resource_name":"suspicion",
-					"bonus":-0.05
-				}
-			]
-		},
-		{
-			"text": "[b]Fear[/b]\nPerhaps the easiest time for security culture to break down is in the heat of a protest when the police begin their repression tactics. You'll want to call out a friend's name, or the area to regroup. Build trust for these situations beforehand.",
-			"bonuses": [
-				{
-					"action_type": 16,
 					"resource_name":"suspicion",
 					"bonus":-0.05
 				}
@@ -149,15 +121,6 @@
 				},
 				{
 					"action_type": 16,
-					"resource_name":"suspicion",
-					"bonus":-0.05
-				}
-			]
-		},
-		{
-			"text": "[b]Safe Sex[/b]\nThere is an implied special bond and dissolution of barriers between those who spend their naked time together... The problem is that many relationships end after a time. Short term relationships or even one night stands can be very dangerous, too.",
-			"bonuses": [
-				{
 					"resource_name":"suspicion",
 					"bonus":-0.05
 				}

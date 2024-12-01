@@ -59,6 +59,15 @@
 					"bonus":0.25
 				}
 			]
+		},
+		{
+			"text": "[b]People's Chemistry[/b]\nThis section is missing its contents.",
+			"resources": [
+				{
+					"name":"determination",
+					"quantity":1
+				}
+			]
 		}
 	]
 }
