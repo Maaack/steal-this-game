@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bcfa274fay5sl"
+path="res://.godot/imported/Hip Hop Vol2 Snakes Main.ogg-fb56101dced4ec579cdd1c62a01093c1.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Hip Hop Vol2 Snakes Main.ogg"
+dest_files=["res://.godot/imported/Hip Hop Vol2 Snakes Main.ogg-fb56101dced4ec579cdd1c62a01093c1.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

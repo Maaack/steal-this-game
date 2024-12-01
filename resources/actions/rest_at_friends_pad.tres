@@ -29,7 +29,7 @@ metadata/_custom_type_script = ExtResource("1_e3ic6")
 [resource]
 script = ExtResource("2_i10ko")
 action = 2
-time_cost = 30.0
+time_cost = 15.0
 try_message = "You try crashing at your friend's pad."
 resource_cost = Array[ExtResource("1_e3ic6")]([])
 success_message = "Your get a good nights sleep on the living room couch."

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cyh6bow0jnn0l"
+path="res://.godot/imported/Hip Hop Vol2 The Coupe Cut 30.ogg-9e619cbd0cd18726f2c376cb7094118e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Hip Hop Vol2 The Coupe Cut 30.ogg"
+dest_files=["res://.godot/imported/Hip Hop Vol2 The Coupe Cut 30.ogg-9e619cbd0cd18726f2c376cb7094118e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

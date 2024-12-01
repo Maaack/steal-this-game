@@ -595,7 +595,7 @@
             "actions_available": [
                 {
                     "action_type": 2,
-                    "time_cost": 30,
+                    "time_cost": 15,
                     "try_message": "You try falling asleep on a secluded bench.",
                     "resource_cost": [],
                     "success_message": "You get some rest, though wake up a little sore.",
@@ -1504,7 +1504,7 @@
             "actions_available": [
                 {
                     "action_type": 2,
-                    "time_cost": 30,
+                    "time_cost": 15,
                     "try_message": "You try falling asleep on a secluded bench.",
                     "resource_cost": [],
                     "success_message": "You get some rest, though wake up a little sore.",
@@ -1990,7 +1990,7 @@
             "actions_available": [
                 {
                     "action_type": 2,
-                    "time_cost": 30,
+                    "time_cost": 15,
                     "try_message": "You try falling asleep on a secluded bench.",
                     "resource_cost": [],
                     "success_message": "You get some rest, though wake up a little sore.",

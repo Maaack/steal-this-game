@@ -1,7 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8hko32pksk8c"]
+[gd_scene load_steps=24 format=3 uid="uid://c8hko32pksk8c"]
 
-[ext_resource type="PackedScene" path="res://scenes/menus/main_menu/main_menu.tscn" id="1_04653"]
-[ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_lddsn"]
+[ext_resource type="PackedScene" uid="uid://dh4pynirtohng" path="res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_6xh1d"]
+[ext_resource type="Script" uid="uid://chydf1bcgqou1" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_lddsn"]
+[ext_resource type="PackedScene" uid="uid://vh3lgdxinc5o" path="res://scenes/credits/credits.tscn" id="3_dhrx6"]
+[ext_resource type="Script" uid="uid://bfvwrgxom1oja" path="res://addons/maaacks_game_template/base/scripts/ui_sound_controller.gd" id="4_xkrf4"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="5_x5bcm"]
+[ext_resource type="Script" uid="uid://coel5ac8leu5p" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_version_label.gd" id="6_672y5"]
+[ext_resource type="AudioStream" uid="uid://cyh6bow0jnn0l" path="res://assets/music/Hip Hop Vol2 The Coupe Cut 30.ogg" id="6_dhrx6"]
+[ext_resource type="Script" uid="uid://p4xodfdepual" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_name_label.gd" id="7_8dhfv"]
+[ext_resource type="Texture2D" uid="uid://bkmjppo2allvf" path="res://assets/images/game_title_vertical_370x450.png" id="8_j8onx"]
+[ext_resource type="Script" uid="uid://cimus4qhrqfk3" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="9_gwise"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -310,10 +318,10 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2kqig"]
 _data = {
-"Intro": SubResource("1"),
-"OpenMainMenu": SubResource("6"),
-"OpenSubMenu": SubResource("4"),
-"RESET": SubResource("2")
+&"Intro": SubResource("1"),
+&"OpenMainMenu": SubResource("6"),
+&"OpenSubMenu": SubResource("4"),
+&"RESET": SubResource("2")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="7"]
@@ -347,30 +355,276 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
-[node name="MainMenu" instance=ExtResource("1_04653")]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_lddsn")
+game_scene_path = "res://scenes/game_scene/game_ui.tscn"
+options_packed_scene = ExtResource("2_6xh1d")
+credits_packed_scene = ExtResource("3_dhrx6")
 
-[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="UISoundController" type="Node" parent="."]
+script = ExtResource("4_xkrf4")
+
+[node name="MenuAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2kqig")
+&"": SubResource("AnimationLibrary_2kqig")
 }
 
-[node name="MenuAnimationTree" type="AnimationTree" parent="." index="2"]
+[node name="MenuAnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
-[node name="VersionContainer" parent="VersionMargin" index="0"]
-modulate = Color(1, 1, 1, 0)
+[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("5_x5bcm")]
+stream = ExtResource("6_dhrx6")
 
-[node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
-modulate = Color(1, 1, 1, 0)
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
-modulate = Color(1, 1, 1, 0)
+[node name="VersionMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]
+[node name="VersionContainer" type="Control" parent="VersionMargin"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
 
-[node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
+[node name="VersionLabel" type="Label" parent="VersionMargin/VersionContainer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.0.0"
+horizontal_alignment = 2
+script = ExtResource("6_672y5")
+
+[node name="MenuContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleMargin" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+
+[node name="TitleContainer" type="Control" parent="MenuContainer/TitleMargin"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="MenuContainer/TitleMargin/TitleContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Steal This Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_8dhfv")
+
+[node name="TextureRect" type="TextureRect" parent="MenuContainer/TitleMargin/TitleContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.0
+offset_right = 185.0
+offset_bottom = 450.0
+grow_horizontal = 2
+texture = ExtResource("8_j8onx")
+
+[node name="SubTitleMargin" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 96
+
+[node name="SubTitleContainer" type="Control" parent="MenuContainer/SubTitleMargin"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SubTitleLabel" type="RichTextLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -235.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "Inspired by [i]Steal This Book[/i]
+[font_size=12]by Andy Hoffman[/font_size]"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/SubTitleMargin/SubTitleContainer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -194.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SubTitleLabel2" type="RichTextLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Contains content from 
+[i]Steal This Wiki[/i]
+"
+horizontal_alignment = 1
+
+[node name="SubTitleLabel3" type="RichTextLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Made for
+[i]Game Off Jam 2024[/i]
+"
+horizontal_alignment = 1
+
+[node name="MenuButtonsMargin" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 360
+theme_override_constants/margin_bottom = 8
+
+[node name="MenuButtonsContainer" type="Control" parent="MenuContainer/MenuButtonsMargin"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MenuButtonsBoxContainer" type="BoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("9_gwise")
 lock = true
+
+[node name="PlayButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Options
+"
+
+[node name="CreditsButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Exit"
+
+[node name="OptionsContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CreditsContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="FlowControlContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="FlowControl" type="Control" parent="FlowControlContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BackButton" type="Button" parent="FlowControlContainer/FlowControl"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(62, 40)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 62.0
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="FlowControlContainer/FlowControl/BackButton" to="." method="_on_back_button_pressed"]

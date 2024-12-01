@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=28 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" uid="uid://585vwtfgqq8m" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
+[ext_resource type="AudioStream" uid="uid://bcfa274fay5sl" path="res://assets/music/Hip Hop Vol2 Snakes Main.ogg" id="2_dqr2x"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="4_q3ilf"]
 [ext_resource type="PackedScene" uid="uid://cho0vbenclk7c" path="res://scenes/game_scene/ui_elements/city_container.tscn" id="5_ul61k"]
@@ -54,6 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_q3ilf")]
+stream = ExtResource("2_dqr2x")
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -214,7 +216,6 @@ location_action_scene = ExtResource("5_v20na")
 script = ExtResource("24_dqr2x")
 location_manager = NodePath("../LocationManager")
 action_containers = [NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")]
-game_speed = 15.0
 
 [node name="PauseMenuController" type="Node" parent="." node_paths=PackedStringArray("focused_viewport")]
 script = ExtResource("1_5l4j3")

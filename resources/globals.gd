@@ -142,7 +142,7 @@ static var _base_action_risks : Dictionary[ActionTypes, float] = {
 static var _action_risky_resources : Dictionary[ActionTypes, Array] = {
 	ActionTypes.READ : [],
 	ActionTypes.SCOUT : [],
-	ActionTypes.REST : [&"fatigue"],
+	ActionTypes.REST : [&"fatigue", &"suspicion"],
 	ActionTypes.WORK : [&"suspicion", &"evidence"],
 	ActionTypes.BUY : [&"suspicion", &"evidence"],
 	ActionTypes.SELL : [],

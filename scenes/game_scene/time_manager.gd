@@ -1,8 +1,8 @@
 class_name TimeManager
 extends Node
 
-const SUSPICION_DECAY : float = 0.00025
-const FATIGUE_DECAY : float = 0.001
+const SUSPICION_DECAY : float = 0.001
+const FATIGUE_DECAY : float = 0.004
 
 @export var location_manager : LocationManager
 @export var action_containers : Array[Container]
