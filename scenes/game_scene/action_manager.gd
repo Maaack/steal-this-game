@@ -219,14 +219,14 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 		Globals.ActionTypes.LIBERATE:
 			_write_success("You try liberating %s..." % city_name)
 			if not _has_then_remove(&"activists", 60): return
-			action_button.wait(10)
+			action_button.wait(6)
 			await action_button.wait_time_passed
 			_write_success("Liberated %s!" % city_name)
 			city_liberated.emit()
 		Globals.ActionTypes.SCOUT:
 			_write_event("You try exploring the city...")
 			if not _has_then_remove(&"energy", 1): return
-			action_button.wait(10.0)
+			action_button.wait(6)
 			await action_button.wait_time_passed
 			var location_scouted = location_manager.scout()
 			if location_scouted == null:
@@ -236,7 +236,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 		Globals.ActionTypes.READ:
 			_write_event("You try reading more secrets...")
 			if not _has_then_remove(&"energy", 1): return
-			action_button.wait(3.0)
+			action_button.wait(3)
 			await action_button.wait_time_passed
 			_write_success("Read...")
 			knowledge_manager.read()
@@ -251,7 +251,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 		Globals.ActionTypes.COOK:
 			_write_success("You try cooking...")
 			if not _has_then_remove(&"raw ingredients", 3): return
-			action_button.wait(15)
+			action_button.wait(6)
 			await action_button.wait_time_passed
 			_write_success("Cooked food...")
 			var total_food = 10 * _get_total_bonus(&"food", action_type)

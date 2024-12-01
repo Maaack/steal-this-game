@@ -428,6 +428,56 @@
                             "quantity": 0.025
                         }
                     ]
+                },
+                {
+                    "action_type": 13,
+                    "time_cost": 6,
+                    "try_message": "You try to spread a message of resisting soul-sucking corporations.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You maybe convince some people to shop elsewhere.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.2
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.4
+                        }
+                    ],
+                    "failure_message": "The people are apathetic to you and your message.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ]
                 }
             ]
         },
@@ -655,7 +705,7 @@
                 },
                 {
                     "action_type": 12,
-                    "time_cost": 10,
+                    "time_cost": 3,
                     "try_message": "You offer people some of your food.",
                     "resource_cost": [
                         {
@@ -696,7 +746,7 @@
                 },
                 {
                     "action_type": 13,
-                    "time_cost": 10,
+                    "time_cost": 6,
                     "try_message": "You try to spread a message of hope and resistance.",
                     "resource_cost": [
                         {
@@ -712,7 +762,8 @@
                     "success_resource_result": [
                         {
                             "name": "reputation",
-                            "quantity": 1
+                            "quantity_min": 1,
+                            "quantity_max": 2
                         },
                         {
                             "name": "determination",
@@ -724,6 +775,10 @@
                         {
                             "name": "fatigue",
                             "quantity": 0.2
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
                         }
                     ],
                     "failure_message": "The people are apathetic to you and your message.",
@@ -732,12 +787,16 @@
                         {
                             "name": "fatigue",
                             "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
                         }
                     ]
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 15,
+                    "time_cost": 10,
                     "try_message": "You try to organize a small spokescouncil meeting in the park.",
                     "resource_cost": [
                         {
@@ -1024,7 +1083,7 @@
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 15,
+                    "time_cost": 10,
                     "try_message": "You try to organize a spokescouncil meeting in the hotel.",
                     "resource_cost": [
                         {
@@ -1323,7 +1382,7 @@
                 },
                 {
                     "action_type": 12,
-                    "time_cost": 10,
+                    "time_cost": 3,
                     "try_message": "You offer the 'charity' some extra clothes.",
                     "resource_cost": [
                         {
@@ -1564,7 +1623,7 @@
                 },
                 {
                     "action_type": 12,
-                    "time_cost": 10,
+                    "time_cost": 3,
                     "try_message": "You offer people some of your food and clothing.",
                     "resource_cost": [
                         {
@@ -1609,7 +1668,7 @@
                 },
                 {
                     "action_type": 13,
-                    "time_cost": 10,
+                    "time_cost": 6,
                     "try_message": "You try to spread a message of hope and resistance.",
                     "resource_cost": [
                         {
@@ -1625,7 +1684,8 @@
                     "success_resource_result": [
                         {
                             "name": "reputation",
-                            "quantity": 1
+                            "quantity_min": 1,
+                            "quantity_max": 4
                         },
                         {
                             "name": "determination",
@@ -1637,6 +1697,10 @@
                         {
                             "name": "fatigue",
                             "quantity": 0.2
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
                         }
                     ],
                     "failure_message": "The people are apathetic to you and your message.",
@@ -1645,12 +1709,16 @@
                         {
                             "name": "fatigue",
                             "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
                         }
                     ]
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 15,
+                    "time_cost": 10,
                     "try_message": "You try to organize a small spokescouncil meeting in the park.",
                     "resource_cost": [
                         {
@@ -1816,8 +1884,58 @@
                     ]
                 },
                 {
+                    "action_type": 13,
+                    "time_cost": 6,
+                    "try_message": "You try to spread a message of resisting unfair trading practices.",
+                    "resource_cost": [
+                        {
+                            "name": "energy",
+                            "quantity": 1
+                        },
+                        {
+                            "name": "determination",
+                            "quantity": 1
+                        }
+                    ],
+                    "success_message": "You maybe convince some people to start their mornings elsewhere.",
+                    "success_resource_result": [
+                        {
+                            "name": "reputation",
+                            "quantity_min": 1,
+                            "quantity_max": 4
+                        },
+                        {
+                            "name": "determination",
+                            "quantity_min": 1,
+                            "quantity_max": 2
+                        }
+                    ],
+                    "location_success_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.2
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.4
+                        }
+                    ],
+                    "failure_message": "The people are apathetic to you and your message.",
+                    "failure_resource_result": [],
+                    "location_failure_resource_result": [
+                        {
+                            "name": "fatigue",
+                            "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
+                        }
+                    ]
+                },
+                {
                     "action_type": 16,
-                    "time_cost": 15,
+                    "time_cost": 10,
                     "try_message": "You try to organize a small spokescouncil meeting in the cafe.",
                     "resource_cost": [
                         {
@@ -1919,7 +2037,7 @@
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 15,
+                    "time_cost": 10,
                     "try_message": "You try to organize a spokescouncil meeting in the church.",
                     "resource_cost": [
                         {
@@ -2050,7 +2168,7 @@
                 },
                 {
                     "action_type": 12,
-                    "time_cost": 10,
+                    "time_cost": 3,
                     "try_message": "You offer people some of your food and clothing.",
                     "resource_cost": [
                         {
@@ -2095,7 +2213,7 @@
                 },
                 {
                     "action_type": 13,
-                    "time_cost": 10,
+                    "time_cost": 6,
                     "try_message": "You try to spread a message of hope and resistance.",
                     "resource_cost": [
                         {
@@ -2111,7 +2229,8 @@
                     "success_resource_result": [
                         {
                             "name": "reputation",
-                            "quantity": 1
+                            "quantity_min": 1,
+                            "quantity_max": 5
                         },
                         {
                             "name": "determination",
@@ -2123,6 +2242,10 @@
                         {
                             "name": "fatigue",
                             "quantity": 0.2
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.2
                         }
                     ],
                     "failure_message": "The people are apathetic to you and your message.",
@@ -2131,12 +2254,16 @@
                         {
                             "name": "fatigue",
                             "quantity": 0.1
+                        },
+                        {
+                            "name": "suspicion",
+                            "quantity": 0.1
                         }
                     ]
                 },
                 {
                     "action_type": 16,
-                    "time_cost": 15,
+                    "time_cost": 10,
                     "try_message": "You try to organize a large spokescouncil meeting in the park.",
                     "resource_cost": [
                         {

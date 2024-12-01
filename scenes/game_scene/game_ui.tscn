@@ -56,6 +56,7 @@ grow_vertical = 2
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_q3ilf")]
 stream = ExtResource("2_dqr2x")
+parameters/looping = true
 
 [node name="MainUI" type="Control" parent="."]
 visible = false
