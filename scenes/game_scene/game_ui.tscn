@@ -1,13 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://c8c0w2owyi184"]
+[gd_scene load_steps=27 format=3 uid="uid://c8c0w2owyi184"]
 
 [ext_resource type="Script" uid="uid://585vwtfgqq8m" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_5l4j3"]
-[ext_resource type="AudioStream" uid="uid://bcfa274fay5sl" path="res://assets/music/Hip Hop Vol2 Snakes Main.ogg" id="2_dqr2x"]
 [ext_resource type="PackedScene" uid="uid://cdfvynqbtgn5u" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_ltc4h"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="4_q3ilf"]
 [ext_resource type="PackedScene" uid="uid://cho0vbenclk7c" path="res://scenes/game_scene/ui_elements/city_container.tscn" id="5_ul61k"]
 [ext_resource type="PackedScene" uid="uid://dx5ss2xptakj3" path="res://scenes/game_scene/ui_elements/location_action_container.tscn" id="5_v20na"]
 [ext_resource type="PackedScene" uid="uid://b3b7du4t8opy0" path="res://scenes/game_scene/ui_elements/event_view.tscn" id="6_0v86b"]
-[ext_resource type="Script" uid="uid://1pbla7qargve" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="6_4lue2"]
 [ext_resource type="Script" uid="uid://bkn03raotjwg4" path="res://scenes/game_scene/action_manager.gd" id="6_y85d6"]
 [ext_resource type="PackedScene" uid="uid://d3j13mcmqpemo" path="res://scenes/game_scene/ui_elements/inventory_stock_container.tscn" id="7_8qp3c"]
 [ext_resource type="Script" uid="uid://cmb2xqkhuymla" path="res://resources/resource_quantity.gd" id="8_onvsj"]
@@ -22,7 +20,8 @@
 [ext_resource type="Script" uid="uid://k5nryt7flfii" path="res://scenes/game_scene/success_manager.gd" id="21_0v86b"]
 [ext_resource type="Script" uid="uid://c3x1nuj4r0paw" path="res://scenes/game_scene/knowledge_manager.gd" id="21_ulq3g"]
 [ext_resource type="PackedScene" uid="uid://c2cbwicwfuruk" path="res://scenes/overlaid_menus/game_won_menu.tscn" id="22_ulq3g"]
-[ext_resource type="Script" path="res://scenes/game_scene/ui_elements/city_name_control.gd" id="23_gpor5"]
+[ext_resource type="Script" uid="uid://c7quctgvh0y7y" path="res://scenes/game_scene/cheat_manager.gd" id="23_dqr2x"]
+[ext_resource type="Script" uid="uid://dqlexm3j3dc5y" path="res://scenes/game_scene/ui_elements/city_name_control.gd" id="23_gpor5"]
 [ext_resource type="Script" uid="uid://c2x3uwavoyywb" path="res://scenes/game_scene/time_manager.gd" id="24_dqr2x"]
 
 [sub_resource type="Resource" id="Resource_0v86b"]
@@ -55,24 +54,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_q3ilf")]
-stream = ExtResource("2_dqr2x")
-
-[node name="ViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="ConfigurableSubViewport" type="SubViewport" parent="ViewportContainer"]
-handle_input_locally = false
-audio_listener_enable_2d = true
-audio_listener_enable_3d = true
-size = Vector2i(1280, 720)
-render_target_update_mode = 4
-script = ExtResource("6_4lue2")
 
 [node name="MainUI" type="Control" parent="."]
 visible = false
@@ -217,10 +198,9 @@ script = ExtResource("24_dqr2x")
 location_manager = NodePath("../LocationManager")
 action_containers = [NodePath("../MainUI/HBoxContainer/VBoxContainer/TabContainer/Actions/MarginContainer/HBoxContainer/CityContainer")]
 
-[node name="PauseMenuController" type="Node" parent="." node_paths=PackedStringArray("focused_viewport")]
+[node name="PauseMenuController" type="Node" parent="."]
 script = ExtResource("1_5l4j3")
 pause_menu_packed = ExtResource("2_ltc4h")
-focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 
 [node name="SuccessManager" type="Node" parent="." node_paths=PackedStringArray("action_manager", "time_manager")]
 script = ExtResource("21_0v86b")
@@ -229,6 +209,12 @@ ending_scene = "uid://cg4c8cga5j160"
 game_won_scene = ExtResource("22_ulq3g")
 action_manager = NodePath("../ActionManager")
 time_manager = NodePath("../TimeManager")
+
+[node name="CheatManager" type="Node" parent="." node_paths=PackedStringArray("inventory_manager", "action_manager", "event_view")]
+script = ExtResource("23_dqr2x")
+inventory_manager = NodePath("../InventoryManager")
+action_manager = NodePath("../ActionManager")
+event_view = NodePath("../MainUI/HBoxContainer/Panel/MarginContainer/EventView")
 
 [node name="CityNameControl" type="Control" parent="." node_paths=PackedStringArray("main_ui", "action_manager", "knowledge_manager", "time_manager")]
 layout_mode = 1
@@ -294,4 +280,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Continue"
 
+[connection signal="text_submitted" from="CityNameControl/Panel/MarginContainer/VBoxContainer/CityNameEdit" to="CityNameControl" method="_on_city_name_edit_text_submitted"]
 [connection signal="pressed" from="CityNameControl/Panel/MarginContainer/VBoxContainer/CityNameAcceptButton" to="CityNameControl" method="_on_city_name_accept_button_pressed"]

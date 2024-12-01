@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c8hko32pksk8c"]
+[gd_scene load_steps=23 format=3 uid="uid://c8hko32pksk8c"]
 
 [ext_resource type="PackedScene" uid="uid://dh4pynirtohng" path="res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_6xh1d"]
 [ext_resource type="Script" uid="uid://chydf1bcgqou1" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_lddsn"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bfvwrgxom1oja" path="res://addons/maaacks_game_template/base/scripts/ui_sound_controller.gd" id="4_xkrf4"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="5_x5bcm"]
 [ext_resource type="Script" uid="uid://coel5ac8leu5p" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_version_label.gd" id="6_672y5"]
-[ext_resource type="AudioStream" uid="uid://cyh6bow0jnn0l" path="res://assets/music/Hip Hop Vol2 The Coupe Cut 30.ogg" id="6_dhrx6"]
 [ext_resource type="Script" uid="uid://p4xodfdepual" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/config_name_label.gd" id="7_8dhfv"]
 [ext_resource type="Texture2D" uid="uid://bkmjppo2allvf" path="res://assets/images/game_title_vertical_370x450.png" id="8_j8onx"]
 [ext_resource type="Script" uid="uid://cimus4qhrqfk3" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="9_gwise"]
@@ -381,7 +380,6 @@ anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("5_x5bcm")]
-stream = ExtResource("6_dhrx6")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 layout_mode = 1

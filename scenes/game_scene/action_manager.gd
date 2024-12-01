@@ -218,7 +218,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 	match action_type:
 		Globals.ActionTypes.LIBERATE:
 			_write_success("You try liberating %s..." % city_name)
-			if not _has_then_remove(&"activists", 100): return
+			if not _has_then_remove(&"activists", 60): return
 			action_button.wait(10)
 			await action_button.wait_time_passed
 			_write_success("Liberated %s!" % city_name)
@@ -243,7 +243,7 @@ func _on_action_done(action_type : Globals.ActionTypes, action_button : ActionBu
 		Globals.ActionTypes.EAT:
 			_write_success("You try eating...")
 			if not _has_then_remove(&"food", 1): return
-			action_button.wait(0.5)
+			action_button.wait(0.1)
 			await action_button.wait_time_passed
 			_write_success("Ate...")
 			var total_energy = randi_range(1, 2) * _get_total_bonus(&"energy", action_type)
@@ -362,14 +362,14 @@ func _on_location_discovered(location : LocationData):
 		action_node.locations = location_manager.discovered_locations
 		action_node.update_locations()
 
-func _discover_action(action_type : Globals.ActionTypes):
-	if action_type in discovered_actions: return
+func discover_action(action_type : Globals.ActionTypes):
+	if action_type in discovered_actions or action_type == Globals.ActionTypes.NONE: return
 	discovered_actions.append(action_type)
 	_write_discovered(Globals.get_action_string(action_type), "Action", false)
 	_add_available_action(action_type)
 
 func _on_action_learned(action_type : Globals.ActionTypes):
-	_discover_action(action_type)
+	discover_action(action_type)
 
 func _has_discovered_location_action(location_action: Globals.LocationAction) -> bool:
 	for discovered_location_action in discovered_location_actions:
@@ -396,3 +396,9 @@ func _on_bonus_gained(bonus : Globals.Bonus):
 	elif bonus is Globals.ResourceBonus:
 		resource_bonuses.append(bonus)
 	_write_bonus(bonus)
+
+func discover_all_locations():
+	var location_scouted = location_manager.scout()
+	while (location_scouted):
+		_write_discovered(location_scouted.name, "Location", true)
+		location_scouted = location_manager.scout()

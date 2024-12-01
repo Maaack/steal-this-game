@@ -87,6 +87,7 @@ static var _action_strings : Dictionary = {
 	ActionTypes.SELL : "Sell",
 	ActionTypes.BEG : "Ask/Beg",
 	ActionTypes.STEAL : "Steal",
+	ActionTypes.CRAFT : "Craft",
 	ActionTypes.COOK: "Cook",
 	ActionTypes.GROW: "Grow",
 	ActionTypes.GIVE: "Give",

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg4c8cga5j160"]
+[gd_scene load_steps=5 format=3 uid="uid://cg4c8cga5j160"]
 
 [ext_resource type="PackedScene" uid="uid://vh3lgdxinc5o" path="res://scenes/credits/credits.tscn" id="1_6214m"]
 [ext_resource type="Script" uid="uid://ccvfn33prn4f1" path="res://scenes/end_credits/end_credits.gd" id="2_1vqfp"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="3_onqjy"]
-[ext_resource type="AudioStream" uid="uid://buncwr0h5lccc" path="res://assets/music/Hip Hop Vol2 Let's Go Main.wav" id="4_2v40y"]
 [ext_resource type="Script" uid="uid://cimus4qhrqfk3" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="4_hah5r"]
 
 [node name="EndCredits" instance=ExtResource("1_6214m")]
@@ -11,7 +10,6 @@ script = ExtResource("2_1vqfp")
 main_menu_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
 
 [node name="BackgroundMusicPlayer" parent="." index="0" instance=ExtResource("3_onqjy")]
-stream = ExtResource("4_2v40y")
 
 [node name="BackgroundColor" type="ColorRect" parent="." index="1"]
 layout_mode = 1

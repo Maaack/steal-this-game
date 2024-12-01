@@ -9,6 +9,7 @@ extends Control
 func _ready():
 	main_ui.hide()
 	show()
+	%CityNameEdit.grab_focus()
 
 func _on_name_accepted():
 	var city_name = %CityNameEdit.text
@@ -22,4 +23,7 @@ func _on_name_accepted():
 	time_manager.enabled = true
 
 func _on_city_name_accept_button_pressed():
+	_on_name_accepted()
+
+func _on_city_name_edit_text_submitted(new_text):
 	_on_name_accepted()
