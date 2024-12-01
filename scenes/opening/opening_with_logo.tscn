@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpiyqyc3owsub"]
+[gd_scene load_steps=4 format=3 uid="uid://bpiyqyc3owsub"]
 
 [ext_resource type="PackedScene" uid="uid://crvr46bp5xdtn" path="res://scenes/opening/opening.tscn" id="1_1avfl"]
 [ext_resource type="Texture2D" uid="uid://8465j88hcwms" path="res://assets/images/jam_opening.png" id="2_w60c0"]
+[ext_resource type="AudioStream" uid="uid://bkqc3ncxk1v0r" path="res://assets/music/Hip Hop Vol2 The Coupe Cut 30.ogg" id="3_i1ftt"]
 
 [node name="Opening" instance=ExtResource("1_1avfl")]
 images = Array[Texture2D]([ExtResource("2_w60c0")])
 visible_time = 2.0
+
+[node name="BackgroundMusicPlayer" parent="." index="0"]
+stream = ExtResource("3_i1ftt")
 
 [node name="ImagesContainer" parent="." index="1"]
 theme_override_constants/margin_left = 64

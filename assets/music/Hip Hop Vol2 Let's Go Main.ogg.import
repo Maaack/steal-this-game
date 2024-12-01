@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dody18mar5m62"
+path="res://.godot/imported/Hip Hop Vol2 Let's Go Main.ogg-26480feee4560c341332b8a6a05dc9e8.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Hip Hop Vol2 Let's Go Main.ogg"
+dest_files=["res://.godot/imported/Hip Hop Vol2 Let's Go Main.ogg-26480feee4560c341332b8a6a05dc9e8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
