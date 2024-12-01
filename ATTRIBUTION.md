@@ -1,19 +1,29 @@
 # Attribution
-## Collaborators
-
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+## Game By
+[Maaack](https://maaack.itch.io/)  
 
 
-## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+## Sourced
+### Music
+Author: [Ovani Sound](https://ovanisound.com/)  
+Source: [ovanisound.com : hip-hop-music-pack-vol-2](https://ovanisound.com/products/hip-hop-music-pack-vol-2)  
+License: [Royalty Free License](/assets/music/Royalty-Free%20License%20&%20Terms%20of%20Service.pdf)
 
+### Icons
+Author: [Lorc, Delapouite & contributors](https://game-icons.net/about.html#authors)  
+Source: [game-icons](https://game-icons.net/)  
+License: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
+### Fonts
+#### UI
+Author: [Łukasz Dziedzic](https://www.1001fonts.com/users/dziedzic/)  
+Source: [1001fonts.com : lato-font](https://www.1001fonts.com/lato-font.html)  
+License: [SIL Open Font License](https://openfontlicense.org/)
+
+#### Title
+Author: [Chris Hansen](https://www.1001fonts.com/users/chrisx/)  
+Source: [1001fonts.com : punk-kid-font](https://www.1001fonts.com/punk-kid-font.html)  
+License: [Custom Free License](https://st.1001fonts.net/license/punk-kid/readme.txt)
 
 ## Tools
 #### Godot

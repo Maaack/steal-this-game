@@ -9,21 +9,31 @@ script = ExtResource("2_bejde")
 attribution_file_path = "res://ATTRIBUTION.md"
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
-text = "[center][font_size=48]Collaborators[/font_size]
-
-[font_size=32]Role[/font_size]
-Person 1  
-Person 2  
-[url=]Person w/ Link[/url]  
+text = "[center][font_size=48]Game By[/font_size]
+[url=https://maaack.itch.io/]Maaack[/url]  
 
 
-[font_size=48]Sourced / Unaffiliated[/font_size]
-[font_size=32]Asset Type[/font_size]
-[font_size=24]Use Case[/font_size]
-Author: [url=]Name[/url]  
-Source: [url=]Domain : webpage.html[/url]  
-License: [url=]License[/url]
+[font_size=48]Sourced[/font_size]
+[font_size=32]Music[/font_size]
+Author: [url=https://ovanisound.com/]Ovani Sound[/url]  
+Source: [url=https://ovanisound.com/products/hip-hop-music-pack-vol-2]ovanisound.com : hip-hop-music-pack-vol-2[/url]  
+License: [url=/assets/music/Royalty-Free%20License%20&%20Terms%20of%20Service.pdf]Royalty Free License[/url]
 
+[font_size=32]Icons[/font_size]
+Author: [url=https://game-icons.net/about.html#authors]Lorc, Delapouite & contributors[/url]  
+Source: [url=https://game-icons.net/]game-icons[/url]  
+License: [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url]
+
+[font_size=32]Fonts[/font_size]
+[font_size=24]UI[/font_size]
+Author: [url=https://www.1001fonts.com/users/dziedzic/]Łukasz Dziedzic[/url]  
+Source: [url=https://www.1001fonts.com/lato-font.html]1001fonts.com : lato-font[/url]  
+License: [url=https://openfontlicense.org/]SIL Open Font License[/url]
+
+[font_size=24]Title[/font_size]
+Author: [url=https://www.1001fonts.com/users/chrisx/]Chris Hansen[/url]  
+Source: [url=https://www.1001fonts.com/punk-kid-font.html]1001fonts.com : punk-kid-font[/url]  
+License: [url=https://st.1001fonts.net/license/punk-kid/readme.txt]Custom Free License[/url]
 
 [font_size=48]Tools[/font_size]
 [font_size=24]Godot[/font_size]

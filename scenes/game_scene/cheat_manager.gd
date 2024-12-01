@@ -13,7 +13,7 @@ func reset_code():
 	code = ""
 
 func check_code():
-	if code.containsn("peace"):
+	if code.containsn("extra"):
 		event_view.add_success_text("Cheat activated!")
 		inventory_manager.add_by_name(&"food", 5000)
 		inventory_manager.add_by_name(&"clothes", 200)
@@ -27,7 +27,7 @@ func check_code():
 		event_view.add_success_text("Cheat activated!")
 		inventory_manager.add_by_name(&"activists", 25)
 		reset_code()
-	if code.containsn("creation"):
+	if code.containsn("peace"):
 		event_view.add_success_text("Cheat activated!")
 		for action_type in Globals.ActionTypes:
 			action_manager.discover_action(Globals.ActionTypes[action_type])
