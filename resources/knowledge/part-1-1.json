@@ -63,21 +63,6 @@
 			]
 		},
 		{
-			"text": "[b]Websites[/b]\nThe State reads protest websites all the time... If you post specific details about a direct action on the Internet, you can expect there to be cops there when you show up.",
-			"bonuses": [
-				{
-					"action_type": 13,
-					"resource_name":"suspicion",
-					"bonus":-0.05
-				},
-				{
-					"action_type": 16,
-					"resource_name":"suspicion",
-					"bonus":-0.05
-				}
-			]
-		},
-		{
 			"text": "[b]Phones[/b]\nYour phone will leave you implicated with whatever action you do. In general, treat a phone as if someone were listening. Never give specifics.",
 			"bonuses": [
 				{

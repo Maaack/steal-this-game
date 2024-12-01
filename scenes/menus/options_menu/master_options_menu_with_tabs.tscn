@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh4pynirtohng"]
+[gd_scene load_steps=4 format=3 uid="uid://dh4pynirtohng"]
 
 [ext_resource type="PackedScene" uid="uid://cdliuvhpre3ue" path="res://scenes/menus/options_menu/master_options_menu.tscn" id="1_22gyr"]
 [ext_resource type="PackedScene" uid="uid://dqv15yv8y4e3" path="res://scenes/menus/options_menu/audio/audio_options_menu.tscn" id="3_i668c"]
 [ext_resource type="PackedScene" uid="uid://b875f0j38pxed" path="res://scenes/menus/options_menu/video/video_options_menu_with_extras.tscn" id="4_w7faa"]
-[ext_resource type="PackedScene" uid="uid://cfcnkq828tul2" path="res://scenes/menus/options_menu/game/game_options_menu.tscn" id="5_6bu2y"]
 
 [node name="MasterOptionsMenu" instance=ExtResource("1_22gyr")]
 
@@ -18,8 +17,3 @@ metadata/_tab_index = 0
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
-
-[node name="Game" parent="TabContainer" index="3" instance=ExtResource("5_6bu2y")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
