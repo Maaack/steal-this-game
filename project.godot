@@ -16,7 +16,7 @@ run/main_scene="res://scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://c5apau6q7u0bh"
 
 [autoload]
 
@@ -29,6 +29,7 @@ ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autolo
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
